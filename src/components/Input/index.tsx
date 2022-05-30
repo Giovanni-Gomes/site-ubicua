@@ -6,11 +6,12 @@ import { InputCustom } from './styles';
 interface InputProps {
   type: string;
   placeholder?: string;
-  change?: React.ChangeEventHandler;
+  change?: (event: any) => void;
+  ref?: any;
 }
 
-const Input: React.FC<InputProps> = ({type, placeholder, change}) => {
-  return <InputCustom type={type} placeholder={placeholder} onChange={change}/>;
+const Input: React.FC<InputProps> = ({type, placeholder, change, ref}) => {
+  return <InputCustom type={type} placeholder={placeholder} onChange={change} ref={ref}/>;
 }
 
 export default Input;

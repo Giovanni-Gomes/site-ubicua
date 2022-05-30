@@ -13,6 +13,7 @@ export const Container = styled.div`
   align-items: center;
   box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
   width: calc(100vw-2rem);
+
   @media (min-width: 768px) {
     width: auto;
   }
@@ -186,7 +187,7 @@ export const FooterForm = styled.footer`
   }
 
   > :first-child {
-    padding: 0.5rem;
+    /* padding: 0.5rem; */
     background: rgb(24 24 27);
     border-radius: 4px;
     border: transparent;
@@ -253,6 +254,7 @@ export const SuccessContainer = styled.div`
     transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
     transition-duration: 150ms;
   }
+
 `;
 
 

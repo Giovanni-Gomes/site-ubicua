@@ -4,7 +4,7 @@ export const ButtonCustom = styled.button`
   background-color: #8257e6;
   border-radius: 1rem;
   border-color: transparent;
-  /* flex: 1 1 0%; */
+  flex: 1 1 0%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -13,6 +13,7 @@ export const ButtonCustom = styled.button`
   color: white;
   margin: 1rem 0.5rem;
   padding: 1rem 0;
+  cursor: pointer;
 
   &:hover {
     background-color: #996DFF;

@@ -23,12 +23,13 @@ export const Content = styled.div`
   flex: 1 1 0%;
   width: 100%;
   height: 100%;
+  overflow: hidden;
 `;
 
-const appearFromLeft = keyframes`
+const appearFromRight = keyframes`
   from {
     opacity: 0;
-    transform: translate(-50px);
+    transform: translate(50px);
   }
   to {
     opacity: 1;
@@ -47,11 +48,11 @@ export const AnimationContainer = styled.div`
   right: 37.5rem; */
   width: 100%;
 
-  animation: ${appearFromLeft} 2s;
+  animation: ${appearFromRight} 2s;
 
   form {
     width: 35rem;
-    padding: 3rem;
+    padding: 3rem 3rem 2rem;
     text-align: center;
     display: flex;
     flex-direction: column;
@@ -67,7 +68,6 @@ export const AnimationContainer = styled.div`
     color: #8257e6; 
     font-size: 1.5rem;
     display: flex;
-    margin-top: 24px;
     text-decoration: none;
     transition: color 0.2s;
 
@@ -83,11 +83,7 @@ export const AnimationContainer = styled.div`
   }
 `;
 
-export const Background = styled.div`
-  flex: 1;
-  background: url(${signInBackgroundImg}) no-repeat center;
-  background-size: cover;
-`;
+
 
 export const WrapperGif = styled.div`
   /* position: fixed;

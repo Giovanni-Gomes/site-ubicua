@@ -25,6 +25,8 @@ export const PopButton = styled(Popover.Button)`
   color: white;
   display: flex;
   align-items: center;
+  cursor: pointer;
+
   &:hover {
     > Span, span, :first-child {
       max-width: 20rem;

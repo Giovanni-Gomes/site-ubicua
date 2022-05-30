@@ -55,7 +55,7 @@ export const AnimationContainer = styled.div`
     text-align: center;
     display: flex;
     flex-direction: column;
-    padding: 6rem;
+    padding: 6rem 6rem 2rem;
     border-radius: 1rem;
 
     h1 {
@@ -65,10 +65,9 @@ export const AnimationContainer = styled.div`
   }
 
   > a {
-    color: #fff999;
+    color: #8257e6;
     font-size: 1.5rem;
     display: flex;
-    margin-top: 24px;
     text-decoration: none;
     transition: color 0.2s;
 
@@ -84,11 +83,7 @@ export const AnimationContainer = styled.div`
   }
 `;
 
-export const Background = styled.div`
-  flex: 1;
-  background: url(${signInBackgroundImg}) no-repeat center;
-  background-size: cover;
-`;
+
 
 export const WrapperGif = styled.div`
   /* position: fixed;

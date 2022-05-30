@@ -30,6 +30,8 @@ export const A = styled.a`
 
   &:focus {
     border-color: #8257e6;
+    padding: 0 0.5rem;
+    border-radius: 4px;
     box-shadow: inset 0 0 0 calc(1px + 0px) #8257e6;
     outline: 2px solid transparent;
     outline-offset: 2px;

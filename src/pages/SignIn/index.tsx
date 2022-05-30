@@ -1,5 +1,5 @@
 import React, { FormEvent, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Form } from '../../components/WidgetForm/styles';
 import Input from '../../components/Input'
 import Button from '../../components/Button'
@@ -11,27 +11,31 @@ import { GiphyFetch } from '@giphy/js-fetch-api';
 import { IGif } from "@giphy/js-types";
 import { useAsync } from "react-async-hook";
 
-
-
-import { AnimationContainer, Background, Container, Content, SignInGiphy, WrapperGif } from './styles';
-import { image } from 'html2canvas/dist/types/css/types/image';
+import { AnimationContainer, Container, Content, SignInGiphy, WrapperGif } from './styles';
 
 //const gf = new GiphyFetch('1V6GHHb75bB2t02EVqaO8Euc0hIQCGGb')
 
-interface SignInProps {
-  email: string;
-  password: string;
-}
 
-const SignIn: React.FC<SignInProps> = ({email, password}) => {
+
+const SignIn: React.FC = () => {
   const [username, setUsername] = useState('')
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+  const [status, setStatus] = useState({
+    type: '',
+    message: ''
+})
+
+  let navigate = useNavigate();
 
   async function submitLogin(event: FormEvent) {
     event.preventDefault();
 
-    await api.post('/', {
-      
+    await api.post('/v1/login/', {
+      email,
+      password
     });
+
   }
 
   const giphyFetch = new GiphyFetch("1V6GHHb75bB2t02EVqaO8Euc0hIQCGGb")
@@ -82,10 +86,10 @@ const SignIn: React.FC<SignInProps> = ({email, password}) => {
           <Form onSubmit={submitLogin}>
             <h1>Faça Seu Login</h1>
             {/* arrumar os inputs  */}
-            <Input type="email" placeholder="Email"  />
-            <Input type="password" placeholder="Senha" />
+            <Input type="email" placeholder="Email" change={event => setEmail(event.target.value)} />
+            <Input type="password" placeholder="Senha" change={event => setPassword(event.target.value)} />
 
-            <Button type='submit' text='Entrar'/>
+            <Button type='submit' text='Entrar' submit={() => navigate("/dashboard")}/>
 
           </Form>
           <Link to="/registrar">

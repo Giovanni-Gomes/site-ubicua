@@ -28,7 +28,7 @@ export function FeedbackContentStep({feedbackType, onFeedbackRestartRequested, o
     
     setIsSendingFeedback(true);
 
-    await api.post('/feedback/create', {
+    await api.post('/v1/feedback/create', {
       type: feedbackType,
       comment,
       screenshot,
@@ -65,6 +65,7 @@ export function FeedbackContentStep({feedbackType, onFeedbackRestartRequested, o
             type="submit" 
             disabled={comment.length === 0 || isSendingFeedback}
             text={isSendingFeedback ? <Loading /> : 'Enviar feedback'}
+            className="submit"
           />
         </FooterForm>
       </Form>
