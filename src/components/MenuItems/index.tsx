@@ -1,10 +1,10 @@
 import React, {useState, useEffect, useRef, EventHandler, MouseEventHandler, TouchEventHandler} from 'react';
-import menuItems from '../../data/MenuItems';
+import { menuItems } from '../../data/menuItems';
 import Dropdown, { DropdownProps } from '../Dropdown'
 import { Span } from '../Widget/styles';
 // import { Container } from './styles';
 export interface MenuItemsProps {
-  items: any;
+  items: Array<typeof menuItems>;
   depthLevel: any;
 }
 
@@ -49,7 +49,7 @@ const MenuItems: React.FC<MenuItemsProps> = ({items, depthLevel}) => {
         } </button> <Dropdown depthlevel = {
           depthLevel
         }
-        submens = {
+        submenus = {
           items.submenu
         }
         dropdown = {

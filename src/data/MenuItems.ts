@@ -1,6 +1,5 @@
 
-
-const menuItems = [
+export const menuItems = [
   {
     title: 'Dashboard',
     submenu: [
@@ -41,9 +40,9 @@ const menuItems = [
           },
           {
             title: 'Medição'
-          }
+          },
         ]
-      }
+      },
     ]
   },
   {
@@ -63,9 +62,9 @@ const menuItems = [
       },
       {
         title: 'Orçamentos'
-      }
+      },
     ]
   }
-]
+];
 
-export default menuItems;
+export type menuItem = keyof typeof menuItems

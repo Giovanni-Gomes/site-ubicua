@@ -1,5 +1,5 @@
 import React from 'react';
-import menuItems from '../../data/MenuItems';
+import {menuItems} from '../../data/menuItems';
 import MenuItems from '../MenuItems';
 
 import { Container } from './styles';

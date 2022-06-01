@@ -1,10 +1,10 @@
 const carouselImages = [
   {
-    imageSrc: '../public/assets/carousel/banner01.jpg',
+    imageSrc: '/assets/carousel/banner01.jpg',
     imageAlt: 'Plataforma Omni-Channel',
   },
   {
-    imageSrc: '../public/assets/carousel/banner02.jpg',
+    imageSrc: '/assets/carousel/banner02.jpg',
     imageAlt: 'Automatiza seus projetos de atendimento.',
   },
 ];

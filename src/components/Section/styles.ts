@@ -87,7 +87,7 @@ export const Header = styled.header`
       color: var(--bg-color);
       border: 1px solid var(--logo-color);
       text-decoration: none;
-      min-width: 5rem;
+      width: 80px;
       &:focus {
         box-shadow: inset 0 0 0 calc(3px + 0px) #8257e6;
         outline: 2px solid transparent;
@@ -111,7 +111,7 @@ export const Header = styled.header`
       color: var(--logo-color);
       border: 1px solid var(--logo-color);
       text-decoration: none;
-      min-width: 7.2rem;
+      width: 115.2px;
 
       &:focus {
         box-shadow: inset 0 0 0 calc(3px + 0px) #8257e6;
