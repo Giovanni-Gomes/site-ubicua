@@ -5,6 +5,7 @@ export const Container = styled.div`
   width: 100%;
   height: 100%;
   background: #222;
+  opacity: 0.95;
   padding: 2rem;
 
   > .WrapperCard {

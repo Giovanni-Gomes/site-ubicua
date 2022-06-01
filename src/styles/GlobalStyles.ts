@@ -15,8 +15,8 @@ export default createGlobalStyle`
     }
 
     :root {
-        --color-primary: #0d2f81;
-        --color-secondary: #ffe7aa;
+        --color-primary: #191919;
+        --color-secondary: #d3d3d3;
         --color-tertiary: #fff;
         --color-quaternary: #000;
         --color-blue: #0061ff;

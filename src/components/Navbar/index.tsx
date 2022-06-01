@@ -1,5 +1,5 @@
 import React from 'react';
-import { menuItems } from '../../data/MenuItems';
+import menuItems from '../../data/MenuItems';
 import MenuItems from '../MenuItems';
 
 import { Container } from './styles';
@@ -10,8 +10,8 @@ const Navbar: React.FC = () => {
       <ul className="menus">
         {
           menuItems.map((menu, index) => {
-            const depthLevel = 0
-            return <MenuItems items={menu} key={index} depthLevel={depthLevel}/>
+            const depthLevel = 0;
+            return <MenuItems items={menu.title} key={index} depthLevel={depthLevel}/>
           })
         }
       </ul>

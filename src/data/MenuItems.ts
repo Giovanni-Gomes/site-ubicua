@@ -1,84 +1,71 @@
-export const menuItems = [
+
+
+const menuItems = [
   {
     title: 'Dashboard',
-    active: true,
-    submenu: [  
+    submenu: [
       {
-        title: 'Gerencial / Status Report',
-        active: true,
-      },
+        title: 'Gerencial / Status Report'
+      }
     ]
   },
   {
     title: 'Operações',
-    active: true,
-    subMenu: [
+    submenu: [
       {
-        title: 'Feedbacks',
-        active: true,
+        title: 'Feedbacks'
       },
       {
-        title: 'Retornar Feedback',
-        active: true,
+        title: 'Retornar Feedback'
       }
     ]
   },
   {
     title: 'Desenvolvimento',
-    active: true,
-    subMenu: [
+    submenu: [
       {
-        title: 'Equipe / Squad',
-        active: true,
+        title: 'Equipe / Squad'
       },
       {
-        title: 'Projetos',
-        active: true,
+        title: 'Projetos'
       },
       {
         title: 'Acompanhamentos',
-        active: true,
-        subMenu: [
+        submenu: [
           {
-            title: 'Programação',
-            active: true,
+            title: 'Programação'
           },
           {
-            title: 'Produção',
-            active: true,
+            title: 'Produção'
+  
           },
           {
-            title: 'Medição',
-            active: true,
-          },
+            title: 'Medição'
+          }
         ]
-      },
+      }
     ]
   },
   {
     title: 'Contrato',
-    active: true,
-    subMenu: [
+    submenu: [
       {
-        title: 'Contratos',
-        active: true,
+        title: 'Contratos'
       },
       {
-        title: 'Tipos de Serviços',
-        active: true,
+        title: 'Tipos de Serviços'
       },
       {
-        title: 'Empresas',
-        active: true,
+        title: 'Empresas'
       },
       {
-        title: 'Portifólio',
-        active: true,
+        title: 'Portifólio'
       },
       {
-        title: 'Orçamentos',
-        active: true,
-      },
+        title: 'Orçamentos'
+      }
     ]
   }
 ]
+
+export default menuItems;

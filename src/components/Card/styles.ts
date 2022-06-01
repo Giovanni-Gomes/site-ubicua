@@ -6,6 +6,7 @@ export const Container = styled.div`
   height: 12rem;
   border-radius: 0.8rem;
   margin: 1rem;
+  opacity: 0.8;
   
   &.blue {
     background: blue;
