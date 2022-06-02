@@ -65,7 +65,7 @@ export const Header = styled.header`
   > h1 {
     display: flex;
     align-items: center;
-    min-width: 16rem;
+    min-width: 30rem;
 
     > span{
       color: var(--text-color);

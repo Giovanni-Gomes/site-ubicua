@@ -53,7 +53,6 @@ export const Under = styled.div`
     gap: 1rem;
     
     > img {
-      color: #fff;
       opacity: 1;
       fill: #fff;
       fill-opacity: 1;

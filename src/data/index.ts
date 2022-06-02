@@ -4,7 +4,7 @@ export default [
     description: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nulla maiores sit distinctio tempore cupiditate deserunt dolorum itaque! Quos rem sequi velit, corporis incidunt iure excepturi veniam quis architecto fugiat facere?'
   },
   {
-    title: 'Concentre-se apenas no trabalho importante',
+    title: 'Título customizado da seção',
     description: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nulla maiores sit distinctio tempore cupiditate deserunt dolorum itaque! Quos rem sequi velit, corporis incidunt iure excepturi veniam quis architecto fugiat facere?'
   },
   {

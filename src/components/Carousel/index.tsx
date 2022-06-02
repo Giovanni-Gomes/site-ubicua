@@ -1,7 +1,8 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { Swiper } from './styles';
 import { getRefValue, useStateRef } from '../../lib/hooks';
 import { getTouchEventData } from '../../lib/dom';
+import api from '../../services/api';
 
 type CarouselItemProps = {
   imageSrc: string;
@@ -11,6 +12,11 @@ type CarouselItemProps = {
 interface CarouselProps {
   items: Array<CarouselItemProps>;
 }
+
+// interface IImagesProps {
+//   title: string;
+//   image: string;
+// }
 
 const MIN_SWIPE_REQUIRED = 40;
 
@@ -102,9 +108,24 @@ const Carousel: React.FC<CarouselProps> = ({items}) => {
     setOffsetX(-(containerWidth * idx));
   };
 
+  // const [images, setImages] = useState<IImagesProps[]>([]);
+
+  // useEffect(() => {
+  //   async function fetchHeader() {
+  //     const responseImage = await api.get('v1/home');
+
+  //     setImages(responseImage.data);
+  //   }
+
+  //   fetchHeader();
+  // },[])
+
   function CarouselItem({ imageSrc, imageAlt }: CarouselItemProps) {
     return (
       <li>
+{/*     {images.map(img => (
+          <img src={img.image} alt={img.title} draggable={false}/>
+        ))} */}
         <img src={imageSrc} alt={imageAlt} draggable={false}/>
       </li>
     )

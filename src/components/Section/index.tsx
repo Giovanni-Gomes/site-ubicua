@@ -1,38 +1,61 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import api from "../../services/api";
 import MenuLink from "../MenuLink";
 import { Container, Content, Header, HeaderWrapper, MenuNav, UbicuaLogo } from "./styles";
+import { FaCloud } from 'react-icons/fa'
+
+
+interface IHeaderProps {
+  id: string;
+  title: string;
+  logo: HTMLElement;
+}
 
 
 interface Props {
   variant: 'blue' | 'beige' | 'white' | 'black';
-  title: string;
+  sectionTitle: string;
   description: string;
   element?: any;
 }
 
-const Section: React.FC<Props> = ({ variant, title, description, element }) => {
+const Section: React.FC<Props> = ({ variant, sectionTitle, description, element }) => {
   const buttonVariant = Math.round(Math.random());
 
-  function handleToggle() {
-    if (window.toggleActiveMenu) window.toggleActiveMenu();
-  }
+  // function handleToggle() {
+  //   if (window.toggleActiveMenu) window.toggleActiveMenu();
+  // }
+
+  const [headerLogo, setHeaderLogo] = useState<IHeaderProps[]>([]);
+  const [headerMenu, setHeaderMenu] = useState<IHeaderProps[]>([]);
+
+  useEffect(() => {
+    async function fetchHeader() {
+      const responseLogo = await api.get('v1/home');
+      const responseMenu = await api.get('v1/menu');
+
+      setHeaderLogo(responseLogo.data);
+      setHeaderMenu(responseMenu.data);
+    }
+
+    fetchHeader();
+  },[])
 
   return (
     <Container className={variant}>
       <HeaderWrapper>
         <Header>
           <h1>
-            <UbicuaLogo />
-            <span>Ubicua Cloud</span>
+            {headerLogo.map(hl => (<>
+                {hl.logo}
+                <span>{hl.title}</span> </>
+            ))}
           </h1>
-
           <MenuNav className="link">
-
-            <MenuLink title="Soluções" />
-            <MenuLink title="Sobre" />
-            <MenuLink title="Contato" />
-
+            {headerMenu.map(hm => (
+              <MenuLink title={hm.title} />
+            ))}
           </MenuNav>
 
           <div className="button">
@@ -45,7 +68,7 @@ const Section: React.FC<Props> = ({ variant, title, description, element }) => {
       </HeaderWrapper>
       <Content>
         <header>
-          <h2>{title}</h2>
+          <h2>{sectionTitle}</h2>
           <p>{description}</p>
         </header>
         {(element === null) ? null : element}

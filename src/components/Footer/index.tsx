@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import api from '../../services/api';
 import { Card, Container, Content, Under } from './styles';
 
-interface IHeaderProps {
+interface IFooterProps {
   id:string;
   name: string;
   link: string;
@@ -15,10 +15,10 @@ interface IHeaderProps {
 }
 
 const Footer: React.FC = () => {
-  const [title, setTitle] = useState<IHeaderProps[]>([]);
-  const [link, setLink] = useState<IHeaderProps[]>([]);
-  const [app, setApp] = useState<IHeaderProps[]>([]);
-  const [midia, setMidia] = useState<IHeaderProps[]>([]);
+  const [title, setTitle] = useState<IFooterProps[]>([]);
+  const [link, setLink] = useState<IFooterProps[]>([]);
+  const [app, setApp] = useState<IFooterProps[]>([]);
+  const [midia, setMidia] = useState<IFooterProps[]>([]);
 
   useEffect(() => {
     async function fetchFooter() {
