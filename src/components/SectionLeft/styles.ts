@@ -12,7 +12,8 @@ export const Container = styled.div`
   &.blue {
     --bg-color: var(--color-tertiary);
     --text-color: var(--color-quaternary);
-    --logo-color: var(--color-blue);    
+    --logo-color: var(--color-blue);
+    
   }
   &.beige {
     --bg-color: var(--color-secondary);
@@ -33,7 +34,7 @@ export const Container = styled.div`
   &:first-child {
     --padding-top: 6rem;
     --heading-font-size: 41px;
-    --padding-bottom: 6rem;
+    --padding-bottom: 11rem;
 
     flex: 1;
     background: url(${sectionOne}) no-repeat center;
@@ -179,19 +180,17 @@ export const Content = styled.div`
   > header h2 {
     font-size: var(--heading-font-size);
     color: var(--logo-color);
-    max-width: 50rem;
+    text-align:right;
+    /* max-width: 50rem; */
   }
   > header p {
     margin: 20px 0;
     font-size: 16px;
     color: var(--text-color);
     max-width: 95%;
+    text-align:right;
+
   }
   padding: var(--padding-top) 32px var(--padding-bottom);
 `;
 
-export const Background = styled.div`
-  flex: 1;
-  background: url(${sectionOne}) no-repeat center;
-  background-size: cover;
-`;

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import api from "../../services/api";
 import MenuLink from "../MenuLink";
-import { Background, Container, Content, Header, HeaderWrapper, MenuNav, UbicuaLogo } from "./styles";
+import { Container, Content, Header, HeaderWrapper, MenuNav, UbicuaLogo } from "./styles";
 import { FaCloud } from 'react-icons/fa'
 
 
@@ -20,7 +20,7 @@ interface Props {
   element?: any;
 }
 
-const Section: React.FC<Props> = ({ variant, sectionTitle, description, element }) => {
+const SectionLeft: React.FC<Props> = ({ variant, sectionTitle, description, element }) => {
   const buttonVariant = Math.round(Math.random());
 
   // function handleToggle() {
@@ -68,7 +68,6 @@ const Section: React.FC<Props> = ({ variant, sectionTitle, description, element 
       </HeaderWrapper>
       <Content>
         <header>
-          <Background />
           <h2>{sectionTitle}</h2>
           <p>{description}</p>
         </header>
@@ -78,4 +77,4 @@ const Section: React.FC<Props> = ({ variant, sectionTitle, description, element 
   )
 }
 
-export default Section;
+export default SectionLeft;

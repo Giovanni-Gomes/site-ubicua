@@ -13,7 +13,7 @@ interface SideMenuProps {
   children: any;
 }
 
-const SideMenu: React.FC<SideMenuProps> = ( { children }: any) => {
+const SideMenu: React.FC<SideMenuProps> = ({ children }: any) => {
   const [scrollY, setScrollY] = useState(0);
   const [isActive, setIsActive] = useState(false);
 
@@ -22,14 +22,17 @@ const SideMenu: React.FC<SideMenuProps> = ( { children }: any) => {
       setScrollY(window.scrollY);
       setIsActive(false);
     }
-    
+
     window.addEventListener('scroll', onScroll);
     return () => window.removeEventListener('scroll', onScroll);
   }, [])
 
   const classes = [
-    isActive ? 'open' : '',
-    scrollY <= scrollThreshold && scrollY >= 100 ? 'scrollOpen' : '',
+    isActive ? '' : '',
+    scrollY <= scrollThreshold && scrollY >= 100 ? '' : '',
+
+    //isActive ? 'open' : '',
+    //scrollY <= scrollThreshold && scrollY >= 100 ? 'scrollOpen' : '',
   ];
 
   const className = classes.join(' ').trim();

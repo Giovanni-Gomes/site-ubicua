@@ -1,9 +1,11 @@
 import styled from 'styled-components';
 
 export const Swiper = styled.div`
-  width: 100%;
-  max-width: 100%;
-  /* padding-top: 3rem; */
+  width: 120%;
+  max-width: 120%;
+  /* padding-top: 3rem;
+  /* width: 100%;
+  height: 100%; */
   overflow: auto;
   touch-action: pan-y;
   overflow-x: hidden;
@@ -19,10 +21,12 @@ export const Swiper = styled.div`
     > li {
       width: 100%;
       flex-shrink: 0;
-      min-height: 15rem;
+      /* min-height: 15rem; */
       > img {
-        width: 100%;
-        height: 100%;
+        /* width: 100%;
+        height: 500px; */
+        /* height: auto; */
+        align-items: right;
         user-select: none;
         border-radius: 1rem;
       }

@@ -62,7 +62,7 @@ export const Form = styled.form`
 
   > .title {
     font-size: 25px;
-    font-weight: 500;
+    font-weight: 10;
   }
   > .subtitle {
     font-size: 12px;

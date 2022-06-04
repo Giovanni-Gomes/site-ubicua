@@ -7,6 +7,11 @@ export const A = styled.a`
   position: relative;
   padding: 0.5rem 0;
   align-items: left;
+
+  font-style: normal;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 20px;
   
  
 
@@ -17,7 +22,7 @@ export const A = styled.a`
     left: 0;
     width: 100%;
     height: 0.2rem;
-    background-color: hotpink;
+    background-color: var(--color-secondary); /*hotpink*/
     opacity: 0;
     transition: opacity 300ms, transform 300ms;
   }
