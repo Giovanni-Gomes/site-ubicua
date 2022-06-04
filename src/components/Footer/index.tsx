@@ -3,7 +3,7 @@ import api from '../../services/api';
 import { Card, Container, Content, Under } from './styles';
 
 interface IFooterProps {
-  id:string;
+  id: string;
   name: string;
   link: string;
   footer_titles_id: string;
@@ -34,7 +34,7 @@ const Footer: React.FC = () => {
     }
 
     fetchFooter();
-  },[])
+  }, [])
 
   return (
     <Container>
@@ -45,31 +45,42 @@ const Footer: React.FC = () => {
             <ul className="list">
               {link.map(lk => (
                 <li className="item">
-                  {lk.footer_titles_id == ti.id ? lk.name : null}
+                  <a href={lk.link}>{lk.footer_titles_id == ti.id ? lk.name : null}</a>
                 </li>
               ))}
             </ul>
           </Card>
         ))}
-          <Card>
-            <h3>Install App</h3>
-            <ul>
-              {app.map(ap => (
-                <li className="item">
-                  {ap.name}
-                </li>
-              ))}
-            </ul>
-          </Card>
+        <Card>
+          <h3>Install App</h3>
+          <ul>
+            {app.map(ap => (
+              <li className="item">
+                {ap.name}
+              </li>
+            ))}
+          </ul>
+        </Card>
       </Content>
       <Under>
         {midia.map(md => (<>
           <a href={md.link}>{md.copyright}</a>
           <div id="wrapperImage">
-            <img src={md.midia_social_one} alt="Instagram" />
-            <img src={md.midia_social_two} alt="Icon" />
-            <img src={md.midia_social_tree} alt="Twitter" />
-            <img src={md.midia_social_for} alt="Youtube" />
+            <a href="#">
+              <img src={md.midia_social_one} alt="Instagram" />
+            </a>
+            <a href="#">
+              <img src={md.midia_social_two} alt="Icon" />
+            </a>
+            <a href="#">
+              <img src={md.midia_social_tree} alt="Twitter" />
+            </a>
+            <a href="#">
+              <img src={md.midia_social_for} alt="Youtube" />
+            </a>
+
+
+
           </div> </>
         ))}
       </Under>

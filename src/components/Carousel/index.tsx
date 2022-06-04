@@ -20,7 +20,7 @@ interface CarouselProps {
 
 const MIN_SWIPE_REQUIRED = 40;
 
-const Carousel: React.FC<CarouselProps> = ({items}) => {
+const Carousel: React.FC<CarouselProps> = ({ items }) => {
   const containerRef = useRef<HTMLUListElement>(null);
   const containerWidthRef = useRef(0);
   const minOffsetXRef = useRef(0);
@@ -123,10 +123,10 @@ const Carousel: React.FC<CarouselProps> = ({items}) => {
   function CarouselItem({ imageSrc, imageAlt }: CarouselItemProps) {
     return (
       <li>
-{/*     {images.map(img => (
+        {/*     {images.map(img => (
           <img src={img.image} alt={img.title} draggable={false}/>
         ))} */}
-        <img src={imageSrc} alt={imageAlt} draggable={false}/>
+        <img src={imageSrc} alt={imageAlt} draggable={false} />
       </li>
     )
   }
@@ -149,9 +149,8 @@ const Carousel: React.FC<CarouselProps> = ({items}) => {
         {items.map((_item, idx) => (
           <li
             key={idx}
-            className={`swiper-indicator-item ${
-              currentIdx === idx ? 'active' : ''
-            }`}
+            className={`swiper-indicator-item ${currentIdx === idx ? 'active' : ''
+              }`}
             onClick={() => indicatorOnClick(idx)}
             data-testid="indicator"
           />
