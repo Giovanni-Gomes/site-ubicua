@@ -11,23 +11,27 @@ export const Container = styled.div`
 
   &.blue {
     --bg-color: var(--color-tertiary);
-    --text-color: var(--color-quaternary);
-    --logo-color: var(--color-blue);    
+    --text-color: var(--color-secondary); /*var(--color-quaternary)*/
+    --logo-color: var(--color-black);    
+    --icon-color: var(--color-secondary);    
   }
   &.beige {
     --bg-color: var(--color-secondary);
     --text-color: var(--color-quaternary);
     --logo-color: var(--color-primary);
+    --icon-color: var(--color-quaternary);  
   }
   &.white {
     --bg-color: var(--color-primary);
     --text-color: var(--color-quaternary);
     --logo-color: var(--color-secondary);
+    --icon-color: var(--color-quaternary);  
   }
   &.black {
     --bg-color: var(--color-quaternary);
     --text-color: var(--color-tertiary);
-    --logo-color: var(--color-blue);
+    --logo-color: var(--color-black);
+    --icon-color: var(--color-tertiary);  
   }
 
   &:first-child {
@@ -70,7 +74,7 @@ export const HeaderWrapper = styled.div`
 `;
 
 export const Header = styled.header`
-  z-index: 3;
+  z-index: 5;
   background: var(--bg-color);
 
   display: flex;
@@ -105,7 +109,7 @@ export const Header = styled.header`
       text-decoration: none;
       width: 80px;
       &:focus {
-        box-shadow: inset 0 0 0 calc(3px + 0px) #8257e6;
+        box-shadow: inset 0 0 0 calc(3px + 0px) var(--logo-color);
         outline: 2px solid transparent;
         outline-offset: 2px;
       }
@@ -130,7 +134,7 @@ export const Header = styled.header`
       width: 115.2px;
 
       &:focus {
-        box-shadow: inset 0 0 0 calc(3px + 0px) #8257e6;
+        box-shadow: inset 0 0 0 calc(3px + 0px) var(--logo-color);
         outline: 2px solid transparent;
         outline-offset: 2px;
       }

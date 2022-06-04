@@ -46,16 +46,16 @@ export function WidgetForm() {
 
     return (
         <Container>
-            
-            
+
+
             {feedbackSent ? (
-                <FeedbackSuccessStep onFeedbackRestartRequested={handleRestartFeedback}/>
+                <FeedbackSuccessStep onFeedbackRestartRequested={handleRestartFeedback} />
             ) : (
                 <>
                     {!feedbackType ? (
                         <FeedbackTypeStep onFeedBackTypeChanged={setFeedbackType} />
                     ) : (
-                        <FeedbackContentStep 
+                        <FeedbackContentStep
                             feedbackType={feedbackType}
                             onFeedbackRestartRequested={handleRestartFeedback}
                             onFeedbackSent={() => setFeedbackSent(true)}
@@ -65,7 +65,7 @@ export function WidgetForm() {
             )}
 
             <Footer>
-                Feito com ♥ pela Rocketseat
+                Feito com ♥ pela UbicuaCloud
             </Footer>
         </Container>
     )

@@ -22,7 +22,7 @@ export const A = styled.a`
     left: 0;
     width: 100%;
     height: 0.2rem;
-    background-color: var(--color-secondary); /*hotpink*/
+    background-color: var(--logo-color); /*hotpink*/
     opacity: 0;
     transition: opacity 300ms, transform 300ms;
   }
@@ -34,10 +34,10 @@ export const A = styled.a`
   }
 
   &:focus {
-    border-color: #8257e6;
+    border-color: var(--text-color);
     padding: 0 0.5rem;
     border-radius: 4px;
-    box-shadow: inset 0 0 0 calc(1px + 0px) #8257e6;
+    box-shadow: inset 0 0 0 calc(1px + 0px) var(--text-color);
     outline: 2px solid transparent;
     outline-offset: 2px;
   }

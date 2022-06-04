@@ -11,7 +11,7 @@ export default createGlobalStyle`
         box-sizing: border-box;
     }
     *, button, input {
-        font-family: 'Poppins', Roboto, sans-serif;
+        font-family: 'Poppins', 'Roboto', sans-serif;
     }
  
     :root {
@@ -20,9 +20,10 @@ export default createGlobalStyle`
         --color-tertiary: #D5FAFC;
         --color-quaternary: #2EC5CE;
         --color-footer: #0B0D17;
-        /* --color-blue: #0061ff;
-        --color-border: #bdc4c9; */
+        --color-black: #0B0D17;
+        --color-border: #BDC4C9;        
     }
+    
 
     // COLOR PRIMARYS GIOVANNI
     /* :root {
@@ -30,7 +31,7 @@ export default createGlobalStyle`
         --color-secondary: #d3d3d3;
         --color-tertiary: #fff;
         --color-quaternary: #000;
-        --color-blue: #0061ff;
+        --color-black: #0061ff;
         --color-border: #bdc4c9;
     } */
 `;
