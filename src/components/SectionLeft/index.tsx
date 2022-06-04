@@ -48,7 +48,7 @@ const SectionLeft: React.FC<Props> = ({ variant, sectionTitle, description, elem
         <Header>
           <h1>
             {headerLogo.map(hl => (<>
-              {hl.logo}
+              {!hl.logo ? <FaCloud color={"var(--text-color)"} /> : hl.logo}
               <span>{hl.title}</span> </>
             ))}
           </h1>

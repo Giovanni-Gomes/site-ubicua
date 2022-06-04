@@ -60,12 +60,12 @@ export const AnimationContainer = styled.div`
 
     h1 {
       margin-bottom: 24px;
-      color: #041fff;
+      color: var(--color-secondary);
     }
   }
 
   > a {
-    color: #8257e6;
+    color: var(--color-secondary);
     font-size: 1.5rem;
     display: flex;
     text-decoration: none;
@@ -78,7 +78,7 @@ export const AnimationContainer = styled.div`
     } */
 
     &:hover {
-      color: #996DFF;
+      color: var(--color-footer);
     }
   }
 `;

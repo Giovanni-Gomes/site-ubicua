@@ -48,7 +48,7 @@ export const Navigation = styled.div`
 export const UbicuaLogo = styled(FaCloud)`
   width: 36px;
   height: 32px;
-  fill: var(--color-blue);
+  fill: var(--color-black);
 `;
 
 export const Form = styled.form`
@@ -81,7 +81,7 @@ export const Form = styled.form`
     margin-top: 18px;
     padding: 13px 18px;
     font-size: 16px;
-    background: var(--color-blue);
+    background: var(--color-black);
     color: var(--color-tertiary);
     border: none;
 
