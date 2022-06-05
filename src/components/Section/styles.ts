@@ -212,7 +212,7 @@ export const Content = styled.div`
     margin: 20px 0;
     font-size: 16px;
     color: var(--text-color);
-    max-width: 95%;
+    /* max-width: 95%; */
   }
   padding: var(--padding-top) 32px var(--padding-bottom);
 `;
