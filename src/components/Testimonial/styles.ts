@@ -15,10 +15,10 @@ export const Container = styled.div`
   order: 3;
   flex-grow: 0;
   :nth-child(1n) {
-    position: absolute;    
+    position: absolute;
     /*background-color: lime;
     margin-top: 6rem; */
-  } 
+  }
 `;
 
 export const TestimonialOne = styled.div`
@@ -26,11 +26,13 @@ export const TestimonialOne = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  padding: 32px;
-  gap: 32px;
+  text-align: justify;
+  padding: 24px 32px 0px 24px;
+  /* gap: 12px; */
+  /* height: 340px; */
   position: relative;
   width: 445px;
-  height: 340px;
+  height: auto;
   left: 735px;
   top: 168px;
 
@@ -39,17 +41,19 @@ export const TestimonialOne = styled.div`
   border-radius: 8px;
 `
 
-export const TestimonialTwo = styled.div` 
- display: flex;
+export const TestimonialTwo = styled.div`
+  z-index: 4;
+  display: flex;
   flex-direction: column;
   align-items: flex-start;
-  padding: 32px;
-  gap: 32px;
+  text-align: justify;
+  padding: 24px 32px 0px 24px;
+  /* padding: 32px;
+  gap: 32px; */
 
   position: relative;
-  z-index: 4;
-  width: 350px;
-  height: 276px;
+  width: 445px;
+  height: auto;
   left: 735px;
   top: 200px;
   background: var(--color-primary);
@@ -60,14 +64,14 @@ export const TestimonialTwo = styled.div`
 export const TestimonialThree = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  padding: 32px;
-  gap: 32px;
+  align-items: unset;
+  text-align: justify;
+  padding: 24px 32px 0px 24px;
 
   position: relative;
   z-index: 5;
   width: 550px;
-  height: 436px;
+  height: 480px;
   left: 155px;
   top: -350px;
   background: var(--color-primary);
@@ -83,12 +87,74 @@ height: 120px;
 left: 205px;
 top: 80px;
 z-index: 4;
-/* background-color: red; */
 flex: 1;
+/* background-color: red; */
 /* background: red; */
 background: url(${quoteMark}) no-repeat center;
-/* background-size: cover; */
-/* background-size: cover; */
-
 opacity: 0.6;
+`
+
+export const LogoTestimonial = styled.div`
+  /* width: 140px;
+  height: 40px; */
+  padding-bottom: 1rem;
+  /* Inside auto layout */
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+`
+
+export const Content = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  padding: 0.3rem;
+
+  width: 80%;
+  /* width: 286px; */
+  /* height: 250px; */
+  /* Inside auto layout */
+  flex: none;
+  order: 1;
+  flex-grow: 0;
+`
+
+export const FeedbackTestimonial = styled.div`
+  width: 130%;
+  height: 224px;
+  /* Lead / Lead 1 */
+  /* font-family: 'Roboto', sans-serif; */
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 34px;
+  /* or 178% */
+  font-feature-settings: 'liga' off;
+  /* Text / Gray 900 */
+  color: #18191F;
+  /* Inside auto layout */
+  flex: none;
+  order: 0;
+  align-self: center;
+  flex-grow: 0;
+  opacity: 0.6;
+`
+
+export const Author = styled.div`
+  display: flex;
+  flex-direction: column;
+  font-style: italic;
+  font-weight: 500;
+  padding-top: 1rem;
+  /* Inside auto layout */
+  flex: none;
+  order: 1;
+  align-self: flex-start;
+  flex-grow: 0;
+  /* font-family: 'Roboto', sans-serif; */
+  /* align-items: flex-start; */
+  /* padding: 0px; */
+  /* width: 142px;
+  height: 52px; */
+
 `
