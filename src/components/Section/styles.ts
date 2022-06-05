@@ -61,6 +61,17 @@ export const Container = styled.div`
 
   background: var(--bg-color);
   position: relative;
+
+ 
+  :nth-child(4n) {
+    
+    h2 {
+      max-width: 100%;
+      text-align: center;
+    }
+    /* background-color: red; */
+    padding-top: 4rem;
+  }
 `;
 
 export const HeaderWrapper = styled.div`

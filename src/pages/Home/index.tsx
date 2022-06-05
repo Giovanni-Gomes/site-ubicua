@@ -10,6 +10,7 @@ import data from "../../data";
 import Footer from '../../components/Footer';
 import api from '../../services/api';
 import SectionLeft from '../../components/SectionLeft';
+import Customers from '../../components/Customers';
 
 //import { Container } from './styles';
 
@@ -43,10 +44,12 @@ const Home: React.FC = () => {
         <Section variant="white" sectionTitle={st.title} description={st.description_one} element={showCarousel} />
       ))}
 
+
       {sectionTwo.map(st => (
         <Section variant="blue" sectionTitle={st.title} description={st.description_one} />
       ))}
 
+      <Customers />
       <Section variant="white" sectionTitle={data[2].title} description={data[2].description} />
       <Section variant="blue" sectionTitle={data[3].title} description={data[3].description} />
       <SectionLeft variant="white" sectionTitle={data[4].title} description={data[4].description} />
