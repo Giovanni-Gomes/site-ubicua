@@ -8,11 +8,11 @@ export default [
     description: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nulla maiores sit distinctio tempore cupiditate deserunt dolorum itaque! Quos rem sequi velit, corporis incidunt iure excepturi veniam quis architecto fugiat facere?'
   },
   {
-    title: 'Diga adeus ao trabalho maçante',
+    title: 'Atualizar Titulo',
     description: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nulla maiores sit distinctio tempore cupiditate deserunt dolorum itaque! Quos rem sequi velit, corporis incidunt iure excepturi veniam quis architecto fugiat facere?'
   },
   {
-    title: 'Para todos',
+    title: 'Histórias reais de clientes reais',
     description: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nulla maiores sit distinctio tempore cupiditate deserunt dolorum itaque! Quos rem sequi velit, corporis incidunt iure excepturi veniam quis architecto fugiat facere?'
   },
   {

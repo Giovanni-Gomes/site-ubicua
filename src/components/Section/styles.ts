@@ -62,15 +62,27 @@ export const Container = styled.div`
   background: var(--bg-color);
   position: relative;
 
- 
-  :nth-child(4n) {
+  :nth-child(6n) {    
     
     h2 {
       max-width: 100%;
       text-align: center;
+      font-style: normal;
+      font-weight: 800;
+      font-size: 48px;
+      line-height: 64px;
+      /* or 133% */
+      font-feature-settings: 'liga' off;
+      color: var(--logo-color); /*#18191F*/
+      /* Inside auto layout */
+      flex: none;
+      order: 0;
+      flex-grow: 0;
     }
-    /* background-color: red; */
-    padding-top: 4rem;
+    /* padding-bottom: 30rem; */
+    padding: 4rem 0rem 35rem 0rem;
+    background-color: var(--color-tertiary);    
+    
   }
 `;
 
