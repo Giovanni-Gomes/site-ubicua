@@ -12,55 +12,54 @@ const Testimonial: React.FC = () => {
 
       {/* <h2>Real Stories</h2> */}
       <QuoteMark />
-      <TestimonialOne>
-        <LogoTestimonial>
-          <img src={hubSpot} />
-        </LogoTestimonial>
-        <Content>
-          <FeedbackTestimonial>
-            To quickly start my startup landing page design, I was looking for a landing page UI Kit. Landify is one of the best landing page UI kit I have come across. It’s so flexible, well organised and easily editable.
-            <Author>
-              Cliente:  Xarlys Luiz de S.
-            </Author>
-          </FeedbackTestimonial>
-        </Content>
-      </TestimonialOne>
+        <TestimonialOne>
+          <LogoTestimonial>
+            <img src={hubSpot} />
+          </LogoTestimonial>
+          <Content>
+            <FeedbackTestimonial>
+              To quickly start my startup landing page design, I was looking for a landing page UI Kit. Landify is one of the best landing page UI kit I have come across. It’s so flexible, well organised and easily editable.
+              <Author>
+                Cliente:  Xarlys Luiz de S.
+              </Author>
+            </FeedbackTestimonial>
+          </Content>
+        </TestimonialOne>
 
-      <TestimonialTwo>
-        <LogoTestimonial>
-          <img src={google} />
-        </LogoTestimonial>
-        <Content>
-          <FeedbackTestimonial>
-            It’s so flexible, well organised and easily editable.
-            It’s so flexible, well organised and easily editable.
-            It’s so flexible, well organised and easily editable.
-            It’s so flexible, well organised and easily editable.
-            It’s so flexible, well organised and easily editable.
-            <Author>
-              Cliente:  Xarlys Luiz de S.
-            </Author>
-          </FeedbackTestimonial>
-        </Content>
-      </TestimonialTwo>
+        <TestimonialTwo>
+          <LogoTestimonial>
+            <img src={google} />
+          </LogoTestimonial>
+          <Content>
+            <FeedbackTestimonial>
+              It’s so flexible, well organised and easily editable.
+              It’s so flexible, well organised and easily editable.
+              It’s so flexible, well organised and easily editable.
+              It’s so flexible, well organised and easily editable.
+              It’s so flexible, well organised and easily editable.
+              <Author>
+                Cliente:  Xarlys Luiz de S.
+              </Author>
+            </FeedbackTestimonial>
+          </Content>
+        </TestimonialTwo>
 
-      <TestimonialThree>
-        <LogoTestimonial>
-          <img src={microsoft} />
-        </LogoTestimonial>
-        <Content>
-          <FeedbackTestimonial>
-            To quickly start my startup landing page design, I was looking for a landing page UI Kit. Landify is one of the best landing page UI kit I have come across. It’s so flexible, well organised and easily editable.
-            To quickly start my startup landing page design, I was looking for a landing page UI Kit. Landify is one of the best landing page UI kit I have come across. It’s so flexible, well organised and easily editable.
-            To quickly start my startup landing page design, I was looking for a landing page UI Kit. Landify is one of the best landing.
+        <TestimonialThree>
+          <LogoTestimonial>
+            <img src={microsoft} />
+          </LogoTestimonial>
+          <Content>
+            <FeedbackTestimonial>
+              To quickly start my startup landing page design, I was looking for a landing page UI Kit. Landify is one of the best landing page UI kit I have come across. It’s so flexible, well organised and easily editable.
+              To quickly start my startup landing page design, I was looking for a landing page UI Kit. Landify is one of the best landing page UI kit I have come across. It’s so flexible, well organised and easily editable.
+              To quickly start my startup landing page design, I was looking for a landing page UI Kit. Landify is one of the best landing.
 
-            <Author>
-              Cliente:  Xarlys Luiz de S.
-            </Author>
-          </FeedbackTestimonial>
-        </Content>
-      </TestimonialThree>
-
+              <Author>
+                Cliente:  Xarlys Luiz de S.
+              </Author>
+            </FeedbackTestimonial>
+          </Content>
+        </TestimonialThree>
 
     </Container>
   );

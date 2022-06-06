@@ -1,6 +1,9 @@
-import React, { useEffect, useState } from "react";
-import Header from "../Header";
-import { Container, Content } from "./styles";
+import React from 'react';
+import Customers from '../Customers';
+import Header from '../Header';
+import Testimonial from '../Testimonial';
+
+import { Container, Content } from './styles';
 
 interface Props {
   variant: 'blue' | 'beige' | 'white' | 'black';
@@ -9,19 +12,20 @@ interface Props {
   element?: any;
 }
 
-const SectionLeft: React.FC<Props> = ({ variant, sectionTitle, description, element }) => {
+const SectionTest: React.FC<Props> = ({ variant, sectionTitle, description}) => {
   return (
     <Container className={variant}>
       <Header />
+      <Customers />
       <Content>
         <header>
           <h2>{sectionTitle}</h2>
           <p>{description}</p>
         </header>
-        {(element === null) ? null : element}
+        <Testimonial />
       </Content>
     </Container>
-  )
+  );
 }
 
-export default SectionLeft;
+export default SectionTest;

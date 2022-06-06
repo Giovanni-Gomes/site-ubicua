@@ -3,15 +3,16 @@ import styled from 'styled-components';
 export const Container = styled.footer`
   background: var(--color-footer);
   max-height: 393px;
+  width: 100%;
 `;
 
 export const Content = styled.div`
   max-width: 1440px;
-  margin: 0 auto auto 8rem;
+  margin: 0 auto auto;
   display: flex;
   justify-content: center;
   gap: 1rem;
-  padding: 4rem 0 4rem;
+  padding: 4rem 0 4rem 8rem;
 `;
 
 export const Card = styled.div`

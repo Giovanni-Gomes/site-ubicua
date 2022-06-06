@@ -30,19 +30,18 @@ export const TestimonialOne = styled.div`
   padding: 24px 32px 0px 24px;
   /* gap: 12px; */
   /* height: 340px; */
-  position: relative;
+  position: absolute;
   width: 445px;
   height: auto;
   left: 735px;
-  top: 168px;
-
+  top: 12rem;
   background: var(--color-primary);
   box-shadow: 0px 10px 20px rgba(41, 41, 42, 0.07);
   border-radius: 8px;
 `
 
 export const TestimonialTwo = styled.div`
-  z-index: 4;
+  z-index: 3;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -51,11 +50,11 @@ export const TestimonialTwo = styled.div`
   /* padding: 32px;
   gap: 32px; */
 
-  position: relative;
+  position: absolute;
   width: 445px;
   height: auto;
   left: 735px;
-  top: 200px;
+  top: 33rem;
   background: var(--color-primary);
   /* Dark Shadow */
   box-shadow: 0px 10px 20px rgba(41, 41, 42, 0.07);
@@ -68,12 +67,12 @@ export const TestimonialThree = styled.div`
   text-align: justify;
   padding: 24px 32px 0px 24px;
 
-  position: relative;
-  z-index: 5;
+  position: absolute;
+  z-index: 3;
   width: 550px;
   height: 480px;
   left: 155px;
-  top: -350px;
+  top: 15rem;
   background: var(--color-primary);
   /* Dark Shadow */
   box-shadow: 0px 10px 20px rgba(41, 41, 42, 0.07);
@@ -81,12 +80,13 @@ export const TestimonialThree = styled.div`
 `
 
 export const QuoteMark = styled.div`
-position: relative;
+position: absolute;
 width: 12%;
 height: 120px;
 left: 205px;
-top: 80px;
-z-index: 4;
+top: 1.5rem;
+
+
 flex: 1;
 /* background-color: red; */
 /* background: red; */
