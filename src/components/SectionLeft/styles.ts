@@ -53,7 +53,9 @@ export const Container = styled.div`
     font-weight: 800;
     font-size: 72px;
     line-height: 98px; */
-    
+
+
+
     @media (min-width: 1024px) {
       --content-width: 50%;
       --heading-font-size: 71px;
@@ -61,17 +63,16 @@ export const Container = styled.div`
   }
 
   background: var(--bg-color);
-
+  position: relative;
 `;
 
 
 export const Content = styled.div`
-  z-index: 2;
-  position: relative;
   max-width: 1440px;
   margin: 0 auto;
   display: flex;
   align-items: center;
+  position: relative;
 
   > header h2 {
     font-size: var(--heading-font-size);

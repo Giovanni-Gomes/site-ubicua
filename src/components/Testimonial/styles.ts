@@ -158,3 +158,33 @@ export const Author = styled.div`
   height: 52px; */
 
 `
+export const WrapperTestimonial = styled.div`
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: justify;
+  padding: 24px 32px 0px 24px;
+  /* padding: 32px;
+  gap: 32px; */
+
+  position: absolute;
+  width: 445px;
+  height: auto;
+  background: var(--color-primary);
+  /* Dark Shadow */
+  box-shadow: 0px 10px 20px rgba(41, 41, 42, 0.07);
+  border-radius: 8px;
+  &.hubSpot {
+    left: 44rem;
+    top: 12rem;
+  }
+  &.Google {
+    left: 44rem;
+    top: 33rem;
+  }
+  &.Microsoft {
+    left: 14rem;
+    top: 15rem;
+  }
+`

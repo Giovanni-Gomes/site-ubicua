@@ -1,10 +1,11 @@
 import React from 'react';
 
-import { Author, Container, Content, FeedbackTestimonial, LogoTestimonial, QuoteMark, TestimonialOne, TestimonialThree, TestimonialTwo } from './styles';
+import { Author, Container, Content, FeedbackTestimonial, LogoTestimonial, QuoteMark, WrapperTestimonial, TestimonialThree, TestimonialTwo } from './styles';
 
 import hubSpot from '/assets/testimonial/hubspot.png';
 import google from '/assets/testimonial/google.png';
 import microsoft from '/assets/testimonial/microsoft.png';
+import testimonial from '../../data/testimonial';
 
 const Testimonial: React.FC = () => {
   return (
@@ -12,7 +13,22 @@ const Testimonial: React.FC = () => {
 
       {/* <h2>Real Stories</h2> */}
       <QuoteMark />
-        <TestimonialOne>
+      {testimonial.map(ts => (
+        <WrapperTestimonial className={ts.title}>
+          <LogoTestimonial>
+            <img src={ts.icon} />
+          </LogoTestimonial>
+          <Content>
+            <FeedbackTestimonial>
+              {ts.description}
+              <Author>
+                {ts.author}
+              </Author>
+            </FeedbackTestimonial>
+          </Content>
+        </WrapperTestimonial>
+      ))}
+        {/* <TestimonialOne>
           <LogoTestimonial>
             <img src={hubSpot} />
           </LogoTestimonial>
@@ -59,7 +75,7 @@ const Testimonial: React.FC = () => {
               </Author>
             </FeedbackTestimonial>
           </Content>
-        </TestimonialThree>
+        </TestimonialThree> */}
 
     </Container>
   );

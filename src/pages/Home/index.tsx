@@ -27,14 +27,20 @@ const Home: React.FC = () => {
 
   const [sectionOne, setSectionOne] = useState<IContentProps[]>([])
   const [sectionTwo, setSectionTwo] = useState<IContentProps[]>([])
-
+  const [sectionThree, setSectionThree] = useState<IContentProps[]>([])
+  const [sectionFour, setSectionFour] = useState<IContentProps[]>([])
+  
   useEffect(() => {
     async function fetchSection() {
       const responseSectionOne = await api.get('v1/sectionOne');
       const responseSectionTwo = await api.get('v1/sectionTwo');
+      const responseSectionThree = await api.get('v1/sectionThree');
+      const responseSectionFour = await api.get('v1/sectionFour');
 
       setSectionOne(responseSectionOne.data);
       setSectionTwo(responseSectionTwo.data);
+      setSectionThree(responseSectionThree.data);
+      setSectionFour(responseSectionFour.data);
     }
 
     fetchSection();
@@ -52,10 +58,15 @@ const Home: React.FC = () => {
       ))}
 
 
-      <Section variant="white" sectionTitle={data[2].title} description={data[2].description} />
-      <SectionTest variant="blue" sectionTitle={data[3].title} description={data[3].description}/>
+      {sectionThree.map(st => (
+        <SectionLeft variant="white" sectionTitle={st.title} description={st.description_one} />
+      ))}
+      
+      {sectionFour.map(st => (
+        <SectionTest variant="blue" sectionTitle={st.title} description={st.description_one}/>
+      ))}
 
-      <Section variant="black" sectionTitle={data[4].title} description={data[4].description} />
+      <SectionLeft variant="black" sectionTitle={data[4].title} description={data[4].description} />
       <Footer />
       <SideMenu >
         <MenuForm />
