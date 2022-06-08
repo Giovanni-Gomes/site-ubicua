@@ -40,22 +40,6 @@ export const Container = styled.div`
     --heading-font-size: 41px;
     --padding-bottom: 11rem;
 
-    flex: 1;
-    background: url(${sectionOne}) no-repeat center;
-    background-size: cover;
-    text-align: center;
-    p {
-      text-align: justify;
-      color: var(--color-quaternary);
-    }
-    
-    /* font-style: normal;
-    font-weight: 800;
-    font-size: 72px;
-    line-height: 98px; */
-
-
-
     @media (min-width: 1024px) {
       --content-width: 50%;
       --heading-font-size: 71px;
@@ -71,13 +55,18 @@ export const Content = styled.div`
   max-width: 1440px;
   margin: 0 auto;
   display: flex;
+  /* gap: 5rem; */
   align-items: center;
+  justify-content: flex-end;
   position: relative;
+
+  > header {
+    width: 50%;
+  }
 
   > header h2 {
     font-size: var(--heading-font-size);
     color: var(--logo-color);
-    text-align:right;
     /* max-width: 50rem; */
   }
   > header p {
@@ -85,9 +74,27 @@ export const Content = styled.div`
     font-size: 16px;
     color: var(--text-color);
     /* max-width: 95%; */
-    text-align:right;
 
   }
   padding: var(--padding-top) 32px var(--padding-bottom);
+
+  > img {
+    height: 20rem;
+    position: absolute;
+    z-index: 0;
+    overflow: hidden;
+    border-radius: 1.5rem;
+    left: 20rem;
+    bottom: -1rem;
+    &.top{
+      left: 10rem;
+      top: -1rem;
+    }
+    &.bottom {
+      left: 26rem;
+      bottom: -1rem;
+    }
+  }
+
 `;
 

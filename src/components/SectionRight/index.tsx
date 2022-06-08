@@ -14,11 +14,11 @@ const SectionLeft: React.FC<Props> = ({ variant, sectionTitle, description, elem
     <Container className={variant}>
       <Header />
       <Content>
+        {(element === null) ? null : element}
         <header>
           <h2>{sectionTitle}</h2>
           <p>{description}</p>
         </header>
-        {(element === null) ? null : element}
       </Content>
     </Container>
   )

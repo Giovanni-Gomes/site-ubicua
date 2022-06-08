@@ -16,7 +16,11 @@ export default [
     description: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nulla maiores sit distinctio tempore cupiditate deserunt dolorum itaque! Quos rem sequi velit, corporis incidunt iure excepturi veniam quis architecto fugiat facere?'
   },
   {
+    title: 'Our 18 years of achievements',
+    description: 'With our super powers we have reached this'
+  },
+  {
     title: 'Parte inferior da página',
     description: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nulla maiores sit distinctio tempore cupiditate deserunt dolorum itaque! Quos rem sequi velit, corporis incidunt iure excepturi veniam quis architecto fugiat facere?'
-  },
+  }
 ]

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Widget } from "../../components/Widget";
-import Section from "../../components/Section"
+import Section, { items } from "../../components/Section"
 import SideMenu from "../../components/SideMenu"
 import MenuForm from "../../components/MenuForm"
 import Carousel from '../../components/Carousel';
@@ -9,10 +9,9 @@ import carouselImages from '../../data/carousel';
 import data from "../../data";
 import Footer from '../../components/Footer';
 import api from '../../services/api';
-import SectionLeft from '../../components/SectionLeft';
-import Customers from '../../components/Customers';
-import Testimonial from '../../components/Testimonial';
 import SectionTest from '../../components/SectionTest';
+import SectionTpc from '../../components/SectionTpc';
+import SectionRight from '../../components/SectionRight';
 
 //import { Container } from './styles';
 
@@ -24,6 +23,8 @@ interface IContentProps {
 
 const Home: React.FC = () => {
   const showCarousel = <Carousel items={carouselImages} />;
+  const imgs = (<><img src="/assets/cell.svg" className='top' /> <img src="/assets/cell02.svg" className='bottom'/></>)
+  const img = <img src='/assets/container.svg' />
 
   const [sectionOne, setSectionOne] = useState<IContentProps[]>([])
   const [sectionTwo, setSectionTwo] = useState<IContentProps[]>([])
@@ -54,19 +55,21 @@ const Home: React.FC = () => {
 
 
       {sectionTwo.map(st => (
-        <Section variant="blue" sectionTitle={st.title} description={st.description_one} />
+        <SectionTpc variant="blue" sectionTitle={st.title} description={st.description_one} />
       ))}
 
 
       {sectionThree.map(st => (
-        <SectionLeft variant="white" sectionTitle={st.title} description={st.description_one} />
+        <SectionRight variant="white" sectionTitle={st.title} description={st.description_one} element={img} />
       ))}
       
       {sectionFour.map(st => (
         <SectionTest variant="blue" sectionTitle={st.title} description={st.description_one}/>
       ))}
 
-      <SectionLeft variant="black" sectionTitle={data[4].title} description={data[4].description} />
+      <Section variant="white" sectionTitle={data[4].title} description={data[4].description} element={items}/>
+
+      <SectionRight variant="black" sectionTitle={data[5].title} description={data[5].description} element={imgs} />
       <Footer />
       <SideMenu >
         <MenuForm />

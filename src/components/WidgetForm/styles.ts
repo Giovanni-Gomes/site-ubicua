@@ -142,6 +142,19 @@ export const Textarea = styled.textarea`
     outline-offset: 2px;
   }
 
+  ::-webkit-scrollbar {
+    width: .5rem;
+  }
+  ::-webkit-scrollbar-track {
+    background: #444;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #333;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #222;
+  }
+
   resize: none;
 `;
 

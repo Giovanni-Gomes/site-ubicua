@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
+import sectionItems from "../../data/sectionItems";
 import api from "../../services/api";
 import Header from "../Header";
-import { Background, Container, Content } from "./styles";
+import { Background, Container, Content, Wrapper } from "./styles";
 
 interface Props {
   variant: 'blue' | 'beige' | 'white' | 'black';
@@ -9,6 +10,18 @@ interface Props {
   description: string;
   element?: any;
 }
+
+export const items =  <Wrapper>
+                        {sectionItems.map(itm => (
+                          <div>
+                            <img src={itm.icon} />
+                            <div>
+                              <h3>{itm.title}</h3>
+                              <p>{itm.description}</p>
+                            </div>
+                          </div>
+                        ))}
+                      </Wrapper>
 
 const Section: React.FC<Props> = ({ variant, sectionTitle, description, element }) => {
   return (

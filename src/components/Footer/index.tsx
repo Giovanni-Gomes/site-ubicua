@@ -54,11 +54,13 @@ const Footer: React.FC = () => {
         <Card>
           <h3>Install App</h3>
           <ul>
-            {app.map(ap => (
+            {/* {app.map(ap => (
               <li className="item">
                 {ap.name}
               </li>
-            ))}
+            ))} */}
+            <li><img src="/assets/app/appStore.svg" alt="" /></li>
+            <li><img src="/assets/app/googlePlay.svg" alt="" /></li>
           </ul>
         </Card>
       </Content>

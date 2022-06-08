@@ -4,6 +4,8 @@ export const Container = styled.footer`
   background: var(--color-footer);
   max-height: 393px;
   width: 100%;
+  position: relative;
+  z-index: 2;
 `;
 
 export const Content = styled.div`

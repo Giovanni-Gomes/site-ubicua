@@ -5,7 +5,7 @@ import sectionOne from '/assets/backgrounds/background.svg';
 export const Container = styled.div`
   --padding-top: 6.25rem;
   --padding-bottom: 8rem;
-  --heading-font-size: 3rem;
+  --heading-font-size: 32px;
   --content-width: 100%;
 
   &.blue {
@@ -32,85 +32,55 @@ export const Container = styled.div`
     --logo-color: var(--color-black);
     --icon-color: var(--color-tertiary);  
   }
-
-  &:first-child {
-    --padding-top: 6rem;
-    --heading-font-size: 41px;
-    --padding-bottom: 6rem;
-
-    flex: 1;
-    background: url(${sectionOne}) no-repeat center;
-    background-size: cover;
-    text-align: center;
-    p {
-      text-align: justify;
-      color: var(--color-quaternary);
-    }
-    
-    /* font-style: normal;
-    font-weight: 800;
-    font-size: 72px;
-    line-height: 98px; */
-    
-    @media (min-width: 1024px) {
-      --content-width: 50%;
-      --heading-font-size: 71px;
-    }
-  }
-
   background: var(--bg-color);
   position: relative;
-  z-index: 2;
-  /* :nth-child(2n) {
-  position: absolute;    
-  background-color: blue;
-   margin-top: 6rem;  
-  }   */
-
-
 `;
 
 export const Content = styled.div`
   max-width: 1440px;
   margin: 0 auto;
   display: flex;
+  flex-direction: column;
+  justify-content: center;
   align-items: center;
-  position: relative;
-
+  text-align: center;
 
 
   > header h2 {
     font-size: var(--heading-font-size);
     color: var(--logo-color);
-    max-width: 50rem;
+    font-size: 3rem;
   }
   > header p {
-    margin: 20px 0;
+    max-width: 30rem;
+    margin: 2rem auto;
     font-size: 16px;
     color: var(--text-color);
     /* max-width: 95%; */
   }
-  padding: var(--padding-top) 5rem var(--padding-bottom);
+  padding: var(--padding-top) 32px var(--padding-bottom);
 `;
 
-export const Background = styled.div`
-  flex: 1;
-  background: url(${sectionOne}) no-repeat center;
-  background-size: cover;
-`;
-
-export const Wrapper = styled.div `
-  max-width: 20rem;
+export const Wrapper = styled.div`
   display: flex;
-  justify-content: space-between;
-  gap: 2rem;
+  gap: 1rem;
   flex-wrap: wrap;
-  position: absolute;
-  right: 10rem;
+  justify-content: center;
+  align-items: center;
   > div {
-    display: flex;
-    align-items: baseline;
-    gap: 1rem;
-    max-width: 10rem;
+    max-width: 20rem;
+    /* text-align: center; */
+    margin: 0.5rem 0;
+    > p {
+      text-align: justify;
+      padding: 0.5rem 2rem;
+    }
   }
 `
+
+
+// export const Background = styled.div`
+//   flex: 1;
+//   background: url(${sectionOne}) no-repeat center;
+//   background-size: cover;
+// `;

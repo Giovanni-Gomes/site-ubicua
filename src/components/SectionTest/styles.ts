@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const Container = styled.div`
   --padding-top: 6.25rem;
   --padding-bottom: 8rem;
-  --heading-font-size: 32px;
+  --heading-font-size: 3rem;
   --content-width: 100%;
   
   &.blue {
@@ -29,20 +29,20 @@ export const Content = styled.div`
   > header h2 {
     position: absolute;
     z-index: 1;
-    left: 25rem;
-    top: 2rem;
+    left: 15rem;
+    top: 6rem;
     font-size: var(--heading-font-size);
     color: var(--logo-color);
-    max-width: 50rem;
+    max-width: 28rem;
   }
   > header p {
     position: absolute;
     z-index: 1;
-    top: 4rem;
-    left: 24rem;
+    top: 15rem;
+    left: 15rem;
     margin: 20px 0;
     font-size: 16px;
-    width: 50%;
+    width: 32%;
     color: var(--text-color);
     /* max-width: 95%; */
   }

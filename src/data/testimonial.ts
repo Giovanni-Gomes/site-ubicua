@@ -14,7 +14,7 @@ const testimonial = [
   {
     title: 'Microsoft',
     icon: '/assets/testimonial/microsoft.png',
-    description: "To quickly start my startup landing page design, I was looking for a landing page UI Kit. \nLandify is one of the best landing page UI kit I have come across. \nIt’s so flexible, well organised and easily editable.",
+    description: "To quickly start my startup landing page design, I was looking for a landing page UI Kit. \nLandify is one of the best landing page UI kit I have come across. \nIt’s so flexible, well organised and easily editable.o quickly start my startup landing page design, I was looking for a landing page UI Kit. \nLandify is one of the best landing page UI kit I ",
     author: 'Cliente:  Xarlys Luiz de S.'
   },
 ];

@@ -121,7 +121,7 @@ export const Content = styled.div`
 
 export const FeedbackTestimonial = styled.div`
   width: 130%;
-  height: 224px;
+  /* height: 224px; */
   /* Lead / Lead 1 */
   /* font-family: 'Roboto', sans-serif; */
   font-style: normal;
@@ -164,13 +164,13 @@ export const WrapperTestimonial = styled.div`
   flex-direction: column;
   align-items: flex-start;
   text-align: justify;
-  padding: 24px 32px 0px 24px;
+  /* padding: 24px 32px 0px 24px; */
   /* padding: 32px;
   gap: 32px; */
+  padding: 1.5rem 2rem 0 1.5rem;
 
   position: absolute;
-  width: 445px;
-  height: auto;
+  width: 27.8rem;
   background: var(--color-primary);
   /* Dark Shadow */
   box-shadow: 0px 10px 20px rgba(41, 41, 42, 0.07);
@@ -185,6 +185,7 @@ export const WrapperTestimonial = styled.div`
   }
   &.Microsoft {
     left: 14rem;
-    top: 15rem;
+    top: 22rem;
+
   }
 `
