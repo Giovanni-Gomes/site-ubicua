@@ -1,12 +1,12 @@
 import React from 'react';
 import { Container } from './styles';
 
-interface DashSectionProps {
+interface DashboardSectionProps {
   element: any;
   className?: string;
 }
 
-const DashSection: React.FC<DashSectionProps> = ({ element, className }) => {
+const DashboardSection: React.FC<DashboardSectionProps> = ({ element, className }) => {
   return (
     <Container className={className}>
       {element}
@@ -14,4 +14,4 @@ const DashSection: React.FC<DashSectionProps> = ({ element, className }) => {
   );
 }
 
-export default DashSection;
+export default DashboardSection;

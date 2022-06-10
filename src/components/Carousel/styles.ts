@@ -23,10 +23,11 @@ export const Swiper = styled.div`
       flex-shrink: 0;
       /* min-height: 15rem; */
       > img {
-        /* width: 100%;
-        height: 500px; */
+        width: 100%;
+        height: 100%;
         /* height: auto; */
-        align-items: right;
+        /* align-items: right; */
+        /* margin: 0 2rem; */
         user-select: none;
         border-radius: 1rem;
       }

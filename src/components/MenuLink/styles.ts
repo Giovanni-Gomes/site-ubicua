@@ -22,7 +22,7 @@ export const A = styled.a`
     left: 0;
     width: 100%;
     height: 0.2rem;
-    background-color: var(--logo-color); /*hotpink*/
+    background-color: var(--logo-color);
     opacity: 0;
     transition: opacity 300ms, transform 300ms;
   }

@@ -75,7 +75,8 @@ export const ButtonCard = styled.button`
   border: transparent;
   
   &:hover {
-    border: 0.05rem solid #8257e6;
+    /* border: 0.05rem solid #8257e6; */
+    opacity: 0.5;
   }
   &:focus {
     border: 2px solid #8257e6;

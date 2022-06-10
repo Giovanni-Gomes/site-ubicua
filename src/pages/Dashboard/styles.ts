@@ -47,36 +47,10 @@ export const UbicuaLogo = styled(FaCloud)`
   fill: darkturquoise;
 `;
 
-export const MenuNav = styled.div`
+export const MenuDropdown = styled.div`
   display: flex;
-  /* margin-left: 2rem; */
+  gap: 1rem;
   padding-right: 3rem;
   width: 100%;
-  justify-content: end;
-
-  > .list {
-    display: flex;
-    list-style: none;
-    gap: 2rem;
-    color: gray;
-    > :first-child {
-      color: white;
-      &:hover {
-        > .menuDrop {
-          display: flex;
-          flex-direction: column;
-          background: gray;
-          position: absolute;
-          padding: 0 1rem 0 1.7rem;
-          margin-top: 0.5rem;
-          border-radius: 0.5rem;
-
-        }
-      }
-    }
-
-    > li .menuDrop {
-      display: none;
-    }
-  }
+  justify-content: center;
 `;
