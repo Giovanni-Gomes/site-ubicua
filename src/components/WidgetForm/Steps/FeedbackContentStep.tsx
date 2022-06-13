@@ -28,7 +28,7 @@ export function FeedbackContentStep({feedbackType, onFeedbackRestartRequested, o
     
     setIsSendingFeedback(true);
 
-    await api.post('/v1/feedback/create', {
+    const result = await api.post('/v1/feedback/create', {
       type: feedbackType,
       comment,
       screenshot,
@@ -36,6 +36,7 @@ export function FeedbackContentStep({feedbackType, onFeedbackRestartRequested, o
 
     onFeedbackSent();
     setIsSendingFeedback(false);
+    console.log(result)
   };
 
   return (
@@ -56,7 +57,7 @@ export function FeedbackContentStep({feedbackType, onFeedbackRestartRequested, o
 
 
       <Form onSubmit={handleSubmitFeedback}>
-        <Textarea className="scrollbar-thumb-zinc-700 scrollbar-track-transparent scrollbar-thin" placeholder="Algo não está funcionando bem? Queremos corrigir. Conte com detalhes o que está acontecendo..." onChange={event => setComment(event.target.value)}/>
+        <Textarea className="scrollbar-thumb-zinc-700 scrollbar-track-transparent scrollbar-thin" placeholder="Algo não está funcionando bem? Queremos corrigir. Conte com detalhes o que está acontecendo..." onChange={event => setComment(event.target.value)} />
 
         <FooterForm>
           <ScreenshotButton screenshot={screenshot} onScreenshotTook={setScreenshot}/>

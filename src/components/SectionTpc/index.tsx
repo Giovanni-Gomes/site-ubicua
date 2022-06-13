@@ -21,8 +21,8 @@ const SectionTpc: React.FC<Props> = ({ variant, sectionTitle, description }) => 
           <p>{description}</p>
         </header>
         <Wrapper>
-          {tpcItems.map(tpc => (
-            <div>
+          {tpcItems.map((tpc, key) => (
+            <div key={key}>
               <img src={tpc.icon} />
               <h3>{tpc.title}</h3>
               <p>{tpc.description}</p>

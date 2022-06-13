@@ -49,28 +49,28 @@ const Home: React.FC = () => {
 
   return (
     <>
-      {sectionOne.map(st => (
-        <Section variant="white" sectionTitle={st.title} description={st.description_one} element={showCarousel} />
+      {sectionOne.map((st, key) => (
+        <Section key={key} variant="white" sectionTitle={st.title} description={st.description_one} element={showCarousel} />
       ))}
 
 
-      {sectionTwo.map(st => (
-        <SectionTpc variant="blue" sectionTitle={st.title} description={st.description_one} />
+      {sectionTwo.map((st, key) => (
+        <SectionTpc key={key} variant="blue" sectionTitle={st.title} description={st.description_one} />
       ))}
 
 
-      {sectionThree.map(st => (
-        <SectionRight variant="white" sectionTitle={st.title} description={st.description_one} element={img} />
+      {sectionThree.map((st, key) => (
+        <SectionRight key={key} variant="white" sectionTitle={st.title} description={st.description_one} element={img} />
       ))}
       
-      {sectionFour.map(st => (
-        <SectionTest variant="blue" sectionTitle={st.title} description={st.description_one}/>
+      {sectionFour.map((st, key) => (
+        <SectionTest key={key} variant="blue" sectionTitle={st.title} description={st.description_one}/>
       ))}
 
       <Section variant="white" sectionTitle={data[4].title} description={data[4].description} element={items}/>
 
       <SectionRight variant="black" sectionTitle={data[5].title} description={data[5].description} element={imgs} />
-      <Footer />
+      <Footer/>
       <SideMenu >
         <MenuForm />
       </SideMenu>

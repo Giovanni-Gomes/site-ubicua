@@ -16,7 +16,7 @@ const Dashboard: React.FC = () => {
           <span>Ubicua Cloud</span>
         </h1>
         <MenuDropdown>
-          <Dropdown title='Dashboard' subtitles={<li>Gerencial / Status Report</li>}/>
+          {/* <Dropdown title='Dashboard' subtitles={<li>Gerencial / Status Report</li>}/>
           <Dropdown title='Operações' subtitles={
             <>
               <li>Feedback</li>
@@ -32,20 +32,8 @@ const Dashboard: React.FC = () => {
               <hr/>
               <li>Acompanhamentos</li>
             </>
-          }/>
-          <Dropdown title='Contratos' subtitles={
-            <>
-              <li>Contratos</li>
-              <hr/>
-              <li>Serviços</li>
-              <hr/>
-              <li>Empresas</li>
-              <hr/>
-              <li>Portifólio</li>
-              <hr/>
-              <li>Orçamentos</li>
-            </>
-          }/>
+          }/> */}
+          <Dropdown />
         </MenuDropdown>
         <div className="button">
           {/* <Link to="/login">{(buttonVariant === 0) ? 'Entrar' : 'Login'}</Link>

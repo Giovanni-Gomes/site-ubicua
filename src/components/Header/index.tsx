@@ -37,15 +37,17 @@ const Header: React.FC = () => {
   return (
     <Container>
       <Content>
-        <h1>
-          {headerLogo.map(hl => (<>
-            {!hl.logo ? <FaCloud color={"var(--icon-color)"} /> : hl.logo}
-            <span>{hl.title}</span> </>
+          {headerLogo.map((hl, key) => (
+            <h1 key={key}>
+            <>
+              {!hl.logo ? <FaCloud color={"var(--icon-color)"} /> : hl.logo}
+              <span>{hl.title}</span>
+            </>
+            </h1>
           ))}
-        </h1>
         <MenuNav className="link">
-          {headerMenu.map(hm => (
-            <MenuLink title={hm.title} />
+          {headerMenu.map((hm, key) => (
+            <MenuLink key={key} title={hm.title} />
           ))}
         </MenuNav>
 

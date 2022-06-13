@@ -164,6 +164,7 @@ export const FooterForm = styled.footer`
   display: flex;
   gap: 0.5rem;
   margin-top: 0.5rem;
+  align-items: center;
 
   > button.submit {
     padding: 0.5rem;

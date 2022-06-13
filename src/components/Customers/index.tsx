@@ -25,8 +25,8 @@ const Customers: React.FC = () => {
     <Container>
       <LogoSection>
         <Logos>
-          {clients.map(client => (
-            <img key={client.imageAlt} src={client.imageSrc} alt={client.imageAlt} />
+          {clients.map((client, key) => (
+            <img key={key} src={client.imageSrc} alt={client.imageAlt} />
           ))}
         </Logos>
       </LogoSection>

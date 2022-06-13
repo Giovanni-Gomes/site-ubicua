@@ -12,13 +12,26 @@ interface ScreenshotButtonProps {
 
 export function ScreenshotButton({screenshot, onScreenshotTook}: ScreenshotButtonProps) {
   const[isTakingScreenshot, setIsTakingScreenshot] = useState(false)
+
+  // async function handleTakeScreenshot() {
+  //   setIsTakingScreenshot(true);
+  //   const canvas = await html2canvas(document.querySelector('html')!);
+  //   const base64Image = canvas.toDataURL('image/png');
+  //   onScreenshotTook(base64Image)
+  //   setIsTakingScreenshot(false);
+  // }
+
   async function handleTakeScreenshot() {
     setIsTakingScreenshot(true);
     const canvas = await html2canvas(document.querySelector('html')!);
-    const base64Image = canvas.toDataURL('image/png');
-    onScreenshotTook(base64Image)
+    const base64image = canvas.toDataURL('image/png');
+    //console.log(base64image);
+
+    onScreenshotTook(base64image);
+
     setIsTakingScreenshot(false);
   }
+
   if(screenshot) {
     return (
       <ButtonScreenshot style={{backgroundImage: `url(${screenshot})`, backgroundPosition: 'center', backgroundSize: 50}} onClick={() => onScreenshotTook(null)}>

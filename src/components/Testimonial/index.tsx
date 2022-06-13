@@ -13,8 +13,8 @@ const Testimonial: React.FC = () => {
 
       {/* <h2>Real Stories</h2> */}
       <QuoteMark />
-      {testimonial.map(ts => (
-        <WrapperTestimonial className={ts.title}>
+      {testimonial.map((ts, key) => (
+        <WrapperTestimonial key={key} className={ts.title}>
           <LogoTestimonial>
             <img src={ts.icon} />
           </LogoTestimonial>
