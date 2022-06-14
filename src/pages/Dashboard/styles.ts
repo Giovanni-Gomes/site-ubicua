@@ -31,26 +31,26 @@ export const Header = styled.header`
   > h1 {
     display: flex;
     align-items: center;
-    min-width: 16rem;
+    /* min-width: 12rem; */
 
     > span{
       color: white;
       margin-left: 10px;
-      font-size: 1.8rem;
+      font-size: 1.2rem;
     }
   }
 `;
 
 export const UbicuaLogo = styled(FaCloud)`
-  width: 2rem;
-  height: 2rem;
+  width: 4rem;
+  height: 4rem;
   fill: darkturquoise;
 `;
 
 export const MenuDropdown = styled.div`
   display: flex;
   gap: 1rem;
-  padding-right: 3rem;
+  /* padding-right: 3rem; */
   width: 100%;
-  justify-content: center;
+  justify-content: flex-start;
 `;

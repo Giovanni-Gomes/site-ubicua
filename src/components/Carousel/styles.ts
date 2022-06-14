@@ -24,7 +24,6 @@ export const Swiper = styled.div`
       /* min-height: 15rem; */
       > img {
         width: 100%;
-        height: 100%;
         /* height: auto; */
         /* align-items: right; */
         /* margin: 0 2rem; */

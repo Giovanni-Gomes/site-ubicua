@@ -1,27 +1,21 @@
 import { ChatTeardropDots } from 'phosphor-react';
 import React, { useEffect, useRef, useState } from 'react';
 import {CSSTransition} from 'react-transition-group';
+import { CSSTransitionProps } from 'react-transition-group/CSSTransition';
+import { dropdownItems } from '../../data/dropdownItems';
 
 import { Button, Container, List, Dropdowns, MenuItem, NavItem, NavBar } from './styles';
 
-// interface DropdownProps {
-//   title: string;
-//   subtitles: any;
-// }
+
 
 interface NavItemsProps{
   icon?: any;
   children?: any;
+  title?: string;
 }
 
 interface NavBarsProps{
-  children?: any;
-}
-
-interface DropProps{
-  ref?:  HTMLDivElement | null;
-  current?: any;
-  children?: any;
+  children: any;
 }
 
 interface DropdownItemsProps{
@@ -29,6 +23,10 @@ interface DropdownItemsProps{
   children?: any;
   leftIcon?: any;
   rightIcon?: any;
+}
+
+interface DropdownMenuProps {
+  subtitle: Array<any>;
 }
 
 const Dropdown: React.FC = () => {
@@ -67,20 +65,14 @@ const Dropdown: React.FC = () => {
 
   
 
-  // const handleOutsideDropdown = (e:any) => {
-  //   if(open && !dropdownRef.current?.contains(e.target as Node)){
-  //     setOpen(false)
-  //   }
-  // }
 
-  // window.addEventListener("hover", handleOutsideDropdown)
   
   //ref={dropdownRef}
 
-  function DropdownMenu() {
+  function DropdownMenu({subtitle}: DropdownMenuProps) {
     const [activeMenu, setActiveMenu] = useState('main');
-    const [menuHeight, setMenuHeight] = useState<string | number>();
-    const dropdownRef = useRef(null) as DropProps;
+    const [menuHeight, setMenuHeight] = useState<string | number>('10rem');
+    const dropdownRef = useRef(null) as any;
 
     useEffect(() => {
       setMenuHeight(dropdownRef.current?.firstChild.offsetHeight)
@@ -88,12 +80,12 @@ const Dropdown: React.FC = () => {
 
     function calcHeight(el: any) {
       const height = el.offsetHeight;
-      setMenuHeight(height);
+      setMenuHeight(height + 20);
     }
 
     function DropdownItems({children, goToMenu, leftIcon, rightIcon}: DropdownItemsProps) {
      return (
-      <MenuItem href="#" className="menu-item" onClick={() => goToMenu && setActiveMenu(goToMenu)}>
+      <MenuItem href="/registrar" className="menu-item" onClick={() => goToMenu && setActiveMenu(goToMenu)}>
         <span className="icon-button">{leftIcon}</span>
         {children}
         <span className="icon-button">{rightIcon}</span>
@@ -102,16 +94,16 @@ const Dropdown: React.FC = () => {
     }
 
     return(
-      // ref={dropdownRef}
-      <Dropdowns style={{height: menuHeight}} > 
+      <Dropdowns ref={dropdownRef} style={{height: menuHeight}}> 
         <CSSTransition in={activeMenu === 'main'} unmountOnExit timeout={500} classNames="menu-primary" onEnter={calcHeight}>
           <div className="menu">
-            <DropdownItems>My Profile</DropdownItems>
-            <DropdownItems leftIcon={<ChatTeardropDots />} rightIcon={<ChatTeardropDots />} goToMenu="settings">Settings</DropdownItems>
+            {subtitle.map((sb, key) => (
+              <DropdownItems key={key}>{sb.name}</DropdownItems>
+            ))}
           </div>
         </CSSTransition>
         
-        <CSSTransition in={activeMenu === 'settings'} unmountOnExit timeout={500} classNames="menu-secondary" onEnter={calcHeight}>
+        {/* <CSSTransition in={activeMenu === 'settings'} unmountOnExit timeout={500} classNames="menu-secondary" onEnter={calcHeight}>
           <div className="menu-secondary">
             <DropdownItems>My Profile</DropdownItems>
             <DropdownItems leftIcon={<ChatTeardropDots />} goToMenu="main">Settings</DropdownItems>
@@ -122,7 +114,7 @@ const Dropdown: React.FC = () => {
             <DropdownItems leftIcon={<ChatTeardropDots />} goToMenu="main">Settings</DropdownItems>
             <DropdownItems leftIcon={<ChatTeardropDots />} goToMenu="main">Settings</DropdownItems>
           </div>
-        </CSSTransition>
+        </CSSTransition> */}
       </Dropdowns>
     )
   }
@@ -137,13 +129,21 @@ const Dropdown: React.FC = () => {
     )
   }
 
-  function NavItems({icon, children}: NavItemsProps) {
+  function NavItems({icon, children, title}: NavItemsProps) {
     const [open, setOpen] = useState(false);
 
+    const dropdownRef = useRef(null) as any;
+    const handleOutsideDropdown = (e:any) => {
+      if(open && !dropdownRef.current?.contains(e.target as Node)){
+        setOpen(false)
+      }
+    }
+    window.addEventListener("click", handleOutsideDropdown)
     return (
-      <NavItem className="nav-item">
-        <a href="#" className="icon-button" onMouseEnter={() => setOpen(!open)}>
+      <NavItem ref={dropdownRef} className="nav-item">
+        <a className="icon-button" onClick={() => setOpen(!open)}>
           {icon}
+          <span>{title}</span>
         </a>
 
         {open && children}
@@ -164,12 +164,20 @@ const Dropdown: React.FC = () => {
     //   }
     // </Container>
     <NavBars>
-      <NavItems icon={<ChatTeardropDots />}/>
-      <NavItems icon={<ChatTeardropDots />}/>
-      <NavItems icon={<ChatTeardropDots />}/>
-      <NavItems icon={<ChatTeardropDots />}>
+      {dropdownItems.map((di, key) => (
+        <NavItems key={key} icon={<ChatTeardropDots />} title={di.title}>
+          <DropdownMenu subtitle={di.subtitles} />
+        </NavItems>
+      ))}
+      {/* <NavItems icon={<ChatTeardropDots />} title="Operações">
+        <DropdownMenu/>
+      </NavItems>
+      <NavItems icon={<ChatTeardropDots />} title="Desenvolvimento">
         <DropdownMenu />
       </NavItems>
+      <NavItems icon={<ChatTeardropDots />} title="Contrato">
+        <DropdownMenu />
+      </NavItems> */}
     </NavBars>
   );
 }

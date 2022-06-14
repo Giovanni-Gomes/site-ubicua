@@ -30,6 +30,7 @@ const Home: React.FC = () => {
   const [sectionTwo, setSectionTwo] = useState<IContentProps[]>([])
   const [sectionThree, setSectionThree] = useState<IContentProps[]>([])
   const [sectionFour, setSectionFour] = useState<IContentProps[]>([])
+  const [sectionFive, setSectionFive] = useState<IContentProps[]>([])
   
   useEffect(() => {
     async function fetchSection() {
@@ -37,11 +38,13 @@ const Home: React.FC = () => {
       const responseSectionTwo = await api.get('v1/sectionTwo');
       const responseSectionThree = await api.get('v1/sectionThree');
       const responseSectionFour = await api.get('v1/sectionFour');
+      const responseSectionFive = await api.get('v1/sectionFive');
 
       setSectionOne(responseSectionOne.data);
       setSectionTwo(responseSectionTwo.data);
       setSectionThree(responseSectionThree.data);
       setSectionFour(responseSectionFour.data);
+      setSectionFive(responseSectionFive.data);
     }
 
     fetchSection();
@@ -67,7 +70,9 @@ const Home: React.FC = () => {
         <SectionTest key={key} variant="blue" sectionTitle={st.title} description={st.description_one}/>
       ))}
 
-      <Section variant="white" sectionTitle={data[4].title} description={data[4].description} element={items}/>
+      {sectionFive.map((st, key) => (
+        <Section key={key} variant="white" sectionTitle={st.title} description={st.description_one} element={items}/>
+      ))}
 
       <SectionRight variant="black" sectionTitle={data[5].title} description={data[5].description} element={imgs} />
       <Footer/>

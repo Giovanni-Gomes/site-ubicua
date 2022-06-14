@@ -1,13 +1,6 @@
 import styled, { keyframes } from 'styled-components';
 
 export const Container = styled.div`
-  --bg: #242526;
-  --bg-accent: #484a4d;
-  --text-color: #dadce1;
-  --nav-size: 60px;
-  --border: 1px solid #474a4d;
-  --border-radius: 8px;
-  --speed: 500ms;
   position: relative;
 `;
 
@@ -87,34 +80,48 @@ export const List = styled.ul`
 `
 
 export const NavBar = styled.nav`
+  --bg: #242526;
+  --bg-accent: #484a4d;
+  --text-color: #dadce1;
+  --nav-size: 60px;
+  --border: 1px solid #474a4d;
+  --border-radius: 8px;
+  --speed: 500ms;
   height: var(--nav-size);
-  background: var(--bg);
+  /* background: var(--bg); */
   padding: 0 1rem;
-  border-bottom: var(--border);
+  /* border-bottom: var(--border); */
 
   > .navbar-nav {
     max-width: 100%;
     height: 100%;
     display: flex;
-    justify-content: flex-end;
+    gap: 1rem;
+    /* justify-content: flex-end; */
   }
 `
 
 export const NavItem = styled.li`
-  width: calc(var(--nav-size) * 0.8);
+  /* width: calc(10rem * 0.8); */
   display: flex;
   align-items: center;
   justify-content: center;
 
   > .icon-button {
-    --button-size: calc(var(--nav-size) * 0.5);
-    width: var(--button-size);
-    height: var(--button-size);
-    background: #484a4d;
-    border-radius: 50%;
+    text-decoration: none;
+    font-size: 1rem;
+    color: #999;
+    /* --button-size: calc(10rem * 0.5); */
+    /* width: var(--button-size); */
+    width: 100%;
+    /* height: var(--button-size); */
+    height: 100%;
+    /* background: #484a4d; */
+    /* border-radius: 50%; */
     padding: 5px;
     margin: 2px;
     display: flex;
+    gap: 0.3rem;
     align-items: center;
     justify-content: center;
     transition: filter 300ms;
@@ -127,14 +134,18 @@ export const NavItem = styled.li`
 export const Dropdowns = styled.div`
   position: absolute;
   top: 58px;
-  width: 300px;
-  transform: translateX(-45%);
+  width: 14rem;
+  /* transform: translateX(45%); */
   background: var(--bg);
   border: var(--border);
   border-radius: var(--border-radius);
   padding: 1rem;
   overflow: hidden;
   transition: height var(--speed) ease;
+  > .menu {
+    padding-bottom: 2rem;
+  }
+
   > .menu-primary-enter {
     position: absolute;
     transform: translateX(-110%);
@@ -147,7 +158,7 @@ export const Dropdowns = styled.div`
     position: absolute;
   }
   > .menu-primary-exit-active {
-    transform: translateX((-110%));
+    transform: translateX(-110%);
     transition: all var(--speed) ease;
   }
   > .menu-secondary-enter {
@@ -162,11 +173,13 @@ export const Dropdowns = styled.div`
     position: absolute;
   }
   > .menu-secondary-exit-active {
-    transform: translateX((110%));
+    transform: translateX(110%);
     transition: all var(--speed) ease;
   }
 `
 export const MenuItem = styled.a`
+  text-decoration: none;
+  color: #999;
   height: 50px;
   display: flex;
   align-items: center;
