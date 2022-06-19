@@ -1,9 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import Card from '../../components/Card';
-import DashboardSection from '../../components/DashboardSection';
-import Dropdown from '../../components/Dropdown';
-import MenuLink from '../../components/MenuLink';
+import Card from '../../components/Portal/Card';
+import DashboardSection from '../../components/Portal/DashboardSection';
+import Dropdown from '../../components/Portal/Dropdown';
+
 
 import { Container, Header, MenuDropdown, UbicuaLogo } from './styles';
 
@@ -45,7 +45,7 @@ const Dashboard: React.FC = () => {
       <DashboardSection element={
         <>
           <Card variant='blue' title='69' subtitle='Active Projects' />
-          <Card variant='blue' title='69' subtitle='Active Projects' />
+          <Card variant='white' title='69' subtitle='Active Projects' />
           <Card variant='blue' title='69' subtitle='Active Projects' />
           <Card variant='blue' title='69' subtitle='Active Projects' />
         </>

@@ -1,17 +1,18 @@
 import React, { FormEvent, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { Form } from '../../components/MenuForm/styles';
-import Button from '../../components/Button'
-
-import Input from '../../components/Input';
-
-import { Grid, Gif, Carousel } from '@giphy/react-components';
-import { GiphyFetch } from '@giphy/js-fetch-api';
-import { IGif } from "@giphy/js-types";
 import { useAsync } from "react-async-hook";
 
-import { AnimationContainer, Container, Content, SignInGiphy, WrapperGif } from './styles';
+import { GiphyFetch } from '@giphy/js-fetch-api';
 import api from '../../services/api';
+
+import { Gif } from '@giphy/react-components';
+import { IGif } from "@giphy/js-types";
+
+import { AnimationContainer, Container, Content, WrapperGif } from './styles';
+import { Form } from '../../components/Site/MenuForm/styles';
+import Button from '../../components/Shared/Button';
+import Input from '../../components/Shared/Input';
+
 // interface SignUpProps {
 //   name: string;
 //   email: string;
@@ -49,7 +50,7 @@ const SignUp: React.FC = () => {
       const { data } = await giphyFetch.gif("BpJWIIYcGd2Cc");
       setGif(data);
     }, []);
-    return gif && <Gif gif={gif} width={685} height={649}  noLink={true} className="gif" />;
+    return gif && <Gif gif={gif} width={685} height={649} noLink={true} className="gif" />;
   }
 
   return (
@@ -63,11 +64,11 @@ const SignUp: React.FC = () => {
             <span className='title'>Registre-se</span>
             <span className='subtitle'>preencha o formulário abaixo</span>
 
-            <Input type="text" placeholder='Nome' change={event => setName(event.target.value)}/>
+            <Input type="text" placeholder='Nome' change={event => setName(event.target.value)} />
             <Input type="email" placeholder='E-mail' change={event => setEmail(event.target.value)} />
-            <Input type="password" placeholder='Senha' change={event => setPassword(event.target.value)}/>
+            <Input type="password" placeholder='Senha' change={event => setPassword(event.target.value)} />
 
-            <Button type='submit' text='Cadastrar' submit={() => navigate("/login")}/>
+            <Button type='submit' text='Cadastrar' submit={() => navigate("/login")} />
 
             <span className='terms'>
               Esta página está sujeita à Política de privacidade e aos Termos de serviço.
@@ -77,7 +78,7 @@ const SignUp: React.FC = () => {
             Página inícial
           </Link>
         </AnimationContainer>
-      
+
       </Content>
       {/* <CarouselDemo /> */}
 
