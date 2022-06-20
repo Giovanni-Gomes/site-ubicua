@@ -1,7 +1,7 @@
-import api from "../../services/api";
+import api from "../../../services/api";
 
 interface IHeaderProps {
-  id:string;
+  id: string;
   name: string;
   description: string;
 }
