@@ -1,17 +1,84 @@
-import React from 'react';
-import { InputCustom } from './styles';
+import React, {
+  InputHTMLAttributes,
+  useEffect,
+  useRef,
+  useState,
+  useCallback,
+} from 'react';
+import { IconBaseProps } from 'react-icons';
+import { FiAlertCircle } from 'react-icons/fi';
+import { useField } from '@unform/core';
 
-// import { Container } from './styles';
+import { Container, Error } from './styles';
 
-interface InputProps {
-  type: string;
-  placeholder?: string;
-  change?: (event: any) => void;
-  ref?: any;
+interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
+  name: string;
+  containerStyle?: object;
+  icon?: React.ComponentType<IconBaseProps>;
 }
 
-const Input: React.FC<InputProps> = ({type, placeholder, change, ref}) => {
-  return <InputCustom type={type} placeholder={placeholder} onChange={change} ref={ref}/>;
-}
+const Input: React.FC<InputProps> = ({
+  name,
+  containerStyle = {},
+  icon: Icon,
+  ...rest
+}) => {
+  const inputRef = useRef<HTMLInputElement>(null);
+
+  const [isFocused, setIsFocused] = useState(false); // esta com foco no input
+  const [isFilled, setIsFilled] = useState(false); // esta preenchido
+
+  const { fieldName, defaultValue, error, registerField } = useField(name);
+
+  const handleInputFocus = useCallback(() => {
+    setIsFocused(true);
+  }, []);
+
+  const handleInputBlur = useCallback(() => {
+    setIsFocused(false);
+
+    setIsFilled(!!inputRef.current?.value);
+    /* if(inputRef.current?.value){
+      setIsFilled(true);
+    }else{
+      setIsFilled(false);
+    } */
+  }, []);
+
+  useEffect(() => {
+    registerField({
+      name: fieldName,
+      ref: inputRef.current,
+      path: 'value',
+    });
+  }, [fieldName, registerField]);
+
+  return (
+    <>
+      <Container
+        style={containerStyle}
+        isErrored={!!error}
+        isFilled={isFilled}
+        isFocused={isFocused}
+        data-testid="input-container"
+      >
+        {Icon && <Icon size={20} />}
+        <input
+          onFocus={handleInputFocus}
+          onBlur={handleInputBlur}
+          defaultValue={defaultValue}
+          ref={inputRef}
+          {...rest}
+        />
+        {error && (
+          <Error title={error}>
+            <FiAlertCircle color="#c53030" size={20} />
+          </Error>
+        )}
+      </Container>
+      {error && <span style={{ color: 'red' }}>{error}</span>}
+    </>
+  );
+};
 
 export default Input;
