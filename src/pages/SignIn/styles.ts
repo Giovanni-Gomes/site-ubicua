@@ -1,7 +1,7 @@
 import styled, { keyframes } from 'styled-components';
 import { shade } from 'polished';
 
-import signInBackgroundImg from '../../assets/carousel/banner01.jpg';
+import signInBackgroundImg from '/assets/backgrounds/img.svg';
 
 export const Container = styled.div`
   position: absolute;
@@ -108,13 +108,18 @@ export const SignInGiphy = styled.div`
  flex: 1;
 `
 
-
 export const Input = styled.input`
-
   background: var(--color-tertiary);
   border: 1px solid var(--color-border);
   padding: 13px 18px;
   font-size: 14px;
   margin-top: 18px;
-
 `
+
+export const Background = styled.div`
+  flex: 1;
+  background: url(${signInBackgroundImg}) no-repeat center;
+  background-size: cover;
+  padding-top: 10rem;
+
+`;
