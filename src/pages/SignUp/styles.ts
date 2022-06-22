@@ -1,7 +1,7 @@
 import styled, { keyframes } from 'styled-components';
 import { shade } from 'polished';
 
-import signInBackgroundImg from '/assets/backgrounds/img.svg';
+import signUpBackgroundImg from '/assets/backgrounds/register.svg';
 
 export const Container = styled.div`
   position: absolute;
@@ -59,13 +59,17 @@ export const AnimationContainer = styled.div`
     border-radius: 1rem;
 
     h1 {
-      margin-bottom: 24px;
-      color: #fff;
+      margin-bottom: 1rem;
+      color: var(--color-secondary);
+    }
+
+    span {
+      margin-bottom: 0.2rem; /* font-size: 2.2rem; */
     }
   }
 
   > a {
-    color: #8257e6;
+    color: var(--color-login);
     font-size: 1.5rem;
     display: flex;
     text-decoration: none;
@@ -73,12 +77,8 @@ export const AnimationContainer = styled.div`
 
     align-items: center;
 
-    /* svg {
-      margin-right: 16px;
-    } */
-
     &:hover {
-      color: #996DFF;
+      color: var(--color-secondary);
     }
   }
 `;
@@ -108,18 +108,15 @@ export const SignInGiphy = styled.div`
  flex: 1;
 `
 export const Input = styled.input`
-
   background: var(--color-tertiary);
   border: 1px solid var(--color-border);
   padding: 13px 18px;
   font-size: 14px;
   margin-top: 18px;
-
 `
 
-export const Background = styled.div`
-  flex: 1;
-  background: url(${signInBackgroundImg}) no-repeat center;
-  background-size: cover;
-  padding-top: 10rem;
-`;
+// export const Background = styled.div`
+//   flex: 1;
+//   background: url(${signUpBackgroundImg}) no-repeat center;
+//   background-size: cover;
+// `;

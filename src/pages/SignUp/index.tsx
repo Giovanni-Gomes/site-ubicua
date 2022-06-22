@@ -6,7 +6,7 @@ import { FormHandles } from '@unform/core';
 import { Form } from '@unform/web';
 import * as Yup from 'yup';
 
-import { AnimationContainer, Container, Content, Background } from './styles';
+import { AnimationContainer, Container, Content } from './styles';
 
 import Input from '../../components/Shared/Input';
 import Button from '../../components/Shared/Button';
@@ -19,7 +19,7 @@ interface SignUpProps {
   email: string;
   password: string;
   active?: boolean;
-  //type_user_id: string;
+  type_user_id: string;
 }
 
 
@@ -49,7 +49,13 @@ const SignUp: React.FC = () => {
           abortEarly: false,
         });
 
-        await api.post('/v1/users/create', { data, type_user_id: 'd6e46846-7688-4a81-b0f4-8c57037d2029' });
+        await api.post('/v1/users/create', {
+          name: data.name,
+          email: data.email,
+          password: data.password,
+          active: data.active,
+          type_user_id: 'd6e46846-7688-4a81-b0f4-8c57037d2029'
+        });
 
         navigate('/login');
 
@@ -82,16 +88,15 @@ const SignUp: React.FC = () => {
   return (
     <Container>
 
-      <Background />
       <Content>
         <AnimationContainer>
           <Form ref={formRef} onSubmit={handleSubmitRegister}>
-            <span className='title'>Registre-se</span>
+            <h1 >Registre-se</h1>
             <span className='subtitle'>preencha o formulário abaixo</span>
 
-            <Input name='name' type="text" placeholder='Nome' />
-            <Input name='email' type="email" placeholder='E-mail' />
-            <Input name='password' type="password" placeholder='Senha' />
+            <Input name="name" type="text" placeholder='Nome' />
+            <Input name="email" type="email" placeholder='E-mail' />
+            <Input name="password" type="password" placeholder='Senha' />
 
             <Button type="submit">Registrar</Button>
 
@@ -99,9 +104,10 @@ const SignUp: React.FC = () => {
               Esta página está sujeita à Política de privacidade e aos Termos de serviço.
             </span>
           </Form>
-          <Link to="/">
-            Página inícial
+          <Link to="/login">
+            Faça seu login
           </Link>
+
         </AnimationContainer>
 
       </Content>

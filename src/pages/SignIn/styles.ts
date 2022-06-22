@@ -61,7 +61,6 @@ export const AnimationContainer = styled.div`
     h1 {
       margin-bottom: 24px;
       color: var(--color-secondary);
-
     }
   }
 
