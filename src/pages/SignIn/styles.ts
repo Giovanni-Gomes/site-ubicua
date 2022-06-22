@@ -61,11 +61,12 @@ export const AnimationContainer = styled.div`
     h1 {
       margin-bottom: 24px;
       color: var(--color-secondary);
+
     }
   }
 
   > a {
-    color: var(--color-secondary);
+    color: var(--color-login);
     font-size: 1.5rem;
     display: flex;
     text-decoration: none;
@@ -78,7 +79,7 @@ export const AnimationContainer = styled.div`
     } */
 
     &:hover {
-      color: var(--color-footer);
+      color: var(--color-secondary);
     }
   }
 `;
@@ -121,5 +122,4 @@ export const Background = styled.div`
   background: url(${signInBackgroundImg}) no-repeat center;
   background-size: cover;
   padding-top: 10rem;
-
 `;

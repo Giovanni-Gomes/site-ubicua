@@ -13,7 +13,7 @@ export default createGlobalStyle`
     *, button, input {
         font-family: 'Poppins', 'Roboto', sans-serif;
     }
- 
+
     :root {
         --color-primary: #FFFFFF;
         --color-secondary: #8C30F5;
@@ -21,9 +21,12 @@ export default createGlobalStyle`
         --color-quaternary: #2EC5CE;
         --color-footer: #0B0D17;
         --color-black: #0B0D17;
-        --color-border: #BDC4C9;        
+        --color-border: #BDC4C9;
+
+
+        --color-login: #df35e6;
     }
-    
+
 
     // COLOR PRIMARYS GIOVANNI
     /* :root {
