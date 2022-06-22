@@ -1,13 +1,10 @@
 import React, { useRef, useCallback } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 
-
 import getValidationErrors from '../../utils/getValidationsErros';
 import { FormHandles } from '@unform/core';
 import { Form } from '@unform/web';
 import * as Yup from 'yup';
-
-import api from "../../services/api";
 
 import Input from '../../components/Shared/Input';
 import Button from '../../components/Shared/Button';
@@ -30,24 +27,9 @@ const SignIn: React.FC = () => {
 
   const handleSubmitLogin = useCallback(
     async (data: SignInFormData) => {
-      console.log("form submission");
-      // addToast({
-      //   type: 'error',
-      //   title: 'Erro na autenticação',
-      //   description:
-      //     'Ocorreu um erro ao fazer login, cheque suas credenciais',
-      // });
+      //console.log("form submission");
       try {
         formRef.current?.setErrors({});
-        // if (data.email === '' || data.email === null) {
-        //   formRef.current?.setFieldError('email', 'e-mail Obrigatório');
-        // }
-        if (data.email === '' || data.email === null) {
-          formRef.current?.setErrors({
-            email: 'nome é obrigatório',
-            password: 'email é obrigatório',
-          });
-        }
 
         const schema = Yup.object().shape({
           email: Yup.string()
@@ -56,19 +38,9 @@ const SignIn: React.FC = () => {
           password: Yup.string().required('Senha Obrigatória'),
         });
 
-        // await schema.validate(data, {
-        //   abortEarly: false,
-        // });
-        // schema.validate(data).catch(function (err) {
-        //   err.name; // => 'ValidationError'
-        //   err.errors; // => [{ key: 'field_too_short', values: { min: 18 } }]
-        // });
-        await schema
-          .validate(data)
-          .then(valid => {
-            console.log("Valor válido:", valid);
-            //valid - true or false
-          });
+        await schema.validate(data, {
+          abortEarly: false,
+        });
 
         await signIn({
           email: data.email,
@@ -76,22 +48,21 @@ const SignIn: React.FC = () => {
         });
 
         navigate('/dashboard');
+
+        addToast({
+          type: 'success',
+          title: 'Login Realizado'
+        });
+
       } catch (err) {
 
-        // if (err instanceof Yup.ValidationError) {
-        //   //console.log("yup erros" + err);
+        if (err instanceof Yup.ValidationError) {
+          const errors = getValidationErrors(err);
 
-        //   const errors = getValidationErrors(err);
+          formRef.current?.setErrors(errors); //console.log("yup erros " + JSON.stringify(err));
+          return;
+        }
 
-        //   formRef.current?.setErrors(errors);
-        //   console.log("yup erros " + JSON.stringify(err));
-
-
-        //   return;
-        // }
-        console.log(err);
-
-        // disparar um toast (mensagens de ao canto das tela)
         addToast({
           type: 'error',
           title: 'Erro na autenticação',

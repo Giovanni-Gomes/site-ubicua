@@ -1,7 +1,7 @@
 import styled, { keyframes } from 'styled-components';
 import { shade } from 'polished';
 
-import signInBackgroundImg from '../../assets/carousel/banner01.jpg';
+import signInBackgroundImg from '/assets/backgrounds/img.svg';
 
 export const Container = styled.div`
   position: absolute;
@@ -65,7 +65,7 @@ export const AnimationContainer = styled.div`
   }
 
   > a {
-    color: #8257e6; 
+    color: #8257e6;
     font-size: 1.5rem;
     display: flex;
     text-decoration: none;
@@ -116,3 +116,10 @@ export const Input = styled.input`
   margin-top: 18px;
 
 `
+
+export const Background = styled.div`
+  flex: 1;
+  background: url(${signInBackgroundImg}) no-repeat center;
+  background-size: cover;
+  padding-top: 10rem;
+`;

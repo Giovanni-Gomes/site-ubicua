@@ -22,13 +22,13 @@ export const Container = styled.div<ContainerProps>`
   ${(props) =>
     props.isFocused &&
     css`
-      border: 2px solid var(--color-quaternary);
-      color: var(--color-quaterna);
+      border: 2px solid var(--color-login);
+      color: var(--color-login);
     `}
   ${(props) =>
     props.isFilled &&
     css`
-      color: #ff9000;
+      color: var(color-secondary);
     `}
   display: flex;
   align-items: center;
@@ -53,6 +53,7 @@ export const Container = styled.div<ContainerProps>`
   svg {
     margin-right: 16px;
   }
+
 `;
 
 export const Error = styled(Tooltip)`
