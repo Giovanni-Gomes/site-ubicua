@@ -12,6 +12,7 @@ import Button from '../../components/Shared/Button';
 import { AnimationContainer, Container, Content, Background } from './styles';
 import { useAuth } from '../../components/hooks/provider/auth';
 import { useToast } from '../../components/hooks/provider/toast';
+import { FiLock, FiLogIn, FiMail } from 'react-icons/fi';
 
 interface SignInFormData {
   email: string;
@@ -79,17 +80,19 @@ const SignIn: React.FC = () => {
       <Content>
         <AnimationContainer>
           <Form ref={formRef} onSubmit={handleSubmitLogin}>
-            <h1>Faça Seu Login</h1>
+            <h1>Faça Login</h1>
             {/* arrumar os inputs  */}
-            <Input name="email" type="email" placeholder="Email" />
+            <Input name="email" type="email" placeholder="Email" icon={FiMail} />
 
-            <Input name="password" type="password" placeholder="Senha" />
+            <Input name="password" type="password" placeholder="Senha" icon={FiLock} />
 
             <Button type="submit">Entrar</Button>
+            <Link to="/forgot-password">Esqueci minha senha</Link>
 
           </Form>
           <Link to="/registrar">
-            Registrar
+            <FiLogIn />
+            Criar Conta
           </Link>
         </AnimationContainer>
 

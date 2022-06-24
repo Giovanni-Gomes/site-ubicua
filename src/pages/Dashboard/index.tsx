@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Card from '../../components/Portal/Card';
+import CardProject from '../../components/Portal/CardProject';
 import DashboardSection from '../../components/Portal/DashboardSection';
 import Dropdown from '../../components/Portal/Dropdown';
 
@@ -48,6 +49,27 @@ const Dashboard: React.FC = () => {
           <Card variant='white' title='69' subtitle='Active Projects' />
           <Card variant='blue' title='69' subtitle='Active Projects' />
           <Card variant='blue' title='69' subtitle='Active Projects' />
+
+          <Card variant='blue' title='69' subtitle='Active Projects' />
+          <Card variant='white' title='69' subtitle='Active Projects' />
+          <Card variant='blue' title='69' subtitle='Active Projects' />
+          <Card variant='blue' title='69' subtitle='Active Projects' />
+
+          <Card variant='blue' title='69' subtitle='Active Projects' />
+          <Card variant='white' title='69' subtitle='Active Projects' />
+          <Card variant='blue' title='69' subtitle='Active Projects' />
+          <Card variant='blue' title='69' subtitle='Active Projects' />
+
+          <Card variant='blue' title='69' subtitle='Active Projects' />
+          <Card variant='white' title='69' subtitle='Active Projects' />
+          <Card variant='blue' title='69' subtitle='Active Projects' />
+          <Card variant='blue' title='69' subtitle='Active Projects' />
+
+          <Card variant='blue' title='69' subtitle='Active Projects' />
+          <Card variant='white' title='69' subtitle='Active Projects' />
+          <Card variant='blue' title='69' subtitle='Active Projects' />
+          <Card variant='blue' title='69' subtitle='Active Projects' />
+          <CardProject variant='transparent' title='Projects Status' subtitle='Updated 37 minutes ago' />
         </>
       } className='WrapperCard' />
       {/* <Card variant='blue' title='69' subtitle='Active Projects' />
