@@ -7,7 +7,7 @@ type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
 
 const Button: React.FC<ButtonProps> = ({ children, loading, ...rest }) => (
   <ButtonCustom type="button" {...rest}>
-    {loading ? 'Aguarde...' : children}
+    {loading ? 'Loading...' : children}
   </ButtonCustom>
 );
 

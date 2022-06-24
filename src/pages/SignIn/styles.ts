@@ -62,23 +62,35 @@ export const AnimationContainer = styled.div`
       margin-bottom: 24px;
       color: var(--color-secondary);
     }
+
+    a {
+      color: var(--color-secondary);
+      display: block;
+      margin-top: 0.2rem;
+      text-decoration: none;
+      transition: color 0.2s;
+      &:hover {
+        color: ${shade(0.2, '#F4EDE8')};
+      }
+    }
   }
 
   > a {
     color: var(--color-login);
     font-size: 1.5rem;
     display: flex;
+    margin-top: 24px;
     text-decoration: none;
     transition: color 0.2s;
 
     align-items: center;
 
-    /* svg {
-      margin-right: 16px;
-    } */
+    svg {
+      margin-right: 0.3rem;
+    }
 
     &:hover {
-      color: var(--color-secondary);
+      color:  ${shade(0.2, '#8C30F5')}; ;
     }
   }
 `;

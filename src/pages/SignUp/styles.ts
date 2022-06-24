@@ -66,6 +66,18 @@ export const AnimationContainer = styled.div`
     span {
       margin-bottom: 0.2rem; /* font-size: 2.2rem; */
     }
+
+    a {
+      color: var(--color-secondary);
+      display: block;
+      margin-top: 0.2rem;
+      text-decoration: none;
+      transition: color 0.2s;
+      &:hover {
+        color: ${shade(0.2, '#F4EDE8')};
+      }
+    }
+
   }
 
   > a {
@@ -77,8 +89,12 @@ export const AnimationContainer = styled.div`
 
     align-items: center;
 
+    svg {
+      margin-right: 0.3rem;
+    }
+
     &:hover {
-      color: var(--color-secondary);
+      color: ${shade(0.2, '#8C30F5')};
     }
   }
 `;

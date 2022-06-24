@@ -5,7 +5,6 @@ export const Container = styled.div`
   width: 100%;
   height: 100%;
   background: #222;
-  opacity: 0.95;
   padding: 2rem;
 
   > .WrapperCard {
@@ -17,10 +16,11 @@ export const Container = styled.div`
 
 export const Header = styled.header`
   z-index: 3;
+  background: red;
 
   display: flex;
   align-items: center;
-  max-width: 1440px;
+  width: 100vw;
   margin: 0 auto;
   padding: 16px 32px;
   position: fixed;

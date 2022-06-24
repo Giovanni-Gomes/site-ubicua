@@ -13,6 +13,7 @@ import Button from '../../components/Shared/Button';
 import { useAuth } from '../../components/hooks/provider/auth';
 import { useToast } from '../../components/hooks/provider/toast';
 import api from '../../services/api';
+import { FiArrowLeft, FiLock, FiMail, FiUser } from 'react-icons/fi';
 
 interface SignUpProps {
   name: string;
@@ -94,9 +95,9 @@ const SignUp: React.FC = () => {
             <h1 >Registre-se</h1>
             <span className='subtitle'>preencha o formulário abaixo</span>
 
-            <Input name="name" type="text" placeholder='Nome' />
-            <Input name="email" type="email" placeholder='E-mail' />
-            <Input name="password" type="password" placeholder='Senha' />
+            <Input name="name" type="text" placeholder='Nome' icon={FiUser} />
+            <Input name="email" type="email" placeholder='E-mail' icon={FiMail} />
+            <Input name="password" type="password" placeholder='Senha' icon={FiLock} />
 
             <Button type="submit">Registrar</Button>
 
@@ -105,7 +106,8 @@ const SignUp: React.FC = () => {
             </span>
           </Form>
           <Link to="/login">
-            Faça seu login
+            <FiArrowLeft />
+            Voltar para o Login
           </Link>
 
         </AnimationContainer>
