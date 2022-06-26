@@ -13,7 +13,7 @@ interface Props {
 
 export const items = <Wrapper>
   {sectionItems.map(itm => (
-    <div>
+    <div key={itm.title}>
       <img src={itm.icon} />
       <div>
         <h3>{itm.title}</h3>

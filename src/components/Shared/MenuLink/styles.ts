@@ -12,8 +12,8 @@ export const A = styled.a`
   font-weight: 700;
   font-size: 14px;
   line-height: 20px;
-  
- 
+
+
 
   &::after {
     content: '';

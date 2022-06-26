@@ -1,10 +1,10 @@
 import { ChatTeardropDots } from 'phosphor-react';
 import React, { useEffect, useRef, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { CSSTransition } from 'react-transition-group';
-import { CSSTransitionProps } from 'react-transition-group/CSSTransition';
 import { dropdownItems } from '../../../data/dropdownItems';
 
-import { Button, Container, List, Dropdowns, MenuItem, NavItem, NavBar } from './styles';
+import { Dropdowns, MenuItem, NavItem, NavBar } from './styles';
 
 
 
@@ -40,18 +40,18 @@ const Dropdown: React.FC = () => {
 
 
   // function handleDropdownFocusOpen() {
-  //   setOpenMenu(true)     
-  //   setOpenList(true) 
+  //   setOpenMenu(true)
+  //   setOpenList(true)
   // }
 
   // function handleDropdownFocusNotOpen() {
-  //   setOpenMenu(false) 
-  //   setOpenList(true) 
+  //   setOpenMenu(false)
+  //   setOpenList(true)
 
   // }
 
   // function teste() {
-  //   setOpenList(true)    
+  //   setOpenList(true)
   // }
 
 
@@ -121,9 +121,10 @@ const Dropdown: React.FC = () => {
 
   function NavBars({ children }: NavBarsProps) {
     return (
-      <NavBar className="navbar">
+      <NavBar >
         <ul className='navbar-nav'>
-          {children}
+          <a href="#">{children}</a>
+          {/* <Link to="/">{children}</Link> */}
         </ul>
       </NavBar>
     )
@@ -153,8 +154,8 @@ const Dropdown: React.FC = () => {
 
   return (
     // <Container >
-    //   <Button 
-    //     onMouseEnter={() => handleDropdownFocusOpen()} 
+    //   <Button
+    //     onMouseEnter={() => handleDropdownFocusOpen()}
     // onMouseLeave={() => handleDropdownFocusNotOpen()}
     //     type='button'>{title}</Button>
     //   { openMenu &&

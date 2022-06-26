@@ -60,7 +60,6 @@ export const List = styled.ul`
   color: #999;
   animation: ${appearFromBottom} 0.2s;
 
-
   > li {
     padding: 0.5rem 1rem;
     /* border-bottom: 1px solid #999; */
@@ -81,45 +80,23 @@ export const List = styled.ul`
 `
 
 export const NavBar = styled.nav`
-  --bg: ${(props: any) => props.theme.navBar};
+  --bg: #242526;
   --bg-accent: #484a4d;
   --text-color: #dadce1;
-  --nav-size: 1rem;
+  --nav-size: 60px;
+  --border: 1px solid #474a4d;
   --border-radius: 8px;
-  --speed: 300ms;
+  --speed: 500ms;
   height: var(--nav-size);
-  z-index: 10;
-
-  /* --border: 1px solid #474a4d; */
   /* background: var(--bg); */
-  /* padding: 0 1rem; */
+  padding: 0 1rem;
   /* border-bottom: var(--border); */
 
-  a {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    text-decoration: none;
-    gap: 0.5rem;
-  }
-
   > .navbar-nav {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-
-    /* position: absolute; */
-    height: 4rem;
-    left: 149px;
-    right: 200px;
-    top: 0px;
-    overflow-x: scroll;
-    margin-left: 9.31rem;
-    gap: 0.5rem;
-    /* max-width: 100%;
+    max-width: 100%;
     height: 100%;
     display: flex;
-    gap: 1rem; */
+    gap: 1rem;
     /* justify-content: flex-end; */
   }
 `
@@ -129,30 +106,27 @@ export const NavItem = styled.li`
   display: flex;
   align-items: center;
   justify-content: center;
-  color: ${(props: any) => props.theme.textPrimary};
-  /* color: red;
-  background-color: red; */
 
   > .icon-button {
     text-decoration: none;
     font-size: 1rem;
-    color: ${(props: any) => props.theme.bgPortal};
+    color: #999;
     /* --button-size: calc(10rem * 0.5); */
     /* width: var(--button-size); */
     width: 100%;
     /* height: var(--button-size); */
     height: 100%;
-
+    /* background: #484a4d; */
+    /* border-radius: 50%; */
     padding: 5px;
     margin: 2px;
     display: flex;
-    gap: 0.2rem;
+    gap: 0.3rem;
     align-items: center;
     justify-content: center;
     transition: filter 300ms;
     &:hover {
       filter: brightness(1.2);
-      color: ${(props: any) => props.theme.hover};//var(--color-quaternary);
     }
   }
 `
@@ -205,17 +179,15 @@ export const Dropdowns = styled.div`
 `
 export const MenuItem = styled.a`
   text-decoration: none;
-  color: ${(props: any) => props.theme.textPrimary};
-  height: 45px;
-  width: 100%;
+  color: #999;
+  height: 50px;
   display: flex;
   align-items: center;
   border-radius: var(--border-radius);
-  transition: var(--speed); //background
-  padding: 0.1rem;
-
+  transition: background var(--speed);
+  padding: 0.5rem;
   &:hover {
-    background: ${(props: any) => props.theme.hover};
+    background: #525357;
   }
   > .icon-right {
     margin-left: auto;

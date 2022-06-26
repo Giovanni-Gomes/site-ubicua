@@ -3,6 +3,7 @@ import styled from 'styled-components';
 export const Container = styled.div`
 
   display: flex;
+  margin: 0.2rem 0.5rem;
 
   > button {
     font-size: 1.2em;
@@ -13,7 +14,7 @@ export const Container = styled.div`
     transition: color 0.3s ease;
   }
 
-  > button:last-child { 
+  > button:last-child {
     padding-bottom: 0.2rem;
     color: var(--color-gray);
   }
@@ -23,14 +24,14 @@ export const Container = styled.div`
     opacity: 0.1;
 
   }
-  
+
 `;
 
 export const ToggleControl = styled.span`
   position: relative;
-  padding: 0 2px;
+  padding: 0 6px;
   display: flex;
-  align-items: center;  
+  align-items: center;
 
   label {
     display: inline-block;
@@ -45,7 +46,7 @@ export const ToggleControl = styled.span`
     opacity: 0.9;
     background-color: #f6f6f6;
   }
-  
+
 `
 
 export const Input = styled.input.attrs({ type: 'checkbox' })`
@@ -59,8 +60,8 @@ export const Input = styled.input.attrs({ type: 'checkbox' })`
   appearance: none;
   cursor: pointer;
   vertical-align: 2px;
-  outline: none; 
- 
+  outline: none;
+
   :checked+label {
     left: 30px;
   }
