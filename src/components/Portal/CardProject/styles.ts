@@ -2,9 +2,19 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
 
+  @media (min-width: 1360px) {
+    width: calc(1370px + ((100vw - 1440px) / 2));
+  }
+  max-width: 100%;
+  border-radius: 0.8rem;
+  margin-top: 8rem;
+  margin: 1rem;
+
+  opacity: 0.8;
+
   display: flex;
-  width: 100%;
-  height: 100%;
+  /* width: 100%; */
+  /* height: 100vh; */
   flex-direction: column;
   word-wrap: break-word;
   background-color: #ffffff;
@@ -14,6 +24,8 @@ export const Container = styled.div`
   border-radius: 1rem;
   border-bottom-right-radius: 0rem;
   border-bottom-left-radius: 0rem;
+
+  padding: 1rem;
 
   &.blue {
     background: blue;
@@ -43,10 +55,10 @@ export const CardHeader = styled.header`
   justify-content: space-between;
   align-items: stretch;
   flex-wrap: wrap;
-  width: 100%;
-  min-height: 120px;
+  /* width: 100%;
+  min-height: 120px; */
   padding: 0 2.25rem;
-  background-color: red;
+  background-color: blue;
   border-top-right-radius: 1rem;
   border-top-left-radius: 1rem;
   /* display: flex; */

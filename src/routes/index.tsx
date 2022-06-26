@@ -9,6 +9,7 @@ import Dashboard from '../pages/Dashboard';
 import Home from '../pages/Home';
 import SignIn from '../pages/SignIn';
 import SignUp from '../pages/SignUp';
+import CreateUser from '../pages/User/create';
 
 
 
@@ -23,14 +24,8 @@ const RoutesPage: React.FC = () => {
 
       {/* <Route path='/dashboard' caseSensitive={false} element={<Dashboard />} /> */}
 
-      <Route
-        path="/dashboard"
-        element={
-          <PrivateRoute>
-            <Dashboard />
-          </PrivateRoute>
-        }
-      />
+      <Route path="/dashboard" element={<PrivateRoute> <Dashboard /> </PrivateRoute>} />
+      <Route path="/create-user" element={<PrivateRoute> <CreateUser /> </PrivateRoute>} />
 
     </Routes>
   );

@@ -8,11 +8,14 @@ function PrivateRoute({ children }: any) {
   const { addToast } = useToast();
   try {
 
-    console.log("user is not authenticated : " + user);
+    console.log("user is not authenticated: ");
+
     return (
       !!user ? children
         : <Navigate to="/login" replace />
+
     );
+
   } catch (error) {
 
     addToast({

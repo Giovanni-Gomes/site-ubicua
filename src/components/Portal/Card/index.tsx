@@ -1,26 +1,28 @@
 import React from 'react';
 
-import { Container, CardHeader, Title, Subtitle, CardContent } from './styles';
+import { Container, CardHeader, Title, Subtitle, CardContent, CardContainer } from './styles';
 
 interface CardProps {
-  variant: 'blue' | 'beige' | 'white' | 'black';
+  variant: 'info' | 'success' | 'danger' | 'black' | 'white';
   title: string;
   subtitle?: string;
   description?: JSX.Element;
 }
 
-const Card: React.FC<CardProps> = ({variant, title, subtitle, description}) => {
+const Card: React.FC<CardProps> = ({ variant, title, subtitle, description }) => {
   return (
     <Container className={variant}>
-      <CardHeader>
-        <Title>
-          {title}
-        </Title>
-        {subtitle ? <Subtitle>{subtitle}</Subtitle> : null}
-      </CardHeader>
-      <CardContent>
-        {description}
-      </CardContent>
+      <CardContainer>
+        <CardHeader>
+          <Title>
+            {title}
+          </Title>
+          {subtitle ? <Subtitle>{subtitle}</Subtitle> : null}
+        </CardHeader>
+        <CardContent>
+          {description}
+        </CardContent>
+      </CardContainer>
     </Container>
   );
 }

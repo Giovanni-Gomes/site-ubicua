@@ -1,82 +1,134 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import Card from '../../components/Portal/Card';
 import CardProject from '../../components/Portal/CardProject';
 import DashboardSection from '../../components/Portal/DashboardSection';
-import Dropdown from '../../components/Portal/Dropdown';
+import Header from '../../components/Portal/Header';
+import TablePortal from '../../components/Portal/Table';
+import clientsImages from '../../data/clients';
 
 
-import { Container, Header, MenuDropdown, UbicuaLogo } from './styles';
+import { Container, TableContainer } from './styles';
 
 const Dashboard: React.FC = () => {
   return (
-    <Container>
-      <Header>
-        <h1>
-          <UbicuaLogo />
-          <span>Ubicua Cloud</span>
-        </h1>
-        <MenuDropdown>
-          {/* <Dropdown title='Dashboard' subtitles={<li>Gerencial / Status Report</li>}/>
-          <Dropdown title='Operações' subtitles={
-            <>
-              <li>Feedback</li>
-              <hr/>
-              <li>Retornar feedback</li>
-            </>
-          }/>
-          <Dropdown title='Desenvolvimento' subtitles={
-            <>
-              <li>Equipe / Squad</li>
-              <hr/>
-              <li>Projetos</li>
-              <hr/>
-              <li>Acompanhamentos</li>
-            </>
-          }/> */}
-          <Dropdown />
-        </MenuDropdown>
-        <div className="button">
-          {/* <Link to="/login">{(buttonVariant === 0) ? 'Entrar' : 'Login'}</Link>
-          <Link to="/registrar">{(buttonVariant === 0) ? 'Cadastrar' : 'Registrar'}</Link> */}
-          {/* <button onClick={handleToggle}>{ (buttonVariant === 0) ? 'Entrar' : 'SignIn'}</button> */}
-          {/* <button onClick={handleToggle}>{(buttonVariant === 0) ? 'Registrar-se' : 'SignUp'}</button> */}
-        </div>
-      </Header>
-      <DashboardSection element={
-        <>
-          <Card variant='blue' title='69' subtitle='Active Projects' />
-          <Card variant='white' title='69' subtitle='Active Projects' />
-          <Card variant='blue' title='69' subtitle='Active Projects' />
-          <Card variant='blue' title='69' subtitle='Active Projects' />
+    <>
+      <Header />
 
-          <Card variant='blue' title='69' subtitle='Active Projects' />
-          <Card variant='white' title='69' subtitle='Active Projects' />
-          <Card variant='blue' title='69' subtitle='Active Projects' />
-          <Card variant='blue' title='69' subtitle='Active Projects' />
+      <Container>
 
-          <Card variant='blue' title='69' subtitle='Active Projects' />
-          <Card variant='white' title='69' subtitle='Active Projects' />
-          <Card variant='blue' title='69' subtitle='Active Projects' />
-          <Card variant='blue' title='69' subtitle='Active Projects' />
+        <DashboardSection element={
+          <>
+            <Card variant='success' title='69' subtitle='Active Projects' />
+            <Card variant='black' title='69' subtitle='Active Projects' />
+            <Card variant='danger' title='69' subtitle='Active Projects' />
+            <Card variant='white' title='69' subtitle='Active Projects' />
 
-          <Card variant='blue' title='69' subtitle='Active Projects' />
-          <Card variant='white' title='69' subtitle='Active Projects' />
-          <Card variant='blue' title='69' subtitle='Active Projects' />
-          <Card variant='blue' title='69' subtitle='Active Projects' />
+            <Card variant='success' title='69' subtitle='Active Projects' />
+            <Card variant='info' title='69' subtitle='Active Projects' />
+            <Card variant='danger' title='69' subtitle='Active Projects' />
+            <Card variant='white' title='69' subtitle='Active Projects' />
 
-          <Card variant='blue' title='69' subtitle='Active Projects' />
-          <Card variant='white' title='69' subtitle='Active Projects' />
-          <Card variant='blue' title='69' subtitle='Active Projects' />
-          <Card variant='blue' title='69' subtitle='Active Projects' />
-          <CardProject variant='transparent' title='Projects Status' subtitle='Updated 37 minutes ago' />
-        </>
-      } className='WrapperCard' />
-      {/* <Card variant='blue' title='69' subtitle='Active Projects' />
-      <Card variant='blue' title='69' subtitle='Active Projects' />
-      <Card variant='blue' title='69' subtitle='Active Projects' />
-      <Card variant='blue' title='69' subtitle='Active Projects' /> */}
-    </Container>
+
+            <CardProject variant='white' title='Projects Status' subtitle='Updated 37 minutes ago'>
+
+
+              <TablePortal>
+                <thead>
+                  <tr>
+                    <th>#</th>
+                    <th>Nome</th>
+                    <th>Email</th>
+                    <th>Avatar</th>
+                    <th>Criado</th>
+                  </tr>
+                </thead>
+
+                <tbody>
+                  {clientsImages.map((client) => (
+                    <tr key={client.imageAlt}>
+                      <td>{client.imageAlt}</td>
+                      <td>{client.imageAlt}</td>
+                      <td>{client.imageAlt}</td>
+                      <td>
+                        <img src={client.imageSrc} alt={client.imageAlt} />
+                      </td>
+                      <td>{client.imageAlt}</td>
+                    </tr>
+                  ))}
+                </tbody>
+
+              </TablePortal>
+              {/* <TableContainer>
+                <table>
+                  <thead>
+                    <tr>
+                      <th>Nome</th>
+                      <th>Email</th>
+                      <th>Avatar</th>
+                      <th>Criado</th>
+                    </tr>
+                  </thead>
+
+                  <tbody>
+                    {clientsImages.map((client) => (
+                      <tr key={client.imageAlt}>
+                        <td>{client.imageAlt}</td>
+                        <td>{client.imageAlt}</td>
+                        <td>
+                          <img src={client.imageSrc} alt={client.imageAlt} />
+                        </td>
+                        <td>{client.imageAlt}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                  <button onClick={prevPage}>Anterior</button>
+                  <button onClick={nextPage}>Próximo</button>
+                </table>
+              </TableContainer> */}
+
+            </CardProject>
+
+
+          </>
+        } className='WrapperCard' />
+        {/* <Card variant='white' title='69' subtitle='Active Projects'></Card>
+        <Card variant='white' title='69' subtitle='Active Projects'></Card>
+        <Card variant='white' title='69' subtitle='Active Projects'></Card> */}
+        {/* <CardProject variant='white' title='69' subtitle='Active Projects'>
+
+          <TableContainer>
+            <table>
+              <thead>
+                <tr>
+                  <th>Nome</th>
+                  <th>Email</th>
+                  <th>Avatar</th>
+                  <th>Criado</th>
+                </tr>
+              </thead>
+
+              <tbody>
+                {clientsImages.map((client) => (
+                  <tr key={client.imageAlt}>
+                    <td>{client.imageAlt}</td>
+                    <td>{client.imageAlt}</td>
+                    <td>
+                      <img src={client.imageSrc} alt={client.imageAlt} />
+                    </td>
+                    <td>{client.imageAlt}</td>
+                  </tr>
+                ))}
+              </tbody>
+              <button onClick={prevPage}>Anterior</button>
+            <button onClick={nextPage}>Próximo</button>
+            </table>
+          </TableContainer>
+
+        </CardProject> */}
+
+      </Container>
+    </>
+
   );
 }
 

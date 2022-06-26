@@ -3,7 +3,10 @@ export const dropdownItems = [
     title: 'Dashboard',
     subtitles: [
       {
-        name: 'Gerencial / Status Report',
+        name: 'Gerencial',
+      },
+      {
+        name: 'Status Report',
       },
     ],
   },

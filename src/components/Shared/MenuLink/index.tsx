@@ -5,7 +5,7 @@ interface MenuLinkProps {
   title: string;
 }
 
-const MenuLink: React.FC<MenuLinkProps> = ({title}) => {
+const MenuLink: React.FC<MenuLinkProps> = ({ title }) => {
   return <A href={'#' + title.toLowerCase()}>{title.toUpperCase()}</A>;
 }
 

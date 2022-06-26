@@ -6,7 +6,7 @@ type AppProps = {
   children?: React.ReactNode; // 👈️ type children
 }
 
-const AppProvider: React.FC = ({ children }: any) => {
+const AppProvider: React.FC = ({ children }: AppProps) => {
   return (
     <AuthProvider>
       <ToastProvider>{children}</ToastProvider>
@@ -15,3 +15,12 @@ const AppProvider: React.FC = ({ children }: any) => {
 }
 
 export default AppProvider;
+
+// const AppProvider = ({ children }: any) => (
+
+//   <AuthProvider>
+//     <ToastProvider>{children}</ToastProvider>
+//   </AuthProvider>
+
+// );
+

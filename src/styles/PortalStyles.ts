@@ -27,21 +27,23 @@ export default createGlobalStyle`
   }
 
   html, body {
+
       overflow-x: hidden;
   }
 
   body {
-    /* background: var(--bg-portal); */
-    color: var(--color-primary);
-    transition: background-color 0.30s ease;
+    background: ${(props: any) => props.theme.portal};
+    color: ${(props: any) => props.theme.textPrimary};
+
+    transition: background-color 0.40s ease;
+
   }
 
   *, button, input {
-      font-family: 'Poppins', 'Roboto', sans-serif;
+    font-family: 'Poppins', 'Roboto', sans-serif;
+    /* font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif; */
+    /* color: ${(props: any) => props.theme.hover}; */
   }
-
-
-
 
 
 `;

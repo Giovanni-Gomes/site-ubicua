@@ -1,11 +1,11 @@
-import { FaCloud } from 'react-icons/fa';
 import styled from 'styled-components';
 
 export const Container = styled.div`
+  /* position: relative; */
+  /* width: 1440px;
+  height: 1877px; */
   width: 100%;
   height: 100%;
-  background: #222;
-  padding: 2rem;
 
   > .WrapperCard {
     display: flex;
@@ -14,43 +14,50 @@ export const Container = styled.div`
   }
 `;
 
-export const Header = styled.header`
-  z-index: 3;
-  background: red;
 
-  display: flex;
-  align-items: center;
-  width: 100vw;
-  margin: 0 auto;
-  padding: 16px 32px;
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-
-  > h1 {
-    display: flex;
-    align-items: center;
-    /* min-width: 12rem; */
-
-    > span{
-      color: white;
-      margin-left: 10px;
-      font-size: 1.2rem;
+export const TableContainer = styled.section`
+  // margin-top: 10px;
+  margin: 10px 10px;
+  table {
+    width: 100%;
+    border-spacing: 0 6px;
+    thead {
+      th {
+        padding: 5px;
+        text-align: left;
+        text-transform: uppercase;
+      }
+    }
+    th {
+      color: #969cb3;
+      font-weight: normal;
+      padding: 20px 32px;
+      text-align: left;
+      font-size: 16px;
+      line-height: 24px;
+    }
+    td {
+      padding: 20px 10px;
+      border: 0;
+      background: #28262e;
+      font-size: 16px;
+      font-weight: normal;
+      color: #fff;
+      &.title {
+        color: #15db95;
+      }
+      img {
+        width: 42px;
+        height: 42px;
+        border-radius: 50%;
+        align-items: center;
+      }
+    }
+    td:first-child {
+      border-radius: 8px 0 0 8px;
+    }
+    td:last-child {
+      border-radius: 0 8px 8px 0;
     }
   }
-`;
-
-export const UbicuaLogo = styled(FaCloud)`
-  width: 4rem;
-  height: 4rem;
-  fill: darkturquoise;
-`;
-
-export const MenuDropdown = styled.div`
-  display: flex;
-  gap: 1rem;
-  /* padding-right: 3rem; */
-  width: 100%;
-  justify-content: flex-start;
 `;

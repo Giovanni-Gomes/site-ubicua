@@ -3,20 +3,21 @@ import React from 'react';
 import { Container, TableCustom } from './styles';
 
 interface TableProps {
-  children: JSX.Element;
+  children?: any; // JSX.Element;
   loading?: string;
 }
 
-const Table: React.FC<TableProps> = ({ children, loading }) => {
+const TablePortal: React.FC<TableProps> = ({ children, loading }) => {
   /* if (loading) {
     return <h2>Loading...</h2>;
   } */
   return (
     <Container>
-      {loading ? 'Loading...' : children}
-      <TableCustom></TableCustom>
+      <TableCustom>
+        {loading ? 'Loading...' : children}
+      </TableCustom>
     </Container>
   );
 };
 
-export default Table;
+export default TablePortal;
