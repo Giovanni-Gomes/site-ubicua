@@ -5,7 +5,7 @@ import PortalStyles from '../../../styles/PortalStyles';
 import useDarkMode from '../../hooks/useDarkmode';
 import Toggle from '../../Shared/Toggle';
 import Avatar from '../Avatar';
-import Dropdown from '../Dropdown';
+import DropdownMenu from '../DropdownMenu';
 import { darkTheme, lightTheme } from '../Theme';
 
 import { Container, HeaderPortal, LogoImg, LogoPortal } from './styles';
@@ -16,10 +16,10 @@ const Header: React.FC = () => {
     <ThemeProvider theme={darkMode ? darkTheme : lightTheme}>
       <Container>
         <HeaderPortal>
-          {/* <LogoPortal>
+          <LogoPortal>
             <LogoImg />
-          </LogoPortal> */}
-          <Dropdown />
+          </LogoPortal>
+          <DropdownMenu />
           <Toggle darkMode={darkMode} setDarkMode={setDarkMode} />
 
         </HeaderPortal>

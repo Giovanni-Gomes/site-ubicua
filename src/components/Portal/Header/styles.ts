@@ -16,6 +16,10 @@ export const HeaderPortal = styled.div`
   left: 0;
   right: 0;
   background: ${(props: any) => props.theme.navBar};
+  display: flex;
+  justify-content: space-around;
+  align-items: baseline;
+
 
 
 
