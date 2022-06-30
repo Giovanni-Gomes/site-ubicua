@@ -10,8 +10,7 @@ import Home from '../pages/Home';
 import SignIn from '../pages/SignIn';
 import SignUp from '../pages/SignUp';
 import CreateUser from '../pages/User/create';
-
-
+import CreateMenu from '../pages/Config/createMenu';
 
 const RoutesPage: React.FC = () => {
   return (
@@ -21,11 +20,10 @@ const RoutesPage: React.FC = () => {
       <Route path='/registrar' caseSensitive={false} element={<SignUp />} />
       <Route path='/' caseSensitive={false} element={<Home />} />
 
-
       {/* <Route path='/dashboard' caseSensitive={false} element={<Dashboard />} /> */}
-
       <Route path="/dashboard" element={<PrivateRoute> <Dashboard /> </PrivateRoute>} />
       <Route path="/create-user" element={<PrivateRoute> <CreateUser /> </PrivateRoute>} />
+      <Route path="/create-menu" element={<PrivateRoute> <CreateMenu /> </PrivateRoute>} />
 
     </Routes>
   );

@@ -4,9 +4,11 @@ export const dropdownItems = [
     subtitles: [
       {
         name: 'Gerencial',
+        link: '/create-user',
       },
       {
         name: 'Status Report',
+        link: '/create-user',
       },
     ],
   },
@@ -15,9 +17,11 @@ export const dropdownItems = [
     subtitles: [
       {
         name: 'Feedbacks',
+        link: '/create-user',
       },
       {
         name: 'Retornar Feedback',
+        link: '/create-user',
       },
     ]
   },
@@ -26,12 +30,15 @@ export const dropdownItems = [
     subtitles: [
       {
         name: 'Equipe',
+        link: '/create-user',
       },
       {
         name: 'Projetos',
+        link: '/create-user',
       },
       {
         name: 'Acompanhamentos',
+        link: '/create-user',
       },
     ]
   },
@@ -40,18 +47,48 @@ export const dropdownItems = [
     subtitles: [
       {
         name: 'Contratos',
+        link: '/create-user',
       },
       {
         name: 'Serviços',
+        link: '/create-user',
       },
       {
         name: 'Empresas',
+        link: '/create-user',
       },
       {
         name: 'Portifólio',
+        link: '/create-user',
       },
       {
         name: 'Orçamentos',
+        link: '/create-user',
+      },
+    ]
+  },
+  {
+    title: 'Site',
+    subtitles: [
+      {
+        name: 'Criar Usuário',
+        link: '/create-user',
+      },
+      {
+        name: 'Criar Menus',
+        link: '/create-menu',
+      },
+      {
+        name: 'Empresas',
+        link: '/create-user',
+      },
+      {
+        name: 'Portifólio',
+        link: '/create-user',
+      },
+      {
+        name: 'Orçamentos',
+        link: '/create-user',
       },
     ]
   }
