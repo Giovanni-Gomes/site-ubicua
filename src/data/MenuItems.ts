@@ -36,7 +36,7 @@ export const menuItems = [
           },
           {
             title: 'Produção'
-  
+
           },
           {
             title: 'Medição'
