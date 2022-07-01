@@ -9,8 +9,11 @@ import Dashboard from '../pages/Dashboard';
 import Home from '../pages/Home';
 import SignIn from '../pages/SignIn';
 import SignUp from '../pages/SignUp';
-import CreateUser from '../pages/User/create';
+import CreateUser from '../pages/User/createUser';
 import CreateMenu from '../pages/Config/createMenu';
+import CreateHeader from '../pages/Config/createHeader';
+import CreateSectionOne from '../pages/Site/createSectionOne';
+import CreateSectionTwo from '../pages/Site/createSectionTwo';
 
 const RoutesPage: React.FC = () => {
   return (
@@ -24,6 +27,10 @@ const RoutesPage: React.FC = () => {
       <Route path="/dashboard" element={<PrivateRoute> <Dashboard /> </PrivateRoute>} />
       <Route path="/create-user" element={<PrivateRoute> <CreateUser /> </PrivateRoute>} />
       <Route path="/create-menu" element={<PrivateRoute> <CreateMenu /> </PrivateRoute>} />
+      <Route path="/create-header" element={<PrivateRoute> <CreateHeader /> </PrivateRoute>} />
+      <Route path="/create-section-one" element={<PrivateRoute> <CreateSectionOne /> </PrivateRoute>} />
+      <Route path="/create-section-two" element={<PrivateRoute> <CreateSectionTwo /> </PrivateRoute>} />
+
 
     </Routes>
   );
