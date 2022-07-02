@@ -1,5 +1,3 @@
-
-
 import React, { useCallback, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useToast } from '../../components/hooks/provider/toast';
@@ -9,61 +7,51 @@ import { FormHandles } from '@unform/core';
 import { Form } from '@unform/web';
 import * as Yup from 'yup';
 
-import { CancelButton, Container, FormFooter } from './styles';
 import api from '../../services/api';
 import Input from '../../components/Shared/Input';
-import { FiLock, FiMail, FiUser } from 'react-icons/fi';
+import { GrStatusGood } from 'react-icons/gr';
+import { BiText } from 'react-icons/bi';
+import { FaTrash, FaImage } from 'react-icons/fa';
 import Button from '../../components/Shared/Button';
 import Header from '../../components/Portal/Header';
-import { FaTrash } from 'react-icons/fa';
+import { CancelButton, Container, FormFooter } from './styles';
 
-interface CreateUserProps {
-  name: string;
-  email: string;
-  password: string;
-  active?: boolean;
-  type_user_id: string;
+interface CreateMenuProps {
+  title: string;
+  logo: string;
 }
 
-
-const CreateUser: React.FC = () => {
+const CreateHeader: React.FC = () => {
   const formRef = useRef<FormHandles>(null);
   const navigate = useNavigate();
   const { addToast } = useToast();
 
-  const handleSubmitCreateUser = useCallback(
-    async (data: CreateUserProps) => {
-
+  const handleSubmitCreateMenu = useCallback(
+    async (data: CreateMenuProps) => {
       try {
         formRef.current?.setErrors({});
 
         const schema = Yup.object().shape({
-          name: Yup.string()
-            .required('Nome Obrigatório'),
-          email: Yup.string()
-            .required('Email Obrigatório')
-            .email('Digite um email válido'),
-          password: Yup.string().required('Senha Obrigatória'),
-          typetype_user_idUser: Yup.string().required('Tipo de usuário é obrigatório'),
+          title: Yup.string()
+            .required('Título é Obrigatório'),
+          logo: Yup.string()
+            .required('Logo Obrigatório'),
         });
 
         await schema.validate(data, {
           abortEarly: false,
         });
 
-        await api.post('/v1/users/create', {
-          name: data.name,
-          email: data.email,
-          password: data.password,
-          active: data.active,
-          type_user_id: 'd6e46846-7688-4a81-b0f4-8c57037d2029'
+        await api.post('/v1/header/create', {
+          title: data.title,
+          logo: data.logo,
         });
 
         navigate('/login');
 
         addToast({
           type: 'success',
-          title: 'Cadastro Realizado',
+          title: 'Cadastro Realizado!',
         });
       } catch (err) {
 
@@ -85,24 +73,25 @@ const CreateUser: React.FC = () => {
     [addToast, navigate],
   );
 
+  function handleResetForm(event: React.MouseEvent) {
+    event?.preventDefault();
+    formRef.current?.reset();
+  }
+
   return (
     <>
       <Header />
       <Container>
-        <Form ref={formRef} onSubmit={handleSubmitCreateUser}>
-          <h1>Cadastrar novo usuário</h1>
+        <Form ref={formRef} onSubmit={handleSubmitCreateMenu}>
+          <h1>Cadastrar novo menu</h1>
           <span className='subtitle'>preencha o formulário abaixo</span>
 
-          <Input name="name" type="text" placeholder='Nome' icon={FiUser} />
-          <Input name="email" type="email" placeholder='E-mail' icon={FiMail} />
-          <Input name="password" type="password" placeholder='Senha' icon={FiLock} />
-          <Input name="type_user_id" type="text" placeholder='Tipo de Usuário' icon={FiLock} />
+          <Input name="title" type="text" placeholder='Título' icon={BiText} />
+          <Input name="logo" type="text" placeholder='Logo' icon={FaImage} />
 
           <FormFooter>
-
             <Button type="submit">Salvar Registro</Button>
-
-            <CancelButton>
+            <CancelButton onClick={handleResetForm}>
               <FaTrash />
             </CancelButton>
           </FormFooter>
@@ -112,4 +101,5 @@ const CreateUser: React.FC = () => {
   );
 }
 
-export default CreateUser;
+export default CreateHeader;
+

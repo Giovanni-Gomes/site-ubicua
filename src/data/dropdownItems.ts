@@ -79,16 +79,12 @@ export const dropdownItems = [
         link: '/create-menu',
       },
       {
-        name: 'Empresas',
-        link: '/create-user',
+        name: 'Criar 1º Secção',
+        link: '/create-section-one',
       },
       {
-        name: 'Portifólio',
-        link: '/create-user',
-      },
-      {
-        name: 'Orçamentos',
-        link: '/create-user',
+        name: 'Criar 2º Secção',
+        link: '/create-section-two',
       },
     ]
   }
