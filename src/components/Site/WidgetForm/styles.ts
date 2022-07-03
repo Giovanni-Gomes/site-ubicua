@@ -17,7 +17,7 @@ export const Container = styled.div`
   @media (min-width: 768px) {
     width: auto;
   }
-  
+
 `;
 
 export const Footer = styled.footer`
@@ -31,7 +31,7 @@ export const HeaderSpan = styled.span`
   font-size: 1.25rem/* 20px */;
   line-height: 1.5rem/* 28px */;
   color: white;
-  
+
 `;
 
 // CLoseButton
@@ -61,7 +61,8 @@ export const Content = styled.div`
 `;
 
 export const ButtonCard = styled.button`
-  background-color: rgb(39 39 42 / 1);
+  /* background-color: rgb(39 39 42 / 1); */
+  background-color: var(--bg-secondary);
   border-radius: 0.5rem;
   padding: 1.25rem 2rem;
   width: 9rem;
@@ -71,15 +72,15 @@ export const ButtonCard = styled.button`
   align-items: center;
   gap: 0.5rem;
   color: #fff;
-  border-width: 500px; 
+  border-width: 500px;
   border: transparent;
-  
+
   &:hover {
     /* border: 0.05rem solid #8257e6; */
-    opacity: 0.5;
+    opacity: 0.7;
   }
   &:focus {
-    border: 2px solid #8257e6;
+    /* border: 2px solid #8257e6; */
     outline: none;
   }
 `;
@@ -132,7 +133,7 @@ export const Textarea = styled.textarea`
   border-color: rgb(82 82 91 / 1);
   background-color: transparent;
   border-radius: 4px;
-  
+
   &::placeholder {
     color: rgb(161 161 170 / 1);
   }

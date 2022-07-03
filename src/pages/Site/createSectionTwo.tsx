@@ -1,4 +1,4 @@
-import React, { useCallback, useRef } from 'react';
+import React, { useCallback, ChangeEvent, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useToast } from '../../components/hooks/provider/toast';
 
@@ -14,13 +14,13 @@ import { FaTrash, FaImage } from 'react-icons/fa';
 import Button from '../../components/Shared/Button';
 import Header from '../../components/Portal/Header';
 import { CancelButton, Container, FormFooter } from './styles';
+import data from '../../data';
 
 interface CreateMenuProps {
   title: string;
-  description_one?: string;
+  description_one: string;
   image_one?: string;
-  description_two?: string;
-  image_two?: string;
+  description_two: string;
 }
 
 const CreateSectionTwo: React.FC = () => {
@@ -28,9 +28,34 @@ const CreateSectionTwo: React.FC = () => {
   const navigate = useNavigate();
   const { addToast } = useToast();
 
+  const [selectedFile, setSelectedFile] = useState('');
+  const [selectedFileTwo, setSelectedFileTwo] = useState('');
+
+  //const fileInput = useRef(null)
+
+
+  const fileSelectedHandlerInputOne = (event: any) => {
+    // handle validations
+    //console.log("img handle one", event.target.files[0]);
+    setSelectedFile(event.target.files[0])
+  }
+
+  const fileSelectedHandlerInputTwo = (event: any) => {
+    // handle validations
+    //console.log("img handle two", event.target.files[0]);
+    setSelectedFileTwo(event.target.files[0])
+  }
+
+
+
+
   const handleSubmitCreateMenu = useCallback(
     async (data: CreateMenuProps) => {
+
       try {
+        const imageData = new FormData();
+        imageData.append('image_one', (selectedFile as any).name);
+        imageData.append('image_two', (selectedFileTwo as any).name);
         formRef.current?.setErrors({});
 
         const schema = Yup.object().shape({
@@ -46,22 +71,28 @@ const CreateSectionTwo: React.FC = () => {
           abortEarly: false,
         });
 
-        await api.post('/v1/header/create', {
+        const formData = {
           title: data.title,
           description_one: data.description_one,
-          image_one: data.image_one,
+          image_one: selectedFile,
           description_two: data.description_two,
-          image_two: data.image_two,
+          image_two: selectedFileTwo,
+        }
+
+        await api.post('/v1/sectionTwo/create', formData, {
+          headers: {
+            'Content-Type': 'multipart/form-data'
+          }
         });
 
-        navigate('/login');
+        navigate('/dashboard');
 
         addToast({
           type: 'success',
           title: 'Cadastro Realizado!',
         });
       } catch (err) {
-
+        console.log(err);
         if (err instanceof Yup.ValidationError) {
           const errors = getValidationErrors(err);
 
@@ -77,8 +108,9 @@ const CreateSectionTwo: React.FC = () => {
         });
       }
     },
-    [addToast, navigate],
+    [addToast, navigate, selectedFile, selectedFileTwo],
   );
+
 
   function handleResetForm(event: React.MouseEvent) {
     event?.preventDefault();
@@ -95,9 +127,12 @@ const CreateSectionTwo: React.FC = () => {
 
           <Input name="title" type="text" placeholder='Título' icon={BiText} />
           <Input name="description_one" type="text" placeholder='First Description' icon={BiText} />
-          <Input name="image_one" type="text" placeholder='First Image' icon={BiText} />
+          <Input name="image_one" type="file" placeholder='First Image' icon={BiText} onChange={fileSelectedHandlerInputOne} />
+
+
           <Input name="description_two" type="text" placeholder='Second Description' icon={BiText} />
-          <Input name="image_two" type="text" placeholder='Second Image' icon={BiText} />
+
+          <Input name="image_two" type="file" placeholder='Second Image' icon={BiText} onChange={fileSelectedHandlerInputTwo} />
 
           <FormFooter>
             <Button type="submit">Salvar Registro</Button>

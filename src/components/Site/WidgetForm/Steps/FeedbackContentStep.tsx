@@ -28,15 +28,15 @@ export function FeedbackContentStep({ feedbackType, onFeedbackRestartRequested, 
 
     setIsSendingFeedback(true);
 
-    const result = await api.post('/v1/feedback/create', {
+    await api.post('/v1/feedback/create', {
       type: feedbackType,
       comment,
       screenshot,
-    }); //.then()
+    });
 
     onFeedbackSent();
     setIsSendingFeedback(false);
-    console.log(result)
+    //console.log(result)
   };
 
   return (
@@ -62,12 +62,14 @@ export function FeedbackContentStep({ feedbackType, onFeedbackRestartRequested, 
         <FooterForm>
           <ScreenshotButton screenshot={screenshot} onScreenshotTook={setScreenshot} />
 
+
           <Button
             type="submit"
             disabled={comment.length === 0 || isSendingFeedback}
-            text={isSendingFeedback ? <Loading /> : 'Enviar feedback'}
             className="submit"
-          />
+          >
+            {isSendingFeedback ? <Loading /> : 'Enviar feedback'}
+          </Button>
         </FooterForm>
       </Form>
     </>

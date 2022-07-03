@@ -18,6 +18,7 @@ import { CancelButton, Container, FormFooter } from './styles';
 
 interface CreateMenuProps {
   title: string;
+  link: string;
   logo: string;
   active?: boolean;
 }
@@ -36,22 +37,25 @@ const CreateMenu: React.FC = () => {
         const schema = Yup.object().shape({
           title: Yup.string()
             .required('Título é Obrigatório'),
+          link: Yup.string()
+            .required('Link é Obrigatório'),
           logo: Yup.string()
             .required('Logo Obrigatório'),
-          active: Yup.string().required('Status é Obrigatória'),
+          active: Yup.boolean().default(true),
         });
 
         await schema.validate(data, {
           abortEarly: false,
         });
 
-        await api.post('/v1/header/create', {
+        await api.post('/v1/menu/create-menu', {
           title: data.title,
+          link: data.link,
           logo: data.logo,
-          active: data.active,
+          active: Boolean(data.active),
         });
 
-        navigate('/login');
+        navigate('/dashboard');
 
         addToast({
           type: 'success',
@@ -91,8 +95,9 @@ const CreateMenu: React.FC = () => {
           <span className='subtitle'>preencha o formulário abaixo</span>
 
           <Input name="title" type="text" placeholder='Título' icon={BiText} />
+          <Input name="link" type="text" placeholder='Link' icon={BiText} />
           <Input name="logo" type="text" placeholder='Logo' icon={FaImage} />
-          <Input name="active" type="text" placeholder='Status' icon={GrStatusGood} />
+          {/* <Input name="active" type="text" placeholder='Status' icon={GrStatusGood} /> */}
 
           <FormFooter>
             <Button type="submit">Salvar Registro</Button>

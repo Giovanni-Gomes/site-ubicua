@@ -1,5 +1,7 @@
 
+import { size } from 'polished';
 import React from 'react';
+import { FaCloud } from 'react-icons/fa';
 import { ThemeProvider } from 'styled-components';
 import PortalStyles from '../../../styles/PortalStyles';
 import useDarkMode from '../../hooks/useDarkmode';
@@ -17,7 +19,8 @@ const Header: React.FC = () => {
       <Container>
         <HeaderPortal>
           <LogoPortal>
-            <LogoImg />
+            <FaCloud style={{ color: '#2EC5CE', marginLeft: '1.2rem' }} size={54} />
+            {/* <LogoImg /> */}
           </LogoPortal>
           <DropdownMenu />
           <Toggle darkMode={darkMode} setDarkMode={setDarkMode} />

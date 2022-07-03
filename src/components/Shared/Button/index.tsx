@@ -3,6 +3,7 @@ import { ButtonCustom } from './styles';
 
 type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
   loading?: boolean;
+  text?: Element | string | ButtonHTMLAttributes<HTMLButtonElement>;
 };
 
 const Button: React.FC<ButtonProps> = ({ children, loading, ...rest }) => (
