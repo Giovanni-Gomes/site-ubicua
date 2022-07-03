@@ -13,10 +13,6 @@ interface CarouselProps {
   items: Array<CarouselItemProps>;
 }
 
-// interface IImagesProps {
-//   title: string;
-//   image: string;
-// }
 
 const MIN_SWIPE_REQUIRED = 40;
 

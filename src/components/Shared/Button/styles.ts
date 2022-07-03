@@ -21,8 +21,8 @@ export const ButtonCustom = styled.button`
 
   &:focus {
     border-color: #8257e6;
-    box-shadow: inset 0 0 0 calc(2px + 0px) rgb(24 24 27);
-    outline: 2px solid transparent;
+    box-shadow: inset 0 0 0 calc(1px + 0px) ;
+    outline: 1px solid transparent;
     outline-offset: 2px;
   }
 

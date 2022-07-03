@@ -42,12 +42,12 @@ const CreateHeader: React.FC = () => {
           abortEarly: false,
         });
 
-        await api.post('/v1/header/create', {
+        await api.post('/v1/home/create-header', {
           title: data.title,
           logo: data.logo,
         });
 
-        navigate('/login');
+        navigate('/dashboard');
 
         addToast({
           type: 'success',

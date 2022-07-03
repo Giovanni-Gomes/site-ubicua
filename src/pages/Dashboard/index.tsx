@@ -1,9 +1,11 @@
 import React from 'react';
 import Card from '../../components/Portal/Card';
 import CardProject from '../../components/Portal/CardProject';
+import ChartDash from '../../components/Portal/ChartDash';
 import DashboardSection from '../../components/Portal/DashboardSection';
 import Header from '../../components/Portal/Header';
 import TablePortal from '../../components/Portal/Table';
+import WelcomeDash from '../../components/Portal/WelcomeDash';
 import clientsImages from '../../data/clients';
 
 
@@ -18,7 +20,11 @@ const Dashboard: React.FC = () => {
 
         <DashboardSection element={
           <>
+            <WelcomeDash />
+            <ChartDash />
+
             <Card variant='success' title='69' subtitle='Active Projects' />
+
             <Card variant='black' title='69' subtitle='Active Projects' />
             <Card variant='danger' title='69' subtitle='Active Projects' />
             <Card variant='white' title='69' subtitle='Active Projects' />
@@ -91,40 +97,7 @@ const Dashboard: React.FC = () => {
 
           </>
         } className='WrapperCard' />
-        {/* <Card variant='white' title='69' subtitle='Active Projects'></Card>
-        <Card variant='white' title='69' subtitle='Active Projects'></Card>
-        <Card variant='white' title='69' subtitle='Active Projects'></Card> */}
-        {/* <CardProject variant='white' title='69' subtitle='Active Projects'>
 
-          <TableContainer>
-            <table>
-              <thead>
-                <tr>
-                  <th>Nome</th>
-                  <th>Email</th>
-                  <th>Avatar</th>
-                  <th>Criado</th>
-                </tr>
-              </thead>
-
-              <tbody>
-                {clientsImages.map((client) => (
-                  <tr key={client.imageAlt}>
-                    <td>{client.imageAlt}</td>
-                    <td>{client.imageAlt}</td>
-                    <td>
-                      <img src={client.imageSrc} alt={client.imageAlt} />
-                    </td>
-                    <td>{client.imageAlt}</td>
-                  </tr>
-                ))}
-              </tbody>
-              <button onClick={prevPage}>Anterior</button>
-            <button onClick={nextPage}>Próximo</button>
-            </table>
-          </TableContainer>
-
-        </CardProject> */}
 
       </Container>
     </>
@@ -133,3 +106,39 @@ const Dashboard: React.FC = () => {
 }
 
 export default Dashboard;
+
+
+{/* <Card variant='white' title='69' subtitle='Active Projects'></Card>
+        <Card variant='white' title='69' subtitle='Active Projects'></Card>
+        <Card variant='white' title='69' subtitle='Active Projects'></Card> */}
+{/* <CardProject variant='white' title='69' subtitle='Active Projects'>
+
+<TableContainer>
+  <table>
+    <thead>
+      <tr>
+        <th>Nome</th>
+        <th>Email</th>
+        <th>Avatar</th>
+        <th>Criado</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      {clientsImages.map((client) => (
+        <tr key={client.imageAlt}>
+          <td>{client.imageAlt}</td>
+          <td>{client.imageAlt}</td>
+          <td>
+            <img src={client.imageSrc} alt={client.imageAlt} />
+          </td>
+          <td>{client.imageAlt}</td>
+        </tr>
+      ))}
+    </tbody>
+    <button onClick={prevPage}>Anterior</button>
+  <button onClick={nextPage}>Próximo</button>
+  </table>
+</TableContainer>
+
+</CardProject> */}

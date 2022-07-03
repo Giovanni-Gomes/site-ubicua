@@ -75,7 +75,15 @@ export const dropdownItems = [
         link: '/create-user',
       },
       {
+        name: 'Criar Header',
+        link: '/create-header',
+      },
+      {
         name: 'Criar Menus',
+        link: '/create-menu',
+      },
+      {
+        name: 'Criar Menus Portal',
         link: '/create-menu',
       },
       {

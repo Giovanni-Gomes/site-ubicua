@@ -11,32 +11,32 @@ export const Container = styled.div`
   &.blue {
     --bg-color: var(--color-tertiary);
     --text-color: var(--color-secondary); /*var(--color-quaternary)*/
-    --logo-color: var(--color-black);    
-    --icon-color: var(--color-secondary);    
+    --logo-color: var(--color-black);
+    --icon-color: var(--color-secondary);
   }
   &.beige {
     --bg-color: var(--color-secondary);
     --text-color: var(--color-quaternary);
     --logo-color: var(--color-primary);
-    --icon-color: var(--color-quaternary);  
+    --icon-color: var(--color-quaternary);
   }
   &.white {
     --bg-color: var(--color-primary);
     --text-color: var(--color-quaternary);
     --logo-color: var(--color-secondary);
-    --icon-color: var(--color-quaternary);  
+    --icon-color: var(--color-quaternary);
   }
   &.black {
     --bg-color: var(--color-quaternary);
     --text-color: var(--color-tertiary);
     --logo-color: var(--color-black);
-    --icon-color: var(--color-tertiary);  
+    --icon-color: var(--color-tertiary);
   }
 
   &:first-child {
     --padding-top: 6rem;
     --heading-font-size: 41px;
-    --padding-bottom: 6rem;
+    --padding-bottom: 4rem;
 
     flex: 1;
     background: url(${sectionOne}) no-repeat center;
@@ -46,15 +46,16 @@ export const Container = styled.div`
       text-align: justify;
       color: var(--color-quaternary);
     }
-    
+
     /* font-style: normal;
     font-weight: 800;
     font-size: 72px;
     line-height: 98px; */
-    
+
     @media (min-width: 1024px) {
       --content-width: 50%;
-      --heading-font-size: 71px;
+      --heading-font-size: 74px;
+      --p-font-size: 24px;
     }
   }
 
@@ -62,9 +63,9 @@ export const Container = styled.div`
   position: relative;
   z-index: 2;
   /* :nth-child(2n) {
-  position: absolute;    
+  position: absolute;
   background-color: blue;
-   margin-top: 6rem;  
+   margin-top: 6rem;
   }   */
 
 
@@ -77,20 +78,18 @@ export const Content = styled.div`
   align-items: center;
   position: relative;
 
-
-
   > header h2 {
     font-size: var(--heading-font-size);
     color: var(--logo-color);
-    max-width: 50rem;
+    max-width: 100rem;
   }
   > header p {
-    margin: 20px 0;
-    font-size: 16px;
+    margin: 1.8rem 0;
+    font-size: 20px;
     color: var(--text-color);
     /* max-width: 95%; */
   }
-  padding: var(--padding-top) 5rem var(--padding-bottom);
+  padding: var(--padding-top) var(--padding-bottom); /*5rem*/
 `;
 
 export const Background = styled.div`
@@ -99,7 +98,7 @@ export const Background = styled.div`
   background-size: cover;
 `;
 
-export const Wrapper = styled.div `
+export const Wrapper = styled.div`
   max-width: 20rem;
   display: flex;
   justify-content: space-between;

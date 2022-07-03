@@ -4,8 +4,10 @@ export const Container = styled.div`
   /* position: relative; */
   /* width: 1440px;
   height: 1877px; */
-  width: 100%;
+
+  width: 1440px;
   height: 100%;
+  /* width: 100%; */
 
   > .WrapperCard {
     display: flex;

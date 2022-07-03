@@ -14,7 +14,7 @@ import { FaTrash, FaImage } from 'react-icons/fa';
 import Button from '../../components/Shared/Button';
 import Header from '../../components/Portal/Header';
 import { CancelButton, Container, FormFooter } from './styles';
-import { Loading } from '../../components/Site/WidgetForm/Loading';
+import data from '../../data';
 
 interface CreateMenuProps {
   title: string;
@@ -23,27 +23,23 @@ interface CreateMenuProps {
   description_two: string;
 }
 
-const CreateSectionOne: React.FC = () => {
+const createSectionThree: React.FC = () => {
   const formRef = useRef<FormHandles>(null);
   const navigate = useNavigate();
   const { addToast } = useToast();
 
-  const [title, setTitle] = useState('');
-  const [isSendingFeedback, setIsSendingFeedback] = useState(false);
   const [selectedFile, setSelectedFile] = useState('');
+  const [selectedFileTwo, setSelectedFileTwo] = useState('');
 
 
-  const fileSelectedHandlerInput = (event: any) => {
+  const fileSelectedHandlerInputOne = (event: any) => {
 
-    // handle validations
-    //console.log("img handle", event.target.files[0]);
-    let image;
-    if (event.target.files[0] == null) {
-      image = null
-    } else {
-      image = event.target.files[0]
-    }
-    setSelectedFile(image)
+    setSelectedFile(event.target.files[0])
+  }
+
+  const fileSelectedHandlerInputTwo = (event: any) => {
+
+    setSelectedFileTwo(event.target.files[0])
   }
 
 
@@ -52,39 +48,11 @@ const CreateSectionOne: React.FC = () => {
   const handleSubmitCreateMenu = useCallback(
     async (data: CreateMenuProps) => {
 
-
       try {
-        //event.preventDefault();
-        //setSelectedFile(event.target.files[0]);
         const imageData = new FormData();
         imageData.append('image_one', (selectedFile as any).name);
-
-        // imageData.append('title', data.title);
-        // imageData.append('description_one', data.description_one);
-        // imageData.append('image_one', selectedFile);
-        // imageData.append('description_two', data.description_two);
-        // imageData.append('image_two', data.image_two);
-
-        //console.log("imageData", imageData);
-        console.log("image ONE", (selectedFile as any).name);
-
-
-
+        imageData.append('image_two', (selectedFileTwo as any).name);
         formRef.current?.setErrors({});
-
-
-        // let fileImageOne;
-        // let test;
-        // let fileImageTwo;
-        // (e: ChangeEvent<HTMLInputElement>) => {
-        //   if (e.target.files) {
-        //     fileImageOne = imageData.append("file", data.image_one);
-        //     test = imageData.append("image_one", e.target.files[0]);
-        //     fileImageTwo = imageData.append("image_two", data.image_two);
-        //   }
-        // }
-
-
 
         const schema = Yup.object().shape({
           title: Yup.string()
@@ -92,6 +60,7 @@ const CreateSectionOne: React.FC = () => {
           description_one: Yup.string(),
           image_one: Yup.string(),
           description_two: Yup.string(),
+          image_two: Yup.string(),
         });
 
         await schema.validate(data, {
@@ -103,34 +72,21 @@ const CreateSectionOne: React.FC = () => {
           description_one: data.description_one,
           image_one: selectedFile,
           description_two: data.description_two,
+          image_two: selectedFileTwo,
         }
-        //console.log("formData", formData);
 
-        // console.log("imageData", imageData);
-        // console.log("file image", fileImageOne);
-        // console.log("file test", test);
-        // console.log("data titulo", data.title);
-        // console.log("data image one", data.image_one);
-        // console.log("data image two", data.image_two);
-        //imageData
-
-        setIsSendingFeedback(true);
-
-        const result = await api.post('/v1/sectionOne/create', formData, {
+        await api.post('/v1/sectionThree/create', formData, {
           headers: {
             'Content-Type': 'multipart/form-data'
           }
         });
 
-        console.log("formData", result);
-
-        navigate('/create-section-one');
+        navigate('/dashboard');
 
         addToast({
           type: 'success',
           title: 'Cadastro Realizado!',
         });
-        setIsSendingFeedback(false);
       } catch (err) {
         console.log(err);
         if (err instanceof Yup.ValidationError) {
@@ -148,7 +104,7 @@ const CreateSectionOne: React.FC = () => {
         });
       }
     },
-    [addToast, navigate, selectedFile],
+    [addToast, navigate, selectedFile, selectedFileTwo],
   );
 
 
@@ -162,32 +118,21 @@ const CreateSectionOne: React.FC = () => {
       <Header />
       <Container>
         <Form ref={formRef} onSubmit={handleSubmitCreateMenu}>
-          <h1>Cadastrar | Alterar 1º Secção</h1>
+          <h1>Cadastrar | Alterar 2º Secção</h1>
           <span className='subtitle'>preencha o formulário abaixo</span>
 
-          <Input name="title" type="text" placeholder='Título' icon={BiText} onChange={event => setTitle(event.target.value)} />
-          <Input name="description_one" type="text" placeholder='First Description' icon={BiText} />
-          <Input name="image_one" type="file" placeholder='First Image' icon={BiText} onChange={fileSelectedHandlerInput} />
+          <Input name="title" type="text" placeholder='Título' icon={BiText} />
 
-          {/* <input
-            type="file"
-            name="image_one" id="image_one" onChange={fileSelectedHandlerInput} /> */}
+          <Input name="description_one" type="text" placeholder='First Description' icon={BiText} />
+
+          <Input name="image_one" type="file" placeholder='First Image' icon={BiText} onChange={fileSelectedHandlerInputOne} />
 
           <Input name="description_two" type="text" placeholder='Second Description' icon={BiText} />
-          {/* <input
-            type="file"
-            name="image_one" id="image_two" onChange={(e: any) => setSelectedFile(e.target.files[0])}/> */}
+
+          <Input name="image_two" type="file" placeholder='Second Image' icon={BiText} onChange={fileSelectedHandlerInputTwo} />
 
           <FormFooter>
-            {/* <Button type="submit">Salvar Registro</Button> */}
-            <Button
-              type="submit"
-              disabled={title.length === 0 || isSendingFeedback}
-              className="submit"
-            >
-              {isSendingFeedback ? <Loading /> : 'Salvar Registro'}
-            </Button>
-
+            <Button type="submit">Salvar Registro</Button>
             <CancelButton onClick={handleResetForm}>
               <FaTrash />
             </CancelButton>
@@ -198,5 +143,5 @@ const CreateSectionOne: React.FC = () => {
   );
 }
 
-export default CreateSectionOne;
+export default createSectionThree;
 

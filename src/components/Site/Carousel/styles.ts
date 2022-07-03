@@ -1,8 +1,12 @@
 import styled from 'styled-components';
 
 export const Swiper = styled.div`
-  width: 120%;
-  max-width: 120%;
+  /* width: 120%;
+  max-width: 120%; */
+  /* width: 100vw;
+  height: 600px; */
+  width: 100%;
+
   /* padding-top: 3rem;
   /* width: 100%;
   height: 100%; */
@@ -12,23 +16,30 @@ export const Swiper = styled.div`
 
   > ul.swiper-list {
     display: flex;
-    min-width: 100%;
+    /* min-width: 100%; */
     list-style: none;
-    padding: 0;
+    padding: 0 0 0 80px;
     margin: 0;
     transition: transform 0.3s ease-out;
 
+
     > li {
+      /* width: 100%; */
       width: 100%;
       flex-shrink: 0;
       /* min-height: 15rem; */
       > img {
-        width: 100%;
-        /* height: auto; */
+        /* width: 100%; */
+        /* width: 100%; */
+        min-width: 460px;
+        max-width: 600px;
+
+        min-height: 490px;
+        max-height: 500px;
         /* align-items: right; */
         /* margin: 0 2rem; */
         user-select: none;
-        border-radius: 1rem;
+        border-radius: 1.5rem 1.5rem;
       }
     }
   }
