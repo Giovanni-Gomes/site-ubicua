@@ -9,11 +9,11 @@ export const Container = styled.div`
   align-items: center;
   padding: 0px;
 
-  position: absolute;
+  // position: absolute;
   width: 76px;
   height: 40px;
-  right: 2rem;
-  top: 12px;
+  // right: 2rem;
+  // top: 12px;
 `;
 
 export const AvatarCustom = styled.img`
@@ -25,8 +25,8 @@ export const AvatarCustom = styled.img`
   gap: 10px;
   border-radius: 50%;
 
-  width: 56px;
-  height: 56px;
+  width: 50px;
+  height: 50px;
 
 
   /* Inside auto layout */
