@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 import { Author, Container, Content, FeedbackTestimonial, LogoTestimonial, QuoteMark, WrapperTestimonial, TestimonialThree, TestimonialTwo } from './styles';
 
@@ -6,15 +6,35 @@ import { Author, Container, Content, FeedbackTestimonial, LogoTestimonial, Quote
 // import google from '/assets/testimonial/google.png';
 // import microsoft from '/assets/testimonial/microsoft.png';
 import testimonial from '../../../data/testimonial';
+import api from '../../../services/api';
+
+interface ITestimonial{
+  id: string;
+  title: string;
+  description: string;
+  icon: string;
+  author: string;
+}
 
 const Testimonial: React.FC = () => {
+  const [testimonial, setTestimonial] = useState<ITestimonial[]>([]);
+
+  useEffect(() => {
+    async function fetchTestimonial() {
+      const responseTestimonial = await api.get('v1/testimonial');
+
+      setTestimonial(responseTestimonial.data);
+    }
+
+    fetchTestimonial()
+  }, [])
   return (
     <Container>
 
       {/* <h2>Real Stories</h2> */}
       <QuoteMark />
-      {testimonial.map((ts, key) => (
-        <WrapperTestimonial key={key} className={ts.title}>
+      {testimonial.map(ts => (
+        <WrapperTestimonial key={ts.id} className={ts.title}>
           <LogoTestimonial>
             <img src={ts.icon} />
           </LogoTestimonial>

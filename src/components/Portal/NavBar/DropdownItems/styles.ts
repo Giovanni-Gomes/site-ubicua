@@ -9,7 +9,7 @@ display: flex;
 align-items: center;
 border-radius: 1rem;
 transition: var(--speed); //background
-padding: 0.5rem 0.5rem;
+padding: 0.5rem;
 font-size: 16px;
 
 

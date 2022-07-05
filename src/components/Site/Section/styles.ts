@@ -87,6 +87,7 @@ export const Content = styled.div`
     margin: 1.8rem 0;
     font-size: 20px;
     color: var(--text-color);
+    max-width: 40rem;
     /* max-width: 95%; */
   }
   padding: var(--padding-top) var(--padding-bottom); /*5rem*/

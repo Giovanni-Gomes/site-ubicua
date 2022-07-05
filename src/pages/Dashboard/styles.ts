@@ -5,13 +5,14 @@ export const Container = styled.div`
   /* width: 1440px;
   height: 1877px; */
 
-  width: 1440px;
+  max-width: 1440px;
+  margin: 0 auto;
   height: 100%;
   /* width: 100%; */
 
   > .WrapperCard {
     display: flex;
-    flex-wrap: wrap;
+    /* flex-wrap: wrap; */
     margin-top: 5rem;
   }
 `;

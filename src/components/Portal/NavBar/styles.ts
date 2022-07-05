@@ -24,7 +24,6 @@ export const Container = styled.nav`
 // }
 
 button {
-
   cursor: pointer;
   padding-left: 2rem;
   display: flex;

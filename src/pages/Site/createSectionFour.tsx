@@ -1,4 +1,4 @@
-import React, { useCallback, useRef, useState } from 'react';
+import React, { useCallback, ChangeEvent, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useToast } from '../../components/hooks/provider/toast';
 
@@ -9,48 +9,82 @@ import * as Yup from 'yup';
 
 import api from '../../services/api';
 import Input from '../../components/Shared/Input';
-import { GrStatusGood } from 'react-icons/gr';
 import { BiText } from 'react-icons/bi';
 import { FaTrash, FaImage } from 'react-icons/fa';
 import Button from '../../components/Shared/Button';
 import Header from '../../components/Portal/Header';
 import { CancelButton, Container, FormFooter } from './styles';
-import CreateMenu from './createMenu';
+import data from '../../data';
+import CreateSectionCustomers from './createSectionCustomers';
 
 interface CreateMenuProps {
   title: string;
-  logo: string;
+  description_one: string;
+  image_one?: string;
+  description_two: string;
 }
 
-const CreateHeader: React.FC = () => {
+const createSectionFour: React.FC = () => {
   const formRef = useRef<FormHandles>(null);
   const navigate = useNavigate();
   const { addToast } = useToast();
+
+  const [selectedFile, setSelectedFile] = useState('');
+  const [selectedFileTwo, setSelectedFileTwo] = useState('');
+
   const [isActiveForm, setIsActiveForm] = useState(0);
 
   function showActiveForm(id: number) {
     setIsActiveForm(id)
   }
 
+  const fileSelectedHandlerInputOne = (event: any) => {
+
+    setSelectedFile(event.target.files[0])
+  }
+
+  const fileSelectedHandlerInputTwo = (event: any) => {
+
+    setSelectedFileTwo(event.target.files[0])
+  }
+
+
+
+
   const handleSubmitCreateMenu = useCallback(
     async (data: CreateMenuProps) => {
+
       try {
+        const imageData = new FormData();
+        imageData.append('image_one', (selectedFile as any).name);
+        imageData.append('image_two', (selectedFileTwo as any).name);
         formRef.current?.setErrors({});
 
         const schema = Yup.object().shape({
           title: Yup.string()
             .required('Título é Obrigatório'),
-          logo: Yup.string()
-            .required('Logo Obrigatório'),
+          description_one: Yup.string(),
+          image_one: Yup.string(),
+          description_two: Yup.string(),
+          image_two: Yup.string(),
         });
 
         await schema.validate(data, {
           abortEarly: false,
         });
 
-        await api.post('/v1/home/create-header', {
+        const formData = {
           title: data.title,
-          logo: data.logo,
+          description_one: data.description_one,
+          image_one: selectedFile,
+          description_two: data.description_two,
+          image_two: selectedFileTwo,
+        }
+
+        await api.post('/v1/sectionFour/create', formData, {
+          headers: {
+            'Content-Type': 'multipart/form-data'
+          }
         });
 
         navigate('/dashboard');
@@ -60,7 +94,7 @@ const CreateHeader: React.FC = () => {
           title: 'Cadastro Realizado!',
         });
       } catch (err) {
-
+        console.log(err);
         if (err instanceof Yup.ValidationError) {
           const errors = getValidationErrors(err);
 
@@ -76,8 +110,9 @@ const CreateHeader: React.FC = () => {
         });
       }
     },
-    [addToast, navigate],
+    [addToast, navigate, selectedFile, selectedFileTwo],
   );
+
 
   function handleResetForm(event: React.MouseEvent) {
     event?.preventDefault();
@@ -88,33 +123,34 @@ const CreateHeader: React.FC = () => {
     <>
       <Header />
       <Container>
-        <ul className="">
-          <li className="">
+        <ul>
+          <li>
             <button type="button"
               className={isActiveForm === 0 ? "active": undefined}
               onClick={() => showActiveForm(0)}
-            >Logo</button>
+            >Principal</button>
           </li>
-          <li className="">
+          <li>
             <button type="button"
               className={isActiveForm === 1 ? "active": undefined}
               onClick={() => showActiveForm(1)}
-            >Menu</button>
-          </li>
-          <li className="">
-            <button type="button"
-              className={isActiveForm === 2 ? "active": undefined}
-              onClick={() => showActiveForm(2)}
-            >Button</button>
+            >Secundário</button>
           </li>
         </ul>
         {isActiveForm === 0 &&
           <Form ref={formRef} onSubmit={handleSubmitCreateMenu}>
-            <h1>Cadastrar novo Logo</h1>
+            <h1>Cadastrar | Alterar 4º Secção</h1>
             <span className='subtitle'>preencha o formulário abaixo</span>
 
             <Input name="title" type="text" placeholder='Título' icon={BiText} />
-            <Input name="logo" type="text" placeholder='Logo' icon={FaImage} />
+
+            <Input name="description_one" type="text" placeholder='First Description' icon={BiText} />
+
+            <Input name="image_one" type="file" placeholder='First Image' icon={BiText} onChange={fileSelectedHandlerInputOne} />
+
+            <Input name="description_two" type="text" placeholder='Second Description' icon={BiText} />
+
+            <Input name="image_two" type="file" placeholder='Second Image' icon={BiText} onChange={fileSelectedHandlerInputTwo} />
 
             <FormFooter>
               <Button type="submit">Salvar Registro</Button>
@@ -123,15 +159,14 @@ const CreateHeader: React.FC = () => {
               </CancelButton>
             </FormFooter>
           </Form>
-        || isActiveForm === 1 &&
-          <CreateMenu />
-        /* || isActiveForm === 2 && */
-
-        } 
+          || isActiveForm === 1 &&
+          <CreateSectionCustomers />
+        }
+        
       </Container>
     </>
   );
 }
 
-export default CreateHeader;
+export default createSectionFour;
 

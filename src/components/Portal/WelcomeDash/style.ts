@@ -8,7 +8,7 @@ export const Container = styled.div`
   padding: 1rem;
   margin: 1rem 1rem;
 
-  @media (min-width: 1440px) {
+  @media (max-width: 1440px) {
     width: calc(800px + ((100vw - 1440px) / 2));
   }
   max-width: 100%;
