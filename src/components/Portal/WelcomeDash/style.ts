@@ -17,8 +17,8 @@ export const Container = styled.div`
   min-width: 800px;
   height: 14rem;
 
-  /* Dark Theme/Green */
-  background: #2BEBC8;
+  /* Dark Theme/Blue */
+  background: #2EC5CE;
   border-radius: 8px;
 
   /* Inside auto layout */

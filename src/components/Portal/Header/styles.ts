@@ -24,7 +24,8 @@ export const HeaderPortal = styled.div`
   // justify-content: space-around;
   // align-items: baseline;
   align-items: center;
-  padding-right: 1rem;
+  padding: 0 1rem;
+  /* padding-left: 0.5rem; */
   gap: 1rem;
 
 
