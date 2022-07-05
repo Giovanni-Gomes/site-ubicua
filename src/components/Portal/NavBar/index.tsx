@@ -8,7 +8,8 @@ const NavBar: React.FC<NavBarProps> = ({ children }) => {
   return (
     <Container >
       <ul className='navbar-nav'>
-        <a href="#">{children}</a>
+        <button type='button'>{children}</button>
+        {/* <a href="#">{children}</a> */}
         {/* <Link to="/">{children}</Link> */}
       </ul>
     </Container>

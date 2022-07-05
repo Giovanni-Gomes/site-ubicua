@@ -6,33 +6,40 @@ import logoPortal from '/assets/portal/imgs/logo.svg';
 
 export const Container = styled.nav`
   z-index: 3;
-`
-
-export const HeaderPortal = styled.div`
-  position: absolute;
-  width: 100vw;
-  height: 64px;
+  position: fixed;
   top: 0;
   left: 0;
   right: 0;
+`
+
+export const HeaderPortal = styled.div`
+  // position: absolute;
+  // width: 100vw;
+  // height: 64px;
+  // top: 0;
+  // left: 0;
+  // right: 0;
   background: ${(props: any) => props.theme.navBar};
   display: flex;
-  justify-content: space-around;
-  align-items: baseline;
+  // justify-content: space-around;
+  // align-items: baseline;
+  align-items: center;
+  padding-right: 1rem;
+  gap: 1rem;
 
 
 
 
 
 /* display: flex;
-align-items: center;
-width: 100vw;
-margin: 0 auto;
-padding: 16px 32px;
-position: fixed;
-top: 0;
-left: 0;
-right: 0;
+// align-items: center;
+// width: 100vw;
+// margin: 0 auto;
+// padding: 16px 32px;
+// position: fixed;
+// top: 0;
+// left: 0;
+// right: 0;
 
 > h1 {
   display: flex;
@@ -45,24 +52,30 @@ right: 0;
     font-size: 1.2rem;
   }
   }*/
+
+  > div.wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+  }
 `
-export const LogoPortal = styled.div`
+// export const LogoPortal = styled.div`
 
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: flex-start;
-  padding: 8px 16px;
-  gap: 10px;
+//   display: flex;
+//   // flex-direction: column;
+//   justify-content: center;
+//   // align-items: flex-start;
+//   padding: 8px 16px;
+//   gap: 10px;
 
-  position: absolute;
-  width: 80px;
-  height: 64px;
-  left: 0px;
-  top: 0px;
+//   // position: absolute;
+//   // width: 80px;
+//   // height: 64px;
+//   // left: 0px;
+//   // top: 0px;
 
 
-`
+// `
 
 export const LogoImg = styled.img`
   display: flex;

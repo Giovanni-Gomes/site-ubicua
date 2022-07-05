@@ -7,7 +7,7 @@ export const Container = styled.nav`
 --nav-size: 1rem;
 --border-radius: 8px;
 --speed: 300ms;
-height: var(--nav-size);
+// height: var(--nav-size);
 z-index: 10;
 
 /* --border: 1px solid #474a4d; */
@@ -15,12 +15,22 @@ z-index: 10;
 /* padding: 0 1rem; */
 /* border-bottom: var(--border); */
 
-a {
+// a {
+//   display: flex;
+//   flex-direction: row;
+//   align-items: center;
+//   text-decoration: none;
+//   gap: 0.5rem;
+// }
+
+button {
   display: flex;
   flex-direction: row;
   align-items: center;
   text-decoration: none;
   gap: 0.5rem;
+  background: transparent;
+  border: none;
 }
 
 > .navbar-nav {
@@ -29,12 +39,12 @@ a {
   align-items: center;
 
   /* position: absolute; */
-  height: 4rem;
-  left: 149px;
-  right: 200px;
-  top: 0px;
-  margin-left: 9.31rem;
-  gap: 0.5rem;
+  // height: 4rem;
+  // left: 149px;
+  // right: 200px;
+  // top: 0px;
+  // margin-left: 9.31rem;
+  // gap: 0.5rem;
   /* max-width: 100%;
   height: 100%;
   display: flex;
