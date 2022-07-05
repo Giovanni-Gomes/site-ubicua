@@ -15,7 +15,7 @@ import Button from '../../components/Shared/Button';
 import Header from '../../components/Portal/Header';
 import { CancelButton, Container, FormFooter } from './styles';
 import data from '../../data';
-import CreateSectionTopics from './createSectionTopics';
+import CreateSectionCustomers from './createSectionCustomers';
 
 interface CreateMenuProps {
   title: string;
@@ -24,7 +24,7 @@ interface CreateMenuProps {
   description_two: string;
 }
 
-const CreateSectionTwo: React.FC = () => {
+const createSectionFour: React.FC = () => {
   const formRef = useRef<FormHandles>(null);
   const navigate = useNavigate();
   const { addToast } = useToast();
@@ -37,18 +37,14 @@ const CreateSectionTwo: React.FC = () => {
   function showActiveForm(id: number) {
     setIsActiveForm(id)
   }
-  //const fileInput = useRef(null)
-
 
   const fileSelectedHandlerInputOne = (event: any) => {
-    // handle validations
-    //console.log("img handle one", event.target.files[0]);
+
     setSelectedFile(event.target.files[0])
   }
 
   const fileSelectedHandlerInputTwo = (event: any) => {
-    // handle validations
-    //console.log("img handle two", event.target.files[0]);
+
     setSelectedFileTwo(event.target.files[0])
   }
 
@@ -85,7 +81,7 @@ const CreateSectionTwo: React.FC = () => {
           image_two: selectedFileTwo,
         }
 
-        await api.post('/v1/sectionTwo/create', formData, {
+        await api.post('/v1/sectionFour/create', formData, {
           headers: {
             'Content-Type': 'multipart/form-data'
           }
@@ -143,17 +139,18 @@ const CreateSectionTwo: React.FC = () => {
         </ul>
         {isActiveForm === 0 &&
           <Form ref={formRef} onSubmit={handleSubmitCreateMenu}>
-            <h1>Cadastrar | Alterar 2º Secção</h1>
+            <h1>Cadastrar | Alterar 4º Secção</h1>
             <span className='subtitle'>preencha o formulário abaixo</span>
 
             <Input name="title" type="text" placeholder='Título' icon={BiText} />
+
             <Input name="description_one" type="text" placeholder='First Description' icon={BiText} />
+
             <Input name="image_one" type="file" placeholder='First Image' icon={BiText} onChange={fileSelectedHandlerInputOne} />
 
+            <Input name="description_two" type="text" placeholder='Second Description' icon={BiText} />
 
-            {/* <Input name="description_two" type="text" placeholder='Second Description' icon={BiText} /> */}
-
-            {/* <Input name="image_two" type="file" placeholder='Second Image' icon={BiText} onChange={fileSelectedHandlerInputTwo} /> */}
+            <Input name="image_two" type="file" placeholder='Second Image' icon={BiText} onChange={fileSelectedHandlerInputTwo} />
 
             <FormFooter>
               <Button type="submit">Salvar Registro</Button>
@@ -163,7 +160,7 @@ const CreateSectionTwo: React.FC = () => {
             </FormFooter>
           </Form>
           || isActiveForm === 1 &&
-          <CreateSectionTopics />
+          <CreateSectionCustomers />
         }
         
       </Container>
@@ -171,5 +168,5 @@ const CreateSectionTwo: React.FC = () => {
   );
 }
 
-export default CreateSectionTwo;
+export default createSectionFour;
 

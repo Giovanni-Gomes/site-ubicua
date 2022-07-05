@@ -117,8 +117,8 @@ const createSectionThree: React.FC = () => {
     <>
       <Header />
       <Container>
-        <Form ref={formRef} onSubmit={handleSubmitCreateMenu}>
-          <h1>Cadastrar | Alterar 2º Secção</h1>
+        <Form ref={formRef} onSubmit={handleSubmitCreateMenu} className="simple-form">
+          <h1>Cadastrar | Alterar 3º Secção</h1>
           <span className='subtitle'>preencha o formulário abaixo</span>
 
           <Input name="title" type="text" placeholder='Título' icon={BiText} />
@@ -127,9 +127,9 @@ const createSectionThree: React.FC = () => {
 
           <Input name="image_one" type="file" placeholder='First Image' icon={BiText} onChange={fileSelectedHandlerInputOne} />
 
-          <Input name="description_two" type="text" placeholder='Second Description' icon={BiText} />
+          {/* <Input name="description_two" type="text" placeholder='Second Description' icon={BiText} /> */}
 
-          <Input name="image_two" type="file" placeholder='Second Image' icon={BiText} onChange={fileSelectedHandlerInputTwo} />
+          {/* <Input name="image_two" type="file" placeholder='Second Image' icon={BiText} onChange={fileSelectedHandlerInputTwo} /> */}
 
           <FormFooter>
             <Button type="submit">Salvar Registro</Button>

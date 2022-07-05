@@ -22,7 +22,11 @@ const Dashboard: React.FC = () => {
           <>
             <WelcomeDash />
             <ChartDash />
+          </>
+        } className='WrapperCard' />
 
+        <DashboardSection element={
+          <>
             <Card variant='success' title='69' subtitle='Active Projects' />
 
             <Card variant='black' title='69' subtitle='Active Projects' />
@@ -33,8 +37,11 @@ const Dashboard: React.FC = () => {
             <Card variant='info' title='69' subtitle='Active Projects' />
             <Card variant='danger' title='69' subtitle='Active Projects' />
             <Card variant='white' title='69' subtitle='Active Projects' />
-
-
+          </>
+        } className='card-section' />
+        
+        <DashboardSection element={
+          <>
             <CardProject variant='white' title='Projects Status' subtitle='Updated 37 minutes ago'>
 
 
@@ -93,15 +100,12 @@ const Dashboard: React.FC = () => {
               </TableContainer> */}
 
             </CardProject>
-
-
           </>
-        } className='WrapperCard' />
+        } className='table-section' />
 
 
       </Container>
     </>
-
   );
 }
 

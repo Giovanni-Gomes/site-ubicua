@@ -38,7 +38,7 @@ export const Content = styled.div`
   > header p {
     position: absolute;
     z-index: 1;
-    top: 15rem;
+    top: 10rem;
     left: 15rem;
     margin: 20px 0;
     font-size: 16px;

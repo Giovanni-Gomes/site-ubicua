@@ -1,4 +1,4 @@
-import React, { useCallback, useRef } from 'react';
+import React, { useCallback, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useToast } from '../../components/hooks/provider/toast';
 
@@ -15,6 +15,7 @@ import { FaTrash, FaImage } from 'react-icons/fa';
 import Button from '../../components/Shared/Button';
 import Header from '../../components/Portal/Header';
 import { CancelButton, Container, FormFooter } from './styles';
+import CreateMenu from './createMenu';
 
 interface CreateMenuProps {
   title: string;
@@ -25,6 +26,11 @@ const CreateHeader: React.FC = () => {
   const formRef = useRef<FormHandles>(null);
   const navigate = useNavigate();
   const { addToast } = useToast();
+  const [isActiveForm, setIsActiveForm] = useState(0);
+
+  function showActiveForm(id: number) {
+    setIsActiveForm(id)
+  }
 
   const handleSubmitCreateMenu = useCallback(
     async (data: CreateMenuProps) => {
@@ -82,20 +88,46 @@ const CreateHeader: React.FC = () => {
     <>
       <Header />
       <Container>
-        <Form ref={formRef} onSubmit={handleSubmitCreateMenu}>
-          <h1>Cadastrar novo menu</h1>
-          <span className='subtitle'>preencha o formulário abaixo</span>
+        <ul>
+          <li>
+            <button type="button"
+              className={isActiveForm === 0 ? "active": undefined}
+              onClick={() => showActiveForm(0)}
+            >Logo</button>
+          </li>
+          <li>
+            <button type="button"
+              className={isActiveForm === 1 ? "active": undefined}
+              onClick={() => showActiveForm(1)}
+            >Menu</button>
+          </li>
+          <li>
+            <button type="button"
+              className={isActiveForm === 2 ? "active": undefined}
+              onClick={() => showActiveForm(2)}
+            >Button</button>
+          </li>
+        </ul>
+        {isActiveForm === 0 &&
+          <Form ref={formRef} onSubmit={handleSubmitCreateMenu}>
+            <h1>Cadastrar novo Logo</h1>
+            <span className='subtitle'>preencha o formulário abaixo</span>
 
-          <Input name="title" type="text" placeholder='Título' icon={BiText} />
-          <Input name="logo" type="text" placeholder='Logo' icon={FaImage} />
+            <Input name="title" type="text" placeholder='Título' icon={BiText} />
+            <Input name="logo" type="text" placeholder='Logo' icon={FaImage} />
 
-          <FormFooter>
-            <Button type="submit">Salvar Registro</Button>
-            <CancelButton onClick={handleResetForm}>
-              <FaTrash />
-            </CancelButton>
-          </FormFooter>
-        </Form>
+            <FormFooter>
+              <Button type="submit">Salvar Registro</Button>
+              <CancelButton onClick={handleResetForm}>
+                <FaTrash />
+              </CancelButton>
+            </FormFooter>
+          </Form>
+        || isActiveForm === 1 &&
+          <CreateMenu />
+        /* || isActiveForm === 2 && */
+
+        } 
       </Container>
     </>
   );

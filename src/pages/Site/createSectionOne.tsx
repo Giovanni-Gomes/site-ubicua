@@ -161,7 +161,7 @@ const CreateSectionOne: React.FC = () => {
     <>
       <Header />
       <Container>
-        <Form ref={formRef} onSubmit={handleSubmitCreateMenu}>
+        <Form ref={formRef} onSubmit={handleSubmitCreateMenu} className="simple-form">
           <h1>Cadastrar | Alterar 1º Secção</h1>
           <span className='subtitle'>preencha o formulário abaixo</span>
 
@@ -173,7 +173,7 @@ const CreateSectionOne: React.FC = () => {
             type="file"
             name="image_one" id="image_one" onChange={fileSelectedHandlerInput} /> */}
 
-          <Input name="description_two" type="text" placeholder='Second Description' icon={BiText} />
+          {/* <Input name="description_two" type="text" placeholder='Second Description' icon={BiText} /> */}
           {/* <input
             type="file"
             name="image_one" id="image_two" onChange={(e: any) => setSelectedFile(e.target.files[0])}/> */}

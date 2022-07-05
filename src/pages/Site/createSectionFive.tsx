@@ -24,7 +24,7 @@ interface CreateMenuProps {
   description_two: string;
 }
 
-const CreateSectionTwo: React.FC = () => {
+const createSectionFive: React.FC = () => {
   const formRef = useRef<FormHandles>(null);
   const navigate = useNavigate();
   const { addToast } = useToast();
@@ -37,18 +37,14 @@ const CreateSectionTwo: React.FC = () => {
   function showActiveForm(id: number) {
     setIsActiveForm(id)
   }
-  //const fileInput = useRef(null)
-
 
   const fileSelectedHandlerInputOne = (event: any) => {
-    // handle validations
-    //console.log("img handle one", event.target.files[0]);
+
     setSelectedFile(event.target.files[0])
   }
 
   const fileSelectedHandlerInputTwo = (event: any) => {
-    // handle validations
-    //console.log("img handle two", event.target.files[0]);
+
     setSelectedFileTwo(event.target.files[0])
   }
 
@@ -85,7 +81,7 @@ const CreateSectionTwo: React.FC = () => {
           image_two: selectedFileTwo,
         }
 
-        await api.post('/v1/sectionTwo/create', formData, {
+        await api.post('/v1/sectionFive/create', formData, {
           headers: {
             'Content-Type': 'multipart/form-data'
           }
@@ -143,13 +139,14 @@ const CreateSectionTwo: React.FC = () => {
         </ul>
         {isActiveForm === 0 &&
           <Form ref={formRef} onSubmit={handleSubmitCreateMenu}>
-            <h1>Cadastrar | Alterar 2º Secção</h1>
+            <h1>Cadastrar | Alterar 5º Secção</h1>
             <span className='subtitle'>preencha o formulário abaixo</span>
 
             <Input name="title" type="text" placeholder='Título' icon={BiText} />
-            <Input name="description_one" type="text" placeholder='First Description' icon={BiText} />
-            <Input name="image_one" type="file" placeholder='First Image' icon={BiText} onChange={fileSelectedHandlerInputOne} />
 
+            <Input name="description_one" type="text" placeholder='First Description' icon={BiText} />
+
+            {/* <Input name="image_one" type="file" placeholder='First Image' icon={BiText} onChange={fileSelectedHandlerInputOne} /> */}
 
             {/* <Input name="description_two" type="text" placeholder='Second Description' icon={BiText} /> */}
 
@@ -171,5 +168,5 @@ const CreateSectionTwo: React.FC = () => {
   );
 }
 
-export default CreateSectionTwo;
+export default createSectionFive;
 

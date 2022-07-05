@@ -14,6 +14,9 @@ import CreateMenu from '../pages/Config/createMenu';
 import CreateHeader from '../pages/Config/createHeader';
 import CreateSectionOne from '../pages/Site/createSectionOne';
 import CreateSectionTwo from '../pages/Site/createSectionTwo';
+import CreateSectionThree from '../pages/Site/createSectionThree';
+import CreateSectionFour from '../pages/Site/createSectionFour';
+import CreateSectionFive from '../pages/Site/createSectionFive';
 
 const RoutesPage: React.FC = () => {
   return (
@@ -26,10 +29,13 @@ const RoutesPage: React.FC = () => {
       {/* <Route path='/dashboard' caseSensitive={false} element={<Dashboard />} /> */}
       <Route path="/dashboard" element={<PrivateRoute> <Dashboard /> </PrivateRoute>} />
       <Route path="/create-user" element={<PrivateRoute> <CreateUser /> </PrivateRoute>} />
-      <Route path="/create-menu" element={<PrivateRoute> <CreateMenu /> </PrivateRoute>} />
+      {/* <Route path="/create-menu" element={<PrivateRoute> <CreateMenu /> </PrivateRoute>} /> */}
       <Route path="/create-header" element={<PrivateRoute> <CreateHeader /> </PrivateRoute>} />
       <Route path="/create-section-one" element={<PrivateRoute> <CreateSectionOne /> </PrivateRoute>} />
       <Route path="/create-section-two" element={<PrivateRoute> <CreateSectionTwo /> </PrivateRoute>} />
+      <Route path="/create-section-three" element={<PrivateRoute> <CreateSectionThree /> </PrivateRoute>} />
+      <Route path="/create-section-four" element={<PrivateRoute> <CreateSectionFour /> </PrivateRoute>} />
+      <Route path="/create-section-five" element={<PrivateRoute> <CreateSectionFive /> </PrivateRoute>} />
 
 
     </Routes>

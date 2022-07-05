@@ -78,10 +78,10 @@ export const dropdownItems = [
         name: 'Criar Header',
         link: '/create-header',
       },
-      {
-        name: 'Criar Menus',
-        link: '/create-menu',
-      },
+      // {
+      //   name: 'Criar Menus',
+      //   link: '/create-menu',
+      // },
       {
         name: 'Criar Menus Portal',
         link: '/create-menu',
@@ -93,6 +93,18 @@ export const dropdownItems = [
       {
         name: 'Criar 2º Secção',
         link: '/create-section-two',
+      },
+      {
+        name: 'Criar 3º Secção',
+        link: '/create-section-three',
+      },
+      {
+        name: 'Criar 4º Secção',
+        link: '/create-section-four',
+      },
+      {
+        name: 'Criar 5º Secção',
+        link: '/create-section-five',
       },
     ]
   }

@@ -2,9 +2,7 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
 position: absolute;
-top: 58px;
-width: auto;
-margin: auto;
+top: 50px;
 /* transform: translateX(45%); */
 background: var(--bg);
 border: var(--border);

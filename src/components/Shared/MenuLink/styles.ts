@@ -33,12 +33,12 @@ export const A = styled.a`
     transform: translate3d(0, 0.2em, 0);
   }
 
-  &:focus {
+  /* &:focus {
     border-color: var(--text-color);
     padding: 0 0.5rem;
     border-radius: 4px;
     box-shadow: inset 0 0 0 calc(1px + 0px) var(--text-color);
     outline: 2px solid transparent;
     outline-offset: 2px;
-  }
+  } */
 `;

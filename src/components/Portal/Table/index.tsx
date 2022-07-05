@@ -12,11 +12,11 @@ const TablePortal: React.FC<TableProps> = ({ children, loading }) => {
     return <h2>Loading...</h2>;
   } */
   return (
-    <Container>
+
       <TableCustom>
         {loading ? 'Loading...' : children}
       </TableCustom>
-    </Container>
+
   );
 };
 

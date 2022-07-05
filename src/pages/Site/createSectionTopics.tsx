@@ -15,7 +15,6 @@ import Button from '../../components/Shared/Button';
 import Header from '../../components/Portal/Header';
 import { CancelButton, Container, FormFooter } from './styles';
 import data from '../../data';
-import CreateSectionTopics from './createSectionTopics';
 
 interface CreateMenuProps {
   title: string;
@@ -24,7 +23,7 @@ interface CreateMenuProps {
   description_two: string;
 }
 
-const CreateSectionTwo: React.FC = () => {
+const CreateSectionTopics: React.FC = () => {
   const formRef = useRef<FormHandles>(null);
   const navigate = useNavigate();
   const { addToast } = useToast();
@@ -32,11 +31,6 @@ const CreateSectionTwo: React.FC = () => {
   const [selectedFile, setSelectedFile] = useState('');
   const [selectedFileTwo, setSelectedFileTwo] = useState('');
 
-  const [isActiveForm, setIsActiveForm] = useState(0);
-
-  function showActiveForm(id: number) {
-    setIsActiveForm(id)
-  }
   //const fileInput = useRef(null)
 
 
@@ -84,7 +78,7 @@ const CreateSectionTwo: React.FC = () => {
           description_two: data.description_two,
           image_two: selectedFileTwo,
         }
-
+        
         await api.post('/v1/sectionTwo/create', formData, {
           headers: {
             'Content-Type': 'multipart/form-data'
@@ -124,52 +118,28 @@ const CreateSectionTwo: React.FC = () => {
   }
 
   return (
-    <>
-      <Header />
-      <Container>
-        <ul>
-          <li>
-            <button type="button"
-              className={isActiveForm === 0 ? "active": undefined}
-              onClick={() => showActiveForm(0)}
-            >Principal</button>
-          </li>
-          <li>
-            <button type="button"
-              className={isActiveForm === 1 ? "active": undefined}
-              onClick={() => showActiveForm(1)}
-            >Secundário</button>
-          </li>
-        </ul>
-        {isActiveForm === 0 &&
-          <Form ref={formRef} onSubmit={handleSubmitCreateMenu}>
-            <h1>Cadastrar | Alterar 2º Secção</h1>
-            <span className='subtitle'>preencha o formulário abaixo</span>
+        <Form ref={formRef} onSubmit={handleSubmitCreateMenu}>
+          <h1>Cadastrar Novos Tópicos</h1>
+          <span className='subtitle'>preencha o formulário abaixo</span>
 
-            <Input name="title" type="text" placeholder='Título' icon={BiText} />
-            <Input name="description_one" type="text" placeholder='First Description' icon={BiText} />
-            <Input name="image_one" type="file" placeholder='First Image' icon={BiText} onChange={fileSelectedHandlerInputOne} />
+          <Input name="title" type="text" placeholder='Título' icon={BiText} />
+          <Input name="description_one" type="text" placeholder='First Description' icon={BiText} />
+          <Input name="image_one" type="file" placeholder='First Image' icon={BiText} onChange={fileSelectedHandlerInputOne} />
 
 
-            {/* <Input name="description_two" type="text" placeholder='Second Description' icon={BiText} /> */}
+          {/* <Input name="description_two" type="text" placeholder='Second Description' icon={BiText} /> */}
 
-            {/* <Input name="image_two" type="file" placeholder='Second Image' icon={BiText} onChange={fileSelectedHandlerInputTwo} /> */}
+          {/* <Input name="image_two" type="file" placeholder='Second Image' icon={BiText} onChange={fileSelectedHandlerInputTwo} /> */}
 
-            <FormFooter>
-              <Button type="submit">Salvar Registro</Button>
-              <CancelButton onClick={handleResetForm}>
-                <FaTrash />
-              </CancelButton>
-            </FormFooter>
-          </Form>
-          || isActiveForm === 1 &&
-          <CreateSectionTopics />
-        }
-        
-      </Container>
-    </>
+          <FormFooter>
+            <Button type="submit">Salvar Registro</Button>
+            <CancelButton onClick={handleResetForm}>
+              <FaTrash />
+            </CancelButton>
+          </FormFooter>
+        </Form>
   );
 }
 
-export default CreateSectionTwo;
+export default CreateSectionTopics;
 

@@ -87,27 +87,22 @@ const CreateMenu: React.FC = () => {
   }
 
   return (
-    <>
-      <Header />
-      <Container>
-        <Form ref={formRef} onSubmit={handleSubmitCreateMenu}>
-          <h1>Cadastrar novo menu</h1>
-          <span className='subtitle'>preencha o formulário abaixo</span>
+    <Form ref={formRef} onSubmit={handleSubmitCreateMenu}>
+      <h1>Cadastrar novo menu</h1>
+      <span className='subtitle'>preencha o formulário abaixo</span>
 
-          <Input name="title" type="text" placeholder='Título' icon={BiText} />
-          <Input name="link" type="text" placeholder='Link' icon={BiText} />
-          <Input name="logo" type="text" placeholder='Logo' icon={FaImage} />
-          {/* <Input name="active" type="text" placeholder='Status' icon={GrStatusGood} /> */}
+      <Input name="title" type="text" placeholder='Título' icon={BiText} />
+      <Input name="link" type="text" placeholder='Link' icon={BiText} />
+      <Input name="logo" type="text" placeholder='Logo' icon={FaImage} />
+      {/* <Input name="active" type="text" placeholder='Status' icon={GrStatusGood} /> */}
 
-          <FormFooter>
-            <Button type="submit">Salvar Registro</Button>
-            <CancelButton onClick={handleResetForm}>
-              <FaTrash />
-            </CancelButton>
-          </FormFooter>
-        </Form>
-      </Container>
-    </>
+      <FormFooter>
+        <Button type="submit">Salvar Registro</Button>
+        <CancelButton onClick={handleResetForm}>
+          <FaTrash />
+        </CancelButton>
+      </FormFooter>
+    </Form>
   );
 }
 
