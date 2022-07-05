@@ -88,20 +88,20 @@ const CreateHeader: React.FC = () => {
     <>
       <Header />
       <Container>
-        <ul className="">
-          <li className="">
+        <ul>
+          <li>
             <button type="button"
               className={isActiveForm === 0 ? "active": undefined}
               onClick={() => showActiveForm(0)}
             >Logo</button>
           </li>
-          <li className="">
+          <li>
             <button type="button"
               className={isActiveForm === 1 ? "active": undefined}
               onClick={() => showActiveForm(1)}
             >Menu</button>
           </li>
-          <li className="">
+          <li>
             <button type="button"
               className={isActiveForm === 2 ? "active": undefined}
               onClick={() => showActiveForm(2)}

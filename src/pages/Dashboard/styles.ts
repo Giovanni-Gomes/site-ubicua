@@ -9,12 +9,6 @@ export const Container = styled.div`
   margin: 0 auto;
   height: 100%;
   /* width: 100%; */
-
-  > .WrapperCard {
-    display: flex;
-    /* flex-wrap: wrap; */
-    margin-top: 5rem;
-  }
 `;
 
 
