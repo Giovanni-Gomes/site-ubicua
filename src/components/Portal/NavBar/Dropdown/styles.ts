@@ -3,14 +3,17 @@ import styled from 'styled-components';
 export const Container = styled.div`
 position: absolute;
 top: 58px;
-width: 14rem;
+width: auto;
+margin: auto;
 /* transform: translateX(45%); */
 background: var(--bg);
 border: var(--border);
-border-radius: var(--border-radius);
+border-bottom-left-radius: var(--border-radius);
+border-bottom-right-radius: var(--border-radius);
 padding: 1rem;
 overflow: hidden;
 transition: height var(--speed) ease;
+
 > .menu {
   padding-bottom: 2rem;
 }

@@ -8,7 +8,7 @@ export const Container = styled.nav`
 --border-radius: 8px;
 --speed: 300ms;
 // height: var(--nav-size);
-z-index: 10;
+/* z-index: 10; */
 
 /* --border: 1px solid #474a4d; */
 /* background: var(--bg); */
@@ -24,6 +24,9 @@ z-index: 10;
 // }
 
 button {
+
+  cursor: pointer;
+  padding-left: 2rem;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -31,12 +34,14 @@ button {
   gap: 0.5rem;
   background: transparent;
   border: none;
+
 }
 
 > .navbar-nav {
   display: flex;
   flex-direction: row;
   align-items: center;
+
 
   /* position: absolute; */
   // height: 4rem;
@@ -86,6 +91,7 @@ export const List = styled.ul`
   border-radius: 4px;
   color: #999;
   animation: ${appearFromBottom} 0.2s;
+
 
 
   > li {

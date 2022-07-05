@@ -7,12 +7,15 @@ height: 45px;
 width: 100%;
 display: flex;
 align-items: center;
-border-radius: var(--border-radius);
+border-radius: 1rem;
 transition: var(--speed); //background
-padding: 0.1rem;
+padding: 0.5rem 0.5rem;
+font-size: 16px;
+
 
 &:hover {
   background: ${(props: any) => props.theme.hover};
+
 }
 > .icon-right {
   margin-left: auto;

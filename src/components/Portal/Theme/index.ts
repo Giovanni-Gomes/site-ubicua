@@ -1,3 +1,5 @@
+import { rgba } from "polished"
+
 export const defaultColors = {
   bgPrimary: '#FFFFFF',
   bgSecondary: '#8C30F5',
@@ -12,6 +14,8 @@ export const defaultColors = {
   black: '#0B0D17',
   border: '#BDC4C9',
   login: '#df35e6',
+  hoverLight: rgba(140, 48, 245, 0.5),
+  hoverDark: rgba(46, 197, 206, 0.5),
 }
 
 export const lightTheme = {
@@ -21,7 +25,7 @@ export const lightTheme = {
   navBar: defaultColors.tertiary, // color navibar
   textPrimary: defaultColors.dark,
   textSecondary: defaultColors.secondary,
-  hover: defaultColors.secondary,
+  hover: defaultColors.hoverDark,
 }
 export const darkTheme = {
   body: defaultColors.dark,
@@ -30,5 +34,5 @@ export const darkTheme = {
   navBar: defaultColors.secondary, // color navibar
   textPrimary: defaultColors.primary,
   textSecondary: defaultColors.secondary,
-  hover: defaultColors.quaternary,
+  hover: defaultColors.hoverDark,
 }

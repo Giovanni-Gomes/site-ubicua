@@ -11,7 +11,7 @@ import Avatar from '../Avatar';
 import DropdownMenu from '../DropdownMenu';
 import { darkTheme, lightTheme } from '../Theme';
 
-import { Container, HeaderPortal, LogoImg} from './styles';
+import { Container, HeaderPortal, LogoImg } from './styles';
 
 const Header: React.FC = () => {
   const [darkMode, setDarkMode] = useDarkMode();
@@ -20,10 +20,11 @@ const Header: React.FC = () => {
       <Container>
         <HeaderPortal>
           {/* <LogoPortal> */}
-            <Link to="/dashboard">
-              <FaCloud style={{ color: '#2EC5CE', marginLeft: '1.2rem' }} size={54} />
-            </Link>
-            {/* <LogoImg /> */}
+          <Link to="/dashboard">
+            <FaCloud style={{ color: '#2EC5CE', marginLeft: '1.2rem' }} size={54} />
+          </Link>
+
+          {/* <LogoImg /> */}
           {/* </LogoPortal> */}
           <div className="wrapper">
             <DropdownMenu />
