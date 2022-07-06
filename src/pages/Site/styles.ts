@@ -87,6 +87,7 @@ export const Container = styled.div`
         border-bottom-left-radius: 0rem;
         border-bottom-right-radius: 0rem;
         border: none;
+        cursor: pointer;
 
         font-size: 16px;
         color: var(--color-secondary);

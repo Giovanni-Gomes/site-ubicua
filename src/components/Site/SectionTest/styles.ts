@@ -26,24 +26,32 @@ export const Content = styled.div`
   align-items: center;
   position: relative;
  
-  > header h2 {
+  > header {
     position: absolute;
-    z-index: 1;
     left: 15rem;
     top: 6rem;
+    display: flex;
+    flex-direction: column;
+  }
+
+  > header h2 {
+    /* position: absolute; */
+    z-index: 1;
+    /* left: 15rem;
+    top: 6rem; */
     font-size: var(--heading-font-size);
     color: var(--logo-color);
     max-width: 28rem;
   }
   > header p {
-    position: absolute;
+    /* position: absolute; */
     z-index: 1;
-    top: 10rem;
-    left: 15rem;
+    /* top: 10rem;
+    left: 15rem; */
     margin: 20px 0;
     font-size: 16px;
-    width: 32%;
+    /* width: 32%; */
     color: var(--text-color);
-    /* max-width: 95%; */
+    max-width: 26rem;
   }
 `;

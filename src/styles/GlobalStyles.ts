@@ -32,8 +32,9 @@ export default createGlobalStyle`
 
   body {
     /* background: var(--bg-portal); */
-    color: var(--color-primary);
+    color: #c4c4c4;
     transition: background-color 0.30s ease;
+    -webkit-font-smoothing: antialiased;
   }
 
   *, button, input {

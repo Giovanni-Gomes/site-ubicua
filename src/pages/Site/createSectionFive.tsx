@@ -20,8 +20,6 @@ import CreateSectionTopics from './createSectionTopics';
 interface CreateMenuProps {
   title: string;
   description_one: string;
-  image_one?: string;
-  description_two: string;
 }
 
 const createSectionFive: React.FC = () => {
@@ -63,10 +61,7 @@ const createSectionFive: React.FC = () => {
         const schema = Yup.object().shape({
           title: Yup.string()
             .required('Título é Obrigatório'),
-          description_one: Yup.string(),
-          image_one: Yup.string(),
-          description_two: Yup.string(),
-          image_two: Yup.string(),
+          description_one: Yup.string()
         });
 
         await schema.validate(data, {
@@ -75,17 +70,10 @@ const createSectionFive: React.FC = () => {
 
         const formData = {
           title: data.title,
-          description_one: data.description_one,
-          image_one: selectedFile,
-          description_two: data.description_two,
-          image_two: selectedFileTwo,
+          description_one: data.description_one
         }
 
-        await api.post('/v1/sectionFive/create', formData, {
-          headers: {
-            'Content-Type': 'multipart/form-data'
-          }
-        });
+        await api.post('/v1/sectionFive/create', formData);
 
         navigate('/dashboard');
 

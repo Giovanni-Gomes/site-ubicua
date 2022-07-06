@@ -23,7 +23,7 @@ interface CreateMenuProps {
   description_two: string;
 }
 
-const CreateSectionCustomers: React.FC = () => {
+const CreateCustomers: React.FC = () => {
   const formRef = useRef<FormHandles>(null);
   const navigate = useNavigate();
   const { addToast } = useToast();
@@ -141,5 +141,5 @@ const CreateSectionCustomers: React.FC = () => {
   );
 }
 
-export default CreateSectionCustomers;
+export default CreateCustomers;
 
