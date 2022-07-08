@@ -17,6 +17,8 @@ import CreateSectionTwo from '../pages/Site/createSectionTwo';
 import CreateSectionThree from '../pages/Site/createSectionThree';
 import CreateSectionFour from '../pages/Site/createSectionFour';
 import CreateSectionFive from '../pages/Site/createSectionFive';
+import CreateProject from '../pages/Site/createProject';
+import Project from '../pages/Project';
 
 const RoutesPage: React.FC = () => {
   return (
@@ -36,6 +38,8 @@ const RoutesPage: React.FC = () => {
       <Route path="/create-section-three" element={<PrivateRoute> <CreateSectionThree /> </PrivateRoute>} />
       <Route path="/create-section-four" element={<PrivateRoute> <CreateSectionFour /> </PrivateRoute>} />
       <Route path="/create-section-five" element={<PrivateRoute> <CreateSectionFive /> </PrivateRoute>} />
+      <Route path="/create-project" element={<PrivateRoute> <CreateProject /> </PrivateRoute>} />
+      <Route path="/project" element={<PrivateRoute> <Project /> </PrivateRoute>} />
 
 
     </Routes>

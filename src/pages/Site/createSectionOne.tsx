@@ -20,7 +20,6 @@ interface CreateMenuProps {
   title: string;
   description_one: string;
   image_one?: string;
-  description_two: string;
 }
 
 const CreateSectionOne: React.FC = () => {
@@ -90,8 +89,7 @@ const CreateSectionOne: React.FC = () => {
           title: Yup.string()
             .required('Título é Obrigatório'),
           description_one: Yup.string(),
-          image_one: Yup.string(),
-          description_two: Yup.string(),
+          image_one: Yup.string()
         });
 
         await schema.validate(data, {
@@ -101,8 +99,7 @@ const CreateSectionOne: React.FC = () => {
         const formData = {
           title: data.title,
           description_one: data.description_one,
-          image_one: selectedFile,
-          description_two: data.description_two,
+          image_one: selectedFile
         }
         //console.log("formData", formData);
 

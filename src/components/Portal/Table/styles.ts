@@ -5,7 +5,7 @@ export const Container = styled.div`
 `;
 
 export const TableCustom = styled.table`
-
+  margin-top: 5rem;
   border-collapse: collapse;
   align-items: center;
   width: 100%;
