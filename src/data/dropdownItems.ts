@@ -34,7 +34,7 @@ export const dropdownItems = [
       },
       {
         name: 'Projetos',
-        link: '/create-user',
+        link: '/project',
       },
       {
         name: 'Acompanhamentos',
