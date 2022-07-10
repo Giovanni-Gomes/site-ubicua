@@ -15,7 +15,8 @@ import Button from '../../components/Shared/Button';
 import Header from '../../components/Portal/Header';
 import { CancelButton, Container, FormFooter } from './styles';
 import data from '../../data';
-import CreateSectionCustomers from './createSectionCustomers';
+import CreateCustomers from './createCustomers';
+import CreateTestimonial from './createTestimonial';
 
 interface CreateMenuProps {
   title: string;
@@ -63,10 +64,7 @@ const createSectionFour: React.FC = () => {
         const schema = Yup.object().shape({
           title: Yup.string()
             .required('Título é Obrigatório'),
-          description_one: Yup.string(),
-          image_one: Yup.string(),
-          description_two: Yup.string(),
-          image_two: Yup.string(),
+          description_one: Yup.string()
         });
 
         await schema.validate(data, {
@@ -75,17 +73,10 @@ const createSectionFour: React.FC = () => {
 
         const formData = {
           title: data.title,
-          description_one: data.description_one,
-          image_one: selectedFile,
-          description_two: data.description_two,
-          image_two: selectedFileTwo,
+          description_one: data.description_one
         }
 
-        await api.post('/v1/sectionFour/create', formData, {
-          headers: {
-            'Content-Type': 'multipart/form-data'
-          }
-        });
+        await api.post('/v1/sectionFour/create', formData);
 
         navigate('/dashboard');
 
@@ -136,6 +127,12 @@ const createSectionFour: React.FC = () => {
               onClick={() => showActiveForm(1)}
             >Secundário</button>
           </li>
+          <li>
+            <button type="button"
+              className={isActiveForm === 2 ? "active": undefined}
+              onClick={() => showActiveForm(2)}
+            >Depoimentos</button>
+          </li>
         </ul>
         {isActiveForm === 0 &&
           <Form ref={formRef} onSubmit={handleSubmitCreateMenu}>
@@ -146,11 +143,11 @@ const createSectionFour: React.FC = () => {
 
             <Input name="description_one" type="text" placeholder='First Description' icon={BiText} />
 
-            <Input name="image_one" type="file" placeholder='First Image' icon={BiText} onChange={fileSelectedHandlerInputOne} />
+            {/* <Input name="image_one" type="file" placeholder='First Image' icon={BiText} onChange={fileSelectedHandlerInputOne} /> */}
 
-            <Input name="description_two" type="text" placeholder='Second Description' icon={BiText} />
+            {/* <Input name="description_two" type="text" placeholder='Second Description' icon={BiText} /> */}
 
-            <Input name="image_two" type="file" placeholder='Second Image' icon={BiText} onChange={fileSelectedHandlerInputTwo} />
+            {/* <Input name="image_two" type="file" placeholder='Second Image' icon={BiText} onChange={fileSelectedHandlerInputTwo} /> */}
 
             <FormFooter>
               <Button type="submit">Salvar Registro</Button>
@@ -160,7 +157,9 @@ const createSectionFour: React.FC = () => {
             </FormFooter>
           </Form>
           || isActiveForm === 1 &&
-          <CreateSectionCustomers />
+          <CreateCustomers />
+          || isActiveForm === 2 &&
+          <CreateTestimonial />
         }
         
       </Container>

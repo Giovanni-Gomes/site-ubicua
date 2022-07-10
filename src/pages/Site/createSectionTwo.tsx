@@ -79,17 +79,10 @@ const CreateSectionTwo: React.FC = () => {
 
         const formData = {
           title: data.title,
-          description_one: data.description_one,
-          image_one: selectedFile,
-          description_two: data.description_two,
-          image_two: selectedFileTwo,
+          description_one: data.description_one
         }
 
-        await api.post('/v1/sectionTwo/create', formData, {
-          headers: {
-            'Content-Type': 'multipart/form-data'
-          }
-        });
+        await api.post('/v1/sectionTwo/create', formData);
 
         navigate('/dashboard');
 
@@ -148,11 +141,8 @@ const CreateSectionTwo: React.FC = () => {
 
             <Input name="title" type="text" placeholder='Título' icon={BiText} />
             <Input name="description_one" type="text" placeholder='First Description' icon={BiText} />
-            <Input name="image_one" type="file" placeholder='First Image' icon={BiText} onChange={fileSelectedHandlerInputOne} />
-
-
+            {/* <Input name="image_one" type="file" placeholder='First Image' icon={BiText} onChange={fileSelectedHandlerInputOne} /> */}
             {/* <Input name="description_two" type="text" placeholder='Second Description' icon={BiText} /> */}
-
             {/* <Input name="image_two" type="file" placeholder='Second Image' icon={BiText} onChange={fileSelectedHandlerInputTwo} /> */}
 
             <FormFooter>

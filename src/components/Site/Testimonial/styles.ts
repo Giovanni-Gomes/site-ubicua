@@ -15,9 +15,27 @@ export const Container = styled.div`
   order: 3;
   flex-grow: 0;
   :nth-child(1n) {
-    position: absolute;
+    /* position: absolute; */
     /*background-color: lime;
     margin-top: 6rem; */
+  }
+  
+  > :nth-child(2) {
+    position: absolute;
+    left: 44rem;
+    top: 12rem;
+  }
+
+  > :nth-child(3) {
+    position: absolute;
+    left: 44rem;
+    top: 33rem;
+  }
+
+  > :nth-child(4) {
+    position: absolute;
+    left: 14rem;
+    top: 22rem;
   }
 `;
 
@@ -169,13 +187,13 @@ export const WrapperTestimonial = styled.div`
   gap: 32px; */
   padding: 1.5rem 2rem 0 1.5rem;
 
-  position: absolute;
+  /* position: absolute; */
   width: 27.8rem;
   background: var(--color-primary);
   /* Dark Shadow */
   box-shadow: 0px 10px 20px rgba(41, 41, 42, 0.07);
   border-radius: 8px;
-  &.hubSpot {
+  /* &.hubSpot {
     left: 44rem;
     top: 12rem;
   }
@@ -187,5 +205,5 @@ export const WrapperTestimonial = styled.div`
     left: 14rem;
     top: 22rem;
 
-  }
+  } */
 `
