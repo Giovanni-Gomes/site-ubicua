@@ -24,9 +24,11 @@ const Dashboard: React.FC = () => {
 
   useEffect(() => {
     async function fetchTable() {
-      const resultTable = await api.get('/v1/project/findAll')
+      const response = await api.get('/v1/project/findAll');
 
-      setTable(resultTable.data)
+      const { projects, skip, take, totalPage } = response.data;
+
+      setTable(projects);
     }
 
     fetchTable()

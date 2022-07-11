@@ -1,12 +1,13 @@
 import { ArrowDown } from 'phosphor-react';
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import { Container, AvatarCustom } from './styles';
 
 const Avatar: React.FC = () => {
   return (
     <Container>
-      <AvatarCustom />
+      <Link to='/profile'><AvatarCustom /></Link>
       <ArrowDown />
     </Container>
   );

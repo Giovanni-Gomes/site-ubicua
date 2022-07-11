@@ -38,4 +38,6 @@ export const AvatarCustom = styled.img`
   background: url(${avatarImage});
   background-size: cover;
 
+  cursor: pointer;
+
 `

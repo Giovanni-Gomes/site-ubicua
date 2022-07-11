@@ -14,54 +14,58 @@ interface ITableProject {
 
 const Project: React.FC = () => {
   const [table, setTable] = useState<ITableProject[]>([]);
-  const [skip, setSkip] = useState(0);
-  const [take, setTake] = useState(2);
-  const [count, setCount] = useState(0)
+  const [skiping, setSkiping] = useState(0);
+  const [tanking, setTanking] = useState(2);
+  const [count, setCount] = useState(0);
 
   useEffect(() => {
     async function fetchTable() {
-      const resultTable = await api.get(`/v1/project/findAll`,
+
+      const response = await api.get(`/v1/project/findAll`,
         {
           params:
           {
-            skip,
-            take,
+            skip: skiping,
+            take: tanking,
             totalPage: count
           }
         });
+      const { projects, skip, take, totalPage } = response.data;
 
-      //setTotalPage();
-      setCount(resultTable.data.length);
-      setTable(resultTable.data);
+      setTable(projects);
+      // console.log("skip", skip);
+      // console.log("take", take);
+      // console.log("totalPage", totalPage);
+
+      setCount(totalPage);
     }
     console.log(count);
-    console.log(skip);
-    console.log(table);
+
     fetchTable();
-  }, [skip])
+  }, [skiping])
 
   function skipper(num: number, action: string) {
     if (count > 1) {
       if (action === 'next') {
-        setSkip(num + 2)
+        setSkiping(num + 2)
       } else {
-        if (skip > 1) {
-          setSkip(num - 2)
-        } else if (skip <= 1) {
-          setSkip(0);
+        if (skiping > 1) {
+          setSkiping(num - 2)
+        } else if (skiping <= 1) {
+          setSkiping(0);
         }
       }
     } else {
-      setSkip(0)
+      setSkiping(0)
     }
   }
 
   return (
     <>
       <Header />
-      <TablePortal>
+      <TablePortal style={{ marginTop: '55px' }}>
 
-        <thead>
+        <thead >
           <tr>
             <th>Nome</th>
             <th>Descrição</th>
@@ -78,10 +82,10 @@ const Project: React.FC = () => {
           ))}
         </tbody>
       </TablePortal>
-      <button type='button' onClick={() => skipper(skip, 'back')}>
+      <button type='button' onClick={() => skipper(skiping, 'back')}>
         back
       </button>
-      <button type="button" onClick={() => skipper(skip, 'next')}>
+      <button type="button" onClick={() => skipper(skiping, 'next')}>
         next
       </button>
     </>
