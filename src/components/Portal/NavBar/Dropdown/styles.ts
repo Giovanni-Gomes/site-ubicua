@@ -12,6 +12,7 @@ padding: 1rem;
 overflow: hidden;
 transition: height var(--speed) ease;
 max-width: 100%;
+min-width: 13rem;
 
 > .menu {
   padding-bottom: 2rem;
@@ -27,6 +28,9 @@ max-width: 100%;
     transition: var(--speed); //background
     padding: 0.5rem;
     font-size: 16px;
+    &.expand {
+      justify-content: space-between;
+    }
 
 
     &:hover {
@@ -51,12 +55,12 @@ max-width: 100%;
   position: absolute;
 }
 > .menu-primary-exit-active {
-  transform: translateX(-110%);
+  transform: translateX(-110%); 
   transition: all var(--speed) ease;
 }
 > .menu-secondary-enter {
   position: absolute;
-  transform: translateX(110%);
+  transform: translateX(300%);
 }
 > .menu-secondary-enter-active {
   transform: translateX(0%);
@@ -66,7 +70,7 @@ max-width: 100%;
   position: absolute;
 }
 > .menu-secondary-exit-active {
-  transform: translateX(110%);
-  transition: all var(--speed) ease;
+  transform: translateX(300%);
+  /* transition: all var(--speed) ease; */
 }
 `;
