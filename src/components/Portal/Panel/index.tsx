@@ -7,12 +7,10 @@ interface PanelProps {
 
 export function Panel({ children }: PanelProps) {
   return (
-    <Flex direction="column" h="100vh">
-      <Flex w="100%" maxWidth="auto" mt={60}>
-        <SimpleGrid flex="3" gap="780" minChildWidth="240px" alignItems="flex-start">
-          {children}
-        </SimpleGrid>
-      </Flex>
+    <Flex maxWidth="1440px" mt={60} mx='auto' w='100%' h="100%" bg='var(--bg-portal)'>
+      <SimpleGrid flex="3" bg='#EFF6FF' m='2rem' borderRadius='1rem'>
+        {children}
+      </SimpleGrid>
     </Flex>
   )
 }
