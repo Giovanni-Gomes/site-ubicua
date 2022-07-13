@@ -28,10 +28,10 @@ interface AuthContextData {
 const AuthContext = createContext<AuthContextData>({} as AuthContextData);
 
 type AuthProps = {
-  children: React.ReactNode; // 👈️ type children
+  children?: JSX.Element;//React.ReactNode; // 👈️ type children
 };
 
-const AuthProvider: React.FC = ({ children }: any) => {
+const AuthProvider = (props: AuthProps) => { //const AuthProvider: React.FC = (props: AuthProps) =>
   const [data, setData] = useState<AuthState>(() => {
     const token = localStorage.getItem('@portalubicua:token');
     const user = localStorage.getItem('@portalubicua:user');
@@ -86,7 +86,7 @@ const AuthProvider: React.FC = ({ children }: any) => {
     <AuthContext.Provider
       value={{ user: data.user, signIn, signOut, updateUser }}
     >
-      {children}
+      {props.children}
     </AuthContext.Provider>
   );
 };
