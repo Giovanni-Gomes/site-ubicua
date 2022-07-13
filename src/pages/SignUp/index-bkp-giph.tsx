@@ -27,7 +27,7 @@ const SignUp: React.FC = () => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [active, setActive] = useState(true)
-  const [type_user_id, setType_user_id] = useState('d6e46846-7688-4a81-b0f4-8c57037d2029')
+  const [type_user, setType_user] = useState('')
 
   //const fetchGifs = (offset: number) => giphyFetch.trending({ offset, limit: 10 })
   let navigate = useNavigate();
@@ -40,7 +40,7 @@ const SignUp: React.FC = () => {
       email,
       password,
       active,
-      type_user_id
+      type_user
     });
   }
 

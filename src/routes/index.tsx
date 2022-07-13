@@ -17,9 +17,9 @@ import CreateSectionTwo from '../pages/Site/createSectionTwo';
 import CreateSectionThree from '../pages/Site/createSectionThree';
 import CreateSectionFour from '../pages/Site/createSectionFour';
 import CreateSectionFive from '../pages/Site/createSectionFive';
-import CreateProject from '../pages/Site/createProject';
 import Project from '../pages/Project';
 import Profile from '../pages/Profile';
+import CreateProject from '../pages/Project/createProject';
 
 const RoutesPage: React.FC = () => {
   return (
