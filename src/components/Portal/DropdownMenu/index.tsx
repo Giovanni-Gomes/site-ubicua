@@ -9,8 +9,8 @@ import NavItems from '../NavBar/NavItems';
 const DropdownMenu: React.FC = () => {
   return (
     <NavBar>
-      {dropdownItems.map((di, key) => (
-        <NavItems key={key} icon={<ChatTeardropDots />} title={di.title}>
+      {dropdownItems.map(di => (
+        <NavItems key={di.title} icon={<ChatTeardropDots />} title={di.title}>
           <Dropdown subtitle={di.subtitles} />
         </NavItems>
       ))}

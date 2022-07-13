@@ -1,6 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { CSSTransition } from 'react-transition-group';
-import DropdownItems from '../DropdownItems';
 import { Container } from './styles';
 
 interface DropdownProps {
@@ -27,8 +26,17 @@ const Dropdown: React.FC<DropdownProps> = ({ subtitle }) => {
       <CSSTransition in={activeMenu === 'main'} unmountOnExit timeout={500} classNames="menu-primary" onEnter={calcHeight}>
         <div className="menu">
           {subtitle.map((sb, key) => (
-            <DropdownItems href={sb.link} key={key}>{sb.name}</DropdownItems>
+            sb.link ?
+              <a href={sb.link} key={key}>{sb.name}</a>
+              : <button onClick={() => setActiveMenu(sb.name)}>{sb.name}</button>
           ))}
+        </div>
+      </CSSTransition>
+      <CSSTransition in={activeMenu === 'Acompanhamentos'} unmountOnExit timeout={500} classNames="menu-secondary" onEnter={calcHeight}>
+        <div className="menu">
+          <button onClick={() => setActiveMenu('main')}>Voltar</button>
+          <a href="/programm">Programação</a>
+          <a href="/programm">Programação</a>
         </div>
       </CSSTransition>
     </Container>
