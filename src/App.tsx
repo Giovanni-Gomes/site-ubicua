@@ -2,26 +2,30 @@ import GlobalStyles from "./styles/GlobalStyles";
 import { BrowserRouter } from "react-router-dom";
 import Routes from "./routes";
 import AppProvider from "./components/hooks/provider";
-import useDarkMode from "./components/hooks/useDarkmode";
-import { ThemeProvider } from "styled-components";
-import { darkTheme, lightTheme } from "./components/Portal/Theme";
+
+
+import { ReactQueryDevtools } from 'react-query/devtools';
+import { QueryClientProvider } from 'react-query';
+import { queryClient } from "./services/queryClient";
+
 
 export function App() {
-  const [darkMode] = useDarkMode();
-
   return (
     <>
-      <BrowserRouter>
+      <QueryClientProvider client={queryClient}>
+        <BrowserRouter>
 
-        {/* <ThemeProvider theme={darkMode ? darkTheme : lightTheme}> */}
-        <AppProvider>
-          <Routes />
-        </AppProvider>
+          <AppProvider>
+
+            <Routes />
+
+          </AppProvider>
 
 
-        <GlobalStyles />
-        {/* </ThemeProvider> */}
-      </BrowserRouter>
+          <GlobalStyles />
+        </BrowserRouter>
+        <ReactQueryDevtools />
+      </QueryClientProvider>
     </>
   )
 }
