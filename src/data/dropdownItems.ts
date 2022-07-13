@@ -38,7 +38,20 @@ export const dropdownItems = [
       },
       {
         name: 'Acompanhamentos',
-        link: '/create-user',
+        subtitles: [
+          {
+            name: 'Programação',
+            link: '/programm',
+          },
+          {
+            name: 'Produção',
+            link: '/production',
+          },
+          {
+            name: 'Medição',
+            link: '/medicao',
+          }
+        ]
       },
     ]
   },

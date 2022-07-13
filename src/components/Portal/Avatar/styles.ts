@@ -1,30 +1,18 @@
 import styled from 'styled-components';
 
-import avatarImage from '/assets/portal/imgs/image.svg';
+
 
 export const Container = styled.div`
   display: flex;
-  flex-direction: row;
-  justify-content: center;
   align-items: center;
-  padding: 0px;
-
-  // position: absolute;
-  width: 76px;
-  height: 40px;
-  // right: 2rem;
-  // top: 12px;
+  gap: 0.5rem;
+  cursor: pointer;
 `;
 
 export const AvatarCustom = styled.img`
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
   padding: 0px;
-  gap: 10px;
+  margin-top: 5px;
   border-radius: 50%;
-
   width: 50px;
   height: 50px;
 
@@ -35,9 +23,8 @@ export const AvatarCustom = styled.img`
   flex-grow: 0;
 
   flex: 1;
-  background: url(${avatarImage});
-  background-size: cover;
 
-  cursor: pointer;
+
+
 
 `

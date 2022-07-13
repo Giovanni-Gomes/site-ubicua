@@ -11,9 +11,32 @@ border-bottom-right-radius: var(--border-radius);
 padding: 1rem;
 overflow: hidden;
 transition: height var(--speed) ease;
+max-width: 100%;
 
 > .menu {
   padding-bottom: 2rem;
+
+  > a, button {
+    text-decoration: none;
+    color: ${(props: any) => props.theme.textPrimary};
+    height: 50px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    border-radius: 1rem;
+    transition: var(--speed); //background
+    padding: 0.5rem;
+    font-size: 16px;
+
+
+    &:hover {
+      background: ${(props: any) => props.theme.hover};
+
+    }
+    > .icon-right {
+      margin-left: auto;
+    }
+  }
 }
 
 > .menu-primary-enter {
