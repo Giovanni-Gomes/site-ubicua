@@ -38,7 +38,7 @@ export default createGlobalStyle`
   }
 
   *, button, input {
-      font-family: 'Poppins', 'Roboto', sans-serif;
+      font-family: 'Poppins', sans-serif;
   }
 
 
