@@ -1,3 +1,4 @@
+import { CaretLeft, CaretRight } from 'phosphor-react';
 import React, { useEffect, useRef, useState } from 'react';
 import { CSSTransition } from 'react-transition-group';
 import { Container } from './styles';
@@ -18,7 +19,7 @@ const Dropdown: React.FC<DropdownProps> = ({ subtitle }) => {
 
   function calcHeight(el: any) {
     const height = el.offsetHeight;
-    setMenuHeight(height + 20);
+    setMenuHeight(height);
   }
 
   return (
@@ -28,15 +29,25 @@ const Dropdown: React.FC<DropdownProps> = ({ subtitle }) => {
           {subtitle.map((sb, key) => (
             sb.link ?
               <a href={sb.link} key={key}>{sb.name}</a>
-              : <button onClick={() => setActiveMenu(sb.name)}>{sb.name}</button>
+              : <button className='expand' onClick={() => setActiveMenu(sb.name)}>{sb.name}<CaretRight size={18} /> </button>
           ))}
         </div>
       </CSSTransition>
       <CSSTransition in={activeMenu === 'Acompanhamentos'} unmountOnExit timeout={500} classNames="menu-secondary" onEnter={calcHeight}>
         <div className="menu">
-          <button onClick={() => setActiveMenu('main')}>Voltar</button>
+          <button onClick={() => setActiveMenu('main')}><CaretLeft size={18} />Voltar</button>
           <a href="/programm">Programação</a>
           <a href="/programm">Programação</a>
+        </div>
+      </CSSTransition>
+      <CSSTransition in={activeMenu === 'Secções'} unmountOnExit timeout={500} classNames="menu-secondary" onEnter={calcHeight}>
+        <div className="menu">
+          <button onClick={() => setActiveMenu('main')}><CaretLeft size={18} />Voltar</button>
+          <a href="/create-section-one">Criar 1º Secção</a>
+          <a href="/create-section-two">Criar 2º Secção</a>
+          <a href="/create-section-three">Criar 3º Secção</a>
+          <a href="/create-section-four">Criar 4º Secção</a>
+          <a href="/create-section-five">Criar 5º Secção</a>
         </div>
       </CSSTransition>
     </Container>

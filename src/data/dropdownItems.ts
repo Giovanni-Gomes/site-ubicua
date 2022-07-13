@@ -100,25 +100,30 @@ export const dropdownItems = [
         link: '/create-menu',
       },
       {
-        name: 'Criar 1º Secção',
-        link: '/create-section-one',
-      },
-      {
-        name: 'Criar 2º Secção',
-        link: '/create-section-two',
-      },
-      {
-        name: 'Criar 3º Secção',
-        link: '/create-section-three',
-      },
-      {
-        name: 'Criar 4º Secção',
-        link: '/create-section-four',
-      },
-      {
-        name: 'Criar 5º Secção',
-        link: '/create-section-five',
-      },
+        name: 'Secções',
+        subtitles: [
+          {
+            name: 'Criar 1º Secção',
+            link: '/create-section-one',
+          },
+          {
+            name: 'Criar 2º Secção',
+            link: '/create-section-two',
+          },
+          {
+            name: 'Criar 3º Secção',
+            link: '/create-section-three',
+          },
+          {
+            name: 'Criar 4º Secção',
+            link: '/create-section-four',
+          },
+          {
+            name: 'Criar 5º Secção',
+            link: '/create-section-five',
+          },
+        ]
+      }
     ]
   }
 ]

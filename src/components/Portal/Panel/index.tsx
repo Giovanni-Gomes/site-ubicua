@@ -8,7 +8,7 @@ interface PanelProps {
 export function Panel({ children }: PanelProps) {
   return (
     <Flex direction="column" h="100vh">
-      <Flex w="95%" maxWidth="auto" mt={60}>
+      <Flex w="100%" maxWidth="auto" mt={60}>
         <SimpleGrid flex="3" gap="780" minChildWidth="240px" alignItems="flex-start">
           {children}
         </SimpleGrid>
