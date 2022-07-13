@@ -1,4 +1,5 @@
 
+import { Button, useColorMode } from '@chakra-ui/react';
 import { size } from 'polished';
 import React from 'react';
 import { FaCloud } from 'react-icons/fa';
@@ -15,6 +16,7 @@ import { Container, HeaderPortal, LogoImg } from './styles';
 
 const Header: React.FC = () => {
   const [darkMode, setDarkMode] = useDarkMode();
+  const { colorMode, toggleColorMode } = useColorMode()
   return (
     <ThemeProvider theme={darkMode ? darkTheme : lightTheme}>
       <Container>
@@ -23,6 +25,9 @@ const Header: React.FC = () => {
           <Link to="/dashboard">
             <FaCloud style={{ color: '#2EC5CE', marginLeft: '1.2rem' }} size={54} />
           </Link>
+          <Button onClick={toggleColorMode}>
+            Toggle {colorMode === 'light' ? 'Dark' : 'Light'}
+          </Button>
 
           {/* <LogoImg /> */}
           {/* </LogoPortal> */}

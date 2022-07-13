@@ -13,8 +13,10 @@ import { BiText } from 'react-icons/bi';
 import { FaTrash, FaImage } from 'react-icons/fa';
 import Button from '../../components/Shared/Button';
 import Header from '../../components/Portal/Header';
-import { CancelButton, Container, FormFooter } from './styles';
+
 import { Loading } from '../../components/Site/WidgetForm/Loading';
+import { Badge, Box, Image } from '@chakra-ui/react';
+import BoxForms from '../../components/Portal/BoxForms';
 
 interface CreateMenuProps {
   title: string;
@@ -59,7 +61,7 @@ const CreateProject: React.FC = () => {
           negotiated_value: data.negotiated,
           date_start: data.date
         }
-       
+
 
         setIsSendingFeedback(true);
 
@@ -100,36 +102,26 @@ const CreateProject: React.FC = () => {
     formRef.current?.reset();
   }
 
+  const property = {
+    imageUrl: 'https://bit.ly/2Z4KKcF',
+    imageAlt: 'Rear view of modern home with pool',
+    beds: 3,
+    baths: 2,
+    title: 'Modern home in city center in the heart of historic Los Angeles',
+    formattedPrice: '$1,900.00',
+    reviewCount: 34,
+    rating: 4,
+  }
+
   return (
     <>
       <Header />
-      <Container>
-        <Form ref={formRef} onSubmit={handleSubmitCreateMenu} className="simple-form">
-          <h1>Criar Novo Projeto</h1>
-          <span className='subtitle'>preencha o formulário abaixo</span>
-
-          <Input name="title" type="text" placeholder='Título' icon={BiText} onChange={event => setTitle(event.target.value)} />
-          <Input name="description" type="text" placeholder='Descrição' icon={BiText} />
-          <Input name="progress" type="text" placeholder='Progresso' icon={BiText}  />
-          <Input name="date" type="date"   />
-          <Input name="negotiated" type="text" placeholder='Valor negociado' icon={BiText}  />
-
-
-          <FormFooter>
-            <Button
-              type="submit"
-              disabled={title.length === 0 || isSendingFeedback}
-              className="submit"
-            >
-              {isSendingFeedback ? <Loading /> : 'Salvar Registro'}
-            </Button>
-
-            <CancelButton onClick={handleResetForm}>
-              <FaTrash />
-            </CancelButton>
-          </FormFooter>
-        </Form>
-      </Container>
+      <BoxForms title='Create a new Projects'>
+        <span>Olá tudo bem</span>
+        <span>Olá tudo bem</span>
+        <span>Olá tudo bem</span>
+        <span>Olá tudo bem</span>
+      </BoxForms>
     </>
   );
 }

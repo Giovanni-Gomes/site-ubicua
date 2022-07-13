@@ -20,7 +20,7 @@ interface SignUpProps {
   email: string;
   password: string;
   active?: boolean;
-  type_user_id: string;
+  type_user?: string;
 }
 
 
@@ -54,8 +54,7 @@ const SignUp: React.FC = () => {
           name: data.name,
           email: data.email,
           password: data.password,
-          active: data.active,
-          type_user_id: 'd6e46846-7688-4a81-b0f4-8c57037d2029'
+          active: data.active
         });
 
         navigate('/login');

@@ -28,10 +28,7 @@ interface ITableProject {
 
 const Dashboard: React.FC = () => {
   const [table, setTable] = useState<ITableProject[]>([])
-  const [darkMode, setDarkMode] = useDarkMode();
-
-
-
+  //const [darkMode, setDarkMode] = useDarkMode(); // comentado pois passamos a usar a chakra
   useEffect(() => {
     async function fetchTable() {
       const response = await api.get('/v1/project/findAll');
@@ -46,59 +43,57 @@ const Dashboard: React.FC = () => {
 
   return (
     <>
-      <ChakraProvider resetCSS theme={darkMode ? darkTheme : lightTheme} >
-        <Header />
+      <Header /> {/* resetCSS theme={darkMode ? darkTheme : lightTheme} */}
 
-        <Container>
+      <Container>
+        <DashboardSection element={
+          <>
+            <WelcomeDash />
+            <ChartDash />
+          </>
+        } className='WrapperCard' />
 
-          <DashboardSection element={
-            <>
-              <WelcomeDash />
-              <ChartDash />
-            </>
-          } className='WrapperCard' />
+        <DashboardSection element={
+          <>
+            <Card variant='success' title='69' subtitle='Active Projects' />
 
-          <DashboardSection element={
-            <>
-              <Card variant='success' title='69' subtitle='Active Projects' />
+            <Card variant='black' title='69' subtitle='Active Projects' />
+            <Card variant='danger' title='69' subtitle='Active Projects' />
+            <Card variant='white' title='69' subtitle='Active Projects' />
 
-              <Card variant='black' title='69' subtitle='Active Projects' />
-              <Card variant='danger' title='69' subtitle='Active Projects' />
-              <Card variant='white' title='69' subtitle='Active Projects' />
+            <Card variant='success' title='69' subtitle='Active Projects' />
+            <Card variant='info' title='69' subtitle='Active Projects' />
+            <Card variant='danger' title='69' subtitle='Active Projects' />
+            <Card variant='white' title='69' subtitle='Active Projects' />
+          </>
+        } className='card-section' />
 
-              <Card variant='success' title='69' subtitle='Active Projects' />
-              <Card variant='info' title='69' subtitle='Active Projects' />
-              <Card variant='danger' title='69' subtitle='Active Projects' />
-              <Card variant='white' title='69' subtitle='Active Projects' />
-            </>
-          } className='card-section' />
-
-          <DashboardSection element={
-            <>
-              <CardProject variant='white' title='Projects Status' subtitle='Updated 37 minutes ago'>
+        <DashboardSection element={
+          <>
+            <CardProject variant='white' title='Projects Status' subtitle='Updated 37 minutes ago'>
 
 
-                <TablePortal>
-                  <thead>
-                    <tr>
-                      <th>Nome</th>
-                      <th>Descrição</th>
-                      <th>Progresso</th>
+              <TablePortal>
+                <thead>
+                  <tr>
+                    <th>Nome</th>
+                    <th>Descrição</th>
+                    <th>Progresso</th>
+                  </tr>
+                </thead>
+
+                <tbody>
+                  {table.map(data => (
+                    <tr key={data.id}>
+                      <td>{data.name}</td>
+                      <td>{data.description}</td>
+                      <td>{data.progress}</td>
                     </tr>
-                  </thead>
+                  ))}
+                </tbody>
 
-                  <tbody>
-                    {table.map(data => (
-                      <tr key={data.id}>
-                        <td>{data.name}</td>
-                        <td>{data.description}</td>
-                        <td>{data.progress}</td>
-                      </tr>
-                    ))}
-                  </tbody>
-
-                </TablePortal>
-                {/* <TableContainer>
+              </TablePortal>
+              {/* <TableContainer>
                 <table>
                   <thead>
                     <tr>
@@ -126,13 +121,13 @@ const Dashboard: React.FC = () => {
                 </table>
               </TableContainer> */}
 
-              </CardProject>
-            </>
-          } className='table-section' />
+            </CardProject>
+          </>
+        } className='table-section' />
 
 
-        </Container>
-      </ChakraProvider>
+      </Container>
+
     </>
   );
 }

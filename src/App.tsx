@@ -7,24 +7,26 @@ import AppProvider from "./components/hooks/provider";
 import { ReactQueryDevtools } from 'react-query/devtools';
 import { QueryClientProvider } from 'react-query';
 import { queryClient } from "./services/queryClient";
-
+import { ChakraProvider } from "@chakra-ui/react";
 
 export function App() {
   return (
     <>
       <QueryClientProvider client={queryClient}>
-        <BrowserRouter>
+        {/* qualquer coisa voltar para a página Dashboard */}
+        <ChakraProvider resetCSS>
 
-          <AppProvider>
+          <BrowserRouter>
 
-            <Routes />
+            <AppProvider>
+              <Routes />
+            </AppProvider>
 
-          </AppProvider>
 
-
-          <GlobalStyles />
-        </BrowserRouter>
-        <ReactQueryDevtools />
+            <GlobalStyles />
+          </BrowserRouter>
+          <ReactQueryDevtools />
+        </ChakraProvider>
       </QueryClientProvider>
     </>
   )
