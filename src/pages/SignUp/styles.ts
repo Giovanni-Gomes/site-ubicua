@@ -4,9 +4,9 @@ import { shade } from 'polished';
 import signUpBackgroundImg from '/assets/backgrounds/register.svg';
 
 export const Container = styled.div`
-  position: absolute;
+  /* position: absolute;
   top: 0px;
-  left: 0px;
+  left: 0px; */
   width: 100%;
   height: 100%;
   display: flex;

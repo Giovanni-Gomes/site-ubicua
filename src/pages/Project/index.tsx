@@ -1,11 +1,12 @@
-import { Box, Flex, Heading, Link, Spacer, Spinner, Table, Tbody, Td, Text, Th, Thead, Tr } from '@chakra-ui/react';
-import { DotsThree, Pencil, Trash } from 'phosphor-react';
-import React, { useState } from 'react';
+import { Box, Button, Flex, Heading, Link, Spacer, Spinner, Table, Tbody, Td, Text, Th, Thead, Tr } from '@chakra-ui/react';
+import { ArrowLeft, ArrowRight, DotsThree, Pencil, Trash } from 'phosphor-react';
+import React, { useEffect, useRef, useState } from 'react';
 import Header from '../../components/Portal/Header';
+import { Pagination } from '../../components/Portal/Pagination';
 import { Panel } from '../../components/Portal/Panel';
 import api from '../../services/api';
 import { queryClient } from "../../services/queryClient";
-import { useProjects } from './useProjects';
+import { deleteProject, useProjects } from './useProjects';
 
 interface ITableProject {
   id: string;
@@ -17,13 +18,12 @@ interface ITableProject {
 const Project: React.FC = () => {
 
   const [page, setPage] = useState(1);
-  const { data, isLoading, isFetching, error } = useProjects(page);
+  const [take, setTake] = useState(10);
+  const { data, isLoading, isFetching, error } = useProjects(page, take);
 
-  // const [moreText, setMoreText] = useState(false);
 
   // const [table, setTable] = useState<ITableProject[]>([]);
   // const [skiping, setSkiping] = useState(0);
-  // const [tanking, setTanking] = useState(2);
   // const [count, setCount] = useState(0);
 
   // useEffect(() => {
@@ -34,8 +34,7 @@ const Project: React.FC = () => {
   //         params:
   //         {
   //           skip: skiping,
-  //           take: tanking,
-  //           totalPage: count
+  //           take: 2,
   //         }
   //       });
   //     const { projects, skip, take, totalPage } = response.data;
@@ -52,7 +51,21 @@ const Project: React.FC = () => {
   //   fetchTable();
   // }, [skiping]);
 
-
+  // function skipper(num: number, action: string) {
+  //   if (count > 1) {
+  //     if (action === 'next') {
+  //       setSkiping(num + 2)
+  //     } else {
+  //       if (skiping > 1) {
+  //         setSkiping(num - 2)
+  //       } else if (skiping <= 1) {
+  //         setSkiping(0);
+  //       }
+  //     }
+  //   } else {
+  //     return skiping;
+  //   }
+  // }
 
   async function handlePrefetchProject(projectId: string) {
     await queryClient.prefetchQuery(['projects', projectId], async () => {
@@ -64,14 +77,18 @@ const Project: React.FC = () => {
     });
   }
 
+  useRef
+
+  useEffect(() => { }, [])
+
 
   return (
     <>
       <Header />
       <Panel>
-        <Flex m='2rem 5rem' justify="space-between" align="center" >
-          <Heading size="md" fontWeight="normal">
-            <Text style={{ color: "red", alignItems: "center" }}>List to projects</Text>
+        <Flex m='xs' justify="space-between" align="center">
+          <Heading size="lg" justifyContent="center" fontWeight=" normal" p={['4']}>
+            <Text>List to projects</Text>
             {!isLoading && isFetching && (
               <Spinner size="sm" color="gray.500" ml="4" />
             )}
@@ -88,13 +105,20 @@ const Project: React.FC = () => {
           </Flex>
         ) : (
           <>
-            <Table m='5rem' p='1rem' color='black' border=' 1px solid'>
+            <Table variant='striped' color='black'>
               <Thead>
                 <Tr>
                   <Th>Nome</Th>
-                  <Th> Descrição</Th>
+                  <Th>Desc</Th>
+                  <Th>Ativo</Th>
+                  <Th>Início</Th>
+                  <Th>Finalização</Th>
                   <Th>Progresso</Th>
-                  <Th>Editar / Excluir</Th>
+                  <Th>Valor Negociado</Th>
+                  <Th>Custo Real</Th>
+                  <Th>Status</Th>
+                  <Th>Usuário</Th>
+                  <Th>#</Th>
                 </Tr>
               </Thead>
               <Tbody>
@@ -115,17 +139,38 @@ const Project: React.FC = () => {
                         </Box> */}
                       </Flex>
                     </Td>
-                    <Td paddingTop="2" paddingBottom="2" minW='5rem'>
+                    <Td paddingTop="2" paddingBottom="2">
+                      <Text>{project.active}</Text>
+                    </Td>
+                    <Td paddingTop="2" paddingBottom="2">
+                      {project.date_start}
+                    </Td>
+                    <Td paddingTop="2" paddingBottom="2">
+                      <Text>{project.date_end}</Text>
+                    </Td>
+                    <Td paddingTop="2" paddingBottom="2">
                       <Text>{project.progress}</Text>
                     </Td>
+                    <Td paddingTop="2" paddingBottom="2">
+                      <Text>{project.negotiated_value}</Text>
+                    </Td>
+                    <Td paddingTop="2" paddingBottom="2">
+                      <Text>{project.real_cost}</Text>
+                    </Td>
+                    <Td paddingTop="2" paddingBottom="2">
+                      <Text>{project.status.name}</Text>
+                    </Td>
+                    <Td paddingTop="2" paddingBottom="2">
+                      <Text>{project.user.name}</Text>
+                    </Td>
                     <Td paddingTop="2" paddingBottom="2" maxW='1rem'>
-                      <Flex justify='center' align='center' gap='4'>
-                        <Box as='button' bg='blue' color='white' border='none' borderRadius='50%' p='0.3rem' cursor='pointer' w='30px' h='30px'>
+                      <Flex justify='center' align='center' gap='1'>
+                        <Link href={`/update-project/${project.id}`} bg='blue' color='white' textDecoration='none' borderRadius='50%' p='0.3rem' cursor='pointer' w='100px' h='30px'>
                           <Pencil size={20} />
-                        </Box>
-                        <Box as='button' bg='red' color='white' border='none' borderRadius='50%' p='0.3rem' cursor='pointer' w='30px' h='30px'>
+                        </Link>
+                        <Button onClick={() => deleteProject(project.id)} bg='red' color='white' border='none' borderRadius='50%' p='0.3rem' cursor='pointer' w='20px' h='30px'>
                           <Trash size={20} />
-                        </Box>
+                        </Button>
                       </Flex>
                     </Td>
 
@@ -141,7 +186,20 @@ const Project: React.FC = () => {
                 /> */}
           </>
         )}
-
+        <Pagination
+          registersPerPage={take}
+          totalCountOfRegisters={data?.totalPage}
+          currentPage={page}
+          onPageChange={setPage}
+        />
+        {/* <Flex justify="center">
+          <Button onClick={() => skipper(skiping, 'back')}>
+            <ArrowLeft />
+          </Button>
+          <Button onClick={() => skipper(skiping, 'next')}>
+            <ArrowRight />
+          </Button>
+        </Flex> */}
       </Panel >
 
     </>

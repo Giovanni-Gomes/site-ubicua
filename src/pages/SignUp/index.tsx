@@ -14,6 +14,7 @@ import { useAuth } from '../../components/hooks/provider/auth';
 import { useToast } from '../../components/hooks/provider/toast';
 import api from '../../services/api';
 import { FiArrowLeft, FiLock, FiMail, FiUser } from 'react-icons/fi';
+import { Flex } from '@chakra-ui/react';
 
 interface SignUpProps {
   name: string;
@@ -86,38 +87,27 @@ const SignUp: React.FC = () => {
 
 
   return (
-    <Container>
+    <AnimationContainer>
+      <Form ref={formRef} onSubmit={handleSubmitRegister}>
+        <h1 >Registre-se</h1>
+        <span className='subtitle'>preencha o formulário abaixo</span>
 
-      <Content>
-        <AnimationContainer>
-          <Form ref={formRef} onSubmit={handleSubmitRegister}>
-            <h1 >Registre-se</h1>
-            <span className='subtitle'>preencha o formulário abaixo</span>
+        <Input name="name" type="text" placeholder='Nome' icon={FiUser} />
+        <Input name="email" type="email" placeholder='E-mail' icon={FiMail} />
+        <Input name="password" type="password" placeholder='Senha' icon={FiLock} />
 
-            <Input name="name" type="text" placeholder='Nome' icon={FiUser} />
-            <Input name="email" type="email" placeholder='E-mail' icon={FiMail} />
-            <Input name="password" type="password" placeholder='Senha' icon={FiLock} />
+        <Button type="submit">Registrar</Button>
 
-            <Button type="submit">Registrar</Button>
+        <span className='terms'>
+          Esta página está sujeita à Política de privacidade e aos Termos de serviço.
+        </span>
+      </Form>
+      <Link to="/login">
+        <FiArrowLeft />
+        Voltar para o Login
+      </Link>
 
-            <span className='terms'>
-              Esta página está sujeita à Política de privacidade e aos Termos de serviço.
-            </span>
-          </Form>
-          <Link to="/login">
-            <FiArrowLeft />
-            Voltar para o Login
-          </Link>
-
-        </AnimationContainer>
-
-      </Content>
-      {/* <CarouselDemo /> */}
-
-
-      {/* <SignInGiphy /> */}
-      {/* <Grid width={200} columns={3} fetchGifs={fetchGifs} /> */}
-    </Container>
+    </AnimationContainer>
   );
 }
 
