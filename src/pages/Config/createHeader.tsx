@@ -91,21 +91,21 @@ const CreateHeader: React.FC = () => {
         <ul>
           <li>
             <button type="button"
-              className={isActiveForm === 0 ? "active": undefined}
+              className={isActiveForm === 0 ? "active" : undefined}
               onClick={() => showActiveForm(0)}
             >Logo</button>
           </li>
           <li>
             <button type="button"
-              className={isActiveForm === 1 ? "active": undefined}
+              className={isActiveForm === 1 ? "active" : undefined}
               onClick={() => showActiveForm(1)}
             >Menu</button>
           </li>
           <li>
             <button type="button"
-              className={isActiveForm === 2 ? "active": undefined}
+              className={isActiveForm === 2 ? "active" : undefined}
               onClick={() => showActiveForm(2)}
-            >Button</button>
+            >Botões</button>
           </li>
         </ul>
         {isActiveForm === 0 &&
@@ -123,11 +123,11 @@ const CreateHeader: React.FC = () => {
               </CancelButton>
             </FormFooter>
           </Form>
-        || isActiveForm === 1 &&
+          || isActiveForm === 1 &&
           <CreateMenu />
-        /* || isActiveForm === 2 && */
+          /* || isActiveForm === 2 && */
 
-        } 
+        }
       </Container>
     </>
   );
