@@ -8,15 +8,15 @@ import { Form } from '@unform/web';
 import * as Yup from 'yup';
 
 import api from '../../services/api';
-import Input from '../../components/Shared/Input';
+
 import { BiText } from 'react-icons/bi';
 import { FaTrash, FaImage } from 'react-icons/fa';
 import Button from '../../components/Shared/Button';
 import Header from '../../components/Portal/Header';
 
-import { Loading } from '../../components/Site/WidgetForm/Loading';
-import { Badge, Box, Image } from '@chakra-ui/react';
+import { Badge, Box, Grid, GridItem, Image, Input } from '@chakra-ui/react';
 import BoxForms from '../../components/Portal/BoxForms';
+
 
 interface CreateMenuProps {
   title: string;
@@ -117,10 +117,22 @@ const CreateProject: React.FC = () => {
     <>
       <Header />
       <BoxForms title='Create a new Projects'>
-        <span>Olá tudo bem</span>
-        <span>Olá tudo bem</span>
-        <span>Olá tudo bem</span>
-        <span>Olá tudo bem</span>
+
+        <Grid templateColumns='repeat(2, 1fr)' gap={6}>
+          <GridItem w='100%' h='10'>
+            {/* <Input name="email" type="email" placeholder="Email" />
+            <Input name="teste" type="text" placeholder="Teste" />
+            <Input name="ola" type="text" placeholder="teste" /> */}
+
+            <span>Olá tudo bem</span>
+            <Input name='email' type="email" placeholder="e-mail" variant='flushed' size='lg' backgroundColor="#ec7474" />
+          </GridItem>
+          <GridItem w='100%' h='10' bg='blue.500'>
+            <span>Olá tudo bem</span>
+          </GridItem>
+        </Grid>
+
+
       </BoxForms>
     </>
   );
