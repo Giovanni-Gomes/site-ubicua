@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, Table, Tbody, Td, Text, Tr } from '@chakra-ui/react';
+import { Box, Container, Table, Tbody, Td, Text, Tr } from '@chakra-ui/react';
 
 interface BoxProps {
   title?: string;
@@ -7,27 +7,11 @@ interface BoxProps {
 }
 
 const BoxForms: React.FC<BoxProps> = ({ title, children }) => {
-  console.log(title);
   return (
-    <Box maxW='lg' mt={70} mx={'auto'} border='10rem solid' borderWidth='10px' borderRadius='1rem' overflow='hidden' w={700} bg={'red'}>
-      {/* <Text fontSize='lg' bg={'green'}>{title}</Text> */}
-      <Table variant='striped'>
-        <Tbody>
-          <Tr>
-            <Td>text</Td>
-          </Tr>
-          <Tr>
-            <Td>text</Td>
-          </Tr>
-          <Tr>
-            <Td>text</Td>
-          </Tr>
-
-        </Tbody>
-      </Table>
-
+    <Container maxW='90%' maxH={700} h={520} mt={70} bg='var(--bg-portal)' color='white' borderRadius={8}>
+      <Text fontSize='xl' align='center' p={[3]} color='var(--bg-dark)'>{title}</Text>
       {children}
-    </Box>
+    </Container>
   );
 }
 

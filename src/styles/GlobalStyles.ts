@@ -4,7 +4,7 @@ export default createGlobalStyle`
   :root {
     --bg-primary: #FFFFFF;
     --bg-secondary: #8C30F5;
-    --bg-portal: '#EFF6FF',
+    --bg-portal: #EFF6FF;
 
     --bg-dark: #232323;
 

@@ -16,7 +16,7 @@ export const Container = styled.div`
   &:first-of-type {
     margin-top: 6rem;
   }
-  
+
   form {
     /* position: absolute; */
     /* align-items: center; */
@@ -38,7 +38,7 @@ export const Container = styled.div`
     &.simple-form {
       border-top-left-radius: 1rem;
     }
-    background: #EFF6FF;//${(props: any) => props.theme.textSecondary};
+    background: var(--bg-portal); //#EFF6FF;//${(props: any) => props.theme.textSecondary};
 
     h1 {
       margin-bottom: 0.5rem;
@@ -61,7 +61,7 @@ export const Container = styled.div`
       }
     }
 
-    
+
 
   }
 
@@ -71,16 +71,16 @@ export const Container = styled.div`
 
     li {
       /* position: relative; */
-      
+
       /* &:nth-child(2) {
         left: 4.5rem;
       }
-      
+
       &:nth-child(3) {
         left: 9.375rem;
       } */
 
-      button { 
+      button {
         /* position: absolute; */
         padding: 0 1rem;
         border-radius: 0.5rem;

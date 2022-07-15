@@ -8,7 +8,6 @@ const Avatar: React.FC = () => {
   return (
     <Container>
       <Link to='/profile'><AvatarCustom src={avatarImage} /></Link>
-      <ArrowDown />
     </Container>
   );
 }
