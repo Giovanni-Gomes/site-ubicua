@@ -13,6 +13,7 @@ import { AnimationContainer, Container, Content, Background } from './styles';
 import { useAuth } from '../../components/hooks/provider/auth';
 import { useToast } from '../../components/hooks/provider/toast';
 import { FiLock, FiLogIn, FiMail } from 'react-icons/fi';
+import { Flex } from '@chakra-ui/react';
 
 interface SignInFormData {
   email: string;
@@ -76,8 +77,8 @@ const SignIn: React.FC = () => {
   );
 
   return (
-    <Container>
-      <Content>
+    <Flex w='100%' h='100vh'>
+      <Flex direction='column' flex='1 1 0%' align='center' justify='center'>
         <AnimationContainer>
           <Form ref={formRef} onSubmit={handleSubmitLogin}>
             <h1>Faça Login</h1>
@@ -96,10 +97,10 @@ const SignIn: React.FC = () => {
           </Link>
         </AnimationContainer>
 
-      </Content>
+      </Flex>
       <Background />
 
-    </Container>
+    </Flex>
   );
 }
 

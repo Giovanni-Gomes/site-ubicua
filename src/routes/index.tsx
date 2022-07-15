@@ -20,6 +20,7 @@ import CreateSectionFive from '../pages/Site/createSectionFive';
 import Project from '../pages/Project';
 import Profile from '../pages/Profile';
 import CreateProject from '../pages/Project/createProject';
+import UpdateProject from '../pages/Project/updateProject';
 
 const RoutesPage: React.FC = () => {
   return (
@@ -40,6 +41,7 @@ const RoutesPage: React.FC = () => {
       <Route path="/create-section-four" element={<PrivateRoute> <CreateSectionFour /> </PrivateRoute>} />
       <Route path="/create-section-five" element={<PrivateRoute> <CreateSectionFive /> </PrivateRoute>} />
       <Route path="/create-project" element={<PrivateRoute> <CreateProject /> </PrivateRoute>} />
+      <Route path="/update-project/:id" element={<PrivateRoute> <UpdateProject /> </PrivateRoute>} />
       <Route path="/project" element={<PrivateRoute> <Project /> </PrivateRoute>} />
       <Route path="/profile" element={<PrivateRoute> <Profile /> </PrivateRoute>} />
 
