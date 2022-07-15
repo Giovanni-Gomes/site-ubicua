@@ -11,7 +11,7 @@ export const Container = styled.div`
 
 export const AvatarCustom = styled.img`
   padding: 0px;
-  margin-top: 5px;
+  /* margin-top: 5px; */
   border-radius: 50%;
   width: 50px;
   height: 50px;

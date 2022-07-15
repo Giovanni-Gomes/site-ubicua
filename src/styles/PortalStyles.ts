@@ -41,8 +41,7 @@ export default createGlobalStyle`
 
   *, button, input {
     font-family: 'Poppins', sans-serif;
-    /* font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif; */
-    /* color: ${(props: any) => props.theme.hover}; */
+
   }
 
 

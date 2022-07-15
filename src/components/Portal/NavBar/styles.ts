@@ -25,6 +25,7 @@ export const Container = styled.nav`
 
 button {
   cursor: pointer;
+  padding-top: 0.4rem;
   padding-left: 2rem;
   display: flex;
   flex-direction: row;
@@ -41,7 +42,7 @@ button {
   flex-direction: row;
   align-items: center;
 
-  
+
   /* position: absolute; */
   // height: 4rem;
   // left: 149px;
@@ -94,9 +95,8 @@ export const List = styled.ul`
 
 
   > li {
-    padding: 0.5rem 1rem;
+    /* padding: 0.5rem 1rem; */
     /* border-bottom: 1px solid #999; */
-
     &:first-child{
       padding-top: 0;
     }
@@ -106,7 +106,7 @@ export const List = styled.ul`
     }
 
     &:hover {
-      /* opacity: 0.5; */
+
       background: #333;
     }
   }
