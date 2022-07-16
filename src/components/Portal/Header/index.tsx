@@ -1,5 +1,5 @@
 
-import { Button, Input, useColorMode } from '@chakra-ui/react';
+import { Button, Flex, Input, useColorMode } from '@chakra-ui/react';
 import { padding, size } from 'polished';
 import React from 'react';
 import { FaCloud } from 'react-icons/fa';
@@ -14,6 +14,7 @@ import { darkTheme, lightTheme } from '../Theme';
 import { Switch } from '@chakra-ui/react';
 
 import { Container, HeaderPortal, LogoImg } from './styles';
+import LogoPortal from '../LogoPortal';
 
 const Header: React.FC = () => {
   const [darkMode, setDarkMode] = useDarkMode();
@@ -23,18 +24,15 @@ const Header: React.FC = () => {
       <Container>
         <HeaderPortal>
           {/* <LogoPortal> */}
-          <Link to="/dashboard">
-            <FaCloud style={{ color: '#2EC5CE', marginLeft: '1.2rem' }} size={54} />
-          </Link>
-          <FaCloud style={{ color: '#c1f7fa', marginLeft: '-3.0rem', paddingTop: '0.4rem' }} size={52} />
+          <LogoPortal />
 
-          <div className="wrapper">
+          <Flex justify='space-between' w='100%' ml='30px'>
             <DropdownMenu />
             <Button onClick={toggleColorMode} mt={1.5} bg={'#8C30F5'}>
               {colorMode === 'light' ? '☀' : '☾'}
             </Button>
             {/* <Toggle darkMode={darkMode} setDarkMode={setDarkMode} /> */}
-          </div>
+          </Flex>
 
           <Avatar />
 

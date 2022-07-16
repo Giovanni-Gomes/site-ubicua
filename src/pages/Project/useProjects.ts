@@ -3,7 +3,7 @@ import api from "../../services/api";
 import { queryClient } from "../../services/queryClient";
 
 
-type Project = {
+export type Project = {
   id: string;
   name: string;
   description: string;
@@ -25,6 +25,10 @@ type Project = {
 type GetProjectResponse = {
   totalPage: number;
   projects: Project[];
+};
+
+export type GetOneProjectResponse = {
+  project: Project[];
 };
 
 export async function getProjects(page: number, take: number): Promise<GetProjectResponse> {
@@ -83,6 +87,11 @@ export async function getProjects(page: number, take: number): Promise<GetProjec
   };
 }
 
+export async function getOneProjectById(id: string): Promise<GetOneProjectResponse> {
+  const project = await api.get(`/v1/project/findOne/${id}`);
+  return project.data
+}
+
 export async function deleteProject(id: string) {
   await api.delete(`/v1/project/delete/${id}`);
 }
@@ -93,5 +102,20 @@ export function useProjects(page: number, take: number) {
   //   staleTime: 1000 * 60 * 10, // 1000 * 60 * 10 10 minutes // 1000 * 60 * 60 * 12, // 12 hours,
   // });
 }
+
+export function useProject(id?: string) {
+  if (id) {
+    return useQuery(['project'], () => getOneProjectById(id));
+  } else {
+    return null
+  }
+
+  // return useQuery(['projects', page], () => getProjects(page, take), {
+  //   staleTime: 1000 * 60 * 10, // 1000 * 60 * 10 10 minutes // 1000 * 60 * 60 * 12, // 12 hours,
+  // });
+}
+
+
+
 
 

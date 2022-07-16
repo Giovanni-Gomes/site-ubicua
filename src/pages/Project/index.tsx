@@ -7,6 +7,7 @@ import { Panel } from '../../components/Portal/Panel';
 import api from '../../services/api';
 import { queryClient } from "../../services/queryClient";
 import { deleteProject, useProjects } from './useProjects';
+import { Link as RouterLink } from 'react-router-dom'
 
 interface ITableProject {
   id: string;
@@ -93,6 +94,9 @@ const Project: React.FC = () => {
               <Spinner size="sm" color="gray.500" ml="4" />
             )}
           </Heading>
+          <RouterLink to={'/create-project'} style={{ margin: '2rem', background: '#43cd00', padding: '0.5rem', borderRadius: '0.5rem' }}>
+            Criar Novo Projeto
+          </RouterLink>
         </Flex>
 
         {isLoading ? (
@@ -105,7 +109,7 @@ const Project: React.FC = () => {
           </Flex>
         ) : (
           <>
-            <Table variant='striped' color='black'>
+            <Table variant='striped' color='black' w='98%'>
               <Thead>
                 <Tr>
                   <Th>Nome</Th>
@@ -165,9 +169,9 @@ const Project: React.FC = () => {
                     </Td>
                     <Td paddingTop="2" paddingBottom="2" maxW='1rem'>
                       <Flex justify='center' align='center' gap='1'>
-                        <Link href={`/update-project/${project.id}`} bg='blue' color='white' textDecoration='none' borderRadius='50%' p='0.3rem' cursor='pointer' w='100px' h='30px'>
+                        <RouterLink to={`/update-project/${project.id}`} style={{ background: '#3838ef', padding: '0.3rem 0.5rem', borderRadius: '50%', color: 'white' }}>
                           <Pencil size={20} />
-                        </Link>
+                        </RouterLink>
                         <Button onClick={() => deleteProject(project.id)} bg='red' color='white' border='none' borderRadius='50%' p='0.3rem' cursor='pointer' w='20px' h='30px'>
                           <Trash size={20} />
                         </Button>
