@@ -1,5 +1,5 @@
-import { Box, Button, Flex, Heading, Link, Spacer, Spinner, Table, Tbody, Td, Text, Th, Thead, Tr } from '@chakra-ui/react';
-import { ArrowLeft, ArrowRight, DotsThree, Pencil, Trash } from 'phosphor-react';
+import { Box, Button, Flex, Heading, Input, Link, Spacer, Spinner, Table, Tbody, Td, Text, Th, Thead, Tr, useColorModeValue } from '@chakra-ui/react';
+import { ArrowLeft, ArrowRight, DotsThree, Pencil, PencilCircle, PencilLine, PencilSimple, PencilSimpleLine, Trash, TrashSimple } from 'phosphor-react';
 import React, { useEffect, useRef, useState } from 'react';
 import Header from '../../components/Portal/Header';
 import { Pagination } from '../../components/Portal/Pagination';
@@ -7,7 +7,10 @@ import { Panel } from '../../components/Portal/Panel';
 import api from '../../services/api';
 import { queryClient } from "../../services/queryClient";
 import { deleteProject, useProjects } from './useProjects';
-import { Link as RouterLink } from 'react-router-dom'
+import { Link as RouterLink } from 'react-router-dom';
+import { FaFileImport, FaPlus } from 'react-icons/fa';
+import { FiArrowLeft, FiArrowRight } from 'react-icons/fi';
+
 
 interface ITableProject {
   id: string;
@@ -17,6 +20,8 @@ interface ITableProject {
 }
 
 const Project: React.FC = () => {
+  //style colors customTheme
+  const bg = useColorModeValue('hoverDark', 'hoverLight');
 
   const [page, setPage] = useState(1);
   const [take, setTake] = useState(10);
@@ -86,18 +91,37 @@ const Project: React.FC = () => {
   return (
     <>
       <Header />
-      <Panel>
-        <Flex m='xs' justify="space-between" align="center">
-          <Heading size="lg" justifyContent="center" fontWeight=" normal" p={['4']}>
-            <Text>List to projects</Text>
-            {!isLoading && isFetching && (
-              <Spinner size="sm" color="gray.500" ml="4" />
-            )}
-          </Heading>
-          <RouterLink to={'/create-project'} style={{ margin: '2rem', background: '#43cd00', padding: '0.5rem', borderRadius: '0.5rem' }}>
-            Criar Novo Projeto
-          </RouterLink>
+      <Panel title="List Projects">
+        <Flex>
+          <Flex flex={1} justify="left" align="center">
+            <Flex justifyContent="space-between" borderRadius={10}>
+              <Link as={RouterLink} to="/dashboard" bg={bg} mr={1} p={2} borderRadius={10}>
+                <FiArrowLeft />
+              </Link>
+              <Link as={RouterLink} to="/dashboard" bg={bg} mr={1} p={2} borderRadius={10}>
+                <FiArrowRight />
+              </Link>
+            </Flex>
+            <Input maxW={250} placeholder='search' size='sm' name="search" borderRadius={20} color='tomato' _placeholder={{ opacity: 0.6, color: 'gray.600' }} backgroundColor={bg} focusBorderColor={bg} />
+          </Flex>
+
+          {!isLoading && isFetching && (
+            <Spinner size="sm" color="gray.500" ml="4" />
+          )}
+
+          <Flex flex={1} justify="right" align="center">
+            <Flex borderRadius={10}>
+
+              <Link as={RouterLink} to={'/import'} bg={bg} mr={1} p={2} borderRadius={10}>
+                <FaFileImport />
+              </Link>
+              <Link as={RouterLink} to={'/create-project'} bg={bg} mr={1} p={2} borderRadius={10}>
+                <FaPlus />
+              </Link>
+            </Flex>
+          </Flex>
         </Flex>
+
 
         {isLoading ? (
           <Flex py="10" justify="center">
@@ -109,33 +133,33 @@ const Project: React.FC = () => {
           </Flex>
         ) : (
           <>
-            <Table variant='striped' color='black' w='98%'>
-              <Thead>
+            <Table variant='simple' color='black' mt={2} >
+              <Thead >
                 <Tr>
                   <Th>Nome</Th>
                   <Th>Desc</Th>
                   <Th>Ativo</Th>
                   <Th>Início</Th>
-                  <Th>Finalização</Th>
+                  <Th>Fim</Th>
                   <Th>Progresso</Th>
-                  <Th>Valor Negociado</Th>
-                  <Th>Custo Real</Th>
+                  <Th>R$</Th>
+                  <Th>$CR</Th>
                   <Th>Status</Th>
-                  <Th>Usuário</Th>
+                  <Th>Resp</Th>
                   <Th>#</Th>
                 </Tr>
               </Thead>
-              <Tbody>
+              <Tbody >
                 {data?.projects.map(project => (
                   <Tr key={project.id}>
-                    <Td paddingTop="2" paddingBottom="2" minW='5rem'>
+                    <Td paddingTop="2" paddingBottom="2" minW='8rem'>
                       <Box>
                         <Link onMouseEnter={() => handlePrefetchProject(project.id)}>
                           <Text fontWeight="bold">{project.name}</Text>
                         </Link>
                       </Box>
                     </Td>
-                    <Td paddingTop="2" paddingBottom="2" maxW='10rem'>
+                    <Td paddingTop="2" paddingBottom="2" maxW='8rem'>
                       <Flex justify='space-between' align='center'>
                         <Text noOfLines={1}>{project.description}</Text>
                         {/* <Box as='button' border='none' bg='transparent' cursor='pointer' onClick={}>
@@ -169,11 +193,11 @@ const Project: React.FC = () => {
                     </Td>
                     <Td paddingTop="2" paddingBottom="2" maxW='1rem'>
                       <Flex justify='center' align='center' gap='1'>
-                        <RouterLink to={`/update-project/${project.id}`} style={{ background: '#3838ef', padding: '0.3rem 0.5rem', borderRadius: '50%', color: 'white' }}>
-                          <Pencil size={20} />
+                        <RouterLink to={`/update-project/${project.id}`} >
+                          <PencilSimpleLine size={24} />
                         </RouterLink>
-                        <Button onClick={() => deleteProject(project.id)} bg='red' color='white' border='none' borderRadius='50%' p='0.3rem' cursor='pointer' w='20px' h='30px'>
-                          <Trash size={20} />
+                        <Button onClick={() => deleteProject(project.id)} p={0}>
+                          <TrashSimple size={24} color='#c53030' />
                         </Button>
                       </Flex>
                     </Td>
@@ -183,11 +207,7 @@ const Project: React.FC = () => {
               </Tbody>
             </Table>
 
-            {/* <Pagination
-                  totalCountOfRegisters={data.totalCount}
-                  currentPage={page}
-                  onPageChange={setPage}
-                /> */}
+
           </>
         )}
         <Pagination
@@ -196,14 +216,7 @@ const Project: React.FC = () => {
           currentPage={page}
           onPageChange={setPage}
         />
-        {/* <Flex justify="center">
-          <Button onClick={() => skipper(skiping, 'back')}>
-            <ArrowLeft />
-          </Button>
-          <Button onClick={() => skipper(skiping, 'next')}>
-            <ArrowRight />
-          </Button>
-        </Flex> */}
+
       </Panel >
 
     </>

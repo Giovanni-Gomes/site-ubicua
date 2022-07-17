@@ -1,7 +1,7 @@
 import { createGlobalStyle } from "styled-components"
 
 export default createGlobalStyle`
-  :root {
+  /* :root {
     --bg-primary: #FFFFFF;
     --bg-secondary: #8C30F5;
     --bg-portal: '#EFF6FF',
@@ -42,7 +42,7 @@ export default createGlobalStyle`
   *, button, input {
     font-family: 'Poppins', sans-serif;
 
-  }
+  } */
 
 
 `;

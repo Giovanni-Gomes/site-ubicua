@@ -19,7 +19,7 @@ const CardProject: React.FC<CardProps> = ({ variant, title, subtitle, children }
           {title}
         </Title>
         {subtitle ? <Subtitle>{subtitle}</Subtitle> : null}
-        <CardToolbar><a href="#">History</a></CardToolbar>
+        {/* <CardToolbar><a href="#">History</a></CardToolbar> */}
 
       </CardHeader>
       <CardContent>

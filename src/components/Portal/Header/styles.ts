@@ -3,6 +3,9 @@ import { FaCloud } from 'react-icons/fa';
 
 import logoPortal from '/assets/portal/imgs/logo.svg';
 
+type props = {
+  bg: string;
+}
 
 export const Container = styled.nav`
   z-index: 3;

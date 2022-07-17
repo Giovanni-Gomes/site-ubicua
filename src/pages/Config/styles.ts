@@ -16,7 +16,7 @@ export const Container = styled.div`
   &:first-of-type {
     margin-top: 6rem;
   }
-  
+
   form {
     /* position: absolute; */
     /* align-items: center; */
@@ -58,7 +58,7 @@ export const Container = styled.div`
       }
     }
 
-    
+
 
   }
 
@@ -68,16 +68,16 @@ export const Container = styled.div`
 
     li {
       /* position: relative; */
-      
+
       /* &:nth-child(2) {
         left: 4.5rem;
       }
-      
+
       &:nth-child(3) {
         left: 9.375rem;
       } */
 
-      button { 
+      button {
         /* position: absolute; */
         padding: 0 1rem;
         border-radius: 0.5rem;
@@ -117,6 +117,7 @@ export const FormFooter = styled.div`
   align-items: right;
   /* background-color: red; */
   justify-content: space-between;
+  margin-top: 1rem;
 
   Button {
 

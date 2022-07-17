@@ -11,6 +11,7 @@ export const Container = styled.div<ContainerProps>`
   background: var(--color-primary);
   border-radius: 10px;
   padding: 16px;
+  margin-bottom: 0.1rem;
   width: 100%;
   border: 2px solid var(--color-secondary);
   color: #666360;
@@ -33,10 +34,16 @@ export const Container = styled.div<ContainerProps>`
   display: flex;
   align-items: center;
   & + div {
+    margin-top: 18px;
+  }
+
+  & + label {
     margin-top: 8px;
   }
+
   input {
     flex: 1;
+
     background: transparent;
     border: 0;
     color: var(--color-secondary);

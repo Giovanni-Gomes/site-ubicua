@@ -7,7 +7,9 @@ import { ReactQueryDevtools } from 'react-query/devtools';
 import { QueryClientProvider } from 'react-query';
 import { queryClient } from "./services/queryClient";
 
-import { ChakraProvider } from "@chakra-ui/react";
+import { ChakraProvider, ColorModeScript } from "@chakra-ui/react";
+import { newTheme } from "./components/Portal/Theme";
+
 // import { extendTheme } from "@chakra-ui/react";
 // import { theme } from "./styles/theme";
 
@@ -15,8 +17,8 @@ export function App() {
   return (
     <>
       <QueryClientProvider client={queryClient}>
-        {/* qualquer coisa voltar para a página Dashboard */}
-        <ChakraProvider resetCSS>
+
+        <ChakraProvider resetCSS theme={newTheme}>
 
           <BrowserRouter>
 
