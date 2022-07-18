@@ -14,7 +14,7 @@ import { FaTrash, FaImage, FaFileImport, FaPlus, FaFile, FaSave } from 'react-ic
 import Button from '../../components/Shared/Button';
 import Header from '../../components/Portal/Header';
 
-import { Badge, Box, Flex, FormControl, FormErrorMessage, FormHelperText, FormLabel, Grid, GridItem, HStack, Image, Input as InputChakra, Link, NumberDecrementStepper, NumberIncrementStepper, NumberInput, NumberInputField, NumberInputStepper, Radio as RadioChackara, RadioGroup, Textarea, useColorModeValue } from '@chakra-ui/react';
+import { Badge, Box, Flex, FormControl, FormErrorMessage, FormHelperText, FormLabel, Grid, GridItem, HStack, Image, Input as InputChakra, Link, NumberDecrementStepper, NumberIncrementStepper, NumberInput, NumberInputField, NumberInputStepper, Radio, RadioGroup, Textarea, useColorModeValue } from '@chakra-ui/react';
 import BoxForms from '../../components/Portal/BoxForms';
 import { Panel } from '../../components/Portal/Panel';
 import { FiArrowLeft, FiArrowRight } from 'react-icons/fi';
@@ -23,22 +23,27 @@ import { CancelButton, FormFooter } from '../Config/styles';
 import { IconBaseProps } from 'react-icons';
 
 import Input from '../../components/Shared/Input';
-import Radio from '../../components/Shared/Radio';
-import { Loading } from '../../components/Site/WidgetForm/Loading';
 
 interface CreateProjectProps {
   id: string;
   name: string;
   description: string;
-  active?: boolean;
-  start: Date;
-  end: Date;
+  active: boolean;
+  date_start: Date;
+  date_end: Date;
   progress: string;
   negotiated: string;
   real_cost: string;
   status_id: string;
   user_id: string;
 }
+
+
+// interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
+//   name: string;
+//   containerStyle?: object;
+//   icon?: React.ComponentType<IconBaseProps>;
+// }
 
 const CreateProject: React.FC = () => {
   //style colors customTheme
@@ -47,26 +52,84 @@ const CreateProject: React.FC = () => {
   const { addToast } = useToast();
 
   // formRef
+  const inputRef = useRef(null);
+  const emailRef = useRef(null);
   const formRef = useRef<FormHandles>(null);
-  const [isSendingProject, setIsSendingProject] = useState(false);
+
+  console.log("formRef current", formRef.current?.getData);
+  //const name = (e: any) => e.target.getAttribbute("name");
+  //const [name, setName] = useState('')
+
+  //const handleInputChange = (e: any) => setName(e.target.value)
+
+  //const isError = name === ''
+
+
+
+
+
+  // if (inputRef.current?.name != null) {
+
+  //   const { fieldName, defaultValue, error, registerField } = useField(inputRef.current?.name);
+
+  //   console.log("inputRef value", inputRef.current?.value);
+  //   console.log("emailRef value", emailRef.current?.value);
+  //   console.log("fieldName", fieldName);
+
+
+  //   useEffect(() => {
+  //     registerField({
+  //       name: fieldName,
+  //       ref: inputRef?.current,
+  //       path: 'value'
+  //     });
+  //   }, [fieldName, registerField])
+  // }
+  //console.log("inputRef", inputRef.current?.value);
+  // console.log("fieldName", fieldName);
+
+
+  //const [input, setInput] = useState('');
+  //  const [name, setName] = useState('');
+
+
+
+
+
+  //const isError = input === ''
+  //console.log("input", input);
+  //console.log("formRef", formRef.current?.getData);
+  //console.log("input", (e: any) => setInput(e.target.value));
+
 
 
   const handleSubmitCreateProject = useCallback(
     async (data: CreateProjectProps) => {
       try {
+        //console.log("data", data);
+        //console.log("formRef", inputRef.current?.value);
+        //console.log("email", emailRef.current?.value);
+
+        //setName(data.name);
+        //setName(e.target.value);
+
 
         formRef.current?.setErrors({});
+        // data.name = inputRef.current?.value;
+        // data.user_id = emailRef.current?.value;
+        console.log(data.name)
+
 
         const schema = Yup.object().shape({
           id: Yup.string(),
           name: Yup.string()
             .required('Nome do Projeto é Obrigatório'),
-          description: Yup.string().required('Descrição é obrigatório'),
-          start: Yup.string(), //Yup.date().required('Data é obrigatório'),
-          end: Yup.string(), //Yup.date().required('Data é obrigatório'),
-          progress: Yup.string().required('Progresso é obrigatório'),
+          description: Yup.string(),
+          date_start: Yup.date().required('Data é obrigatório'),
+          date_end: Yup.date().required('Data é obrigatório'),
+          progress: Yup.string(),
           negotiated: Yup.string().required('Valor negociado é obrigatório'),
-          real_cost: Yup.string().required('Custo real é obrigatório'),
+          real_cost: Yup.string().required('Valor negociado é obrigatório'),
           status_id: Yup.string().required('Status é obrigatório'),
           user_id: Yup.string().required('Usuário é obrigatório')
         });
@@ -80,8 +143,8 @@ const CreateProject: React.FC = () => {
           name: data.name,
           description: data.description,
           active: data.active,
-          date_start: data.start,
-          date_end: data.end,
+          date_start: data.date_start,
+          date_end: data.date_end,
           progress: data.progress,
           negotiated_value: data.negotiated,
           real_cost: data.real_cost,
@@ -89,7 +152,6 @@ const CreateProject: React.FC = () => {
           user_id: data.user_id
         }
 
-        setIsSendingProject(true);
         const result = await api.post(`/v1/project/create/`, formData);
 
         console.log("formData", result);
@@ -100,11 +162,10 @@ const CreateProject: React.FC = () => {
           type: 'success',
           title: 'Cadastro Realizado!',
         });
-        setIsSendingProject(false);
+
       } catch (err) {
         console.log("error", err);
         if (err instanceof Yup.ValidationError) {
-
           const errors = getValidationErrors(err);
 
           formRef.current?.setErrors(errors);
@@ -130,11 +191,6 @@ const CreateProject: React.FC = () => {
     formRef.current?.reset();
   }
 
-  const radioOptions = [
-    { id: 'ativo', value: 'ativo', label: 'Ativo' },
-    { id: 'inativo', value: 'inativo', label: 'Inativo' },
-  ]
-
   return (
     <>
       <Header />
@@ -153,58 +209,38 @@ const CreateProject: React.FC = () => {
 
           <Flex flex={1} justify="right" align="center">
             <Flex borderRadius={10}>
-
+              <Link as={RouterLink} to={'/create-project'} bg={bg} mr={1} p={2} borderRadius={10}>
+                <FaPlus />
+              </Link>
             </Flex>
           </Flex>
         </Flex>
 
+
         <Form ref={formRef} onSubmit={handleSubmitCreateProject} style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'flex-start', justifyContent: 'center' }}>
 
           <Flex direction='column' ml={10} mr={10} mt={5} w={585}>
-            <Input id='name' type='text' name='name' placeholder='Número do Projeto' />
+            {/* <FormLabel htmlFor='name'>Nome</FormLabel> */}
+            {/* <Input id='name' type='name' name='name' placeholder='Nome' /> */}
+            <InputChakra ref={inputRef} id='name' type='name' name='name' mb='2rem' placeholder='Nome' />
+            <InputChakra ref={emailRef} id='email' type='email' name='email' mb='2rem' placeholder='Nome' />
 
-            <Input id='description' type='text' name='description' placeholder='Descrição' />
-
-            <Input id='progress' type='text' name='progress' placeholder='Progresso' />
-
-            <Input id='status_id' type='text' name='status_id' placeholder='Status do Projeto' />
-
-
-            {/* <Radio name="active" options={radioOptions} /> */}
 
           </Flex>
 
-          <Flex direction='column' mr={10} mt={5} w={585}>
-            <Flex direction='row' mb={2}>
-              <FormLabel htmlFor='start' fontSize={12} mt={2.5}>Data Início:</FormLabel>
-              <Input type="date" min="01/01/2021" max="31/12/2030" name='start' />
 
-              <FormLabel htmlFor='end' fontSize={12} ml={4} mt={2.5}>Data Fim:</FormLabel>
-              <Input type='date' min="01/01/2021" max="31/12/2030" name='end' />
-            </Flex>
-
-            <Input type="number" name="negotiated" placeholder='Valor Negociado' />
-
-            <Input type="number" name="real_cost" placeholder='Custo Real' />
-
-            <Input id='user_id' type='text' name='user_id' placeholder='Responsável' />
+          <Flex align='center' ml={10} w='100%'>
+            <Button type='submit' >
+              <FaSave style={{ marginRight: '0.5rem' }} />
+              Salvar Registro
+            </Button>
+            <CancelButton onClick={handleResetForm} >
+              <FaTrash size={25} />
+            </CancelButton>
 
           </Flex>
 
         </Form>
-
-        <FormFooter>
-          <Button disabled={isSendingProject} onClick={() => formRef.current?.submitForm()}>
-            <FaSave style={{ marginRight: '0.5rem' }} />
-            {isSendingProject ? <Loading /> : 'Salvar Registro'}
-          </Button>
-          <CancelButton onClick={handleResetForm} >
-            <FaTrash size={25} />
-          </CancelButton>
-        </FormFooter>
-
-
-
 
 
       </Panel>
@@ -213,48 +249,4 @@ const CreateProject: React.FC = () => {
 }
 
 export default CreateProject;
-
-
-/*
-EXAMPLE DE FORM CHACARA UI
-*/
-
-
-
-{/* <Form ref={formRef} onSubmit={handleSubmitCreateProject} style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'flex-start', justifyContent: 'center' }}>
-
-<Flex direction='column' ml={10} mr={10} mt={5} w={585}>
-
-  <InputChakra ref={inputRef} id='name' type='name' name='name' mb='2rem' placeholder='Nome' />
-  <InputChakra ref={emailRef} id='email' type='email' name='email' mb='2rem' placeholder='Nome' />
-
-</Flex>
-</Form> */}
-
-{/* <Flex align='center' ml={10} w='100%'>
-<Button type='submit' >
-  <FaSave style={{ marginRight: '0.5rem' }} />
-  Salvar Registro
-</Button>
-<CancelButton onClick={handleResetForm} >
-  <FaTrash size={25} />
-</CancelButton>
-
-</Flex> */}
-
-{/* <NumberInput max={50} min={10} mb='2rem'>
-<NumberInputField id='amount' placeholder='valor negociado' />
-<NumberInputStepper>
-  <NumberIncrementStepper />
-  <NumberDecrementStepper />
-</NumberInputStepper>
-</NumberInput>
-
-<NumberInput max={50} min={10} mb='2rem'>
-<NumberInputField id='amount' placeholder='Custo Real' />
-<NumberInputStepper>
-  <NumberIncrementStepper />
-  <NumberDecrementStepper />
-</NumberInputStepper>
-</NumberInput> */}
 

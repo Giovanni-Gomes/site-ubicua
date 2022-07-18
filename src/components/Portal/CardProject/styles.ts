@@ -55,15 +55,15 @@ export const CardHeader = styled.header`
   justify-content: space-between;
   align-items: stretch;
   flex-wrap: wrap;
-  /* width: 100%;
-  min-height: 120px; */
-  padding: 0 2.25rem;
-  background-color: blue;
+  padding: 0.25rem 2.25rem;
+
+  background-color: var(--bg-secondary);
   border-top-right-radius: 1rem;
   border-top-left-radius: 1rem;
   /* display: flex; */
   /* align-items: center; */
   display: inline;
+
 
 
 `;

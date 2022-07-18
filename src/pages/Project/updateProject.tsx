@@ -19,7 +19,7 @@ import { CancelButton } from '../Site/styles';
 import { getOneProjectById, GetOneProjectResponse, Project, useProject } from './useProjects';
 import { url } from 'inspector';
 
-interface UpdateProjecProps {
+interface UpdateProjectProps {
   id: string;
   name: string;
   description: string;
@@ -43,7 +43,7 @@ const UpdateProject: React.FC = () => {
   const [title, setTitle] = useState('');
   const [isSendingFeedback, setIsSendingFeedback] = useState(false);
   const handleSubmitUpdateProject = useCallback(
-    async (data: UpdateProjecProps) => {
+    async (data: UpdateProjectProps) => {
 
 
       try {
@@ -137,7 +137,69 @@ const UpdateProject: React.FC = () => {
     <>
       <Header />
       <FormControl p='2rem' mx='auto' maxW='80%' bg='var(--bg-portal)' borderRadius='0.5rem' mt='80px' mb='30px' display='flex' flexDirection='column' alignItems='center' gap='3rem'>
-        {actualProject.map(project => (
+        <Form ref={formRef} onSubmit={handleSubmitUpdateProject} style={{ display: 'flex', flexWrap: 'wrap', gap: '5rem', alignItems: 'flex-start', justifyContent: 'center' }}>
+          <Flex direction='column'>
+            <FormLabel htmlFor='name'>Nome</FormLabel>
+            <Input id='name' type='name' name='name' mb='2rem' />
+
+            <FormLabel htmlFor='description'>Descrição</FormLabel>
+            <Textarea id='description' name="description" mb='2rem' />
+
+            <FormLabel htmlFor='active'>Ativo</FormLabel>
+            <RadioGroup defaultValue='true' mb='2rem'>
+              <HStack spacing='24px'>
+                <Radio value='true'>Ativo</Radio>
+                <Radio value='false'>Inativo</Radio>
+              </HStack>
+            </RadioGroup>
+
+            <FormLabel htmlFor='progress'>Progresso</FormLabel>
+            <Input id='progress' type='text' name='progress' mb='2rem' />
+
+            <FormLabel htmlFor='status'>Status</FormLabel>
+            <Input id='status' type='text' name='status' mb='2rem' />
+          </Flex>
+
+          <Flex direction='column'>
+            <FormLabel htmlFor='date_start'>Data de Início</FormLabel>
+            <Input id='date_start' type='date' name='date_start' mb='2rem' />
+
+            <FormLabel htmlFor='date_end'>Data de Finalização</FormLabel>
+            <Input id='date_end' type='date' name='date_end' mb='4.5rem' />
+
+            <FormLabel htmlFor='negotiated_value'>Valor Negociado</FormLabel>
+            <NumberInput max={50} min={10} mb='1rem'>
+              <NumberInputField id='amount' />
+              <NumberInputStepper>
+                <NumberIncrementStepper />
+                <NumberDecrementStepper />
+              </NumberInputStepper>
+            </NumberInput>
+
+            <FormLabel htmlFor='real_cost'>Custo real</FormLabel>
+            <NumberInput max={50} min={10} mb='2rem'>
+              <NumberInputField id='amount' />
+              <NumberInputStepper>
+                <NumberIncrementStepper />
+                <NumberDecrementStepper />
+              </NumberInputStepper>
+            </NumberInput>
+
+            <FormLabel htmlFor='name'>Usuário</FormLabel>
+            <Input id='name' type='name' name='name' mb='2rem' />
+          </Flex>
+
+          <Flex align='center' justify='space-around' w='100%'>
+            <Button type='submit'>
+              Salvar
+            </Button>
+            <CancelButton onClick={handleResetForm}>
+              <FaTrash size={25} />
+            </CancelButton>
+          </Flex>
+        </Form>
+
+        {/* {actualProject.map(project => (
           <>
             <h1 style={{ fontSize: '2rem' }}>Editar Projeto {project.name}</h1>
             <Form key={project.id} ref={formRef} onSubmit={handleSubmitUpdateProject} style={{ display: 'flex', flexWrap: 'wrap', gap: '5rem', alignItems: 'flex-start', justifyContent: 'center' }}>
@@ -202,7 +264,7 @@ const UpdateProject: React.FC = () => {
               </Flex>
             </Form>
           </>
-        ))}
+        ))} */}
 
       </FormControl>
     </>

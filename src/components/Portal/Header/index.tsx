@@ -1,5 +1,5 @@
 
-import { Button, Flex, Input, useColorMode } from '@chakra-ui/react';
+import { Button, Flex, Input, useColorMode, useColorModeValue } from '@chakra-ui/react';
 import { padding, size } from 'polished';
 import React from 'react';
 import { FaCloud } from 'react-icons/fa';
@@ -16,27 +16,42 @@ import { Switch } from '@chakra-ui/react';
 import { Container, HeaderPortal, LogoImg } from './styles';
 import LogoPortal from '../LogoPortal';
 
+import {
+  Menu,
+  MenuButton,
+  MenuList,
+  MenuItem,
+  MenuItemOption,
+  MenuGroup,
+  MenuOptionGroup,
+  MenuDivider,
+} from '@chakra-ui/react';
+
+
+
 const Header: React.FC = () => {
+
   const [darkMode, setDarkMode] = useDarkMode();
-  const { colorMode, toggleColorMode } = useColorMode()
+  const { colorMode, toggleColorMode } = useColorMode();
+  //const bg = useColorModeValue('red.500', 'red.200')
+
   return (
-    <ThemeProvider theme={darkMode ? darkTheme : lightTheme}>
+    <ThemeProvider theme={colorMode === 'light' ? lightTheme : darkTheme}>
+
       <Container>
         <HeaderPortal>
-          {/* <LogoPortal> */}
+
           <LogoPortal />
 
-          <Flex justify='space-between' w='100%' ml='30px'>
+          <Flex justify='space-between' w='100%' ml='30px' >
             <DropdownMenu />
-            <Button onClick={toggleColorMode} mt={1.5} bg={'#8C30F5'}>
+            <Button onClick={toggleColorMode} w='0%' mt={2.5} bg={'transparent'} borderRadius={'50%'}>
               {colorMode === 'light' ? '☀' : '☾'}
             </Button>
-            {/* <Toggle darkMode={darkMode} setDarkMode={setDarkMode} /> */}
           </Flex>
-
           <Avatar />
 
-          <PortalStyles />
+
         </HeaderPortal>
       </Container>
     </ThemeProvider>

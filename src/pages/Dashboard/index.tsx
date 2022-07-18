@@ -1,4 +1,4 @@
-import { ChakraProvider } from '@chakra-ui/react';
+import { Box, ChakraProvider, Flex, Link, Table, Tbody, Td, Text, Th, Thead, Tr } from '@chakra-ui/react';
 import { extendTheme } from '@chakra-ui/react'
 import React, { useEffect, useState } from 'react';
 import Card from '../../components/Portal/Card';
@@ -7,7 +7,7 @@ import ChartDash from '../../components/Portal/ChartDash';
 import DashboardSection from '../../components/Portal/DashboardSection';
 import Header from '../../components/Portal/Header';
 import TablePortal from '../../components/Portal/Table';
-import { lightTheme, darkTheme } from '../../components/Portal/Theme';
+// import { lightTheme, darkTheme } from '../../components/Portal/Theme';
 import WelcomeDash from '../../components/Portal/WelcomeDash';
 
 import api from '../../services/api';
@@ -18,6 +18,7 @@ import api from '../../services/api';
 
 import { Container, TableContainer } from './styles';
 import useDarkMode from '../../components/hooks/useDarkmode';
+import { useProjects } from '../Project/useProjects';
 
 interface ITableProject {
   id: string;
@@ -27,25 +28,27 @@ interface ITableProject {
 }
 
 const Dashboard: React.FC = () => {
-  const [table, setTable] = useState<ITableProject[]>([])
-  //const [darkMode, setDarkMode] = useDarkMode(); // comentado pois passamos a usar a chakra
-  useEffect(() => {
-    async function fetchTable() {
-      const response = await api.get('/v1/project/findAll');
+  const { data, isLoading, isFetching, error } = useProjects(0, 0);
+  // const [table, setTable] = useState<ITableProject[]>([])
+  // //const [darkMode, setDarkMode] = useDarkMode(); // comentado pois passamos a usar a chakra
+  // useEffect(() => {
+  //   async function fetchTable() {
+  //     const response = await api.get('/v1/project/findAll');
 
-      const { projects, skip, take, totalPage } = response.data;
+  //     const { projects, skip, take, totalPage } = response.data;
 
-      setTable(projects);
-    }
+  //     setTable(projects);
+  //   }
 
-    fetchTable()
-  }, [])
+  //   fetchTable()
+  // }, [])
 
   return (
     <>
       <Header /> {/* resetCSS theme={darkMode ? darkTheme : lightTheme} */}
 
       <Container>
+
         <DashboardSection element={
           <>
             <WelcomeDash />
@@ -70,56 +73,69 @@ const Dashboard: React.FC = () => {
 
         <DashboardSection element={
           <>
-            <CardProject variant='white' title='Projects Status' subtitle='Updated 37 minutes ago'>
+            <CardProject variant='white' title='Latest projects added' subtitle='Updated 37 minutes ago'>
+
+              <Table variant='simple' color='black' mt={2} >
+                <Thead >
+                  <Tr>
+                    <Th>Nome</Th>
+                    <Th>Desc</Th>
+                    <Th>Ativo</Th>
+                    <Th>Início</Th>
+                    <Th>Fim</Th>
+                    <Th>Progresso</Th>
+                    <Th>R$</Th>
+                    <Th>$CR</Th>
+                    <Th>Status</Th>
+                    <Th>Resp</Th>
+                  </Tr>
+                </Thead>
+                <Tbody >
+                  {data?.projects.map((project: any) => (
+                    <Tr key={project.id}>
+                      <Td paddingTop="2" paddingBottom="2" minW='8rem'>
+                        <Box>
+                          <Link >
+                            <Text fontWeight="bold">{project.name}</Text>
+                          </Link>
+                        </Box>
+                      </Td>
+                      <Td paddingTop="2" paddingBottom="2" maxW='8rem'>
+                        <Flex justify='space-between' align='center'>
+                          <Text noOfLines={1}>{project.description}</Text>
+
+                        </Flex>
+                      </Td>
+                      <Td paddingTop="2" paddingBottom="2">
+                        <Text>{project.active}</Text>
+                      </Td>
+                      <Td paddingTop="2" paddingBottom="2">
+                        {project.date_start}
+                      </Td>
+                      <Td paddingTop="2" paddingBottom="2">
+                        <Text>{project.date_end}</Text>
+                      </Td>
+                      <Td paddingTop="2" paddingBottom="2">
+                        <Text>{project.progress}</Text>
+                      </Td>
+                      <Td paddingTop="2" paddingBottom="2">
+                        <Text>{project.negotiated_value}</Text>
+                      </Td>
+                      <Td paddingTop="2" paddingBottom="2">
+                        <Text>{project.real_cost}</Text>
+                      </Td>
+                      <Td paddingTop="2" paddingBottom="2">
+                        <Text>{project.status.name}</Text>
+                      </Td>
+                      <Td paddingTop="2" paddingBottom="2">
+                        <Text>{project.user.name}</Text>
+                      </Td>
 
 
-              <TablePortal>
-                <thead>
-                  <tr>
-                    <th>Nome</th>
-                    <th>Descrição</th>
-                    <th>Progresso</th>
-                  </tr>
-                </thead>
-
-                <tbody>
-                  {table.map(data => (
-                    <tr key={data.id}>
-                      <td>{data.name}</td>
-                      <td>{data.description}</td>
-                      <td>{data.progress}</td>
-                    </tr>
+                    </Tr>
                   ))}
-                </tbody>
-
-              </TablePortal>
-              {/* <TableContainer>
-                <table>
-                  <thead>
-                    <tr>
-                      <th>Nome</th>
-                      <th>Email</th>
-                      <th>Avatar</th>
-                      <th>Criado</th>
-                    </tr>
-                  </thead>
-
-                  <tbody>
-                    {clientsImages.map((client) => (
-                      <tr key={client.imageAlt}>
-                        <td>{client.imageAlt}</td>
-                        <td>{client.imageAlt}</td>
-                        <td>
-                          <img src={client.imageSrc} alt={client.imageAlt} />
-                        </td>
-                        <td>{client.imageAlt}</td>
-                      </tr>
-                    ))}
-                  </tbody>
-                  <button onClick={prevPage}>Anterior</button>
-                  <button onClick={nextPage}>Próximo</button>
-                </table>
-              </TableContainer> */}
+                </Tbody>
+              </Table>
 
             </CardProject>
           </>

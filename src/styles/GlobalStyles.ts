@@ -41,6 +41,11 @@ export default createGlobalStyle`
       font-family: 'Poppins', sans-serif;
   }
 
+  a {
+    /* font-size: 16px; */
+
+  }
+
 
 
 

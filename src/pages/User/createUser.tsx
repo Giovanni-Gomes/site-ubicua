@@ -12,10 +12,13 @@ import * as Yup from 'yup';
 import { CancelButton, Container, FormFooter } from './styles';
 import api from '../../services/api';
 import Input from '../../components/Shared/Input';
+import Select from '../../components/Shared/Select';
+import CheckBox from '../../components/Shared/CheckBox';
 import { FiLock, FiMail, FiUser } from 'react-icons/fi';
 import Button from '../../components/Shared/Button';
 import Header from '../../components/Portal/Header';
 import { FaTrash } from 'react-icons/fa';
+import TextArea from '../../components/Shared/TextArea';
 
 interface CreateUserProps {
   name: string;
@@ -23,6 +26,18 @@ interface CreateUserProps {
   password: string;
   active?: boolean;
   type_user_id: string;
+  color: string
+  number: string
+  secret: string
+  month: string
+  telephone: string
+  time: string
+  website: string
+  week: string
+  date: string
+  meeting: string
+  search: string
+  range: string
 }
 
 
@@ -90,6 +105,12 @@ const CreateUser: React.FC = () => {
     formRef.current?.reset();
   }
 
+  const selectOptions = [
+    { value: 'brazil', label: 'Brazil' },
+    { value: 'usa', label: 'USA' },
+    { value: 'argentina', label: 'Argentina' },
+  ]
+
   return (
     <>
       <Header />
@@ -102,6 +123,22 @@ const CreateUser: React.FC = () => {
           <Input name="email" type="email" placeholder='E-mail' icon={FiMail} />
           <Input name="password" type="password" placeholder='Senha' icon={FiLock} />
           <Input name="type_user_id" type="text" placeholder='Tipo de Usuário' icon={FiLock} />
+
+          <Select name="country" label="Choose your country">
+            {selectOptions.map(option => (
+              <option key={option.value} value={option.value}>
+                {option.label}
+              </option>
+            ))}
+          </Select>
+
+          <CheckBox
+            name="privacy"
+            value="consent"
+            label="I agree with the privacy policy"
+          />
+
+          <TextArea label="Describe yourself" name="bio" />
 
           <FormFooter>
             <Button type="submit">Salvar Registro</Button>
@@ -116,3 +153,54 @@ const CreateUser: React.FC = () => {
 }
 
 export default CreateUser;
+
+{/* <Input label="Name" name="name" />
+<Input label="Choose a color" name="color" type="color" />
+<Input label="Choose a number" name="number" type="number" />
+<Input name="secret" type="hidden" value="teste" />
+<Input label="email" name="email" type="email" />
+<Input label="Month" name="month" type="month" min="2020-09" />
+<Input
+  label="Telephone"
+  name="telephone"
+  type="tel"
+  placeholder="Ex: XX-XXXXX-XXXX"
+  pattern="[0-9]{2}-[0-9]{5}-[0-9]{4}"
+/>
+<Input label="password" name="password" type="password" />
+<Input label="time" name="time" type="time" min="09:00" max="18:00" />
+<Input
+  label="website"
+  placeholder="https://example.com"
+  pattern="https://.*"
+  name="website"
+  type="url"
+/>
+<Input
+  label="week"
+  min="2021-W01"
+  max="2021-W52"
+  name="week"
+  type="week"
+/>
+<Input
+  label="date"
+  min="2021-01-01"
+  max="2021-12-31"
+  name="date"
+  type="date"
+/>
+<Input
+  label="meeting-time"
+  min="2020-06-07T00:00"
+  max="2020-06-14T00:00"
+  name="meeting"
+  type="datetime-local"
+/>
+<Input
+  label="search"
+  aria-label="Search through site content"
+  name="search"
+  type="search"
+/>
+<Input type="range" name="volume" label="Volume" min="0" max="10" /> */}

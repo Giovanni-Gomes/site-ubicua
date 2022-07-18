@@ -6,7 +6,7 @@ interface NavBarProps {
 
 const NavBar: React.FC<NavBarProps> = ({ children }) => {
   return (
-    <Container >
+    <Container style={{ marginBottom: '0.5rem' }}>
       <ul className='navbar-nav'>
         <button type='button'>{children}</button>
         {/* <a href="#">{children}</a> */}
