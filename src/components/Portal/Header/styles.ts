@@ -27,7 +27,7 @@ export const HeaderPortal = styled.div`
   align-items: center;
   padding: 0 1rem;
   /* padding-left: 0.5rem; */
-  gap: 1rem;
+  gap: 0rem;
 
 
 

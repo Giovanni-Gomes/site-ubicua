@@ -8,7 +8,7 @@ const LogoPortal: React.FC = () => {
   return (
     <Link to="/dashboard">
       <FaCloud style={{ color: '#2EC5CE', position: 'absolute', top: '0px' }} size={54} />
-      <FaCloud style={{ color: '#c1f7fa', position: 'absolute', top: '6px', left: '29px' }} size={52} />
+      <FaCloud style={{ color: '#c1f7fa', position: 'absolute', top: '5px', left: '29px' }} size={52} />
     </Link>
   );
 }

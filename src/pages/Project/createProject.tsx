@@ -1,30 +1,30 @@
-import React, { useCallback, ChangeEvent, useRef, useState, InputHTMLAttributes, useEffect } from 'react';
+import React, { useCallback, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useToast } from '../../components/hooks/provider/toast';
 
 import getValidationErrors from '../../utils/getValidationsErros';
-import { FormHandles, useField } from '@unform/core';
+import { FormHandles } from '@unform/core';
 import { Form } from '@unform/web';
 import * as Yup from 'yup';
 
 import api from '../../services/api';
 
-import { BiText } from 'react-icons/bi';
-import { FaTrash, FaImage, FaFileImport, FaPlus, FaFile, FaSave } from 'react-icons/fa';
+import { FaTrash, FaSave } from 'react-icons/fa';
 import Button from '../../components/Shared/Button';
 import Header from '../../components/Portal/Header';
 
-import { Badge, Box, Flex, FormControl, FormErrorMessage, FormHelperText, FormLabel, Grid, GridItem, HStack, Image, Input as InputChakra, Link, NumberDecrementStepper, NumberIncrementStepper, NumberInput, NumberInputField, NumberInputStepper, Radio as RadioChackara, RadioGroup, Textarea, useColorModeValue } from '@chakra-ui/react';
-import BoxForms from '../../components/Portal/BoxForms';
+import { Flex, FormLabel, Input as InputChakra, Link, useColorModeValue } from '@chakra-ui/react';
 import { Panel } from '../../components/Portal/Panel';
 import { FiArrowLeft, FiArrowRight } from 'react-icons/fi';
 import { Link as RouterLink } from 'react-router-dom';
 import { CancelButton, FormFooter } from '../Config/styles';
-import { IconBaseProps } from 'react-icons';
+
 
 import Input from '../../components/Shared/Input';
-import Radio from '../../components/Shared/Radio';
+
 import { Loading } from '../../components/Site/WidgetForm/Loading';
+import { useUsers } from '../User/useUsers';
+import Select from '../../components/Shared/Select';
 
 interface CreateProjectProps {
   id: string;
@@ -46,6 +46,14 @@ const CreateProject: React.FC = () => {
   const navigate = useNavigate();
   const { addToast } = useToast();
 
+  const { data, isLoading, isFetching, error } = useUsers();
+  const selectOptionsUsers = data?.users;
+
+  // const selectOptions = [
+  //   { value: 'abc', label: 'Brazil' },
+  //   { value: 'usa', label: 'USA' },
+  //   { value: 'argentina', label: 'Argentina' },
+  // ]
   // formRef
   const formRef = useRef<FormHandles>(null);
   const [isSendingProject, setIsSendingProject] = useState(false);
@@ -159,27 +167,23 @@ const CreateProject: React.FC = () => {
         </Flex>
 
         <Form ref={formRef} onSubmit={handleSubmitCreateProject} style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'flex-start', justifyContent: 'center' }}>
-
           <Flex direction='column' ml={10} mr={10} mt={5} w={585}>
-            <Input id='name' type='text' name='name' placeholder='Número do Projeto' />
+            <Input id='name' type='text' name='name' placeholder='Number Project' />
 
-            <Input id='description' type='text' name='description' placeholder='Descrição' />
+            <Input id='description' type='text' name='description' placeholder='Description' />
 
-            <Input id='progress' type='text' name='progress' placeholder='Progresso' />
+            <Input id='progress' type='text' name='progress' placeholder='Progress' />
 
-            <Input id='status_id' type='text' name='status_id' placeholder='Status do Projeto' />
-
-
+            <Input id='status_id' type='text' name='status_id' placeholder='Status do Project' />
             {/* <Radio name="active" options={radioOptions} /> */}
-
           </Flex>
 
           <Flex direction='column' mr={10} mt={5} w={585}>
             <Flex direction='row' mb={2}>
-              <FormLabel htmlFor='start' fontSize={12} mt={2.5}>Data Início:</FormLabel>
+              <FormLabel htmlFor='start' fontSize={12} mt={2}>Data Início:</FormLabel>
               <Input type="date" min="01/01/2021" max="31/12/2030" name='start' />
 
-              <FormLabel htmlFor='end' fontSize={12} ml={4} mt={2.5}>Data Fim:</FormLabel>
+              <FormLabel htmlFor='end' fontSize={12} ml={4} mt={3}>Data Fim:</FormLabel>
               <Input type='date' min="01/01/2021" max="31/12/2030" name='end' />
             </Flex>
 
@@ -187,25 +191,28 @@ const CreateProject: React.FC = () => {
 
             <Input type="number" name="real_cost" placeholder='Custo Real' />
 
-            <Input id='user_id' type='text' name='user_id' placeholder='Responsável' />
+            <Select name="user_id" label="Responsável">
+              <option key={0} value='Select a user'>Select a user</option>
+              {selectOptionsUsers?.map(option => (
+                <option key={option.id} value={option.id}>
+                  {option.name}
+                </option>
+              ))}
+            </Select>
+            {/* <Input id='user_id' type='text' name='user_id' placeholder='Responsável' /> */}
 
           </Flex>
-
         </Form>
 
         <FormFooter>
           <Button disabled={isSendingProject} onClick={() => formRef.current?.submitForm()}>
             <FaSave style={{ marginRight: '0.5rem' }} />
-            {isSendingProject ? <Loading /> : 'Salvar Registro'}
+            {isSendingProject ? <Loading /> : 'Save Register'}
           </Button>
           <CancelButton onClick={handleResetForm} >
             <FaTrash size={25} />
           </CancelButton>
         </FormFooter>
-
-
-
-
 
       </Panel>
     </>
