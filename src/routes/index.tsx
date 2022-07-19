@@ -21,6 +21,9 @@ import Project from '../pages/Project';
 import Profile from '../pages/Profile';
 import CreateProject from '../pages/Project/createProject';
 import UpdateProject from '../pages/Project/updateProject';
+import ListSectionOne from '../pages/Site/listSectionOne';
+import ListUsers from '../pages/User/listUsers';
+import UpdateUser from '../pages/User/updateUser';
 
 const RoutesPage: React.FC = () => {
   return (
@@ -32,6 +35,12 @@ const RoutesPage: React.FC = () => {
 
       {/* <Route path='/dashboard' caseSensitive={false} element={<Dashboard />} /> */}
       <Route path="/dashboard" element={<PrivateRoute> <Dashboard /> </PrivateRoute>} />
+
+      {/* ROUTES LIST */}
+      <Route path="/list-users" element={<PrivateRoute> <ListUsers /> </PrivateRoute>} />
+      <Route path="/list-section-one" element={<PrivateRoute> <ListSectionOne /> </PrivateRoute>} />
+
+      {/* ROUTES CREATED */}
       <Route path="/create-user" element={<PrivateRoute> <CreateUser /> </PrivateRoute>} />
       {/* <Route path="/create-menu" element={<PrivateRoute> <CreateMenu /> </PrivateRoute>} /> */}
       <Route path="/create-header" element={<PrivateRoute> <CreateHeader /> </PrivateRoute>} />
@@ -42,6 +51,7 @@ const RoutesPage: React.FC = () => {
       <Route path="/create-section-five" element={<PrivateRoute> <CreateSectionFive /> </PrivateRoute>} />
       <Route path="/create-project" element={<PrivateRoute> <CreateProject /> </PrivateRoute>} />
       <Route path="/update-project/:id" element={<PrivateRoute> <UpdateProject /> </PrivateRoute>} />
+      <Route path="/update-user/:id" element={<PrivateRoute> <UpdateUser /> </PrivateRoute>} />
       <Route path="/project" element={<PrivateRoute> <Project /> </PrivateRoute>} />
       <Route path="/profile" element={<PrivateRoute> <Profile /> </PrivateRoute>} />
 

@@ -5,17 +5,26 @@ import { queryClient } from "../../services/queryClient";
 export interface FindAllUserProps {
   id: string;
   name: string;
-  description: string;
+  email: string;
+  password: string;
+  avatar: string;
   active: boolean;
-  created_at: Date;
+  type_user: string;
+  created_at: string;
 }
 
-interface GetProjectResponse {
+interface GetUserResponse {
   totalPage: number;
   users: FindAllUserProps[];
 };
 
-export async function getUsers(page?: number, take?: number): Promise<GetProjectResponse> {
+interface GetUserByIdResponse {
+  users: FindAllUserProps;
+};
+
+
+
+export async function getUsers(page?: number, take?: number): Promise<GetUserResponse> {
   const { data, request } = await api.get('/v1/users/', {
     params: {
       skip: page,
@@ -24,15 +33,16 @@ export async function getUsers(page?: number, take?: number): Promise<GetProject
   });
 
   const totalPage = Number(data.totalPage);
-  console.log("console log useUsers data", data);
+  //console.log("console log useUsers data", data);
   const users = data.users.map((user: FindAllUserProps) => ({
     id: user.id,
     name: user.name,
-    description: user.description,
+    email: user.email,
+    avatar: user.avatar ? user.avatar : 'not avatar',
     active: user.active ? 'Ativo' : 'Inativo',
     created_at: new Date(user.created_at).toLocaleDateString('pt-BR', {
       day: '2-digit',
-      month: '2-digit',
+      month: 'short',
       year: 'numeric',
     }),
   }));
@@ -43,10 +53,11 @@ export async function getUsers(page?: number, take?: number): Promise<GetProject
   };
 }
 
-export async function getOneUserById(id: string): Promise<GetProjectResponse> {
-  const user = await api.get(`/v1/users/findOne/${id}`);
+export async function getOneUserById(id: string): Promise<GetUserByIdResponse> {
+  const result = await api.get(`/v1/users/${id}`);
+  //console.log("console log useUsers data", result.data);
 
-  return user.data
+  return result.data;
 }
 
 export async function deleteUser(id: string) {
@@ -54,19 +65,18 @@ export async function deleteUser(id: string) {
 }
 
 export function useUsers(page?: number, take?: number) {
-  return useQuery(['users', page, take], () => getUsers(page, take));
-  // return useQuery(['projects', page], () => getProjects(page, take), {
-  //   staleTime: 1000 * 60 * 10, // 1000 * 60 * 10 10 minutes // 1000 * 60 * 60 * 12, // 12 hours,
-  // });
+  return useQuery(['users', page, take], () => getUsers(page, take), {
+    staleTime: 1000 * 60 * 10, // 1000 * 60 * 10 10 minutes // 1000 * 60 * 60 * 12, // 12 hours,
+  });
 }
 
-// export function useProject(id?: string) {
-//   if (id) {
-//     return useQuery(['project'], () => getOneProjectById(id));
-//   } else {
-//     return null
-//   }
-// }
+export function useByIdUser(id: string) {
+  return useQuery(['user', id], () => getOneUserById(id));
+  // if (id) {
+  // } else {
+  //   return null;
+  // }
+}
 
 
 

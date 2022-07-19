@@ -43,11 +43,11 @@ const Dropdown: React.FC<DropdownProps> = ({ subtitle }) => {
       <CSSTransition in={activeMenu === 'Secções'} unmountOnExit timeout={500} classNames="menu-secondary" onEnter={calcHeight}>
         <div className="menu">
           <button onClick={() => setActiveMenu('main')}><CaretLeft size={18} />Voltar</button>
-          <Link key={1} to="/create-section-one">Criar 1º Secção</Link>
-          <Link key={2} to="/create-section-two">Criar 2º Secção</Link>
-          <Link key={3} to="/create-section-three">Criar 3º Secção</Link>
-          <Link key={4} to="/create-section-four">Criar 4º Secção</Link>
-          <Link key={5} to="/create-section-five">Criar 5º Secção</Link>
+          <Link key={1} to="/list-section-one">1º Secção</Link>
+          <Link key={2} to="/list-section-two">2º Secção</Link>
+          <Link key={3} to="/list-section-three">3º Secção</Link>
+          <Link key={4} to="/list-section-four">4º Secção</Link>
+          <Link key={5} to="/list-section-five">5º Secção</Link>
         </div>
       </CSSTransition>
     </Container>

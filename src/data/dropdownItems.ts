@@ -84,8 +84,8 @@ export const dropdownItems = [
     title: 'Site',
     subtitles: [
       {
-        name: 'Criar Usuário',
-        link: '/create-user',
+        name: 'Listar Usuários',
+        link: '/list-users',
       },
       {
         name: 'Criar Header',

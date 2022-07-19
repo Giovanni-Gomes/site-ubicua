@@ -168,7 +168,7 @@ const CreateProject: React.FC = () => {
 
         <Form ref={formRef} onSubmit={handleSubmitCreateProject} style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'flex-start', justifyContent: 'center' }}>
           <Flex direction='column' ml={10} mr={10} mt={5} w={585}>
-            <Input id='name' type='text' name='name' placeholder='Number Project' />
+            <Input id='name' type='text' name='name' placeholder='Name | Number Project' />
 
             <Input id='description' type='text' name='description' placeholder='Description' />
 
