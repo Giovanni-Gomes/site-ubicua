@@ -1,7 +1,5 @@
 import { useQuery } from "react-query";
 import api from "../../services/api";
-import { queryClient } from "../../services/queryClient";
-
 
 export type Project = {
   id: string;
@@ -11,15 +9,17 @@ export type Project = {
   date_start: string;
   date_end: string;
   progress: string;
-  negotiated_value: number;
+  negotiated_value: any;
   real_cost: number;
   status: {
-    name: string;
+    id?: string;
+    name?: string;
   };
   user: {
-    name: string;
+    id?: string;
+    name?: string;
   };
-  created_at: Date;
+  created_at?: string;
 }
 
 type GetProjectResponse = {
@@ -32,8 +32,6 @@ export type GetOneProjectResponse = {
 };
 
 export async function getProjects(page: number, take: number): Promise<GetProjectResponse> {
-  // let skip = page * 5 - 5;
-
 
   const { data, request } = await api.get('/v1/project/findAll', {
     params: {
@@ -41,16 +39,7 @@ export async function getProjects(page: number, take: number): Promise<GetProjec
       take: take
     }
   });
-  //take: 5,
 
-  //console.log(request);
-  // const { per_page = 20 } = request;
-  // const pageStart = (Number(page) - 1) * Number(per_page);
-  // const pageEnd = pageStart + Number(per_page);
-
-  //const { per_page } = request;
-  // const pageStart = (Number(page) - 1) * Number(take);
-  // const pageEnd = pageStart + Number(take);
   const totalPage = Number(data.totalPage);
 
   const projects = data.projects.map((project: Project) => ({
@@ -69,27 +58,49 @@ export async function getProjects(page: number, take: number): Promise<GetProjec
       year: 'numeric',
     }),
     progress: project.progress,
-    createdAt: new Date(project.created_at).toLocaleDateString('pt-BR', {
+    createdAt: project.created_at && new Date(project.created_at).toLocaleDateString('pt-BR', {
       day: '2-digit',
       month: '2-digit',
       year: 'numeric',
     }),
-    negotiated_value: project.negotiated_value,
-    real_cost: project.real_cost,
+    negotiated_value: Intl.NumberFormat('pt-BR', {
+      style: "currency",
+      currency: "BRL"
+    }).format(project.negotiated_value),
+    real_cost: project.real_cost ? Intl.NumberFormat('pt-BR', {
+      style: "currency",
+      currency: "BRL"
+    }).format(project.real_cost) : 'not value',
     status: project.status,
     user: project.user
   }));//.slice(pageStart, pageEnd);
-
-  //const totalCount = Number(projects.length);
+  //console.log(projects);
   return {
     projects,
     totalPage,
   };
 }
 
-export async function getOneProjectById(id: string): Promise<GetOneProjectResponse> {
-  const project = await api.get(`/v1/project/findOne/${id}`);
-  return project.data
+export async function getOneProjectById(id: string): Promise<Project> {
+  const result = await api.get(`/v1/project/findOne/${id}`);
+  const project = {
+    id: result.data.id,
+    name: result.data.name,
+    description: result.data.description,
+    active: result.data.active,
+    date_start: new Date(result.data.date_start).toISOString().slice(0, 10),
+    date_end: result.data.date_end && new Date(result.data.date_end).toISOString().slice(0, 10),
+    progress: result.data.progress,
+    negotiated_value: result.data.negotiated_value, //result.data.negotiated_value,
+    real_cost: result.data.real_cost,
+    status: {
+      id: result.data.status_id,
+    },
+    user: {
+      id: result.data.user_id,
+    }
+  }
+  return project
 }
 
 export async function deleteProject(id: string) {
@@ -103,19 +114,9 @@ export function useProjects(page: number, take: number) {
   // });
 }
 
-export function useProject(id?: string) {
-  if (id) {
-    return useQuery(['project'], () => getOneProjectById(id));
-  } else {
-    return null
-  }
-
+export function useProject(id: string) {
+  return useQuery(['projects', id], () => getOneProjectById(id));
   // return useQuery(['projects', page], () => getProjects(page, take), {
   //   staleTime: 1000 * 60 * 10, // 1000 * 60 * 10 10 minutes // 1000 * 60 * 60 * 12, // 12 hours,
   // });
 }
-
-
-
-
-

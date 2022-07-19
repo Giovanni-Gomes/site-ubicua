@@ -3,6 +3,8 @@ import { useEffect, useRef, InputHTMLAttributes } from 'react'
 import { useField, SubmitHandler, FormHandles } from '@unform/core'
 import { Form } from '@unform/web'
 
+import { Container } from './style'
+
 interface Props {
   name: string
   label?: string
@@ -35,7 +37,7 @@ function Checkbox({ name, value, label, ...rest }: InputProps) {
   }, [defaultValue, fieldName, registerField, defaultChecked])
 
   return (
-    <div>
+    <Container>
       <input
         defaultChecked={defaultChecked}
         ref={inputRef}
@@ -50,7 +52,7 @@ function Checkbox({ name, value, label, ...rest }: InputProps) {
       </label>
 
       {error && <span>{error}</span>}
-    </div>
+    </Container>
   )
 }
 

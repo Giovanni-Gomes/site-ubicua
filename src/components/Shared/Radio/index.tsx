@@ -47,7 +47,7 @@ function Radio({ name, label, options, ...rest }: InputProps) {
         <span key={option.id}>
           <input
             type="radio"
-            ref={inputRefs}
+            //ref={inputRefs}
             // ref={ref => {
             //   //inputRefs?.current[index] = ref
             //   inputRefs.current = ref

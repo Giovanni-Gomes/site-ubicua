@@ -95,10 +95,10 @@ const Project: React.FC = () => {
         <Flex>
           <Flex flex={1} justify="left" align="center">
             <Flex justifyContent="space-between" borderRadius={10}>
-              <Link as={RouterLink} to="/dashboard" bg={bg} mr={1} p={2} borderRadius={10}>
+              <Link as={RouterLink} to="/dashboard" bg={bg} mr={1} p={2} borderRadius={10} _hover={{ opacity: 0.5 }}>
                 <FiArrowLeft />
               </Link>
-              <Link as={RouterLink} to="/dashboard" bg={bg} mr={1} p={2} borderRadius={10}>
+              <Link as={RouterLink} to="/dashboard" bg={bg} mr={1} p={2} borderRadius={10} _hover={{ opacity: 0.5 }}>
                 <FiArrowRight />
               </Link>
             </Flex>
@@ -112,10 +112,10 @@ const Project: React.FC = () => {
           <Flex flex={1} justify="right" align="center">
             <Flex borderRadius={10}>
 
-              <Link as={RouterLink} to={'/import'} bg={bg} mr={1} p={2} borderRadius={10}>
+              <Link as={RouterLink} to={'/import'} bg={bg} mr={1} p={2} borderRadius={10} _hover={{ opacity: 0.5 }}>
                 <FaFileImport />
               </Link>
-              <Link as={RouterLink} to={'/create-project'} bg={bg} mr={1} p={2} borderRadius={10}>
+              <Link as={RouterLink} to={'/create-project'} bg={bg} mr={1} p={2} borderRadius={10} _hover={{ opacity: 0.5 }}>
                 <FaPlus />
               </Link>
             </Flex>
@@ -142,8 +142,8 @@ const Project: React.FC = () => {
                   <Th>Início</Th>
                   <Th>Fim</Th>
                   <Th>Progresso</Th>
-                  <Th>R$</Th>
-                  <Th>$CR</Th>
+                  <Th>R$-VN</Th>
+                  <Th>R$-CR</Th>
                   <Th>Status</Th>
                   <Th>Resp</Th>
                   <Th>#</Th>

@@ -48,14 +48,6 @@ const Dashboard: React.FC = () => {
       <Header /> {/* resetCSS theme={darkMode ? darkTheme : lightTheme} */}
 
       <Container>
-
-        <DashboardSection element={
-          <>
-            <WelcomeDash />
-            <ChartDash />
-          </>
-        } className='WrapperCard' />
-
         <DashboardSection element={
           <>
             <Card variant='success' title='69' subtitle='Active Projects' />
@@ -66,10 +58,18 @@ const Dashboard: React.FC = () => {
 
             <Card variant='success' title='69' subtitle='Active Projects' />
             <Card variant='info' title='69' subtitle='Active Projects' />
+            <Card variant='info' title='69' subtitle='Active Projects' />
             <Card variant='danger' title='69' subtitle='Active Projects' />
             <Card variant='white' title='69' subtitle='Active Projects' />
           </>
         } className='card-section' />
+
+        <DashboardSection element={
+          <>
+            <WelcomeDash />
+            <ChartDash />
+          </>
+        } className='WrapperCard' />
 
         <DashboardSection element={
           <>

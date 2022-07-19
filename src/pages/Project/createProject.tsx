@@ -25,6 +25,7 @@ import Input from '../../components/Shared/Input';
 import { Loading } from '../../components/Site/WidgetForm/Loading';
 import { useUsers } from '../User/useUsers';
 import Select from '../../components/Shared/Select';
+import { useStatus } from '../Config/useStatus';
 
 interface CreateProjectProps {
   id: string;
@@ -46,8 +47,10 @@ const CreateProject: React.FC = () => {
   const navigate = useNavigate();
   const { addToast } = useToast();
 
-  const { data, isLoading, isFetching, error } = useUsers();
+  const { data } = useUsers();
+  const { data: dataStatus } = useStatus();
   const selectOptionsUsers = data?.users;
+  const selectOptionsStatus = dataStatus?.status;
 
   // const selectOptions = [
   //   { value: 'abc', label: 'Brazil' },
@@ -131,8 +134,6 @@ const CreateProject: React.FC = () => {
     [addToast, navigate],
   );
 
-
-
   function handleResetForm(event: React.MouseEvent) {
     event?.preventDefault();
     formRef.current?.reset();
@@ -148,16 +149,16 @@ const CreateProject: React.FC = () => {
       <Header />
       <Panel title="Create a new Project">
         <Flex>
-          <Flex flex={1} justify="left" align="center">
-            <Flex justifyContent="space-between" borderRadius={10}>
-              <Link as={RouterLink} to="/dashboard" bg={bg} mr={1} p={2} borderRadius={10}>
-                <FiArrowLeft />
-              </Link>
-              <Link as={RouterLink} to="/dashboard" bg={bg} mr={1} p={2} borderRadius={10}>
-                <FiArrowRight />
-              </Link>
-            </Flex>
+          {/* <Flex flex={1} justify="left" align="center"> */}
+          <Flex justifyContent="space-between" borderRadius={10}>
+            <Link as={RouterLink} to="/project" bg={bg} mr={1} p={2} borderRadius={10} _hover={{ opacity: 0.5 }}>
+              <FiArrowLeft />
+            </Link>
+            {/* <Link as={RouterLink} to="/dashboard" bg={bg} mr={1} p={2} borderRadius={10} _hover={{ opacity: 0.5 }}>
+              <FiArrowRight />
+            </Link> */}
           </Flex>
+          {/* </Flex> */}
 
           <Flex flex={1} justify="right" align="center">
             <Flex borderRadius={10}>
@@ -174,12 +175,19 @@ const CreateProject: React.FC = () => {
 
             <Input id='progress' type='text' name='progress' placeholder='Progress' />
 
-            <Input id='status_id' type='text' name='status_id' placeholder='Status do Project' />
+            <Select name="status_id" label="Status" color='black'>
+              <option key={0} value='Select a status'>Selecione um status</option>
+              {selectOptionsStatus?.map(option => (
+                <option key={option.id} value={option.id}>
+                  {option.name}
+                </option>
+              ))}
+            </Select>
             {/* <Radio name="active" options={radioOptions} /> */}
           </Flex>
 
           <Flex direction='column' mr={10} mt={5} w={585}>
-            <Flex direction='row' mb={2}>
+            <Flex direction='row' mb={2} color='black'>
               <FormLabel htmlFor='start' fontSize={12} mt={2}>Data Início:</FormLabel>
               <Input type="date" min="01/01/2021" max="31/12/2030" name='start' />
 
@@ -191,7 +199,7 @@ const CreateProject: React.FC = () => {
 
             <Input type="number" name="real_cost" placeholder='Custo Real' />
 
-            <Select name="user_id" label="Responsável">
+            <Select name="user_id" label="Responsável" color='black'>
               <option key={0} value='Select a user'>Select a user</option>
               {selectOptionsUsers?.map(option => (
                 <option key={option.id} value={option.id}>
