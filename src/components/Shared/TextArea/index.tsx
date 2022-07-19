@@ -2,6 +2,7 @@ import { useRef, useEffect, TextareaHTMLAttributes } from 'react'
 
 import { useField, SubmitHandler, FormHandles } from '@unform/core'
 import { Form } from '@unform/web'
+import { Textarea } from './style'
 
 /**
  * Textarea component for Unform.
@@ -45,10 +46,10 @@ function TextArea({ name, label, ...rest }: TextareaProps) {
    */
 
   return (
-    <div>
+    <>
       {label && <label htmlFor={fieldName}>{label}</label>}
 
-      <textarea
+      <Textarea
         ref={textareaRef}
         id={fieldName}
         defaultValue={defaultValue}
@@ -56,7 +57,7 @@ function TextArea({ name, label, ...rest }: TextareaProps) {
       />
 
       {error && <span>{error}</span>}
-    </div>
+    </>
   )
 }
 

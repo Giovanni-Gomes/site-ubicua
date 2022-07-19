@@ -13,7 +13,7 @@ import DropdownMenu from '../DropdownMenu';
 import { darkTheme, lightTheme } from '../Theme';
 import { Switch } from '@chakra-ui/react';
 
-import { Container, HeaderPortal, LogoImg } from './styles';
+import { Container, HeaderPortal } from './styles';
 import LogoPortal from '../LogoPortal';
 
 import {
