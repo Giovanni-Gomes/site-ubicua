@@ -27,52 +27,6 @@ const Project: React.FC = () => {
   const [take, setTake] = useState(10);
   const { data, isLoading, isFetching, error } = useProjects(page, take);
 
-
-  // const [table, setTable] = useState<ITableProject[]>([]);
-  // const [skiping, setSkiping] = useState(0);
-  // const [count, setCount] = useState(0);
-
-  // useEffect(() => {
-  //   async function fetchTable() {
-
-  //     const response = await api.get(`/v1/project/findAll`,
-  //       {
-  //         params:
-  //         {
-  //           skip: skiping,
-  //           take: 2,
-  //         }
-  //       });
-  //     const { projects, skip, take, totalPage } = response.data;
-
-  //     setTable(projects);
-  //     // console.log("skip", skip);
-  //     // console.log("take", take);
-  //     // console.log("totalPage", totalPage);
-
-  //     setCount(totalPage);
-  //   }
-  //   console.log(count);
-
-  //   fetchTable();
-  // }, [skiping]);
-
-  // function skipper(num: number, action: string) {
-  //   if (count > 1) {
-  //     if (action === 'next') {
-  //       setSkiping(num + 2)
-  //     } else {
-  //       if (skiping > 1) {
-  //         setSkiping(num - 2)
-  //       } else if (skiping <= 1) {
-  //         setSkiping(0);
-  //       }
-  //     }
-  //   } else {
-  //     return skiping;
-  //   }
-  // }
-
   async function handlePrefetchProject(projectId: string) {
     await queryClient.prefetchQuery(['projects', projectId], async () => {
       const response = await api.get(`/projects/${projectId}`);
