@@ -29,7 +29,7 @@ export const HeaderPortal = styled.div`
   align-items: center;
   padding: 0 1rem;
   /* padding-left: 0.5rem; */
-  gap: 1rem;
+  gap: 0rem;
 
 
 
@@ -64,24 +64,6 @@ export const HeaderPortal = styled.div`
     justify-content: space-between;
   }
 `
-// export const LogoPortal = styled.div`
-
-//   display: flex;
-//   // flex-direction: column;
-//   justify-content: center;
-//   // align-items: flex-start;
-//   padding: 8px 16px;
-//   gap: 10px;
-
-//   // position: absolute;
-//   // width: 80px;
-//   // height: 64px;
-//   // left: 0px;
-//   // top: 0px;
-
-
-// `
-
 export const LogoImg = styled.img`
   display: flex;
   flex-direction: row;
@@ -103,17 +85,3 @@ export const LogoImg = styled.img`
   background: url(${logoPortal});
   background-size: cover;
 `
-
-// export const UbicuaLogo = styled(FaCloud)`
-// width: 4rem;
-// height: 4rem;
-// fill: darkturquoise;
-// `;
-
-// export const MenuDropdown = styled.div`
-// display: flex;
-// gap: 1rem;
-// /* padding-right: 3rem; */
-// width: 100%;
-// justify-content: flex-start;
-// `;

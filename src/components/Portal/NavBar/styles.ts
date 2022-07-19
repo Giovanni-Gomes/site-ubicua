@@ -25,8 +25,9 @@ export const Container = styled.nav`
 
 button {
   cursor: pointer;
-  padding-top: 0.4rem;
-  padding-left: 2rem;
+  /* padding-top: 0.2rem; */
+  margin-top: 0.3rem;
+  padding-left: 3rem;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -38,24 +39,14 @@ button {
 }
 
 > .navbar-nav {
+
   display: flex;
   flex-direction: row;
   align-items: center;
 
-
-  /* position: absolute; */
-  // height: 4rem;
-  // left: 149px;
-  // right: 200px;
-  // top: 0px;
-  // margin-left: 9.31rem;
-  // gap: 0.5rem;
-  /* max-width: 100%;
-  height: 100%;
-  display: flex;
-  gap: 1rem; */
-  /* justify-content: flex-end; */
-  overflow-x: scroll;
+  @media (min-width: 1440px) {
+    overflow-x: scroll;
+  }
   ::-webkit-scrollbar {
     height: .4rem;
   }
