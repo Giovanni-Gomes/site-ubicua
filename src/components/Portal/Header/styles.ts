@@ -62,6 +62,7 @@ export const HeaderPortal = styled.div`
     width: 100%;
     display: flex;
     justify-content: space-between;
+    align-items: center;
   }
 `
 // export const LogoPortal = styled.div`
@@ -82,27 +83,27 @@ export const HeaderPortal = styled.div`
 
 // `
 
-export const LogoImg = styled.img`
-  display: flex;
-  flex-direction: row;
-  align-items: flex-start;
-  padding: 4px;
-  gap: 10px;
+// export const LogoImg = styled.img`
+//   display: flex;
+//   /* flex-direction: row; */
+//   align-items: flex-start;
+//   padding: 4px;
+//   gap: 10px;
 
-  width: 48px;
-  height: 48px;
+//   width: 48px;
+//   height: 48px;
 
 
-  /* Inside auto layout */
-  flex: none;
-  order: 0;
-  align-self: stretch;
-  flex-grow: 0;
+//   /* Inside auto layout */
+//   /* flex: none;
+//   order: 0;
+//   align-self: stretch;
+//   flex-grow: 0; */
 
-  flex: 1;
-  background: url(${logoPortal});
-  background-size: cover;
-`
+//   /* flex: 1; */
+//   background: url(${logoPortal});
+//   background-size: cover;
+// `
 
 // export const UbicuaLogo = styled(FaCloud)`
 // width: 4rem;

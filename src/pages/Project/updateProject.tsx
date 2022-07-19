@@ -13,11 +13,14 @@ import Button from '../../components/Shared/Button';
 import Header from '../../components/Portal/Header';
 
 import { Loading } from '../../components/Site/WidgetForm/Loading';
-import { Badge, Box, Flex, FormControl, FormLabel, HStack, Image, Input, NumberDecrementStepper, NumberIncrementStepper, NumberInput, NumberInputField, NumberInputStepper, Radio, RadioGroup, Spacer, Textarea } from '@chakra-ui/react';
+import { Badge, Box, Flex, FormControl, FormLabel, HStack, Image, NumberDecrementStepper, NumberIncrementStepper, NumberInput, NumberInputField, NumberInputStepper, Radio, RadioGroup } from '@chakra-ui/react';
 import BoxForms from '../../components/Portal/BoxForms';
 import { CancelButton } from '../Site/styles';
 import { getOneProjectById, GetOneProjectResponse, Project, useProject } from './useProjects';
-import { url } from 'inspector';
+
+import Input from '../../components/Shared/Input';
+import TextArea from '../../components/Shared/TextArea';
+import { border } from 'polished';
 
 interface UpdateProjectProps {
   id: string;
@@ -137,15 +140,15 @@ const UpdateProject: React.FC = () => {
     <>
       <Header />
       <FormControl p='2rem' mx='auto' maxW='80%' bg='var(--bg-portal)' borderRadius='0.5rem' mt='80px' mb='30px' display='flex' flexDirection='column' alignItems='center' gap='3rem'>
-        <Form ref={formRef} onSubmit={handleSubmitUpdateProject} style={{ display: 'flex', flexWrap: 'wrap', gap: '5rem', alignItems: 'flex-start', justifyContent: 'center' }}>
-          <Flex direction='column'>
+        <Form ref={formRef} onSubmit={handleSubmitUpdateProject} style={{ display: 'flex', flexWrap: 'wrap', gap: '5rem', alignItems: 'flex-start', justifyContent: 'center', color: 'black' }}>
+          <Flex direction='column' >
             <FormLabel htmlFor='name'>Nome</FormLabel>
-            <Input id='name' type='name' name='name' mb='2rem' />
+            <Input id='name' type='text' name='name' />
 
-            <FormLabel htmlFor='description'>Descrição</FormLabel>
-            <Textarea id='description' name="description" mb='2rem' />
+            <FormLabel htmlFor='description' mt='1rem'>Descrição</FormLabel>
+            <TextArea id='description' name="description" />
 
-            <FormLabel htmlFor='active'>Ativo</FormLabel>
+            <FormLabel htmlFor='active' mt='1rem'>Ativo</FormLabel>
             <RadioGroup defaultValue='true' mb='2rem'>
               <HStack spacing='24px'>
                 <Radio value='true'>Ativo</Radio>
@@ -153,40 +156,28 @@ const UpdateProject: React.FC = () => {
               </HStack>
             </RadioGroup>
 
-            <FormLabel htmlFor='progress'>Progresso</FormLabel>
-            <Input id='progress' type='text' name='progress' mb='2rem' />
+            <FormLabel htmlFor='progress' mt='1rem'>Progresso</FormLabel>
+            <Input id='progress' type='text' name='progress' />
 
-            <FormLabel htmlFor='status'>Status</FormLabel>
-            <Input id='status' type='text' name='status' mb='2rem' />
+            <FormLabel htmlFor='status' mt='1rem'>Status</FormLabel>
+            <Input id='status' type='text' name='status' />
           </Flex>
 
           <Flex direction='column'>
             <FormLabel htmlFor='date_start'>Data de Início</FormLabel>
-            <Input id='date_start' type='date' name='date_start' mb='2rem' />
+            <Input id='date_start' type='date' name='date_start' />
 
-            <FormLabel htmlFor='date_end'>Data de Finalização</FormLabel>
-            <Input id='date_end' type='date' name='date_end' mb='4.5rem' />
+            <FormLabel htmlFor='date_end' mt='1rem'>Data de Finalização</FormLabel>
+            <Input id='date_end' type='date' name='date_end' />
 
-            <FormLabel htmlFor='negotiated_value'>Valor Negociado</FormLabel>
-            <NumberInput max={50} min={10} mb='1rem'>
-              <NumberInputField id='amount' />
-              <NumberInputStepper>
-                <NumberIncrementStepper />
-                <NumberDecrementStepper />
-              </NumberInputStepper>
-            </NumberInput>
+            <FormLabel htmlFor='negotiated_value' mt='1rem'>Valor Negociado</FormLabel>
+            <Input name='negotiated_value' type='number' id='negotiated_value' />
 
-            <FormLabel htmlFor='real_cost'>Custo real</FormLabel>
-            <NumberInput max={50} min={10} mb='2rem'>
-              <NumberInputField id='amount' />
-              <NumberInputStepper>
-                <NumberIncrementStepper />
-                <NumberDecrementStepper />
-              </NumberInputStepper>
-            </NumberInput>
+            <FormLabel htmlFor='real_cost' mt='1rem'>Custo real</FormLabel>
+            <Input name='real_cost' type='number' id='real_cost' />
 
-            <FormLabel htmlFor='name'>Usuário</FormLabel>
-            <Input id='name' type='name' name='name' mb='2rem' />
+            <FormLabel htmlFor='name' mt='1rem'>Usuário</FormLabel>
+            <Input id='name' type='text' name='name' />
           </Flex>
 
           <Flex align='center' justify='space-around' w='100%'>
