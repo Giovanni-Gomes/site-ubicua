@@ -55,7 +55,7 @@ min-width: 13rem;
   position: absolute;
 }
 > .menu-primary-exit-active {
-  transform: translateX(-110%); 
+  transform: translateX(-110%);
   transition: all var(--speed) ease;
 }
 > .menu-secondary-enter {
