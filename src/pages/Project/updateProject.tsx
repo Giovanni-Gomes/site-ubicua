@@ -1,4 +1,4 @@
-import React, { useCallback, ChangeEvent, useRef, useState, useEffect } from 'react';
+import React, { useCallback, useRef, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useToast } from '../../components/hooks/provider/toast';
 
@@ -8,60 +8,93 @@ import { Form } from '@unform/web';
 import * as Yup from 'yup';
 
 import api from '../../services/api';
-import { FaTrash, FaImage } from 'react-icons/fa';
+
+import { FaTrash, FaSave } from 'react-icons/fa';
 import Button from '../../components/Shared/Button';
 import Header from '../../components/Portal/Header';
 
-import { Loading } from '../../components/Site/WidgetForm/Loading';
-import { Badge, Box, Flex, FormControl, FormLabel, HStack, Image, NumberDecrementStepper, NumberIncrementStepper, NumberInput, NumberInputField, NumberInputStepper, Radio, RadioGroup } from '@chakra-ui/react';
-import BoxForms from '../../components/Portal/BoxForms';
-import { CancelButton } from '../Site/styles';
-import { getOneProjectById, GetOneProjectResponse, Project, useProject } from './useProjects';
+import { Flex, FormLabel, Input as InputChakra, Link, useColorModeValue } from '@chakra-ui/react';
+import { Panel } from '../../components/Portal/Panel';
+import { FiArrowLeft, FiArrowRight } from 'react-icons/fi';
+import { Link as RouterLink } from 'react-router-dom';
+import { CancelButton, FormFooter } from '../Config/styles';
+
 
 import Input from '../../components/Shared/Input';
-import TextArea from '../../components/Shared/TextArea';
-import { border } from 'polished';
 
-interface UpdateProjectProps {
+import { Loading } from '../../components/Site/WidgetForm/Loading';
+import { useUsers } from '../User/useUsers';
+import Select from '../../components/Shared/Select';
+import { useStatus } from '../Config/useStatus';
+import { useProject } from './useProjects';
+
+interface CreateProjectProps {
   id: string;
   name: string;
   description: string;
-  active: boolean;
-  date_start: Date;
-  date_end: Date;
+  active?: boolean;
+  date_start: string;
+  date_end: string;
   progress: string;
-  negotiated: string;
+  negotiated_value: string;
   real_cost: string;
   status_id: string;
   user_id: string;
 }
 
 const UpdateProject: React.FC = () => {
-  const formRef = useRef<FormHandles>(null);
+  //style colors customTheme
+  const bg = useColorModeValue('hoverDark', 'hoverLight');
   const navigate = useNavigate();
   const { addToast } = useToast();
-  const id = useParams();
+  const { id } = useParams()
 
-  const [actualProject, setActualProject] = useState<Project[]>([])
-  const [title, setTitle] = useState('');
-  const [isSendingFeedback, setIsSendingFeedback] = useState(false);
-  const handleSubmitUpdateProject = useCallback(
-    async (data: UpdateProjectProps) => {
+  const { data } = useUsers();
+  const { data: dataStatus } = useStatus();
+  const selectOptionsUsers = data?.users;
+  const selectOptionsStatus = dataStatus?.status;
 
 
+  const { data: dataProject } = useProject(String(id))
+  console.log(dataProject);
+  // const [actualProject, setActualProject] = useState<CreateProjectProps>()
+
+
+  //console.log(id)
+
+
+  // async function fetchProject(): Promise<CreateProjectProps> {
+  //   const result = await api.get(`/v1/project/findOne/${id}`);
+  //   return result.data
+  // }
+  // fetchProject()
+  //console.log(fetchProject())
+  // const selectOptions = [
+  //   { value: 'abc', label: 'Brazil' },
+  //   { value: 'usa', label: 'USA' },
+  //   { value: 'argentina', label: 'Argentina' },
+  // ]
+  // formRef
+  const formRef = useRef<FormHandles>(null);
+  const [isSendingProject, setIsSendingProject] = useState(false);
+
+
+  const handleSubmitCreateProject = useCallback(
+    async (data: CreateProjectProps) => {
       try {
+
         formRef.current?.setErrors({});
 
         const schema = Yup.object().shape({
           id: Yup.string(),
           name: Yup.string()
-            .required('Título é Obrigatório'),
-          description: Yup.string(),
-          date_start: Yup.date().required('Data é obrigatório'),
-          date_end: Yup.date().required('Data é obrigatório'),
-          progress: Yup.string(),
-          negotiated: Yup.string().required('Valor negociado é obrigatório'),
-          real_cost: Yup.string().required('Valor negociado é obrigatório'),
+            .required('Nome do Projeto é Obrigatório'),
+          description: Yup.string().required('Descrição é obrigatório'),
+          date_start: Yup.string(), //Yup.date().required('Data é obrigatório'),
+          date_end: Yup.string(), //Yup.date().required('Data é obrigatório'),
+          progress: Yup.string().required('Progresso é obrigatório'),
+          negotiated_value: Yup.string().required('Valor negociado é obrigatório'),
+          real_cost: Yup.string().required('Custo real é obrigatório'),
           status_id: Yup.string().required('Status é obrigatório'),
           user_id: Yup.string().required('Usuário é obrigatório')
         });
@@ -78,18 +111,14 @@ const UpdateProject: React.FC = () => {
           date_start: data.date_start,
           date_end: data.date_end,
           progress: data.progress,
-          negotiated_value: data.negotiated,
+          negotiated_value: data.negotiated_value,
           real_cost: data.real_cost,
           status_id: data.status_id,
           user_id: data.user_id
         }
 
-
-        setIsSendingFeedback(true);
-
-
-
-        const result = await api.put(`/v1/project/update/${id}`, formData);
+        setIsSendingProject(true);
+        const result = await api.post(`/v1/project/update/${id}`, formData);
 
         console.log("formData", result);
 
@@ -99,10 +128,11 @@ const UpdateProject: React.FC = () => {
           type: 'success',
           title: 'Cadastro Realizado!',
         });
-        setIsSendingFeedback(false);
+        setIsSendingProject(false);
       } catch (err) {
-        console.log(err);
+        console.log("error", err);
         if (err instanceof Yup.ValidationError) {
+
           const errors = getValidationErrors(err);
 
           formRef.current?.setErrors(errors);
@@ -116,8 +146,6 @@ const UpdateProject: React.FC = () => {
             'Ocorreu um erro cadastro, tente novamente',
         });
 
-        const responseProject = await api.get(`/v1/project/findOne/${id}`);
-        setActualProject(responseProject.data);
       }
     },
     [addToast, navigate],
@@ -129,138 +157,141 @@ const UpdateProject: React.FC = () => {
     formRef.current?.reset();
   }
 
-  // useEffect(() => {
+  const radioOptions = [
+    { id: 'ativo', value: 'ativo', label: 'Ativo' },
+    { id: 'inativo', value: 'inativo', label: 'Inativo' },
+  ]
 
 
-  //   fetchProject();
-  // }, [])
-  console.log(id)
-  console.log(actualProject)
+
   return (
     <>
       <Header />
-      <FormControl p='2rem' mx='auto' maxW='80%' bg='var(--bg-portal)' borderRadius='0.5rem' mt='80px' mb='30px' display='flex' flexDirection='column' alignItems='center' gap='3rem'>
-        <Form ref={formRef} onSubmit={handleSubmitUpdateProject} style={{ display: 'flex', flexWrap: 'wrap', gap: '5rem', alignItems: 'flex-start', justifyContent: 'center', color: 'black' }}>
-          <Flex direction='column' >
-            <FormLabel htmlFor='name'>Nome</FormLabel>
-            <Input id='name' type='text' name='name' />
+      <Panel title={dataProject?.name ? dataProject.name : 'Atualize o Projeto'}>
+        <Flex>
+          {/* <Flex flex={1} justify="left" align="center"> */}
+          <Flex justifyContent="space-between" borderRadius={10}>
+            <Link as={RouterLink} to="/project" bg={bg} mr={1} p={2} borderRadius={10} _hover={{ opacity: 0.5 }}>
+              <FiArrowLeft />
+            </Link>
+            {/* <Link as={RouterLink} to="/dashboard" bg={bg} mr={1} p={2} borderRadius={10} _hover={{ opacity: 0.5 }}>
+              <FiArrowRight />
+            </Link> */}
+          </Flex>
+          {/* </Flex> */}
 
-            <FormLabel htmlFor='description' mt='1rem'>Descrição</FormLabel>
-            <TextArea id='description' name="description" />
+          <Flex flex={1} justify="right" align="center">
+            <Flex borderRadius={10}>
 
-            <FormLabel htmlFor='active' mt='1rem'>Ativo</FormLabel>
-            <RadioGroup defaultValue='true' mb='2rem'>
-              <HStack spacing='24px'>
-                <Radio value='true'>Ativo</Radio>
-                <Radio value='false'>Inativo</Radio>
-              </HStack>
-            </RadioGroup>
+            </Flex>
+          </Flex>
+        </Flex>
 
-            <FormLabel htmlFor='progress' mt='1rem'>Progresso</FormLabel>
-            <Input id='progress' type='text' name='progress' />
+        <Form ref={formRef} initialData={dataProject} onSubmit={handleSubmitCreateProject} style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'flex-start', justifyContent: 'center' }}>
+          <Flex direction='column' ml={10} mr={10} mt={5} w={585}>
+            <Input id='name' type='text' name='name' placeholder='Number Project' />
 
-            <FormLabel htmlFor='status' mt='1rem'>Status</FormLabel>
-            <Input id='status' type='text' name='status' />
+            <Input id='description' type='text' name='description' placeholder='Description' />
+
+            <Input id='progress' type='text' name='progress' placeholder='Progress' />
+
+            <Select name="status_id" label="Status" value={dataProject?.status.id}>
+              <option key={0} value='Select a status'>Selecione um status</option>
+              {selectOptionsStatus?.map(option => (
+                <option key={option.id} value={option.id}>
+                  {option.name}
+                </option>
+              ))}
+            </Select>
+            {/* <Radio name="active" options={radioOptions} /> */}
           </Flex>
 
-          <Flex direction='column'>
-            <FormLabel htmlFor='date_start'>Data de Início</FormLabel>
-            <Input id='date_start' type='date' name='date_start' />
+          <Flex direction='column' mr={10} mt={5} w={585}>
+            <Flex direction='row' mb={2}>
+              <FormLabel htmlFor='date_start' fontSize={12} mt={2}>Data Início:</FormLabel>
+              <Input type="date" min="01/01/2021" max="31/12/2030" name='date_start' />
 
-            <FormLabel htmlFor='date_end' mt='1rem'>Data de Finalização</FormLabel>
-            <Input id='date_end' type='date' name='date_end' />
+              <FormLabel htmlFor='date_end' fontSize={12} ml={4} mt={3}>Data Fim:</FormLabel>
+              <Input type='date' min="01/01/2021" max="31/12/2030" name='date_end' />
+            </Flex>
 
-            <FormLabel htmlFor='negotiated_value' mt='1rem'>Valor Negociado</FormLabel>
-            <Input name='negotiated_value' type='number' id='negotiated_value' />
+            <Input type="number" name="negotiated_value" placeholder='Valor Negociado' />
 
-            <FormLabel htmlFor='real_cost' mt='1rem'>Custo real</FormLabel>
-            <Input name='real_cost' type='number' id='real_cost' />
+            <Input type="number" name="real_cost" placeholder='Custo Real' />
 
-            <FormLabel htmlFor='name' mt='1rem'>Usuário</FormLabel>
-            <Input id='name' type='text' name='name' />
-          </Flex>
+            <Select name="user_id" label="Responsável" value={dataProject?.user.id}>
+              <option key={0} value='Select a user'>Select a user</option>
+              {selectOptionsUsers?.map(option => (
+                <option key={option.id} value={option.id}>
+                  {option.name}
+                </option>
+              ))}
+            </Select>
+            {/* <Input id='user_id' type='text' name='user_id' placeholder='Responsável' /> */}
 
-          <Flex align='center' justify='space-around' w='100%'>
-            <Button type='submit'>
-              Salvar
-            </Button>
-            <CancelButton onClick={handleResetForm}>
-              <FaTrash size={25} />
-            </CancelButton>
           </Flex>
         </Form>
 
-        {/* {actualProject.map(project => (
-          <>
-            <h1 style={{ fontSize: '2rem' }}>Editar Projeto {project.name}</h1>
-            <Form key={project.id} ref={formRef} onSubmit={handleSubmitUpdateProject} style={{ display: 'flex', flexWrap: 'wrap', gap: '5rem', alignItems: 'flex-start', justifyContent: 'center' }}>
-              <Flex direction='column'>
-                <FormLabel htmlFor='name'>Nome</FormLabel>
-                <Input id='name' type='name' name='name' mb='2rem' />
+        <FormFooter>
+          <Button disabled={isSendingProject} onClick={() => formRef.current?.submitForm()}>
+            <FaSave style={{ marginRight: '0.5rem' }} />
+            {isSendingProject ? <Loading /> : 'Save Register'}
+          </Button>
+          <CancelButton onClick={handleResetForm} >
+            <FaTrash size={25} />
+          </CancelButton>
+        </FormFooter>
 
-                <FormLabel htmlFor='description'>Descrição</FormLabel>
-                <Textarea id='description' name="description" mb='2rem' />
+      </Panel>
+      {/* ))} */}
 
-                <FormLabel htmlFor='active'>Ativo</FormLabel>
-                <RadioGroup defaultValue='true' mb='2rem'>
-                  <HStack spacing='24px'>
-                    <Radio value='true'>Ativo</Radio>
-                    <Radio value='false'>Inativo</Radio>
-                  </HStack>
-                </RadioGroup>
-
-                <FormLabel htmlFor='progress'>Progresso</FormLabel>
-                <Input id='progress' type='text' name='progress' mb='2rem' />
-
-                <FormLabel htmlFor='status'>Status</FormLabel>
-                <Input id='status' type='text' name='status' mb='2rem' />
-              </Flex>
-
-              <Flex direction='column'>
-                <FormLabel htmlFor='date_start'>Data de Início</FormLabel>
-                <Input id='date_start' type='date' name='date_start' mb='2rem' />
-
-                <FormLabel htmlFor='date_end'>Data de Finalização</FormLabel>
-                <Input id='date_end' type='date' name='date_end' mb='4.5rem' />
-
-                <FormLabel htmlFor='negotiated_value'>Valor Negociado</FormLabel>
-                <NumberInput max={50} min={10} mb='1rem'>
-                  <NumberInputField id='amount' />
-                  <NumberInputStepper>
-                    <NumberIncrementStepper />
-                    <NumberDecrementStepper />
-                  </NumberInputStepper>
-                </NumberInput>
-
-                <FormLabel htmlFor='real_cost'>Custo real</FormLabel>
-                <NumberInput max={50} min={10} mb='2rem'>
-                  <NumberInputField id='amount' />
-                  <NumberInputStepper>
-                    <NumberIncrementStepper />
-                    <NumberDecrementStepper />
-                  </NumberInputStepper>
-                </NumberInput>
-
-                <FormLabel htmlFor='name'>Usuário</FormLabel>
-                <Input id='name' type='name' name='name' mb='2rem' />
-              </Flex>
-
-              <Flex align='center' justify='space-around' w='100%'>
-                <Button type='submit'>
-                  Salvar
-                </Button>
-                <CancelButton onClick={handleResetForm}>
-                  <FaTrash size={25} />
-                </CancelButton>
-              </Flex>
-            </Form>
-          </>
-        ))} */}
-
-      </FormControl>
     </>
   );
 }
 
 export default UpdateProject;
+
+
+/*
+EXAMPLE DE FORM CHACARA UI
+*/
+
+
+
+{/* <Form ref={formRef} onSubmit={handleSubmitCreateProject} style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'flex-start', justifyContent: 'center' }}>
+
+<Flex direction='column' ml={10} mr={10} mt={5} w={585}>
+
+  <InputChakra ref={inputRef} id='name' type='name' name='name' mb='2rem' placeholder='Nome' />
+  <InputChakra ref={emailRef} id='email' type='email' name='email' mb='2rem' placeholder='Nome' />
+
+</Flex>
+</Form> */}
+
+{/* <Flex align='center' ml={10} w='100%'>
+<Button type='submit' >
+  <FaSave style={{ marginRight: '0.5rem' }} />
+  Salvar Registro
+</Button>
+<CancelButton onClick={handleResetForm} >
+  <FaTrash size={25} />
+</CancelButton>
+
+</Flex> */}
+
+{/* <NumberInput max={50} min={10} mb='2rem'>
+<NumberInputField id='amount' placeholder='valor negociado' />
+<NumberInputStepper>
+  <NumberIncrementStepper />
+  <NumberDecrementStepper />
+</NumberInputStepper>
+</NumberInput>
+
+<NumberInput max={50} min={10} mb='2rem'>
+<NumberInputField id='amount' placeholder='Custo Real' />
+<NumberInputStepper>
+  <NumberIncrementStepper />
+  <NumberDecrementStepper />
+</NumberInputStepper>
+</NumberInput> */}
 

@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const Container = styled.section`
   &.WrapperCard {
     display: flex;
-    margin-top: 5rem;
+
   }
 
   /* &.card-section {
@@ -12,6 +12,7 @@ export const Container = styled.section`
   } */
 
   &.card-section {
+    margin-top: 5rem;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;

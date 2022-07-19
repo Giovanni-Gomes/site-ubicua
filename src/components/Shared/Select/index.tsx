@@ -3,6 +3,8 @@ import { useRef, useEffect, ReactNode, SelectHTMLAttributes } from 'react'
 import { useField, SubmitHandler, FormHandles } from '@unform/core'
 import { Form } from '@unform/web'
 
+import { Container } from './style'
+
 interface SelectProps {
   name: string
   label: string
@@ -34,7 +36,7 @@ function Select({ name, label, children, ...rest }: Props) {
   }, [fieldName, registerField])
 
   return (
-    <div>
+    <Container >
       <label htmlFor={fieldName}>{label}</label>
 
       <select
@@ -47,7 +49,7 @@ function Select({ name, label, children, ...rest }: Props) {
       </select>
 
       {error && <span className="error">{error}</span>}
-    </div>
+    </Container>
   )
 }
 

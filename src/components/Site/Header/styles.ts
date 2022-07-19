@@ -38,16 +38,20 @@ export const Content = styled.header`
   > div.button {
     display: flex;
     gap: 1rem;
+    justify-content: center;
+    align-items: center;
 
     > :nth-child(1) {
       font-weight: bold;
-      padding: 0.5rem 1rem;
+      padding: 0.5rem ;
       border-radius: 1rem;
       background: var(--logo-color);
       color: var(--bg-color);
       border: 1px solid var(--logo-color);
       text-decoration: none;
       width: 80px;
+      display: flex;
+      justify-content: center;
       &:focus {
         box-shadow: inset 0 0 0 calc(3px + 0px) var(--logo-color);
         outline: 2px solid transparent;
@@ -65,14 +69,15 @@ export const Content = styled.header`
     }
     > :nth-child(2) {
       font-weight: bold;
-      padding: 0.5rem 1rem;
+      padding: 0.5rem ;
       border-radius: 1rem;
       background: transparent;
       color: var(--logo-color);
       border: 1px solid var(--logo-color);
       text-decoration: none;
       width: 115.2px;
-
+      display: flex;
+      justify-content: center;
       &:focus {
         box-shadow: inset 0 0 0 calc(3px + 0px) var(--logo-color);
         outline: 2px solid transparent;
