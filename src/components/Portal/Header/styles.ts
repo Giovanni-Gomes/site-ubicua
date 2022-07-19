@@ -65,30 +65,30 @@ export const HeaderPortal = styled.div`
     align-items: center;
   }
 `
-// export const LogoPortal = styled.div`
+export const LogoPortal = styled.div`
 
-//   display: flex;
-//   // flex-direction: column;
-//   justify-content: center;
-//   // align-items: flex-start;
-//   padding: 8px 16px;
-//   gap: 10px;
+  display: flex;
+  // flex-direction: column;
+  justify-content: center;
+  // align-items: flex-start;
+  padding: 8px 16px;
+  gap: 10px;
 
-//   // position: absolute;
-//   // width: 80px;
-//   // height: 64px;
-//   // left: 0px;
-//   // top: 0px;
+  // position: absolute;
+  // width: 80px;
+  // height: 64px;
+  // left: 0px;
+  // top: 0px;
 
 
-// `
+`
 
-// export const LogoImg = styled.img`
-//   display: flex;
-//   /* flex-direction: row; */
-//   align-items: flex-start;
-//   padding: 4px;
-//   gap: 10px;
+export const LogoImg = styled.img`
+  display: flex;
+  /* flex-direction: row; */
+  align-items: flex-start;
+  padding: 4px;
+  gap: 10px;
 
 //   width: 48px;
 //   height: 48px;
@@ -100,21 +100,21 @@ export const HeaderPortal = styled.div`
 //   align-self: stretch;
 //   flex-grow: 0; */
 
-//   /* flex: 1; */
-//   background: url(${logoPortal});
-//   background-size: cover;
-// `
+  /* flex: 1; */
+  background: url(${logoPortal});
+  background-size: cover;
+ `
 
-// export const UbicuaLogo = styled(FaCloud)`
-// width: 4rem;
-// height: 4rem;
-// fill: darkturquoise;
-// `;
+export const UbicuaLogo = styled(FaCloud)`
+ width: 4rem;
+ height: 4rem;
+ fill: darkturquoise;
+ `;
 
-// export const MenuDropdown = styled.div`
-// display: flex;
-// gap: 1rem;
-// /* padding-right: 3rem; */
-// width: 100%;
-// justify-content: flex-start;
-// `;
+export const MenuDropdown = styled.div`
+ display: flex;
+ gap: 1rem;
+ /* padding-right: 3rem; */
+ width: 100%;
+ justify-content: flex-start;
+ `;
