@@ -11,8 +11,8 @@ export const ButtonCustom = styled.button`
   font-size: 1.0rem/* 14px */;
   line-height: 1.25rem/* 20px */;
   color: white;
-  margin: 1rem 0.5rem;
-  padding: 1rem;
+  margin:1rem 0.5rem;
+  padding: 0.7rem;
   cursor: pointer;
 
   &:hover {

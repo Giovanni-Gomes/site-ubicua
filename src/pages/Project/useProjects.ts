@@ -115,8 +115,8 @@ export function useProjects(page: number, take: number) {
 }
 
 export function useProject(id: string) {
-  return useQuery(['projects', id], () => getOneProjectById(id));
-  // return useQuery(['projects', page], () => getProjects(page, take), {
+  return useQuery(['project', id], () => getOneProjectById(id));
+  // return useQuery(['projects', id], () => getProjects(page, take), {
   //   staleTime: 1000 * 60 * 10, // 1000 * 60 * 10 10 minutes // 1000 * 60 * 60 * 12, // 12 hours,
   // });
 }
