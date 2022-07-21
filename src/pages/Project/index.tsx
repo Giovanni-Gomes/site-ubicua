@@ -27,15 +27,15 @@ const Project: React.FC = () => {
   const [take, setTake] = useState(10);
   const { data, isLoading, isFetching, error } = useProjects(page, take);
 
-  async function handlePrefetchProject(projectId: string) {
-    await queryClient.prefetchQuery(['projects', projectId], async () => {
-      const response = await api.get(`/projects/${projectId}`);
+  // async function handlePrefetchProject(projectId: string) {
+  //   await queryClient.prefetchQuery(['projects', projectId], async () => {
+  //     const response = await api.get(`/projects/${projectId}`);
 
-      return response.data;
-    }, {
-      staleTime: 1000 * 60 * 10, // 10 minutes
-    });
-  }
+  //     return response.data;
+  //   }, {
+  //     staleTime: 1000 * 60 * 10, // 10 minutes
+  //   });
+  // }
 
   useRef
 
@@ -45,34 +45,34 @@ const Project: React.FC = () => {
   return (
     <>
       <Header />
-      <Panel title="List Projects">
+      <Panel title="List Projects" back='/dashboard' next='/dashboard' search={true} importFile='/import' create='/create-project'>
         <Flex>
-          <Flex flex={1} justify="left" align="center">
-            <Flex justifyContent="space-between" borderRadius={10}>
+          {/* <Flex flex={1} justify="left" align="center"> */}
+          {/* <Flex justifyContent="space-between" borderRadius={10}>
               <Link as={RouterLink} to="/dashboard" bg={bg} mr={1} p={2} borderRadius={10} _hover={{ opacity: 0.5 }}>
                 <FiArrowLeft />
               </Link>
               <Link as={RouterLink} to="/dashboard" bg={bg} mr={1} p={2} borderRadius={10} _hover={{ opacity: 0.5 }}>
                 <FiArrowRight />
               </Link>
-            </Flex>
-            <Input maxW={250} placeholder='search' size='sm' name="search" borderRadius={20} color='tomato' _placeholder={{ opacity: 0.6, color: 'gray.600' }} backgroundColor={bg} focusBorderColor={bg} />
-          </Flex>
+            </Flex> */}
+          {/* <Input maxW={250} placeholder='search' size='sm' name="search" borderRadius={20} color='tomato' _placeholder={{ opacity: 0.6, color: 'gray.600' }} backgroundColor={bg} focusBorderColor={bg} /> */}
+          {/* </Flex> */}
 
           {!isLoading && isFetching && (
             <Spinner size="sm" color="gray.500" ml="4" />
           )}
 
           <Flex flex={1} justify="right" align="center">
-            <Flex borderRadius={10}>
+            {/* <Flex borderRadius={10}> */}
 
-              <Link as={RouterLink} to={'/import'} bg={bg} mr={1} p={2} borderRadius={10} _hover={{ opacity: 0.5 }}>
+            {/* <Link as={RouterLink} to={'/import'} bg={bg} mr={1} p={2} borderRadius={10} _hover={{ opacity: 0.5 }}>
                 <FaFileImport />
-              </Link>
-              <Link as={RouterLink} to={'/create-project'} bg={bg} mr={1} p={2} borderRadius={10} _hover={{ opacity: 0.5 }}>
+              </Link> */}
+            {/* <Link as={RouterLink} to={'/create-project'} bg={bg} mr={1} p={2} borderRadius={10} _hover={{ opacity: 0.5 }}>
                 <FaPlus />
-              </Link>
-            </Flex>
+              </Link> */}
+            {/* </Flex> */}
           </Flex>
         </Flex>
 
@@ -106,11 +106,11 @@ const Project: React.FC = () => {
               <Tbody >
                 {data?.projects.map((project: any) => (
                   <Tr key={project.id}>
-                    <Td paddingTop="2" paddingBottom="2" minW='8rem'>
+                    <Td paddingTop="2" paddingBottom="2" >
                       <Box>
-                        <Link onMouseEnter={() => handlePrefetchProject(project.id)}>
-                          <Text fontWeight="bold">{project.name}</Text>
-                        </Link>
+                        {/* <Link onMouseEnter={() => handlePrefetchProject(project.id)}> */}
+                        <Text fontWeight="bold">{project.name}</Text>
+                        {/* </Link> */}
                       </Box>
                     </Td>
                     <Td paddingTop="2" paddingBottom="2" maxW='8rem'>
@@ -133,7 +133,7 @@ const Project: React.FC = () => {
                     <Td paddingTop="2" paddingBottom="2">
                       <Text>{project.progress}</Text>
                     </Td>
-                    <Td paddingTop="2" paddingBottom="2">
+                    <Td paddingTop="2" paddingBottom="2" maxW='8rem'>
                       <Text>{project.negotiated_value}</Text>
                     </Td>
                     <Td paddingTop="2" paddingBottom="2">
@@ -146,7 +146,7 @@ const Project: React.FC = () => {
                       <Text>{project.user.name}</Text>
                     </Td>
                     <Td paddingTop="2" paddingBottom="2" maxW='1rem'>
-                      <Flex justify='center' align='center' gap='1'>
+                      <Flex justify='center' align='center' gap='0.3rem'>
                         <RouterLink to={`/update-project/${project.id}`} >
                           <PencilSimpleLine size={24} />
                         </RouterLink>

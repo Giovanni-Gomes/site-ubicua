@@ -76,3 +76,8 @@ export const Error = styled(Tooltip)`
     }
   }
 `;
+
+export const Label = styled.label`
+  color: black;
+  margin-top: 8px;
+`

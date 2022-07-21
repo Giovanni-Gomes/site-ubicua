@@ -6,7 +6,7 @@ import { Form } from '@unform/web';
 import { IconBaseProps } from 'react-icons';
 import { FiAlertCircle } from 'react-icons/fi';
 
-import { Container, Error } from './styles';
+import { Container, Error, Label } from './styles';
 
 interface Props {
   name: string,
