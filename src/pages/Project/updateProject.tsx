@@ -46,6 +46,7 @@ const UpdateProject: React.FC = () => {
   //style colors customTheme
   const bg = useColorModeValue('hoverDark', 'hoverLight');
   const formRef = useRef<FormHandles>(null);
+  const [isSendingProject, setIsSendingProject] = useState(false);
   const navigate = useNavigate();
   const { addToast } = useToast();
 
@@ -57,10 +58,6 @@ const UpdateProject: React.FC = () => {
   const selectOptionsUsers = data?.users;
   const selectOptionsStatus = dataStatus?.status;
 
-  const { data: dataProject } = useProject(String(id))
-
-  const formRef = useRef<FormHandles>(null);
-  const [isSendingProject, setIsSendingProject] = useState(false);
   formRef.current?.setFieldValue('name', dataProject?.name);
   formRef.current?.setFieldValue('description', dataProject?.description);
   formRef.current?.setFieldValue('progress', dataProject?.progress);
@@ -150,29 +147,10 @@ const UpdateProject: React.FC = () => {
     formRef.current?.reset();
   }
 
-  const radioOptions = [
-    { id: 'ativo', value: 'ativo', label: 'Ativo' },
-    { id: 'inativo', value: 'inativo', label: 'Inativo' },
-  ]
-
-  console.log(dataProject)
-
-
   return (
     <>
       <Header />
-      <Panel title={dataProject?.name ? dataProject.name : 'Atualize o Projeto'} back='/project'>
-        {/* <Flex> */}
-        {/* <Flex flex={1} justify="left" align="center"> */}
-        {/* <Flex justifyContent="space-between" borderRadius={10}>
-            <Link as={RouterLink} to="/project" bg={bg} mr={1} p={2} borderRadius={10} _hover={{ opacity: 0.5 }}>
-              <FiArrowLeft />
-            </Link> */}
-        {/* <Link as={RouterLink} to="/dashboard" bg={bg} mr={1} p={2} borderRadius={10} _hover={{ opacity: 0.5 }}>
-              <FiArrowRight />
-            </Link> */}
-        {/* </Flex>
-        </Flex> */}
+      <Panel title={dataProject?.name ? dataProject.name : 'Atualize o Projeto'} back='/project' next='/update-project'>
 
         <Form ref={formRef} initialData={dataProject} onSubmit={handleSubmitCreateProject} style={{ width: '90%', margin: '3rem auto 0' }}>
           <Flex w='100%' gap='2rem' justify='center' align='center' mb='0.5rem'>
@@ -233,48 +211,3 @@ const UpdateProject: React.FC = () => {
 }
 
 export default UpdateProject;
-
-
-/*
-EXAMPLE DE FORM CHACARA UI
-*/
-
-
-
-{/* <Form ref={formRef} onSubmit={handleSubmitCreateProject} style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'flex-start', justifyContent: 'center' }}>
-
-<Flex direction='column' ml={10} mr={10} mt={5} w={585}>
-
-  <InputChakra ref={inputRef} id='name' type='name' name='name' mb='2rem' placeholder='Nome' />
-  <InputChakra ref={emailRef} id='email' type='email' name='email' mb='2rem' placeholder='Nome' />
-
-</Flex>
-</Form> */}
-
-{/* <Flex align='center' ml={10} w='100%'>
-<Button type='submit' >
-  <FaSave style={{ marginRight: '0.5rem' }} />
-  Salvar Registro
-</Button>
-<CancelButton onClick={handleResetForm} >
-  <FaTrash size={25} />
-</CancelButton>
-
-</Flex> */}
-
-{/* <NumberInput max={50} min={10} mb='2rem'>
-<NumberInputField id='amount' placeholder='valor negociado' />
-<NumberInputStepper>
-  <NumberIncrementStepper />
-  <NumberDecrementStepper />
-</NumberInputStepper>
-</NumberInput>
-
-<NumberInput max={50} min={10} mb='2rem'>
-<NumberInputField id='amount' placeholder='Custo Real' />
-<NumberInputStepper>
-  <NumberIncrementStepper />
-  <NumberDecrementStepper />
-</NumberInputStepper>
-</NumberInput> */}
-
