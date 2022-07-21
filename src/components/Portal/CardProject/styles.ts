@@ -2,10 +2,10 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
 
-  @media (min-width: 1360px) {
+  /* @media (min-width: 1360px) {
     width: calc(1370px + ((100vw - 1440px) / 2));
-  }
-  max-width: 100%;
+  } */
+  /* max-width: 100%; */
   border-radius: 0.8rem;
   /* margin-top: 8rem; */
   /* margin: 1rem; */
@@ -51,10 +51,10 @@ export const Container = styled.div`
 export const CardHeader = styled.header`
   /* padding: .2rem .7rem; */
 
-  justify-content: space-between;
-  align-items: stretch;
-  flex-wrap: wrap;
-  padding: 0.25rem 2.25rem;
+  /* justify-content: space-between; */
+  /* align-items: stretch; */
+  /* flex-wrap: wrap; */
+  /* padding: 0.25rem 2.25rem; */
 
   /* background-color: var(--bg-secondary); */
   border-top-right-radius: 0.5rem;

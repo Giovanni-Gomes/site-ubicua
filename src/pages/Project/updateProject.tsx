@@ -155,9 +155,9 @@ const UpdateProject: React.FC = () => {
         <Form ref={formRef} initialData={dataProject} onSubmit={handleSubmitCreateProject} style={{ width: '90%', margin: '3rem auto 0' }}>
           <Flex w='100%' gap='2rem' justify='center' align='center' mb='0.5rem'>
             <Flex direction='column' w='100%'>
-              <Input id='name' type='text' name='name' placeholder='Number Project' />
+              <Input id='name' type='text' name='name' placeholder='Number Project' label='Nome do Projeto' />
 
-              <Input id='progress' type='text' name='progress' placeholder='Progress' />
+              <Input id='progress' type='text' name='progress' placeholder='Progress' label='Progresso' />
 
               <Select name="status_id" label="Status" defaultValue={dataProject?.status.id}>
                 <option key={0} value='Select a status'>Selecione um status</option>
@@ -173,9 +173,9 @@ const UpdateProject: React.FC = () => {
             </Flex>
 
             <Flex direction='column' w='100%'>
-              <Input type="number" name="negotiated_value" placeholder='Valor Negociado' />
+              <Input type="number" name="negotiated_value" placeholder='Valor Negociado' label='Valor Negociado' />
 
-              <Input type="number" name="real_cost" placeholder='Custo Real' />
+              <Input type="number" name="real_cost" placeholder='Custo Real' label='Custo Real' />
 
               <Select name="user_id" label="Responsável" defaultValue={dataProject?.user.id}>
                 <option key={0} value='Select a user'>Select a user</option>
@@ -190,7 +190,7 @@ const UpdateProject: React.FC = () => {
               {/* <Input id='user_id' type='text' name='user_id' placeholder='Responsável' /> */}
             </Flex>
           </Flex>
-          <Input id='description' type='text' name='description' placeholder='Description' />
+          <Input id='description' type='text' name='description' placeholder='Description' label='Descrição' />
 
 
           <Flex align='center' w='100%' justify='space-between'>

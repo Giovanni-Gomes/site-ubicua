@@ -77,7 +77,7 @@ function Input({ name, type, label, value, containerStyle = {}, icon: Icon, ...r
 
   return (
     <>
-      {label && <label htmlFor={fieldName}>{label}</label>}
+      {label && <Label htmlFor={fieldName}>{label}</Label>}
       <Container
         style={containerStyle}
         isErrored={!!error}

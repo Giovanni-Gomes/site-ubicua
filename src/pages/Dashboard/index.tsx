@@ -60,7 +60,7 @@ const Dashboard: React.FC = () => {
           <>
             <CardProject title='Latest projects added' subtitle='Updated 37 minutes ago'>
 
-              <Table p={2} textColor={'black'} bg='#FFFFFF' variant='simple' size='lg' w={1278} minW={1278}>
+              <Table p={2} textColor={'black'} bg='#FFFFFF' variant='simple' size='lg' minW={1278}>
                 <Thead>
                   <Tr>
                     <Th>Nome</Th>

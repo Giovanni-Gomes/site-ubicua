@@ -20,8 +20,8 @@ const CardProject: React.FC<CardProps> = ({ variant, title, subtitle, children }
         {/* <CardHeader style={{ background: 'red' }}> */}
         <Title>
           {title}
-          {subtitle ? <Subtitle>{subtitle}</Subtitle> : null}
         </Title>
+        {subtitle ? <Subtitle>{subtitle}</Subtitle> : null}
         {/* <CardToolbar><a href="#">History</a></CardToolbar> */}
         {/* </CardHeader> */}
       </Flex>

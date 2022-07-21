@@ -41,6 +41,7 @@ export const PopButton = styled(Popover.Button)`
 export const Span = styled.span`
   max-width: 0rem;
   overflow: hidden;
+  display: flex;
   transition: all;
   transition-duration: 500ms;
   transition-timing-function: linear;

@@ -21,7 +21,7 @@ export function Panel({ children, title, back, next, search, importFile, create,
   return (
     <Flex width='90%' direction='column' mt={'5rem'} mb='2rem' marginInlineEnd={0} mx={'auto'} h="100%" bg='tertiary' borderRadius={10} p={3} >
       <Flex align='center' justifyContent='space-between' mb='2rem'>
-        <Flex gap='0.3rem'>
+        <Flex gap='0.3rem' height='30px' w='275.6px'>
           {back &&
             <Link as={RouterLink} to={back} display='flex' alignItems='center' justifyContent='center' p='0 0.5rem' bg={bg} borderRadius={10} _hover={{ opacity: 0.5 }}>
               <FiArrowLeft />

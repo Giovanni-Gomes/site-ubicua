@@ -16,7 +16,7 @@ export function PaginationItem({ isCurrent = false, onPageChange, number }: Pagi
                 colorScheme="pink"
                 disabled
                 _disabled={{
-                    bgColor: 'pink.500',
+                    bgColor: 'purple.600',
                     cursor: 'default',
                 }}
             >
