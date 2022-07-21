@@ -87,7 +87,7 @@ const Project: React.FC = () => {
           </Flex>
         ) : (
           <>
-            <Table variant='simple' color='black' mt={2} >
+            <Table variant='simple' color='black' mt={2} size='sm' >
               <Thead >
                 <Tr>
                   <Th>Nome</Th>

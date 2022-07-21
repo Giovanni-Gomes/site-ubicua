@@ -6,16 +6,16 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  margin: 1rem 1.5rem 1rem 1rem;
+  margin: 1rem 0rem 1rem 1rem;
   padding: 1rem;
   background: #FFFFFF;
 
-  @media (min-width: 1440px) {
-    width: calc(27.8rem + ((100vw - 1440px) / 2));
-  }
-  /* max-width: 100%; */
+  /* width: 100%; */
+  /* @media (min-width: 1440px) {
+    width: calc(28rem + ((100vw - 1440px) / 2));
+  } */
+  max-width: 450px;
 
-  max-width: 100%;
   border-spacing: 0 6px;
 
   min-width: 27.8rem;
@@ -26,9 +26,9 @@ export const Container = styled.div`
   border-radius: 8px;
 
   /* Inside auto layout */
-  flex: none;
+  /* flex: none;
   order: 0;
-  flex-grow: 0;
+  flex-grow: 0; */
 `;
 
 export const ChartBackground = styled.div`

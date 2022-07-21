@@ -147,81 +147,75 @@ const CreateProject: React.FC = () => {
   return (
     <>
       <Header />
-      <Panel title="Create a new Project">
-        <Flex>
-          {/* <Flex flex={1} justify="left" align="center"> */}
-          <Flex justifyContent="space-between" borderRadius={10}>
-            <Link as={RouterLink} to="/project" bg={bg} mr={1} p={2} borderRadius={10} _hover={{ opacity: 0.5 }}>
+      <Panel title="Create a new Project" back='/project'>
+        {/* <Flex> */}
+        {/* <Flex flex={1} justify="left" align="center"> */}
+        {/* <Flex justifyContent="space-between" borderRadius={10}> */}
+        {/* <Link as={RouterLink} to="/project" bg={bg} mr={1} p={2} borderRadius={10} _hover={{ opacity: 0.5 }}>
               <FiArrowLeft />
-            </Link>
-            {/* <Link as={RouterLink} to="/dashboard" bg={bg} mr={1} p={2} borderRadius={10} _hover={{ opacity: 0.5 }}>
+            </Link> */}
+        {/* <Link as={RouterLink} to="/dashboard" bg={bg} mr={1} p={2} borderRadius={10} _hover={{ opacity: 0.5 }}>
               <FiArrowRight />
             </Link> */}
-          </Flex>
-          {/* </Flex> */}
+        {/* </Flex> */}
+        {/* </Flex> */}
 
-          <Flex flex={1} justify="right" align="center">
+        {/* <Flex flex={1} justify="right" align="center">
             <Flex borderRadius={10}>
 
             </Flex>
           </Flex>
-        </Flex>
+        </Flex> */}
 
-        <Form ref={formRef} onSubmit={handleSubmitCreateProject} style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'flex-start', justifyContent: 'center' }}>
-          <Flex direction='column' ml={10} mr={10} mt={5} w={585}>
-            <Input id='name' type='text' name='name' placeholder='Name | Number Project' />
+        <Form ref={formRef} onSubmit={handleSubmitCreateProject} style={{ width: '90%', margin: '3rem auto 0' }}>
+          <Flex w='100%' gap='2rem' justify='center' align='center' mb='0.5rem'>
+            <Flex direction='column' w='100%'>
+              <Input id='name' type='text' name='name' placeholder='Number Project' label='Nome do Projeto' />
 
-            <Input id='description' type='text' name='description' placeholder='Description' />
+              <Input id='progress' type='text' name='progress' placeholder='Progress' label='Progresso' />
 
-            <Input id='progress' type='text' name='progress' placeholder='Progress' />
+              <Select name="status_id" label="Status">
+                <option key={0} value='Select a status'>Selecione um status</option>
+                {selectOptionsStatus?.map(option => (
+                  <option key={option.id} value={option.id}>
+                    {option.name}
+                  </option>
+                ))}
+              </Select>
 
-            <Select name="status_id" label="Status" color='black'>
-              <option key={0} value='Select a status'>Selecione um status</option>
-              {selectOptionsStatus?.map(option => (
-                <option key={option.id} value={option.id}>
-                  {option.name}
-                </option>
-              ))}
-            </Select>
-            {/* <Radio name="active" options={radioOptions} /> */}
-          </Flex>
-
-          <Flex direction='column' mr={10} mt={5} w={585}>
-            <Flex direction='row' mb={2} color='black'>
-              <FormLabel htmlFor='start' fontSize={12} mt={2}>Data Início:</FormLabel>
-              <Input type="date" min="01/01/2021" max="31/12/2030" name='start' />
-
-              <FormLabel htmlFor='end' fontSize={12} ml={4} mt={3}>Data Fim:</FormLabel>
-              <Input type='date' min="01/01/2021" max="31/12/2030" name='end' />
+              <Input type="date" min="01/01/2021" max="31/12/2030" name='date_start' label='Data Início:' />
+              {/* <Radio name="active" options={radioOptions} /> */}
             </Flex>
 
-            <Input type="number" name="negotiated" placeholder='Valor Negociado' />
+            <Flex direction='column' w='100%'>
+              <Input type="number" name="negotiated_value" placeholder='Valor Negociado' label='Valor Negociado' />
 
-            <Input type="number" name="real_cost" placeholder='Custo Real' />
+              <Input type="number" name="real_cost" placeholder='Custo Real' label='Custo Real' />
 
-            <Select name="user_id" label="Responsável" color='black'>
-              <option key={0} value='Select a user'>Select a user</option>
-              {selectOptionsUsers?.map(option => (
-                <option key={option.id} value={option.id}>
-                  {option.name}
-                </option>
-              ))}
-            </Select>
-            {/* <Input id='user_id' type='text' name='user_id' placeholder='Responsável' /> */}
+              <Select name="user_id" label="Responsável">
+                <option key={0} value='Select a user'>Select a user</option>
+                {selectOptionsUsers?.map(option => (
+                  <option key={option.id} value={option.id}>
+                    {option.name}
+                  </option>
+                ))}
+              </Select>
 
+              <Input type='date' min="01/01/2021" max="31/12/2030" name='date_end' label='Data Fim:' />
+              {/* <Input id='user_id' type='text' name='user_id' placeholder='Responsável' /> */}
+            </Flex>
+          </Flex>
+          <Input id='description' type='text' name='description' placeholder='Description' label='Descrição' />
+          <Flex align='center' w='100%' justify='space-between'>
+            <Button disabled={isSendingProject} onClick={() => formRef.current?.submitForm()}>
+              <FaSave style={{ marginRight: '0.5rem' }} />
+              {isSendingProject ? <Loading /> : 'Save Register'}
+            </Button>
+            <CancelButton onClick={handleResetForm} >
+              <FaTrash size={25} />
+            </CancelButton>
           </Flex>
         </Form>
-
-        <FormFooter>
-          <Button disabled={isSendingProject} onClick={() => formRef.current?.submitForm()}>
-            <FaSave style={{ marginRight: '0.5rem' }} />
-            {isSendingProject ? <Loading /> : 'Save Register'}
-          </Button>
-          <CancelButton onClick={handleResetForm} >
-            <FaTrash size={25} />
-          </CancelButton>
-        </FormFooter>
-
       </Panel>
     </>
   );

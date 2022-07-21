@@ -2,8 +2,12 @@ import styled from 'styled-components';
 
 export const Container = styled.section`
   &.WrapperCard {
+    width: 100%;
     display: flex;
-
+    justify-content: center;
+    /* gap: 1.5rem; */
+    max-width: 1278px;
+    margin: 0 auto;
   }
 
   /* &.card-section {
@@ -12,13 +16,16 @@ export const Container = styled.section`
   } */
 
   &.card-section {
+    width: 100%;
     margin-top: 5rem;
     display: flex;
     flex-wrap: wrap;
-    /* justify-content: center; */
+    justify-content: center;
   }
 
   &.table-section {
+    width: 100%;
     display: flex;
+    justify-content: center;
   }
 `;

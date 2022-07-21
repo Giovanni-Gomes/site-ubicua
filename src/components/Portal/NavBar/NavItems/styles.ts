@@ -27,7 +27,7 @@ export const Container = styled.li`
     gap: 0.2rem;
     align-items: center;
     justify-content: center;
-    transition: filter 300ms;
+    transition: filter 100ms;
     font-weight: bold;
     padding: 0.5rem 0.5rem;
     &:hover {
