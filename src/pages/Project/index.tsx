@@ -1,16 +1,20 @@
 import { Box, Button, Flex, Heading, Input, Link, Spacer, Spinner, Table, Tbody, Td, Text, Th, Thead, Tr, useColorModeValue } from '@chakra-ui/react';
 import { ArrowLeft, ArrowRight, DotsThree, Pencil, PencilCircle, PencilLine, PencilSimple, PencilSimpleLine, Trash, TrashSimple } from 'phosphor-react';
-import React, { useEffect, useRef, useState } from 'react';
+import React, { Component, useCallback, useEffect, useRef, useState } from 'react';
 import Header from '../../components/Portal/Header';
 import { Pagination } from '../../components/Portal/Pagination';
 import { Panel } from '../../components/Portal/Panel';
 import api from '../../services/api';
 import { queryClient } from "../../services/queryClient";
 import { deleteProject, useProjects } from './useProjects';
-import { Link as RouterLink } from 'react-router-dom';
+import { Link as RouterLink, useNavigate } from 'react-router-dom';
 import { FaFileImport, FaPlus } from 'react-icons/fa';
 import { FiArrowLeft, FiArrowRight } from 'react-icons/fi';
+import { useToast } from '../../components/hooks/provider/toast';
+import { Loading } from '../../components/Site/WidgetForm/Loading';
 
+import { useMutation } from "react-query"
+import { AxiosError } from 'axios';
 
 interface ITableProject {
   id: string;
@@ -24,56 +28,83 @@ const Project: React.FC = () => {
   const bg = useColorModeValue('hoverDark', 'hoverLight');
 
   const [page, setPage] = useState(1);
-  const [take, setTake] = useState(10);
-  const { data, isLoading, isFetching, error } = useProjects(page, take);
 
-  // async function handlePrefetchProject(projectId: string) {
-  //   await queryClient.prefetchQuery(['projects', projectId], async () => {
-  //     const response = await api.get(`/projects/${projectId}`);
+  const { data, isLoading, isFetching, error } = useProjects(page, 10);
 
-  //     return response.data;
-  //   }, {
-  //     staleTime: 1000 * 60 * 10, // 10 minutes
-  //   });
-  // }
+  const { addToast } = useToast();
 
-  useRef
+  const [actualId, setActualId] = useState<String>()
+  const [actualProjectName, setActualProjectName] = useState<String>()
+  const [alert, setAlert] = useState(false)
 
-  useEffect(() => { }, [])
+
+  const removeProject = useMutation(
+    async (id: string) => {
+      const response = await api.delete(`/v1/project/delete/${id}`);
+
+      return response.data;
+    },
+    {
+      onSuccess: () => {
+        queryClient.invalidateQueries('projects');
+      },
+      onError: (error: AxiosError) => {
+        addToast({
+          type: 'error',
+          title: 'Erro ao deletar registro',
+          description:
+            'Ocorreu um erro ao deletar registro, tente novamente',
+        });
+      }
+    },
+  );
+
+  async function handleRemoveTag(id: string) {
+    try {
+      await removeProject.mutateAsync(id);
+
+      addToast({
+        type: 'success',
+        title: 'Deletado com Sucesso!',
+      });
+      setAlert(false)
+    } catch {
+      console.log('Error happened')
+    }
+  }
+
+  function showAlert(id: string, name: string) {
+    setActualId(id)
+    setActualProjectName(name)
+    setAlert(true)
+  }
 
 
   return (
     <>
       <Header />
+      {alert &&
+        <Flex position='fixed' bg={'transparent'} w='100%' h='100%' zIndex='10' justify='center' align='center'>
+          <Flex bg='quaternary' color='black' direction='column' p='2rem' borderRadius='10px' gap='2rem' align='center'>
+            <p>Tem certeza que deseja excluir este registro?</p>
+            <span>{actualProjectName}</span>
+            <Flex justify='center' align='center' gap='1rem'>
+              <Button onClick={() => handleRemoveTag(String(actualId))}>
+                Excluir
+              </Button>
+              <Button onClick={() => setAlert(false)}>
+                Cancelar
+              </Button>
+            </Flex>
+          </Flex>
+        </Flex>
+      }
       <Panel title="List Projects" back='/dashboard' next='/dashboard' search={true} importFile='/import' create='/create-project'>
         <Flex>
-          {/* <Flex flex={1} justify="left" align="center"> */}
-          {/* <Flex justifyContent="space-between" borderRadius={10}>
-              <Link as={RouterLink} to="/dashboard" bg={bg} mr={1} p={2} borderRadius={10} _hover={{ opacity: 0.5 }}>
-                <FiArrowLeft />
-              </Link>
-              <Link as={RouterLink} to="/dashboard" bg={bg} mr={1} p={2} borderRadius={10} _hover={{ opacity: 0.5 }}>
-                <FiArrowRight />
-              </Link>
-            </Flex> */}
-          {/* <Input maxW={250} placeholder='search' size='sm' name="search" borderRadius={20} color='tomato' _placeholder={{ opacity: 0.6, color: 'gray.600' }} backgroundColor={bg} focusBorderColor={bg} /> */}
-          {/* </Flex> */}
 
           {!isLoading && isFetching && (
             <Spinner size="sm" color="gray.500" ml="4" />
           )}
-
-          <Flex flex={1} justify="right" align="center">
-            {/* <Flex borderRadius={10}> */}
-
-            {/* <Link as={RouterLink} to={'/import'} bg={bg} mr={1} p={2} borderRadius={10} _hover={{ opacity: 0.5 }}>
-                <FaFileImport />
-              </Link> */}
-            {/* <Link as={RouterLink} to={'/create-project'} bg={bg} mr={1} p={2} borderRadius={10} _hover={{ opacity: 0.5 }}>
-                <FaPlus />
-              </Link> */}
-            {/* </Flex> */}
-          </Flex>
         </Flex>
 
 
@@ -116,9 +147,6 @@ const Project: React.FC = () => {
                     <Td paddingTop="2" paddingBottom="2" maxW='8rem'>
                       <Flex justify='space-between' align='center'>
                         <Text noOfLines={1}>{project.description}</Text>
-                        {/* <Box as='button' border='none' bg='transparent' cursor='pointer' onClick={}>
-                          <DotsThree size={30} />
-                        </Box> */}
                       </Flex>
                     </Td>
                     <Td paddingTop="2" paddingBottom="2">
@@ -146,26 +174,23 @@ const Project: React.FC = () => {
                       <Text>{project.user.name}</Text>
                     </Td>
                     <Td paddingTop="2" paddingBottom="2" maxW='1rem'>
-                      <Flex justify='center' align='center' gap='0.3rem'>
+                      <Flex justify='center' align='center'>
                         <RouterLink to={`/update-project/${project.id}`} >
                           <PencilSimpleLine size={24} />
                         </RouterLink>
-                        <Button onClick={() => deleteProject(project.id)} p={0}>
+                        <Button onClick={() => showAlert(project.id, project.name)} p={0}>
                           <TrashSimple size={24} color='#c53030' />
                         </Button>
                       </Flex>
                     </Td>
-
                   </Tr>
                 ))}
               </Tbody>
             </Table>
-
-
           </>
         )}
         <Pagination
-          registersPerPage={take}
+          registersPerPage={10}
           totalCountOfRegisters={data?.totalPage}
           currentPage={page}
           onPageChange={setPage}
