@@ -150,7 +150,7 @@ const UpdateProject: React.FC = () => {
   return (
     <>
       <Header />
-      <Panel title={dataProject?.name ? dataProject.name : 'Atualize o Projeto'} back='/project' next='/update-project'>
+      <Panel title={dataProject?.name ? dataProject.name : 'Atualize o Projeto'} back='/project'>
 
         <Form ref={formRef} initialData={dataProject} onSubmit={handleSubmitCreateProject} style={{ width: '90%', margin: '3rem auto 0' }}>
           <Flex w='100%' gap='2rem' justify='center' align='center' mb='0.5rem'>
