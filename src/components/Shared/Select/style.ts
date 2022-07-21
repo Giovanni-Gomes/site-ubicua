@@ -10,7 +10,7 @@ export const Container = styled.div`
         background: var(--color-primary);
         border-radius: 10px;
         padding: 16px;
-        margin-bottom: 0.1rem;
+        /* margin-bottom: 0.1rem; */
         width: 100%;
         border: 2px solid var(--color-secondary);
         color: #666360;

@@ -30,14 +30,14 @@ const Dropdown: React.FC<DropdownProps> = ({ subtitle }) => {
           {subtitle.map((sb, key) => (
             sb.link ?
               <Link to={sb.link} key={key.toString()}>{sb.name}</Link>
-              : <button className='expand' onClick={() => setActiveMenu(sb.name)}>{sb.name}<CaretRight size={18} /> </button>
+              : <button key={key.toString()} className='expand' onClick={() => setActiveMenu(sb.name)}>{sb.name}<CaretRight size={18} /> </button>
           ))}
         </div>
       </CSSTransition>
       <CSSTransition in={activeMenu === 'Acompanhamentos'} unmountOnExit timeout={500} classNames="menu-secondary" onEnter={calcHeight}>
         <div className="menu">
           <button onClick={() => setActiveMenu('main')}><CaretLeft size={18} />Voltar</button>
-          <Link to="/programm">Programação</Link>
+          <Link to="/programm" key={0}>Programação</Link>
         </div>
       </CSSTransition>
       <CSSTransition in={activeMenu === 'Secções'} unmountOnExit timeout={500} classNames="menu-secondary" onEnter={calcHeight}>

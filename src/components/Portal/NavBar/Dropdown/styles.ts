@@ -12,7 +12,7 @@ padding: 1rem;
 overflow: hidden;
 transition: height var(--speed) ease;
 max-width: 100%;
-min-width: 13rem;
+min-width: 12rem;
 
 > .menu {
   padding-bottom: 2rem;
@@ -25,17 +25,14 @@ min-width: 13rem;
     display: flex;
     align-items: center;
     border-radius: 1rem;
-    transition: var(--speed); //background
-    padding: 0.5rem;
+    /* transition: var(--speed); */
+    padding: 0.4rem;
     font-size: 16px;
     &.expand {
       justify-content: space-between;
     }
-
-
     &:hover {
       background: ${(props: any) => props.theme.hover};
-
     }
     > .icon-right {
       margin-left: auto;

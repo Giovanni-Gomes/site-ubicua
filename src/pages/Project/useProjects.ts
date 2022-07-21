@@ -24,7 +24,7 @@ export type Project = {
 
 type GetProjectResponse = {
   totalPage: number;
-  projects: Project[];
+  projects: Project[] | any;
 };
 
 export type GetOneProjectResponse = {

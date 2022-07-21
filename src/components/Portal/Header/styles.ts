@@ -1,10 +1,6 @@
 import styled from 'styled-components';
 import { FaCloud } from 'react-icons/fa';
 
-type props = {
-  bg: string;
-}
-
 export const Container = styled.nav`
   z-index: 3;
   position: fixed;
@@ -22,12 +18,12 @@ export const HeaderPortal = styled.div`
   // right: 0;
   background: ${(props: any) => props.theme.navBar};
   display: flex;
-  // justify-content: space-around;
+   justify-content: space-around;
   // align-items: baseline;
   align-items: center;
   padding: 0 1rem;
   /* padding-left: 0.5rem; */
-  gap: 0rem;
+  gap: 1rem;
 
 
 

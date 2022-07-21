@@ -45,12 +45,15 @@ interface CreateProjectProps {
 const UpdateProject: React.FC = () => {
   //style colors customTheme
   const bg = useColorModeValue('hoverDark', 'hoverLight');
+  const formRef = useRef<FormHandles>(null);
   const navigate = useNavigate();
   const { addToast } = useToast();
-  const { id } = useParams()
 
+  const { id } = useParams();
   const { data } = useUsers();
   const { data: dataStatus } = useStatus();
+  const { data: dataProject } = useProject(String(id));
+
   const selectOptionsUsers = data?.users;
   const selectOptionsStatus = dataStatus?.status;
 
@@ -119,12 +122,12 @@ const UpdateProject: React.FC = () => {
           title: 'Cadastro Realizado!',
         });
         setIsSendingProject(false);
+
+
       } catch (err) {
         console.log("error", err);
         if (err instanceof Yup.ValidationError) {
-
           const errors = getValidationErrors(err);
-
           formRef.current?.setErrors(errors);
           return;
         }
@@ -138,7 +141,7 @@ const UpdateProject: React.FC = () => {
 
       }
     },
-    [addToast, navigate],
+    [addToast, navigate, formRef],
   );
 
 
@@ -153,6 +156,7 @@ const UpdateProject: React.FC = () => {
   ]
 
   console.log(dataProject)
+
 
   return (
     <>

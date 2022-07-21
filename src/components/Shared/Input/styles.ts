@@ -34,9 +34,8 @@ export const Container = styled.div<ContainerProps>`
   display: flex;
   align-items: center;
   & + div {
-    margin-top: 18px;
+    margin-top: 0.5rem;
   }
-
   & + label {
     margin-top: 8px;
   }
