@@ -104,7 +104,7 @@ const Project: React.FC = () => {
                 </Tr>
               </Thead>
               <Tbody >
-                {data?.projects.map(project => (
+                {data?.projects.map((project: any) => (
                   <Tr key={project.id}>
                     <Td paddingTop="2" paddingBottom="2" minW='8rem'>
                       <Box>

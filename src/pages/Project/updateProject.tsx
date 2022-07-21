@@ -45,23 +45,24 @@ interface CreateProjectProps {
 const UpdateProject: React.FC = () => {
   //style colors customTheme
   const bg = useColorModeValue('hoverDark', 'hoverLight');
+  const formRef = useRef<FormHandles>(null);
   const navigate = useNavigate();
   const { addToast } = useToast();
-  const { id } = useParams()
 
+  const { id } = useParams();
   const { data } = useUsers();
   const { data: dataStatus } = useStatus();
+  const { data: dataProject } = useProject(String(id));
+
   const selectOptionsUsers = data?.users;
   const selectOptionsStatus = dataStatus?.status;
 
 
-  const { data: dataProject } = useProject(String(id))
-  console.log(dataProject);
+  const [isSendingProject, setIsSendingProject] = useState(false);
+  //console.log("dataproject", dataProject);
   // const [actualProject, setActualProject] = useState<CreateProjectProps>()
-
-
-  //console.log(id)
-
+  //console.log(formRef.current?.getFieldValue('name'));
+  formRef.current?.setFieldValue('name', dataProject?.name);
 
   // async function fetchProject(): Promise<CreateProjectProps> {
   //   const result = await api.get(`/v1/project/findOne/${id}`);
@@ -75,8 +76,7 @@ const UpdateProject: React.FC = () => {
   //   { value: 'argentina', label: 'Argentina' },
   // ]
   // formRef
-  const formRef = useRef<FormHandles>(null);
-  const [isSendingProject, setIsSendingProject] = useState(false);
+
 
 
   const handleSubmitCreateProject = useCallback(
@@ -118,7 +118,8 @@ const UpdateProject: React.FC = () => {
         }
 
         setIsSendingProject(true);
-        const result = await api.post(`/v1/project/update/${id}`, formData);
+        const result = await api.post(`/v1/project/update/${String(id)}`, formData);
+        console.log(result);
 
         console.log("formData", result);
 
@@ -129,12 +130,12 @@ const UpdateProject: React.FC = () => {
           title: 'Cadastro Realizado!',
         });
         setIsSendingProject(false);
+
+
       } catch (err) {
         console.log("error", err);
         if (err instanceof Yup.ValidationError) {
-
           const errors = getValidationErrors(err);
-
           formRef.current?.setErrors(errors);
           return;
         }
@@ -148,7 +149,7 @@ const UpdateProject: React.FC = () => {
 
       }
     },
-    [addToast, navigate],
+    [addToast, navigate, formRef],
   );
 
 
@@ -161,6 +162,7 @@ const UpdateProject: React.FC = () => {
     { id: 'ativo', value: 'ativo', label: 'Ativo' },
     { id: 'inativo', value: 'inativo', label: 'Inativo' },
   ]
+
 
 
 
@@ -189,14 +191,14 @@ const UpdateProject: React.FC = () => {
 
         <Form ref={formRef} initialData={dataProject} onSubmit={handleSubmitCreateProject} style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'flex-start', justifyContent: 'center' }}>
           <Flex direction='column' ml={10} mr={10} mt={5} w={585}>
-            <Input id='name' type='text' name='name' placeholder='Number Project' />
+            {/* <Input id='name' type='text' name='name' onChange={() => nameUpdate} /> */}
+            <Input id='name' type='text' name='name' placeholder='Number | Name Project' />
 
             <Input id='description' type='text' name='description' placeholder='Description' />
 
             <Input id='progress' type='text' name='progress' placeholder='Progress' />
 
             <Select name="status_id" label="Status" value={dataProject?.status.id}>
-              <option key={0} value='Select a status'>Selecione um status</option>
               {selectOptionsStatus?.map(option => (
                 <option key={option.id} value={option.id}>
                   {option.name}
@@ -220,7 +222,6 @@ const UpdateProject: React.FC = () => {
             <Input type="number" name="real_cost" placeholder='Custo Real' />
 
             <Select name="user_id" label="Responsável" value={dataProject?.user.id}>
-              <option key={0} value='Select a user'>Select a user</option>
               {selectOptionsUsers?.map(option => (
                 <option key={option.id} value={option.id}>
                   {option.name}

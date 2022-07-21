@@ -7,22 +7,22 @@ export const Container = styled.div`
   flex-direction: column;
   align-items: flex-start;
   margin: 1rem 1.5rem 1rem 1rem;
-
   padding: 1rem;
+  background: #FFFFFF;
 
-  @media (max-width: 1440px) {
-    width: calc(490px + ((100vw - 1440px) / 2));
+  @media (min-width: 1440px) {
+    width: calc(27.8rem + ((100vw - 1440px) / 2));
   }
   /* max-width: 100%; */
 
   max-width: 100%;
   border-spacing: 0 6px;
 
-  min-width: 490px;
+  min-width: 27.8rem;
   height: 14rem;
 
   /* Dark Theme/Green */
-  background: #FFFF;
+  /* background: #FFFF; */
   border-radius: 8px;
 
   /* Inside auto layout */
@@ -36,13 +36,13 @@ export const ChartBackground = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  margin: 1rem 1rem;
+  /* margin: 1rem 1rem; */
 
   padding: 1rem;
 
-  @media (min-width: 1440px) {
-    width: calc(420px + ((100vw - 1440px) / 2));
-  }
+  /* @media (min-width: 1440px) {
+    width: calc(820px + ((100vw - 1440px) / 2));
+  } */
   /* max-width: 100%; */
 
   max-width: 100%;
@@ -51,8 +51,8 @@ export const ChartBackground = styled.div`
   min-width: 420px;
   height: 14rem;
 
-  background: url(${chartExample}) no-repeat center;
-  background-size: cover;
+  /* background: url(${chartExample}) no-repeat center;
+  background-size: cover; */
 
 `
 

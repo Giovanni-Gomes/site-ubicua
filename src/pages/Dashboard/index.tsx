@@ -1,4 +1,4 @@
-import { Box, ChakraProvider, Flex, Link, Table, Tbody, Td, Text, Th, Thead, Tr } from '@chakra-ui/react';
+import { Box, ChakraProvider, Flex, Link, Table, Tbody, Td, Text, Th, Thead, Tr, useColorModeValue } from '@chakra-ui/react';
 import { extendTheme } from '@chakra-ui/react'
 import React, { useEffect, useState } from 'react';
 import Card from '../../components/Portal/Card';
@@ -29,38 +29,23 @@ interface ITableProject {
 
 const Dashboard: React.FC = () => {
   const { data, isLoading, isFetching, error } = useProjects(0, 0);
-  // const [table, setTable] = useState<ITableProject[]>([])
-  // //const [darkMode, setDarkMode] = useDarkMode(); // comentado pois passamos a usar a chakra
-  // useEffect(() => {
-  //   async function fetchTable() {
-  //     const response = await api.get('/v1/project/findAll');
-
-  //     const { projects, skip, take, totalPage } = response.data;
-
-  //     setTable(projects);
-  //   }
-
-  //   fetchTable()
-  // }, [])
-
+  const bg = useColorModeValue('hoverDark', 'hoverLight');
   return (
     <>
-      <Header /> {/* resetCSS theme={darkMode ? darkTheme : lightTheme} */}
-
+      <Header />
       <Container>
         <DashboardSection element={
           <>
-            <Card variant='success' title='69' subtitle='Active Projects' />
-
-            <Card variant='black' title='69' subtitle='Active Projects' />
-            <Card variant='danger' title='69' subtitle='Active Projects' />
-            <Card variant='white' title='69' subtitle='Active Projects' />
+            <Card variant='info' title='69' subtitle='Active Projects' />
 
             <Card variant='success' title='69' subtitle='Active Projects' />
             <Card variant='info' title='69' subtitle='Active Projects' />
+            <Card variant='success' title='69' subtitle='Active Projects' />
+
             <Card variant='info' title='69' subtitle='Active Projects' />
-            <Card variant='danger' title='69' subtitle='Active Projects' />
-            <Card variant='white' title='69' subtitle='Active Projects' />
+            <Card variant='success' title='69' subtitle='Active Projects' />
+            <Card variant='info' title='69' subtitle='Active Projects' />
+            <Card variant='success' title='69' subtitle='Active Projects' />
           </>
         } className='card-section' />
 
@@ -73,10 +58,10 @@ const Dashboard: React.FC = () => {
 
         <DashboardSection element={
           <>
-            <CardProject variant='white' title='Latest projects added' subtitle='Updated 37 minutes ago'>
+            <CardProject title='Latest projects added' subtitle='Updated 37 minutes ago'>
 
-              <Table variant='simple' color='black' mt={2} >
-                <Thead >
+              <Table p={2} textColor={'black'} bg='#FFFFFF' variant='simple' size='lg' w={1278} minW={1278}>
+                <Thead>
                   <Tr>
                     <Th>Nome</Th>
                     <Th>Desc</Th>
@@ -85,7 +70,6 @@ const Dashboard: React.FC = () => {
                     <Th>Fim</Th>
                     <Th>Progresso</Th>
                     <Th>R$</Th>
-                    <Th>$CR</Th>
                     <Th>Status</Th>
                     <Th>Resp</Th>
                   </Tr>
@@ -121,9 +105,7 @@ const Dashboard: React.FC = () => {
                       <Td paddingTop="2" paddingBottom="2">
                         <Text>{project.negotiated_value}</Text>
                       </Td>
-                      <Td paddingTop="2" paddingBottom="2">
-                        <Text>{project.real_cost}</Text>
-                      </Td>
+
                       <Td paddingTop="2" paddingBottom="2">
                         <Text>{project.status.name}</Text>
                       </Td>
@@ -185,3 +167,17 @@ export default Dashboard;
 </TableContainer>
 
 </CardProject> */}
+
+// const [table, setTable] = useState<ITableProject[]>([])
+  // //const [darkMode, setDarkMode] = useDarkMode(); // comentado pois passamos a usar a chakra
+  // useEffect(() => {
+  //   async function fetchTable() {
+  //     const response = await api.get('/v1/project/findAll');
+
+  //     const { projects, skip, take, totalPage } = response.data;
+
+  //     setTable(projects);
+  //   }
+
+  //   fetchTable()
+  // }, [])

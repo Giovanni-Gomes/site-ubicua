@@ -48,7 +48,6 @@ function Input({ name, type, label, value, containerStyle = {}, icon: Icon, ...r
 
   const handleInputBlur = useCallback(() => {
     setIsFocused(false);
-
     setIsFilled(!!inputRef.current?.value);
   }, []);
 
@@ -78,7 +77,7 @@ function Input({ name, type, label, value, containerStyle = {}, icon: Icon, ...r
 
   return (
     <>
-      <label htmlFor={fieldName}>{label}</label>
+      {label && <label htmlFor={fieldName}>{label}</label>}
       <Container
         style={containerStyle}
         isErrored={!!error}
@@ -104,8 +103,6 @@ function Input({ name, type, label, value, containerStyle = {}, icon: Icon, ...r
         )}
       </Container>
       {error && <span style={{ color: 'red' }}>{error}</span>}
-
-
 
     </>
   )

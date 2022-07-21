@@ -6,7 +6,7 @@ export const Container = styled.nav`
 --text-color: #dadce1;
 --nav-size: 1rem;
 --border-radius: 8px;
---speed: 300ms;
+--speed: 100ms;//300ms;
 // height: var(--nav-size);
 /* z-index: 10; */
 
@@ -27,12 +27,12 @@ button {
   cursor: pointer;
   /* padding-top: 0.2rem; */
   margin-top: 0.3rem;
-  padding-left: 3rem;
+  padding-left: 4rem;
   display: flex;
   flex-direction: row;
   align-items: center;
   text-decoration: none;
-  gap: 0.5rem;
+  gap: 2rem;
   background: transparent;
   border: none;
 
@@ -97,7 +97,6 @@ export const List = styled.ul`
     }
 
     &:hover {
-
       background: #333;
     }
   }

@@ -7,21 +7,20 @@ export const Container = styled.div`
   }
   max-width: 100%;
   border-radius: 0.8rem;
-  margin-top: 8rem;
-  margin: 1rem;
+  /* margin-top: 8rem; */
+  /* margin: 1rem; */
 
   opacity: 0.8;
-
   display: flex;
   /* width: 100%; */
   /* height: 100vh; */
   flex-direction: column;
   word-wrap: break-word;
-  background-color: #ffffff;
+  /* background-color: #ffffff; */
+  /* border: 1px solid #EFF2F5; */
   background-clip: border-box;
-  border: 1px solid #EFF2F5;
   box-shadow: none;
-  border-radius: 1rem;
+
   border-bottom-right-radius: 0rem;
   border-bottom-left-radius: 0rem;
 
@@ -57,19 +56,16 @@ export const CardHeader = styled.header`
   flex-wrap: wrap;
   padding: 0.25rem 2.25rem;
 
-  background-color: var(--bg-secondary);
-  border-top-right-radius: 1rem;
-  border-top-left-radius: 1rem;
+  /* background-color: var(--bg-secondary); */
+  border-top-right-radius: 0.5rem;
+  border-top-left-radius: 0.5rem;
   /* display: flex; */
   /* align-items: center; */
   display: inline;
-
-
-
 `;
 
 export const Title = styled.h2`
-  font-size: 2rem;
+  font-size: 1.6rem;
   margin: 0 0.75rem 0 0;
   flex-wrap: wrap;
 `;

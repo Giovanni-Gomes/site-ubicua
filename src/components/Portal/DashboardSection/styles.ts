@@ -15,7 +15,7 @@ export const Container = styled.section`
     margin-top: 5rem;
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
+    /* justify-content: center; */
   }
 
   &.table-section {

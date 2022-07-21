@@ -1,18 +1,19 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-  width: 309px;
-  margin: 1rem 1rem;
+  /* width: 309px; */
+  min-width: 18.445rem;
+  margin: 0.5rem 1rem;
   justify-content: space-between;
   border-radius: 0.8rem;
 
   &.info {
-    background: blue;
+    background: #2EC5CE;//blue;
     color: white;
   }
 
   &.success {
-    background: green;
+    background: #c1f7fa;//green;
   }
 
   &.danger {
