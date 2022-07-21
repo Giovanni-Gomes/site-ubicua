@@ -19,7 +19,15 @@ interface GetUserResponse {
 };
 
 interface GetUserByIdResponse {
-  users: FindAllUserProps;
+  id: string;
+  name: string;
+  email: string;
+  password: string;
+  avatar: string;
+  active: boolean;
+  type_user: string;
+  created_at: string;
+  //users: FindAllUserProps;
 };
 
 

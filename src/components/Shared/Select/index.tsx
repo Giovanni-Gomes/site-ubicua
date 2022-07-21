@@ -1,13 +1,12 @@
 import { useRef, useEffect, ReactNode, SelectHTMLAttributes } from 'react'
 
-import { useField, SubmitHandler, FormHandles } from '@unform/core'
-import { Form } from '@unform/web'
+import { useField } from '@unform/core'
 
 import { Container } from './style'
 
 interface SelectProps {
   name: string
-  label: string
+  label?: string
   children: ReactNode
 }
 
@@ -36,9 +35,8 @@ function Select({ name, label, children, ...rest }: Props) {
   }, [fieldName, registerField])
 
   return (
-    <Container >
-      <label htmlFor={fieldName}>{label}</label>
-
+    <Container>
+      {label && <label htmlFor={fieldName}>{label}</label>}
       <select
         id={fieldName}
         ref={selectRef}
