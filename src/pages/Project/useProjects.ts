@@ -94,10 +94,12 @@ export async function getOneProjectById(id: string): Promise<Project> {
     negotiated_value: result.data.negotiated_value, //result.data.negotiated_value,
     real_cost: result.data.real_cost,
     status: {
-      id: result.data.status_id,
+      id: result.data.status.id,
+      name: result.data.status.name,
     },
     user: {
-      id: result.data.user_id,
+      id: result.data.user.id,
+      name: result.data.user.name,
     }
   }
   return project

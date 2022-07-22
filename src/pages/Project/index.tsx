@@ -15,6 +15,7 @@ import { Loading } from '../../components/Site/WidgetForm/Loading';
 
 import { useMutation } from "react-query"
 import { AxiosError } from 'axios';
+import ProjectDetails from './projectDetails';
 
 interface ITableProject {
   id: string;
@@ -36,6 +37,7 @@ const Project: React.FC = () => {
   const [actualId, setActualId] = useState<String>()
   const [actualProjectName, setActualProjectName] = useState<String>()
   const [alert, setAlert] = useState(false)
+  const [details, setDetails] = useState(false)
 
 
   const removeProject = useMutation(
@@ -79,12 +81,17 @@ const Project: React.FC = () => {
     setAlert(true)
   }
 
+  function showDetails(id: string) {
+    setActualId(id)
+    setDetails(true)
+  }
+
 
   return (
     <>
       <Header />
       {alert &&
-        <Flex position='fixed' bg={'transparent'} w='100%' h='100%' zIndex='10' justify='center' align='center'>
+        <Flex position='fixed' bg={'transparent'} w='100%' h='100%' zIndex='10' justify='center' align='center' pb='20rem'>
           <Flex bg='quaternary' color='black' direction='column' p='2rem' borderRadius='10px' gap='2rem' align='center'>
             <p>Tem certeza que deseja excluir este registro?</p>
             <span>{actualProjectName}</span>
@@ -97,6 +104,11 @@ const Project: React.FC = () => {
               </Button>
             </Flex>
           </Flex>
+        </Flex>
+        || details &&
+        <Flex position='fixed' bg={'transparent'} w='100%' h='100%' zIndex='10' justify='center' align='center' pb='5rem'>
+          <Flex></Flex>
+          <ProjectDetails id={String(actualId)} state={() => setDetails(false)} />
         </Flex>
       }
       <Panel title="List Projects" back='/dashboard' next='/dashboard' search={true} importFile='/import' create='/create-project'>
@@ -138,40 +150,60 @@ const Project: React.FC = () => {
                 {data?.projects.map((project: any) => (
                   <Tr key={project.id}>
                     <Td paddingTop="2" paddingBottom="2" >
-                      <Box>
-                        {/* <Link onMouseEnter={() => handlePrefetchProject(project.id)}> */}
-                        <Text fontWeight="bold">{project.name}</Text>
-                        {/* </Link> */}
-                      </Box>
+                      <button type='button' onClick={() => showDetails(project.id)}>
+                        <Box>
+                          {/* <Link onMouseEnter={() => handlePrefetchProject(project.id)}> */}
+                          <Text fontWeight="bold">{project.name}</Text>
+                          {/* </Link> */}
+                        </Box>
+                      </button>
                     </Td>
                     <Td paddingTop="2" paddingBottom="2" maxW='8rem'>
-                      <Flex justify='space-between' align='center'>
-                        <Text noOfLines={1}>{project.description}</Text>
-                      </Flex>
+                      <button type='button' onClick={() => showDetails(project.id)}>
+                        <Flex justify='space-between' align='center'>
+                          <Text noOfLines={1}>{project.description}</Text>
+                        </Flex>
+                      </button>
                     </Td>
                     <Td paddingTop="2" paddingBottom="2">
-                      <Text>{project.active}</Text>
+                      <button type='button' onClick={() => showDetails(project.id)}>
+                        <Text>{project.active}</Text>
+                      </button>
                     </Td>
                     <Td paddingTop="2" paddingBottom="2">
-                      {project.date_start}
+                      <button type='button' onClick={() => showDetails(project.id)}>
+                        {project.date_start}
+                      </button>
                     </Td>
                     <Td paddingTop="2" paddingBottom="2">
-                      <Text>{project.date_end}</Text>
+                      <button type='button' onClick={() => showDetails(project.id)}>
+                        <Text>{project.date_end}</Text>
+                      </button>
                     </Td>
                     <Td paddingTop="2" paddingBottom="2">
-                      <Text>{project.progress}</Text>
+                      <button type='button' onClick={() => showDetails(project.id)}>
+                        <Text>{project.progress}</Text>
+                      </button>
                     </Td>
                     <Td paddingTop="2" paddingBottom="2" maxW='8rem'>
-                      <Text>{project.negotiated_value}</Text>
+                      <button type='button' onClick={() => showDetails(project.id)}>
+                        <Text>{project.negotiated_value}</Text>
+                      </button>
                     </Td>
                     <Td paddingTop="2" paddingBottom="2">
-                      <Text>{project.real_cost}</Text>
+                      <button type='button' onClick={() => showDetails(project.id)}>
+                        <Text>{project.real_cost}</Text>
+                      </button>
                     </Td>
                     <Td paddingTop="2" paddingBottom="2">
-                      <Text>{project.status.name}</Text>
+                      <button type='button' onClick={() => showDetails(project.id)}>
+                        <Text>{project.status.name}</Text>
+                      </button>
                     </Td>
                     <Td paddingTop="2" paddingBottom="2">
-                      <Text>{project.user.name}</Text>
+                      <button type='button' onClick={() => showDetails(project.id)}>
+                        <Text>{project.user.name}</Text>
+                      </button>
                     </Td>
                     <Td paddingTop="2" paddingBottom="2" maxW='1rem'>
                       <Flex justify='center' align='center'>

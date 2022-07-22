@@ -17,9 +17,9 @@ export const Container = styled.li`
     color: ${(props: any) => props.theme.bgPortal};
     /* --button-size: calc(10rem * 0.5); */
     /* width: var(--button-size); */
-    width: 100%;
+    /* width: 100%; */
     /* height: var(--button-size); */
-    height: 100%;
+    /* height: 100%; */
 
     /* padding: 5px; */
     margin: 2px;
