@@ -15,8 +15,7 @@ import Header from '../../components/Portal/Header';
 
 import { Flex, FormLabel, Input as InputChakra, Link, useColorModeValue } from '@chakra-ui/react';
 import { Panel } from '../../components/Portal/Panel';
-import { FiArrowLeft, FiArrowRight } from 'react-icons/fi';
-import { Link as RouterLink } from 'react-router-dom';
+
 import { CancelButton, FormFooter } from '../Config/styles';
 
 
@@ -28,7 +27,6 @@ import Select from '../../components/Shared/Select';
 import { useStatus } from '../Config/useStatus';
 
 interface CreateProjectProps {
-  id: string;
   name: string;
   description: string;
   active?: boolean;
@@ -52,15 +50,8 @@ const CreateProject: React.FC = () => {
   const selectOptionsUsers = data?.users;
   const selectOptionsStatus = dataStatus?.status;
 
-  // const selectOptions = [
-  //   { value: 'abc', label: 'Brazil' },
-  //   { value: 'usa', label: 'USA' },
-  //   { value: 'argentina', label: 'Argentina' },
-  // ]
-  // formRef
   const formRef = useRef<FormHandles>(null);
   const [isSendingProject, setIsSendingProject] = useState(false);
-
 
   const handleSubmitCreateProject = useCallback(
     async (data: CreateProjectProps) => {
@@ -69,7 +60,6 @@ const CreateProject: React.FC = () => {
         formRef.current?.setErrors({});
 
         const schema = Yup.object().shape({
-          id: Yup.string(),
           name: Yup.string()
             .required('Nome do Projeto é Obrigatório'),
           description: Yup.string().required('Descrição é obrigatório'),
@@ -87,7 +77,6 @@ const CreateProject: React.FC = () => {
         });
 
         const formData = {
-          id: data.id,
           name: data.name,
           description: data.description,
           active: data.active,
@@ -139,35 +128,12 @@ const CreateProject: React.FC = () => {
     formRef.current?.reset();
   }
 
-  const radioOptions = [
-    { id: 'ativo', value: 'ativo', label: 'Ativo' },
-    { id: 'inativo', value: 'inativo', label: 'Inativo' },
-  ]
-
   return (
     <>
       <Header />
       <Panel title="Create a new Project" back='/project'>
-        {/* <Flex> */}
-        {/* <Flex flex={1} justify="left" align="center"> */}
-        {/* <Flex justifyContent="space-between" borderRadius={10}> */}
-        {/* <Link as={RouterLink} to="/project" bg={bg} mr={1} p={2} borderRadius={10} _hover={{ opacity: 0.5 }}>
-              <FiArrowLeft />
-            </Link> */}
-        {/* <Link as={RouterLink} to="/dashboard" bg={bg} mr={1} p={2} borderRadius={10} _hover={{ opacity: 0.5 }}>
-              <FiArrowRight />
-            </Link> */}
-        {/* </Flex> */}
-        {/* </Flex> */}
 
-        {/* <Flex flex={1} justify="right" align="center">
-            <Flex borderRadius={10}>
-
-            </Flex>
-          </Flex>
-        </Flex> */}
-
-        <Form ref={formRef} onSubmit={handleSubmitCreateProject} style={{ width: '90%', margin: '3rem auto 0' }}>
+        <Form ref={formRef} onSubmit={handleSubmitCreateProject} style={{ width: '90%', margin: '0rem auto 0' }}>
           <Flex w='100%' gap='2rem' justify='center' align='center' mb='0.5rem'>
             <Flex direction='column' w='100%'>
               <Input id='name' type='text' name='name' placeholder='Number Project' label='Nome do Projeto' />
@@ -266,4 +232,10 @@ EXAMPLE DE FORM CHACARA UI
   <NumberDecrementStepper />
 </NumberInputStepper>
 </NumberInput> */}
+
+// const radioOptions = [
+//   { id: 'ativo', value: 'ativo', label: 'Ativo' },
+//   { id: 'inativo', value: 'inativo', label: 'Inativo' },
+// ]
+
 

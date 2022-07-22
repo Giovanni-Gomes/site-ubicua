@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useRef, useState } from 'react';
+import React, { useCallback, useRef, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useToast } from '../../components/hooks/provider/toast';
 
@@ -13,67 +13,57 @@ import { FaTrash, FaSave } from 'react-icons/fa';
 import Button from '../../components/Shared/Button';
 import Header from '../../components/Portal/Header';
 
-import { Flex, FormLabel, Input as InputChakra, Link, useColorModeValue } from '@chakra-ui/react';
+import { Flex, useColorModeValue } from '@chakra-ui/react';
 import { Panel } from '../../components/Portal/Panel';
-import { FiArrowLeft, FiArrowRight } from 'react-icons/fi';
-import { Link as RouterLink } from 'react-router-dom';
-import { CancelButton, FormFooter } from '../Config/styles';
 
-
+import { CancelButton } from '../Config/styles';
 import Input from '../../components/Shared/Input';
 
 import { Loading } from '../../components/Site/WidgetForm/Loading';
 import { useUsers } from '../User/useUsers';
 import Select from '../../components/Shared/Select';
 import { useStatus } from '../Config/useStatus';
-import { useProject } from './useProjects';
+import { useContract } from './useContracts';
 
-interface CreateProjectProps {
+interface UpdateContractProps {
   id: string;
   name: string;
   description: string;
   active?: boolean;
   date_start: string;
   date_end: string;
-  progress: string;
   negotiated_value: string;
-  real_cost: string;
-  status_id: string;
   user_id: string;
 }
 
-const UpdateProject: React.FC = () => {
+const UpdateContract: React.FC = () => {
   //style colors customTheme
   const bg = useColorModeValue('hoverDark', 'hoverLight');
   const formRef = useRef<FormHandles>(null);
-  const [isSendingProject, setIsSendingProject] = useState(false);
+  const [isSendingContract, setIsSendingContract] = useState(false);
   const navigate = useNavigate();
   const { addToast } = useToast();
 
   const { id } = useParams();
   const { data } = useUsers();
-  const { data: dataStatus } = useStatus();
-  const { data: dataProject } = useProject(String(id));
+  const { data: dataContract } = useContract(String(id));
 
   const selectOptionsUsers = data?.users;
-  const selectOptionsStatus = dataStatus?.status;
 
-  formRef.current?.setFieldValue('name', dataProject?.name);
-  formRef.current?.setFieldValue('description', dataProject?.description);
-  formRef.current?.setFieldValue('progress', dataProject?.progress);
-  formRef.current?.setFieldValue('date_start', dataProject?.date_start);
-  formRef.current?.setFieldValue('date_end', dataProject?.date_end);
-  formRef.current?.setFieldValue('real_cost', dataProject?.real_cost);
-  formRef.current?.setFieldValue('negotiated_value', dataProject?.negotiated_value);
-  formRef.current?.setFieldValue('user_id', dataProject?.user.id);
-  formRef.current?.setFieldValue('status_id', dataProject?.status.id);
+  formRef.current?.setFieldValue('name', dataContract?.name);
+  formRef.current?.setFieldValue('description', dataContract?.description);
+  formRef.current?.setFieldValue('date_start', dataContract?.date_start);
+  formRef.current?.setFieldValue('date_end', dataContract?.date_end);
+  formRef.current?.setFieldValue('negotiated_value', dataContract?.negotiated_value);
+  formRef.current?.setFieldValue('user_id', dataContract?.user.id);
 
-  const handleSubmitCreateProject = useCallback(
-    async (data: CreateProjectProps) => {
+  const selectOptions = [{ value: 'USER' }, { value: 'ADMIN' }, { value: 'SUPER_ADMIN' }, { value: 'CLIENT' }, { value: 'OPERATOR' }, { value: 'COMERCIAL' }];
+
+  const handleSubmitUpdateContract = useCallback(
+    async (data: UpdateContractProps) => {
       try {
 
         formRef.current?.setErrors({});
-
 
         const schema = Yup.object().shape({
           id: Yup.string(),
@@ -82,10 +72,7 @@ const UpdateProject: React.FC = () => {
           description: Yup.string().required('Descrição é obrigatório'),
           date_start: Yup.string(), //Yup.date().required('Data é obrigatório'),
           date_end: Yup.string(), //Yup.date().required('Data é obrigatório'),
-          progress: Yup.string().required('Progresso é obrigatório'),
           negotiated_value: Yup.string().required('Valor negociado é obrigatório'),
-          real_cost: Yup.string().required('Custo real é obrigatório'),
-          status_id: Yup.string().required('Status é obrigatório'),
           user_id: Yup.string().required('Usuário é obrigatório')
         });
 
@@ -100,25 +87,20 @@ const UpdateProject: React.FC = () => {
           active: data.active,
           date_start: data.date_start,
           date_end: data.date_end,
-          progress: data.progress,
           negotiated_value: data.negotiated_value,
-          real_cost: data.real_cost,
-          status_id: data.status_id,
           user_id: data.user_id
         }
 
-        setIsSendingProject(true);
-        await api.post(`/v1/project/update/${id}`, formData);
+        setIsSendingContract(true);
+        await api.post(`/v1/contract/update/${id}`, formData);
 
-        // console.log("formData", result);
-
-        navigate('/project');
+        navigate('/contract');
 
         addToast({
           type: 'success',
           title: 'Cadastro Realizado!',
         });
-        setIsSendingProject(false);
+        setIsSendingContract(false);
 
 
       } catch (err) {
@@ -141,7 +123,6 @@ const UpdateProject: React.FC = () => {
     [addToast, navigate, formRef],
   );
 
-
   function handleResetForm(event: React.MouseEvent) {
     event?.preventDefault();
     formRef.current?.reset();
@@ -150,20 +131,17 @@ const UpdateProject: React.FC = () => {
   return (
     <>
       <Header />
-      <Panel title={dataProject?.name ? dataProject.name : 'Atualize o Projeto'} back='/project'>
+      <Panel title={dataContract?.name ? dataContract.name : 'Atualize o Projeto'} back='/contract'>
 
-        <Form ref={formRef} initialData={dataProject} onSubmit={handleSubmitCreateProject} style={{ width: '90%', margin: '0rem auto 0' }}>
+        <Form ref={formRef} initialData={dataContract} onSubmit={handleSubmitUpdateContract} style={{ width: '90%', margin: '0rem auto 0' }}>
           <Flex w='100%' gap='2rem' justify='center' align='center' mb='0.5rem'>
             <Flex direction='column' w='100%'>
-              <Input id='name' type='text' name='name' placeholder='Number Project' label='Nome do Projeto' />
-
+              <Input id='name' type='text' name='name' placeholder='Name | Number Contract' label='Nome do Projeto' />
               <Input id='progress' type='text' name='progress' placeholder='Progress' label='Progresso' />
-
-              <Select name="status_id" label="Status" defaultValue={dataProject?.status.id}>
-                <option key={0} value='Select a status'>Selecione um status</option>
-                {selectOptionsStatus?.map(option => (
-                  <option key={option.id} value={option.id}>
-                    {option.name}
+              <Select name="phase_contract" label="Tipo de Usuário">
+                {selectOptions.map(option => (
+                  <option key={option.value} value={option.value}>
+                    {option.value}
                   </option>
                 ))}
               </Select>
@@ -177,7 +155,7 @@ const UpdateProject: React.FC = () => {
 
               <Input type="number" name="real_cost" placeholder='Custo Real' label='Custo Real' />
 
-              <Select name="user_id" label="Responsável" defaultValue={dataProject?.user.id}>
+              <Select name="user_id" label="Responsável" defaultValue={dataContract?.user.id}>
                 <option key={0} value='Select a user'>Select a user</option>
                 {selectOptionsUsers?.map(option => (
                   <option key={option.id} value={option.id}>
@@ -194,9 +172,9 @@ const UpdateProject: React.FC = () => {
 
 
           <Flex align='center' w='100%' justify='space-between'>
-            <Button disabled={isSendingProject} onClick={() => formRef.current?.submitForm()}>
+            <Button disabled={isSendingContract} onClick={() => formRef.current?.submitForm()}>
               <FaSave style={{ marginRight: '0.5rem' }} />
-              {isSendingProject ? <Loading /> : 'Save Register'}
+              {isSendingContract ? <Loading /> : 'Save Register'}
             </Button>
             <CancelButton onClick={handleResetForm} >
               <FaTrash size={25} />
@@ -210,4 +188,4 @@ const UpdateProject: React.FC = () => {
   );
 }
 
-export default UpdateProject;
+export default UpdateContract;
