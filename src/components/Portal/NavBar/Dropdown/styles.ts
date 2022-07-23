@@ -10,9 +10,9 @@ border-bottom-left-radius: var(--border-radius);
 border-bottom-right-radius: var(--border-radius);
 padding: 1rem;
 overflow: hidden;
-transition: height var(--speed) ease;
+transition: height 100ms ease;
 max-width: 100%;
-min-width: 12rem;
+min-width: 16rem;
 
 > .menu {
   padding-bottom: 2rem;
@@ -25,7 +25,7 @@ min-width: 12rem;
     display: flex;
     align-items: center;
     border-radius: 1rem;
-    /* transition: var(--speed); */
+    /* transition: 100ms; */
     padding: 0.4rem;
     font-size: 16px;
     &.expand {
@@ -46,14 +46,14 @@ min-width: 12rem;
 }
 > .menu-primary-enter-active {
   transform: translateX(0%);
-  transition: all var(--speed) ease;
+  transition: all 100ms ease;
 }
 > .menu-primary-exit {
   position: absolute;
 }
 > .menu-primary-exit-active {
   transform: translateX(-110%);
-  transition: all var(--speed) ease;
+  transition: all 100ms ease;
 }
 > .menu-secondary-enter {
   position: absolute;
@@ -61,13 +61,13 @@ min-width: 12rem;
 }
 > .menu-secondary-enter-active {
   transform: translateX(0%);
-  transition: all var(--speed) ease;
+  transition: all 100ms ease;
 }
 > .menu-secondary-exit {
   position: absolute;
 }
 > .menu-secondary-exit-active {
   transform: translateX(300%);
-  /* transition: all var(--speed) ease; */
+  /* transition: all 100ms ease; */
 }
 `;
