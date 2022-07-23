@@ -105,11 +105,7 @@ const CreateUser: React.FC = () => {
     formRef.current?.reset();
   }
 
-  const selectOptions = [
-    { value: 'brazil', label: 'Brazil' },
-    { value: 'usa', label: 'USA' },
-    { value: 'argentina', label: 'Argentina' },
-  ]
+  const selectOptions = [{ value: 'USER' }, { value: 'ADMIN' }, { value: 'SUPER_ADMIN' }, { value: 'CLIENT' }, { value: 'OPERATOR' }, { value: 'COMERCIAL' }];
 
   return (
     <>
@@ -122,12 +118,11 @@ const CreateUser: React.FC = () => {
           <Input name="name" type="text" placeholder='Nome' icon={FiUser} />
           <Input name="email" type="email" placeholder='E-mail' icon={FiMail} />
           <Input name="password" type="password" placeholder='Senha' icon={FiLock} />
-          <Input name="type_user_id" type="text" placeholder='Tipo de Usuário' icon={FiLock} />
-
-          <Select name="country" label="Choose your country">
+          {/* <Input name="type_user_id" type="text" placeholder='Tipo de Usuário' icon={FiLock} /> */}
+          <Select name="type_user_id" label="Tipo de Usuário">
             {selectOptions.map(option => (
               <option key={option.value} value={option.value}>
-                {option.label}
+                {option.value}
               </option>
             ))}
           </Select>
