@@ -14,6 +14,7 @@ export const ButtonCustom = styled.button`
   margin:1rem 0.5rem;
   padding: 0.7rem;
   cursor: pointer;
+  min-width: 6rem;
 
   &:hover {
     background-color: #996DFF;

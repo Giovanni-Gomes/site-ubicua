@@ -5,9 +5,9 @@ export type Project = {
   id: string;
   name: string;
   description: string;
-  active: boolean;
+  active: string;
   date_start: string;
-  date_end: string;
+  date_end?: string;
   progress: string;
   negotiated_value: any;
   real_cost: number;
@@ -52,11 +52,11 @@ export async function getProjects(page: number, take: number): Promise<GetProjec
       month: '2-digit',
       year: 'numeric',
     }),
-    date_end: project.date_end && new Date(project.date_end).toLocaleDateString('pt-BR', {
+    date_end: project.date_end ? new Date(project.date_end).toLocaleDateString('pt-BR', {
       day: '2-digit',
       month: '2-digit',
       year: 'numeric',
-    }),
+    }) : 'not value',
     progress: project.progress,
     createdAt: project.created_at && new Date(project.created_at).toLocaleDateString('pt-BR', {
       day: '2-digit',
@@ -87,12 +87,12 @@ export async function getOneProjectById(id: string): Promise<Project> {
     id: result.data.id,
     name: result.data.name,
     description: result.data.description,
-    active: result.data.active,
+    active: result.data.active ? 'Ativo' : 'Inativo',
     date_start: new Date(result.data.date_start).toISOString().slice(0, 10),
     date_end: result.data.date_end && new Date(result.data.date_end).toISOString().slice(0, 10),
-    progress: result.data.progress,
-    negotiated_value: result.data.negotiated_value, //result.data.negotiated_value,
-    real_cost: result.data.real_cost,
+    progress: result.data.progress && result.data.progress,
+    negotiated_value: result.data.negotiated_value && result.data.negotiated_value, //result.data.negotiated_value,
+    real_cost: result.data.real_cost && result.data.real_cost,
     status: {
       id: result.data.status.id,
       name: result.data.status.name,
