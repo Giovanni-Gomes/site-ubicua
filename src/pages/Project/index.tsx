@@ -1,35 +1,32 @@
-import { Box, Button, Flex, Heading, Input, Link, Spacer, Spinner, Table, Tbody, Td, Text, Th, Thead, Tr, useColorModeValue } from '@chakra-ui/react';
-import { ArrowLeft, ArrowRight, DotsThree, Pencil, PencilCircle, PencilLine, PencilSimple, PencilSimpleLine, Trash, TrashSimple } from 'phosphor-react';
-import React, { Component, useCallback, useEffect, useRef, useState } from 'react';
+import { Box, Button, Flex, Input as InputChakra, Spinner, Table, Tbody, Td, Text, Th, Thead, Tr, useColorModeValue } from '@chakra-ui/react';
+import { PencilSimpleLine, TrashSimple } from 'phosphor-react';
+import React, { useCallback, useRef, useState } from 'react';
 import Header from '../../components/Portal/Header';
 import { Pagination } from '../../components/Portal/Pagination';
 import { Panel } from '../../components/Portal/Panel';
 import api from '../../services/api';
 import { queryClient } from "../../services/queryClient";
-import { deleteProject, useProjects } from './useProjects';
-import { Link as RouterLink, useNavigate } from 'react-router-dom';
-import { FaFileImport, FaPlus } from 'react-icons/fa';
-import { FiArrowLeft, FiArrowRight } from 'react-icons/fi';
+import { useProjects } from './useProjects';
+import { Link as RouterLink } from 'react-router-dom';
+
 import { useToast } from '../../components/hooks/provider/toast';
-import { Loading } from '../../components/Site/WidgetForm/Loading';
+import { SubmitHandler, useForm } from 'react-hook-form';
 
 import { useMutation } from "react-query"
 import { AxiosError } from 'axios';
-
-interface ITableProject {
-  id: string;
-  name: string;
-  description: string;
-  progress: string;
-}
+import { FormHandles } from '@unform/core';
+import { Form } from '@unform/web';
+import Input from '../../components/Shared/Input';
 
 const Project: React.FC = () => {
   //style colors customTheme
   const bg = useColorModeValue('hoverDark', 'hoverLight');
 
   const [page, setPage] = useState(1);
+  const [searchQuery, setSearchQuery] = useState('');
+  const { register, handleSubmit } = useForm();
 
-  const { data, isLoading, isFetching, error } = useProjects(page, 10);
+  const { data, isLoading, isFetching, error } = useProjects(page, 10, searchQuery);
 
   const { addToast } = useToast();
 
@@ -37,6 +34,8 @@ const Project: React.FC = () => {
   const [actualProjectName, setActualProjectName] = useState<String>()
   const [alert, setAlert] = useState(false)
 
+  //const { register, handleSubmit } = useForm();
+  const formRef = useRef<FormHandles>(null);
 
   const removeProject = useMutation(
     async (id: string) => {
@@ -79,6 +78,32 @@ const Project: React.FC = () => {
     setAlert(true)
   }
 
+  type SearchContactsFormData = {
+    search?: string;
+  };
+  // const handleSearchContacts: SubmitHandler<SearchContactsFormData> = async ({ search }) => {
+  //   setSearchQuery(String(search));
+  // };
+  // async function handleSearchContacts({ data }: SearchContactsFormData) {
+  //   event?.preventDefault();
+  //   console.log("formRef", formRef);
+  //   console.log("data", data);
+  //   console.log("data.search", data.search);
+  //   setSearchQuery(String(data.search));
+  // };
+
+  const handleSearchContacts = useCallback(
+    async () => {
+      try {
+        const inputSearchValue = (document.getElementById('search') as HTMLInputElement).value;
+        setSearchQuery(inputSearchValue);
+      } catch (e) {
+        console.log(e);
+      }
+    }, [])
+
+  //console.log(setSearchQuery(String(searchQuery)));
+
 
   return (
     <>
@@ -100,8 +125,41 @@ const Project: React.FC = () => {
         </Flex>
       }
       <Panel title="List Projects" back='/dashboard' next='/dashboard' search={true} importFile='/import' create='/create-project'>
-        <Flex>
+        {/* <Input
+          name="search"
+          onChange={(e: any) => setSearchQuery(e.target.value)}
+          placeholder="Buscar contatos"
+        //{...register('search')}
+        /> */}
 
+
+        <Form ref={formRef} onSubmit={handleSearchContacts}>
+          {/* <Input
+            id='search'
+            type='text'
+            name="search"
+            placeholder="Buscar contatos"
+          /> */}
+          <InputChakra
+            id='search'
+            type='text'
+            name="search"
+          />
+
+        </Form>
+        {/* <Input
+            placeholder="Buscar contatos"
+            {...register('search')}
+          /> */}
+        {/* <Input
+            //name="search"
+            placeholder="Buscar contatos"
+            {...register('search')}
+          /> */}
+
+
+
+        <Flex>
           {!isLoading && isFetching && (
             <Spinner size="sm" color="gray.500" ml="4" />
           )}
