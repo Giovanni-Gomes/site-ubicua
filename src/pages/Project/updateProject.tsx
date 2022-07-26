@@ -67,7 +67,9 @@ const UpdateProject: React.FC = () => {
   formRef.current?.setFieldValue('negotiated_value', dataProject?.negotiated_value);
   formRef.current?.setFieldValue('user_id', dataProject?.user.id);
   formRef.current?.setFieldValue('status_id', dataProject?.status.id);
-
+  console.log('status name: ', dataProject?.status.id)
+  console.log('user name: ', dataProject?.user.id)
+  console.log('data: ', dataProject)
   const handleSubmitCreateProject = useCallback(
     async (data: CreateProjectProps) => {
       try {

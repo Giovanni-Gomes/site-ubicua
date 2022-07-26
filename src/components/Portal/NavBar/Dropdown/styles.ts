@@ -12,12 +12,12 @@ padding: 1rem;
 overflow: hidden;
 transition: height 100ms ease;
 max-width: 100%;
-min-width: 16rem;
+min-width: 14rem;
 
 > .menu {
   padding-bottom: 2rem;
 
-  > a, button {
+  a, div {
     text-decoration: none;
     color: ${(props: any) => props.theme.textPrimary};
     height: 50px;
@@ -28,9 +28,7 @@ min-width: 16rem;
     /* transition: 100ms; */
     padding: 0.4rem;
     font-size: 16px;
-    &.expand {
-      justify-content: space-between;
-    }
+
     &:hover {
       background: ${(props: any) => props.theme.hover};
     }

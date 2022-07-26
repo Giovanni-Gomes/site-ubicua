@@ -30,19 +30,19 @@ const Dropdown: React.FC<DropdownProps> = ({ subtitle }) => {
           {subtitle.map((sb, key) => (
             sb.link ?
               <Link to={sb.link} key={key.toString()}>{sb.name}</Link>
-              : <button key={key.toString()} className='expand' onClick={() => setActiveMenu(sb.name)}>{sb.name}<CaretRight size={18} /> </button>
+              : <div key={key.toString()} className='expand' onClick={() => setActiveMenu(sb.name)}>{sb.name}<CaretRight size={18} /> </div>
           ))}
         </div>
       </CSSTransition>
       <CSSTransition in={activeMenu === 'Acompanhamentos'} unmountOnExit timeout={500} classNames="menu-secondary" onEnter={calcHeight}>
         <div className="menu">
-          <button onClick={() => setActiveMenu('main')}><CaretLeft size={18} />Voltar</button>
+          <div onClick={() => setActiveMenu('main')}><CaretLeft size={18} />Voltar</div>
           <Link to="/programm" key={0}>Programação</Link>
         </div>
       </CSSTransition>
       <CSSTransition in={activeMenu === 'Secções'} unmountOnExit timeout={500} classNames="menu-secondary" onEnter={calcHeight}>
         <div className="menu">
-          <button onClick={() => setActiveMenu('main')}><CaretLeft size={18} />Voltar</button>
+          <div onClick={() => setActiveMenu('main')}><CaretLeft size={18} />Voltar</div>
           <Link key={1} to="/list-section-one">1º Secção</Link>
           <Link key={2} to="/list-section-two">2º Secção</Link>
           <Link key={3} to="/list-section-three">3º Secção</Link>

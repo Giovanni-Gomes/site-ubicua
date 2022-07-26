@@ -1,64 +1,68 @@
 import { Box, CloseButton, Flex } from '@chakra-ui/react';
-import React from 'react';
+import { Popover } from '@headlessui/react';
+import { X } from 'phosphor-react';
+import React, { useRef } from 'react';
+import { Span } from './styles';
 import { useProject } from './useProjects';
 
 interface ProjectDetailsProps {
   id: string;
-  state?: () => void;
 }
 
-const ProjectDetails: React.FC<ProjectDetailsProps> = ({ id, state }) => {
+const ProjectDetails: React.FC<ProjectDetailsProps> = ({ id }) => {
   const { data } = useProject(id)
 
   return (
-    <Flex w='40rem' bg='var(--bg-secondary)' color='white' direction='column' p='2rem' borderRadius='10px' gap='2rem' align='center'>
-      <Flex align='center' w='100%' justify='space-between'>
+    <Flex fontSize='1rem' w='40rem' bg='var(--bg-secondary)' color='white' direction='column' p='2rem' borderRadius='10px' gap='4rem' align='center'>
+      <Flex fontSize='2rem' align='center' w='100%' justify='space-between'>
         <Box w='2rem'></Box>
         <h1>{data?.name}</h1>
-        <CloseButton w='2rem' onClick={state} />
+        <Popover.Button>
+          <X weight='bold' />
+        </Popover.Button>
       </Flex>
       <Flex justify='space-around' w='100%' align='center'>
-        <Flex direction='column' gap='2rem'>
-          <Box h='2rem'>
-            <span>Ativo:</span>
+        <Flex direction='column' gap='3rem'>
+          <Flex direction='column' h='2rem' gap='1rem'>
+            <Span>Ativo:</Span>
             <span>{data?.active}</span>
-          </Box>
-          <Box h='2rem'>
-            <span>Valor Negociado</span>
+          </Flex>
+          <Flex direction='column' h='2rem' gap='1rem'>
+            <Span>Valor Negociado:</Span>
             <p>{data?.negotiated_value}</p>
-          </Box>
-          <Box h='2rem'>
-            <span>Data de Início:</span>
+          </Flex>
+          <Flex direction='column' h='2rem' gap='1rem'>
+            <Span>Data de Início:</Span>
             <p>{data?.date_start}</p>
-          </Box>
-          <Box h='2rem'>
-            <span>Status:</span>
+          </Flex>
+          <Flex direction='column' h='2rem' gap='1rem'>
+            <Span>Status:</Span>
             <p>{data?.status.name}</p>
-          </Box>
+          </Flex>
         </Flex>
-        <Flex direction='column' gap='2rem'>
-          <Box h='2rem'>
-            <span>Progresso:</span>
+        <Flex direction='column' gap='3rem'>
+          <Flex direction='column' h='2rem' gap='1rem'>
+            <Span>Progresso:</Span>
             <p>{data?.progress}</p>
-          </Box>
-          <Box h='2rem'>
-            <span>Custo Real:</span>
+          </Flex>
+          <Flex direction='column' h='2rem' gap='1rem'>
+            <Span>Custo Real:</Span>
             <p>{data?.real_cost}</p>
-          </Box>
-          <Box h='2rem'>
-            <span>Data de Finalização:</span>
+          </Flex>
+          <Flex direction='column' h='2rem' gap='1rem'>
+            <Span>Data de Finalização:</Span>
             <p>{data?.date_end}</p>
-          </Box>
-          <Box h='2rem'>
-            <span>Responsável:</span>
+          </Flex>
+          <Flex direction='column' h='2rem' gap='1rem'>
+            <Span>Responsável:</Span>
             <p>{data?.user.name}</p>
-          </Box>
+          </Flex>
         </Flex>
       </Flex>
-      <Box>
-        <span>Descrição</span>
+      <Flex direction='column' gap='1rem'>
+        <Span>Descrição:</Span>
         <p>{data?.description}</p>
-      </Box>
+      </Flex>
     </Flex>
   );
 }

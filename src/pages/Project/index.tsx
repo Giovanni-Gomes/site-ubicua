@@ -1,4 +1,4 @@
-import { Box, Button, Flex, Heading, Input, Link, Spacer, Spinner, Table, Tbody, Td, Text, Th, Thead, Tr, useColorModeValue } from '@chakra-ui/react';
+import { Box, Flex, Heading, Input, Link, Spacer, Spinner, Table, Tbody, Td, Text, Th, Thead, Tr, useColorModeValue } from '@chakra-ui/react';
 import { ArrowLeft, ArrowRight, DotsThree, Pencil, PencilCircle, PencilLine, PencilSimple, PencilSimpleLine, Trash, TrashSimple } from 'phosphor-react';
 import React, { Component, useCallback, useEffect, useRef, useState } from 'react';
 import Header from '../../components/Portal/Header';
@@ -16,6 +16,9 @@ import { Loading } from '../../components/Site/WidgetForm/Loading';
 import { useMutation } from "react-query"
 import { AxiosError } from 'axios';
 import ProjectDetails from './projectDetails';
+import AlertDelete from './alertDelete';
+import { ButtonAlert, ButtonDetails, PopContainer, PopPanelAlert, PopPanelDetails } from './styles';
+import { Popover } from '@headlessui/react';
 
 interface ITableProject {
   id: string;
@@ -32,53 +35,15 @@ const Project: React.FC = () => {
 
   const { data, isLoading, isFetching, error } = useProjects(page, 10);
 
-  const { addToast } = useToast();
-
   const [actualId, setActualId] = useState<String>()
   const [actualProjectName, setActualProjectName] = useState<String>()
   const [alert, setAlert] = useState(false)
   const [details, setDetails] = useState(false)
 
-
-  const removeProject = useMutation(
-    async (id: string) => {
-      const response = await api.delete(`/v1/project/delete/${id}`);
-
-      return response.data;
-    },
-    {
-      onSuccess: () => {
-        queryClient.invalidateQueries('projects');
-      },
-      onError: (error: AxiosError) => {
-        addToast({
-          type: 'error',
-          title: 'Erro ao deletar registro',
-          description:
-            'Ocorreu um erro ao deletar registro, tente novamente',
-        });
-      }
-    },
-  );
-
-  async function handleRemoveTag(id: string) {
-    try {
-      await removeProject.mutateAsync(id);
-
-      addToast({
-        type: 'success',
-        title: 'Deletado com Sucesso!',
-      });
-      setAlert(false)
-    } catch {
-      console.log('Error happened')
-    }
-  }
-
   function showAlert(id: string, name: string) {
     setActualId(id)
     setActualProjectName(name)
-    setAlert(true)
+    setAlert(!alert)
   }
 
   function showDetails(id: string) {
@@ -86,31 +51,14 @@ const Project: React.FC = () => {
     setDetails(true)
   }
 
-
+  //position='fixed' bg={'transparent'} w='100%' h='100%' zIndex='10' justify='center' align='center' pb='20rem'
   return (
     <>
       <Header />
-      {alert &&
-        <Flex position='fixed' bg={'transparent'} w='100%' h='100%' zIndex='10' justify='center' align='center' pb='20rem'>
-          <Flex bg='quaternary' color='black' direction='column' p='2rem' borderRadius='10px' gap='2rem' align='center'>
-            <p>Tem certeza que deseja excluir este registro?</p>
-            <span>{actualProjectName}</span>
-            <Flex justify='center' align='center' gap='1rem'>
-              <Button onClick={() => handleRemoveTag(String(actualId))}>
-                Excluir
-              </Button>
-              <Button onClick={() => setAlert(false)}>
-                Cancelar
-              </Button>
-            </Flex>
-          </Flex>
-        </Flex>
-        || details &&
+      {/* {details &&
         <Flex position='fixed' bg={'transparent'} w='100%' h='100%' zIndex='10' justify='center' align='center' pb='5rem'>
-          <Flex></Flex>
-          <ProjectDetails id={String(actualId)} state={() => setDetails(false)} />
         </Flex>
-      }
+      } */}
       <Panel title="List Projects" back='/dashboard' next='/dashboard' search={true} importFile='/import' create='/create-project'>
         <Flex>
 
@@ -150,69 +98,62 @@ const Project: React.FC = () => {
                 {data?.projects.map((project: any) => (
                   <Tr key={project.id}>
                     <Td paddingTop="2" paddingBottom="2" >
-                      <button type='button' onClick={() => showDetails(project.id)}>
-                        <Box>
-                          {/* <Link onMouseEnter={() => handlePrefetchProject(project.id)}> */}
-                          <Text fontWeight="bold">{project.name}</Text>
-                          {/* </Link> */}
-                        </Box>
-                      </button>
+                      <PopContainer>
+                        <PopPanelDetails>
+                          <ProjectDetails id={project.id} />
+                        </PopPanelDetails>
+                        <ButtonDetails>
+                          <Box>
+                            {/* <Link onMouseEnter={() => handlePrefetchProject(project.id)}> */}
+                            <Text fontWeight="bold">{project.name}</Text>
+                            {/* </Link> */}
+                          </Box>
+                        </ButtonDetails>
+                      </PopContainer>
                     </Td>
                     <Td paddingTop="2" paddingBottom="2" maxW='8rem'>
-                      <button type='button' onClick={() => showDetails(project.id)}>
-                        <Flex justify='space-between' align='center'>
-                          <Text noOfLines={1}>{project.description}</Text>
-                        </Flex>
-                      </button>
+                      <Flex justify='space-between' align='center'>
+                        <Text noOfLines={1}>{project.description}</Text>
+                      </Flex>
                     </Td>
                     <Td paddingTop="2" paddingBottom="2">
-                      <button type='button' onClick={() => showDetails(project.id)}>
-                        <Text>{project.active}</Text>
-                      </button>
+                      <Text>{project.active}</Text>
                     </Td>
                     <Td paddingTop="2" paddingBottom="2">
-                      <button type='button' onClick={() => showDetails(project.id)}>
-                        {project.date_start}
-                      </button>
+                      {project.date_start}
                     </Td>
                     <Td paddingTop="2" paddingBottom="2">
-                      <button type='button' onClick={() => showDetails(project.id)}>
-                        <Text>{project.date_end}</Text>
-                      </button>
+                      <Text>{project.date_end}</Text>
                     </Td>
                     <Td paddingTop="2" paddingBottom="2">
-                      <button type='button' onClick={() => showDetails(project.id)}>
-                        <Text>{project.progress}</Text>
-                      </button>
-                    </Td>
-                    <Td paddingTop="2" paddingBottom="2" maxW='8rem'>
-                      <button type='button' onClick={() => showDetails(project.id)}>
-                        <Text>{project.negotiated_value}</Text>
-                      </button>
+                      <Text>{project.progress}</Text>
                     </Td>
                     <Td paddingTop="2" paddingBottom="2">
-                      <button type='button' onClick={() => showDetails(project.id)}>
-                        <Text>{project.real_cost}</Text>
-                      </button>
+                      <Text>{project.negotiated_value}</Text>
                     </Td>
                     <Td paddingTop="2" paddingBottom="2">
-                      <button type='button' onClick={() => showDetails(project.id)}>
-                        <Text>{project.status.name}</Text>
-                      </button>
+                      <Text>{project.real_cost}</Text>
                     </Td>
                     <Td paddingTop="2" paddingBottom="2">
-                      <button type='button' onClick={() => showDetails(project.id)}>
-                        <Text>{project.user.name}</Text>
-                      </button>
+                      <Text>{project.status.name}</Text>
                     </Td>
-                    <Td paddingTop="2" paddingBottom="2" maxW='1rem'>
+                    <Td paddingTop="2" paddingBottom="2">
+                      <Text>{project.user.name}</Text>
+                    </Td>
+                    <Td paddingTop="2" paddingBottom="2">
                       <Flex justify='center' align='center'>
                         <RouterLink to={`/update-project/${project.id}`} >
                           <PencilSimpleLine size={24} />
                         </RouterLink>
-                        <Button onClick={() => showAlert(project.id, project.name)} p={0}>
-                          <TrashSimple size={24} color='#c53030' />
-                        </Button>
+
+                        <PopContainer>
+                          <PopPanelAlert >
+                            <AlertDelete id={project.id} actualProjectName={project.name} />
+                          </PopPanelAlert>
+                          <ButtonAlert>
+                            <TrashSimple size={24} color='#c53030' />
+                          </ButtonAlert>
+                        </PopContainer>
                       </Flex>
                     </Td>
                   </Tr>
