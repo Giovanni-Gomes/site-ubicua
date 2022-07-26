@@ -1,4 +1,4 @@
-import { Box, Flex, Heading, Input, Link, Spacer, Spinner, Table, Tbody, Td, Text, Th, Thead, Tr, useColorModeValue } from '@chakra-ui/react';
+import { Box, Flex, Heading, Input as InputChakra, Link, Spacer, Spinner, Table, Tbody, Td, Text, Th, Thead, Tr, useColorModeValue } from '@chakra-ui/react';
 import { ArrowLeft, ArrowRight, DotsThree, Pencil, PencilCircle, PencilLine, PencilSimple, PencilSimpleLine, Trash, TrashSimple } from 'phosphor-react';
 import React, { Component, useCallback, useEffect, useRef, useState } from 'react';
 import Header from '../../components/Portal/Header';
@@ -19,6 +19,8 @@ import ProjectDetails from './projectDetails';
 import AlertDelete from './alertDelete';
 import { ButtonAlert, ButtonDetails, PopContainer, PopPanelAlert, PopPanelDetails } from './styles';
 import { Popover } from '@headlessui/react';
+import { FormHandles } from '@unform/core';
+import { Form } from '@unform/web';
 
 interface ITableProject {
   id: string;
@@ -30,10 +32,12 @@ interface ITableProject {
 const Project: React.FC = () => {
   //style colors customTheme
   const bg = useColorModeValue('hoverDark', 'hoverLight');
+  const formRef = useRef<FormHandles>(null);
 
   const [page, setPage] = useState(1);
+  const [searchQuery, setSearchQuery] = useState('');
 
-  const { data, isLoading, isFetching, error } = useProjects(page, 10);
+  const { data, isLoading, isFetching, error } = useProjects(page, 10, searchQuery);
 
   const [actualId, setActualId] = useState<String>()
   const [actualProjectName, setActualProjectName] = useState<String>()
@@ -51,6 +55,16 @@ const Project: React.FC = () => {
     setDetails(true)
   }
 
+  const handleSearchContacts = useCallback(
+    async () => {
+      try {
+        const inputSearchValue = (document.getElementById('search') as HTMLInputElement).value;
+        setSearchQuery(inputSearchValue);
+      } catch (e) {
+        console.log(e);
+      }
+    }, [])
+
   //position='fixed' bg={'transparent'} w='100%' h='100%' zIndex='10' justify='center' align='center' pb='20rem'
   return (
     <>
@@ -60,8 +74,15 @@ const Project: React.FC = () => {
         </Flex>
       } */}
       <Panel title="List Projects" back='/dashboard' next='/dashboard' search={true} importFile='/import' create='/create-project'>
-        <Flex>
+        <Form ref={formRef} onSubmit={handleSearchContacts}>
+          <InputChakra
+            id='search'
+            type='text'
+            name="search"
+          />
+        </Form>
 
+        <Flex>
           {!isLoading && isFetching && (
             <Spinner size="sm" color="gray.500" ml="4" />
           )}
