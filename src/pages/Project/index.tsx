@@ -1,4 +1,4 @@
-import { Box, Flex, Heading, Input as InputChakra, Link, Spacer, Spinner, Table, Tbody, Td, Text, Th, Thead, Tr, useColorModeValue } from '@chakra-ui/react';
+import { Box, Button, Flex, Input as InputChakra, Spinner, Table, Tbody, Td, Text, Th, Thead, Tr, useColorModeValue } from '@chakra-ui/react';
 import { ArrowLeft, ArrowRight, DotsThree, Pencil, PencilCircle, PencilLine, PencilSimple, PencilSimpleLine, Trash, TrashSimple } from 'phosphor-react';
 import React, { Component, useCallback, useEffect, useRef, useState } from 'react';
 import Header from '../../components/Portal/Header';
@@ -6,36 +6,31 @@ import { Pagination } from '../../components/Portal/Pagination';
 import { Panel } from '../../components/Portal/Panel';
 import api from '../../services/api';
 import { queryClient } from "../../services/queryClient";
-import { deleteProject, useProjects } from './useProjects';
+import { useProjects } from './useProjects';
 import { Link as RouterLink, useNavigate } from 'react-router-dom';
 import { FaFileImport, FaPlus } from 'react-icons/fa';
 import { FiArrowLeft, FiArrowRight } from 'react-icons/fi';
 import { useToast } from '../../components/hooks/provider/toast';
 import { Loading } from '../../components/Site/WidgetForm/Loading';
-
+import { SubmitHandler, useForm } from 'react-hook-form';
 import { useMutation } from "react-query"
 import { AxiosError } from 'axios';
 import ProjectDetails from './projectDetails';
 import AlertDelete from './alertDelete';
 import { ButtonAlert, ButtonDetails, PopContainer, PopPanelAlert, PopPanelDetails } from './styles';
 import { Popover } from '@headlessui/react';
+
 import { FormHandles } from '@unform/core';
 import { Form } from '@unform/web';
-
-interface ITableProject {
-  id: string;
-  name: string;
-  description: string;
-  progress: string;
-}
+import Input from '../../components/Shared/Input';
 
 const Project: React.FC = () => {
   //style colors customTheme
   const bg = useColorModeValue('hoverDark', 'hoverLight');
-  const formRef = useRef<FormHandles>(null);
 
   const [page, setPage] = useState(1);
   const [searchQuery, setSearchQuery] = useState('');
+  const { register, handleSubmit } = useForm();
 
   const { data, isLoading, isFetching, error } = useProjects(page, 10, searchQuery);
 
@@ -43,6 +38,9 @@ const Project: React.FC = () => {
   const [actualProjectName, setActualProjectName] = useState<String>()
   const [alert, setAlert] = useState(false)
   const [details, setDetails] = useState(false)
+
+  //const { register, handleSubmit } = useForm();
+  const formRef = useRef<FormHandles>(null);
 
   function showAlert(id: string, name: string) {
     setActualId(id)
@@ -55,6 +53,20 @@ const Project: React.FC = () => {
     setDetails(true)
   }
 
+  type SearchContactsFormData = {
+    search?: string;
+  };
+  // const handleSearchContacts: SubmitHandler<SearchContactsFormData> = async ({ search }) => {
+  //   setSearchQuery(String(search));
+  // };
+  // async function handleSearchContacts({ data }: SearchContactsFormData) {
+  //   event?.preventDefault();
+  //   console.log("formRef", formRef);
+  //   console.log("data", data);
+  //   console.log("data.search", data.search);
+  //   setSearchQuery(String(data.search));
+  // };
+
   const handleSearchContacts = useCallback(
     async () => {
       try {
@@ -64,6 +76,10 @@ const Project: React.FC = () => {
         console.log(e);
       }
     }, [])
+
+  //console.log(setSearchQuery(String(searchQuery)));
+
+
 
   //position='fixed' bg={'transparent'} w='100%' h='100%' zIndex='10' justify='center' align='center' pb='20rem'
   return (
@@ -75,12 +91,21 @@ const Project: React.FC = () => {
       } */}
       <Panel title="List Projects" back='/dashboard' next='/dashboard' search={true} importFile='/import' create='/create-project'>
         <Form ref={formRef} onSubmit={handleSearchContacts}>
+          {/* <Input
+            id='search'
+            type='text'
+            name="search"
+            placeholder="Buscar contatos"
+          /> */}
           <InputChakra
             id='search'
             type='text'
             name="search"
           />
+
         </Form>
+
+
 
         <Flex>
           {!isLoading && isFetching && (
