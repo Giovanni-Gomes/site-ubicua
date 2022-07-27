@@ -31,12 +31,15 @@ export type GetOneProjectResponse = {
   project: Project[];
 };
 
-export async function getProjects(page: number, take: number): Promise<GetProjectResponse> {
-
+export async function getProjects(page: number, take: number, search: string): Promise<GetProjectResponse> {
+  console.log(page);
+  console.log(take);
+  console.log(search);
   const { data, request } = await api.get('/v1/project/findAll', {
     params: {
       skip: page,
-      take: take
+      take: take,
+      search: search,
     }
   });
 
@@ -109,8 +112,8 @@ export async function deleteProject(id: string) {
   await api.delete(`/v1/project/delete/${id}`);
 }
 
-export function useProjects(page: number, take: number) {
-  return useQuery(['projects', page, take], () => getProjects(page, take));
+export function useProjects(page: number, take: number, search: string) {
+  return useQuery(['projects', page, take, search], () => getProjects(page, take, search));
   // return useQuery(['projects', page], () => getProjects(page, take), {
   //   staleTime: 1000 * 60 * 10, // 1000 * 60 * 10 10 minutes // 1000 * 60 * 60 * 12, // 12 hours,
   // });
