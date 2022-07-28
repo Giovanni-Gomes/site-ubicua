@@ -21,13 +21,19 @@ min-width: 14rem;
     text-decoration: none;
     color: ${(props: any) => props.theme.textPrimary};
     height: 50px;
-    width: 100%;
+    /* width: 100%; */
+    min-width: 12rem;
     display: flex;
     align-items: center;
+    justify-content: center;
     border-radius: 1rem;
     /* transition: 100ms; */
     padding: 0.4rem;
     font-size: 16px;
+
+    &.space {
+      gap: 0.5rem;
+    }
 
     &:hover {
       background: ${(props: any) => props.theme.hover};
@@ -55,7 +61,7 @@ min-width: 14rem;
 }
 > .menu-secondary-enter {
   position: absolute;
-  transform: translateX(300%);
+  transform: translateX(100%);
 }
 > .menu-secondary-enter-active {
   transform: translateX(0%);
@@ -65,7 +71,7 @@ min-width: 14rem;
   position: absolute;
 }
 > .menu-secondary-exit-active {
-  transform: translateX(300%);
-  /* transition: all 100ms ease; */
+  transform: translateX(100%);
+  transition: all 100ms ease;
 }
 `;

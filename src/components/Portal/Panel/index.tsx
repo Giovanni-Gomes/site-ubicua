@@ -1,5 +1,7 @@
 import { Flex, SimpleGrid, Text, useColorMode, Link, useColorModeValue, Spacer, Input, Box } from "@chakra-ui/react";
-import { ReactNode } from "react";
+import { FormHandles } from "@unform/core";
+import { Form } from "@unform/web";
+import React, { ReactNode, useCallback, useRef, useState } from "react";
 import { FaFileImport, FaPlus } from "react-icons/fa";
 import { FiArrowLeft, FiArrowRight } from "react-icons/fi";
 import { Link as RouterLink } from 'react-router-dom';
@@ -12,11 +14,18 @@ interface PanelProps {
   search?: boolean;
   importFile?: string;
   create?: string;
+  searchState?: React.Dispatch<React.SetStateAction<string>>;
   //variant: string;
 }
 
-export function Panel({ children, title, back, next, search, importFile, create, ...rest }: PanelProps) {
+export function Panel({ children, title, back, next, search, importFile, create, searchState, ...rest }: PanelProps) {
   const bg = useColorModeValue('hoverDark', 'hoverLight');
+  const formRef = useRef<FormHandles>(null);
+
+  function handleSearchContracts() {
+    const inputSearchValue = (document.getElementById('search') as HTMLInputElement).value;
+    searchState && searchState(inputSearchValue);
+  }
 
   return (
     <Flex position='relative' width='90%' direction='column' mt={'5rem'} mb='2rem' marginInlineEnd={0} mx={'auto'} h="100%" bg='tertiary' borderRadius={10} p={3} >
@@ -31,7 +40,9 @@ export function Panel({ children, title, back, next, search, importFile, create,
               <FiArrowRight />
             </Link>
           }{search &&
-            <Input maxW={250} placeholder='search' size='sm' name="search" borderRadius={20} color='tomato' _placeholder={{ opacity: 0.6, color: 'gray.600' }} backgroundColor={bg} focusBorderColor={bg} />
+            <Form ref={formRef} onSubmit={handleSearchContracts}>
+              <Input maxW={250} placeholder='search' size='sm' id='search' name="search" borderRadius={20} color='tomato' _placeholder={{ opacity: 0.6, color: 'gray.600' }} backgroundColor={bg} focusBorderColor={bg} />
+            </Form>
           }
         </Flex>
         {/* <Spacer /> */}
