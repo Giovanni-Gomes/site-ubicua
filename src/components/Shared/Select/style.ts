@@ -12,11 +12,16 @@ export const Container = styled.div`
         padding: 16px;
         /* margin-bottom: 0.1rem; */
         width: 100%;
-        border: 2px solid var(--color-secondary);
+        border: 1px solid var(--color-primary);
         color: #666360;
         display: flex;
         align-items: center;
+        :hover {
+          border-radius: 10px;
+          border: 1px solid var(--color-secondary);
+        }
     }
+
 `;
 
 export const Error = styled(Tooltip)`

@@ -1,6 +1,6 @@
 import { Box, Button, Flex, Input as InputChakra, Spinner, Table, Tbody, Td, Text, Th, Thead, Tr, useColorModeValue } from '@chakra-ui/react';
 import { ArrowLeft, ArrowRight, DotsThree, Pencil, PencilCircle, PencilLine, PencilSimple, PencilSimpleLine, Trash, TrashSimple } from 'phosphor-react';
-import React, { Component, useCallback, useEffect, useRef, useState } from 'react';
+import React, { ChangeEvent, Component, FormEvent, useCallback, useEffect, useRef, useState } from 'react';
 import Header from '../../components/Portal/Header';
 import { Pagination } from '../../components/Portal/Pagination';
 import { Panel } from '../../components/Portal/Panel';
@@ -49,21 +49,7 @@ const Project: React.FC = () => {
   //   setSearchQuery(String(data.search));
   // };
 
-  // const handleSearchContacts = useCallback(
-  //   async () => {
-  //     try {
-  //       const inputSearchValue = (document.getElementById('search') as HTMLInputElement).value;
-  //       setSearchQuery(inputSearchValue);
-  //     } catch (e) {
-  //       console.log(e);
-  //     }
-  //   }, [])
 
-  //console.log(setSearchQuery(String(searchQuery)));
-
-
-
-  //position='fixed' bg={'transparent'} w='100%' h='100%' zIndex='10' justify='center' align='center' pb='20rem'
   return (
     <>
       <Header />
@@ -71,13 +57,16 @@ const Project: React.FC = () => {
         <Flex position='fixed' bg={'transparent'} w='100%' h='100%' zIndex='10' justify='center' align='center' pb='5rem'>
         </Flex>
       } */}
+
       <Panel title="List Projects" back='/dashboard' next='/dashboard' search={true} searchState={setSearchQuery} importFile='/import' create='/create-project'>
         {/* <Form ref={formRef} onSubmit={handleSearchContacts}> */}
         {/* <Input
+
             id='search'
             type='text'
             name="search"
             placeholder="Buscar contatos"
+            onSubmit={(event: ChangeEvent<HTMLInputElement>) => handleSearchContracts(event?.target.value)}
           /> */}
         {/* <InputChakra
             id='search'
@@ -198,6 +187,7 @@ const Project: React.FC = () => {
         />
 
       </Panel >
+
 
     </>
   );

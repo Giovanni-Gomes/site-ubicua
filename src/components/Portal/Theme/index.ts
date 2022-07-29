@@ -9,7 +9,7 @@ export const defaultColors = {
   dark: '#232323',
   primary: '#FFFFFF',
   secondary: '#8C30F5',
-  tertiary: '#FFFFFF',//'#D5FAFC',
+  tertiary: '#8C30F5',//'#D5FAFC',
   quaternary: '#2EC5CE',
   footer: '#0B0D17',
   black: '#0B0D17',
@@ -24,7 +24,7 @@ export const lightTheme = {
   portal: defaultColors.bgPortal,
   background: defaultColors.primary,
   navBar: defaultColors.tertiary,
-  textPrimary: defaultColors.dark,
+  textPrimary: defaultColors.primary,
   textSecondary: defaultColors.secondary,
   hover: defaultColors.hoverDark,
 }
