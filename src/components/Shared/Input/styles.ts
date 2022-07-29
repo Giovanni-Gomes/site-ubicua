@@ -13,7 +13,7 @@ export const Container = styled.div<ContainerProps>`
   padding: 16px;
   margin-bottom: 0.1rem;
   width: 100%;
-  border: 2px solid var(--color-secondary);
+  border: 0.5px solid var(--color-primary);
   color: #666360;
   ${(props) =>
     props.isErrored &&
@@ -23,7 +23,7 @@ export const Container = styled.div<ContainerProps>`
   ${(props) =>
     props.isFocused &&
     css`
-      border: 2px solid var(--color-login);
+      border: 1px solid var(--color-login);
       color: var(--color-login);
     `}
   ${(props) =>

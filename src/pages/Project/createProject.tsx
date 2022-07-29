@@ -136,11 +136,11 @@ const CreateProject: React.FC = () => {
         <Form ref={formRef} onSubmit={handleSubmitCreateProject} style={{ width: '90%', margin: '0rem auto 0' }}>
           <Flex w='100%' gap='2rem' justify='center' align='center' mb='0.5rem'>
             <Flex direction='column' w='100%'>
-              <Input id='name' type='text' name='name' placeholder='Number Project' label='Nome do Projeto' />
+              <Input id='name' type='text' name='name' placeholder='Number Project' />
 
-              <Input id='progress' type='text' name='progress' placeholder='Progress' label='Progresso' />
+              <Input id='progress' type='text' name='progress' placeholder='Progress' />
 
-              <Select name="status_id" label="Status">
+              <Select name="status_id">
                 <option key={0} value='Select a status'>Selecione um status</option>
                 {selectOptionsStatus?.map(option => (
                   <option key={option.id} value={option.id}>
@@ -154,11 +154,11 @@ const CreateProject: React.FC = () => {
             </Flex>
 
             <Flex direction='column' w='100%'>
-              <Input type="number" name="negotiated_value" placeholder='Valor Negociado' label='Valor Negociado' />
+              <Input type="number" name="negotiated_value" placeholder='Valor Negociado' />
 
-              <Input type="number" name="real_cost" placeholder='Custo Real' label='Custo Real' />
+              <Input type="number" name="real_cost" placeholder='Custo Real' />
 
-              <Select name="user_id" label="Responsável">
+              <Select name="user_id">
                 <option key={0} value='Select a user'>Select a user</option>
                 {selectOptionsUsers?.map(option => (
                   <option key={option.id} value={option.id}>
@@ -171,7 +171,7 @@ const CreateProject: React.FC = () => {
               {/* <Input id='user_id' type='text' name='user_id' placeholder='Responsável' /> */}
             </Flex>
           </Flex>
-          <Input id='description' type='text' name='description' placeholder='Description' label='Descrição' />
+          <Input id='description' type='text' name='description' placeholder='Description' />
           <Flex align='center' w='100%' justify='space-between'>
             <Button disabled={isSendingProject} onClick={() => formRef.current?.submitForm()}>
               <FaSave style={{ marginRight: '0.5rem' }} />
