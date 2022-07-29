@@ -28,7 +28,7 @@ interface ITableProject {
 }
 
 const Dashboard: React.FC = () => {
-  const { data, isLoading, isFetching, error } = useProjects(0, 0);
+  const { data, isLoading, isFetching, error } = useProjects(0, 0, '');
   const bg = useColorModeValue('hoverDark', 'hoverLight');
   return (
     <>
@@ -60,7 +60,7 @@ const Dashboard: React.FC = () => {
           <>
             <CardProject title='Latest projects added' subtitle='Updated 37 minutes ago'>
 
-              <Table p={2} textColor={'black'} bg='#FFFFFF' variant='simple' size='lg' minW={1278}>
+              <Table p={2} textColor={'black'} bg='#FFFFFF' variant='simple' size='md' minW={1278}>
                 <Thead>
                   <Tr>
                     <Th>Nome</Th>

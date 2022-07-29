@@ -12,7 +12,6 @@ import { FaFileImport, FaPlus } from 'react-icons/fa';
 import { FiArrowLeft, FiArrowRight } from 'react-icons/fi';
 import { useToast } from '../../components/hooks/provider/toast';
 import { Loading } from '../../components/Site/WidgetForm/Loading';
-import { SubmitHandler, useForm } from 'react-hook-form';
 import { useMutation } from "react-query"
 import { AxiosError } from 'axios';
 import ProjectDetails from './projectDetails';
@@ -30,28 +29,11 @@ const Project: React.FC = () => {
 
   const [page, setPage] = useState(1);
   const [searchQuery, setSearchQuery] = useState('');
-  const { register, handleSubmit } = useForm();
 
   const { data, isLoading, isFetching, error } = useProjects(page, 10, searchQuery);
 
-  const [actualId, setActualId] = useState<String>()
-  const [actualProjectName, setActualProjectName] = useState<String>()
-  const [alert, setAlert] = useState(false)
-  const [details, setDetails] = useState(false)
-
   //const { register, handleSubmit } = useForm();
   const formRef = useRef<FormHandles>(null);
-
-  function showAlert(id: string, name: string) {
-    setActualId(id)
-    setActualProjectName(name)
-    setAlert(!alert)
-  }
-
-  function showDetails(id: string) {
-    setActualId(id)
-    setDetails(true)
-  }
 
   type SearchContactsFormData = {
     search?: string;
@@ -67,10 +49,7 @@ const Project: React.FC = () => {
   //   setSearchQuery(String(data.search));
   // };
 
-  function handleSearchContracts() {
-    const inputSearchValue = (document.getElementById('search') as HTMLInputElement).value;
-    setSearchQuery(inputSearchValue);
-  }
+
   return (
     <>
       <Header />
@@ -78,22 +57,24 @@ const Project: React.FC = () => {
         <Flex position='fixed' bg={'transparent'} w='100%' h='100%' zIndex='10' justify='center' align='center' pb='5rem'>
         </Flex>
       } */}
-      <Panel title="List Projects" back='/dashboard' next='/dashboard' search={true} importFile='/import' create='/create-project'>
-        <Form ref={formRef} onSubmit={handleSearchContracts}>
-          {/* <Input
+
+      <Panel title="List Projects" back='/dashboard' next='/dashboard' search={true} searchState={setSearchQuery} importFile='/import' create='/create-project'>
+        {/* <Form ref={formRef} onSubmit={handleSearchContacts}> */}
+        {/* <Input
+
             id='search'
             type='text'
             name="search"
             placeholder="Buscar contatos"
             onSubmit={(event: ChangeEvent<HTMLInputElement>) => handleSearchContracts(event?.target.value)}
           /> */}
-          <InputChakra
+        {/* <InputChakra
             id='search'
             type='text'
             name="search"
           />
 
-        </Form>
+        </Form> */}
 
 
 
@@ -177,7 +158,7 @@ const Project: React.FC = () => {
                       <Text>{project.user.name}</Text>
                     </Td>
                     <Td paddingTop="2" paddingBottom="2">
-                      <Flex justify='center' align='center'>
+                      <Flex justify='center' align='baseline'>
                         <RouterLink to={`/update-project/${project.id}`} >
                           <PencilSimpleLine size={24} />
                         </RouterLink>
