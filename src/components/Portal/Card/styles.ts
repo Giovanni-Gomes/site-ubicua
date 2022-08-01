@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { StyleFunctionProps } from '@chakra-ui/theme-tools'
 
 export const Container = styled.div`
   /* width: 309px; */
@@ -8,25 +9,15 @@ export const Container = styled.div`
   border-radius: 0.8rem;
 
   &.info {
-    background: #2EC5CE;//blue;
+    background: ${props => props.theme.colors.primary};//props.colorMode === 'light' ? '#FFF' : 'red'//${(props: StyleFunctionProps) => props.colorScheme === 'light' ? '#FFF' : 'red'};//#2EC5CE;//blue;
     color: white;
   }
 
   &.success {
-    background: #c1f7fa;//green;
+    background: ${props => props.theme.colors.secondary};//props.colorMode === 'light' ? '#FFF' : 'red'//${(props: StyleFunctionProps) => props.colorScheme === 'light' ? '#FFF' : 'red'};//#2EC5CE;//blue;
+    color: white;
   }
 
-  &.danger {
-    background: red;
-  }
-
-  &.black {
-    background: black;
-  }
-
-  &.white {
-    background: ${(props: any) => props.theme.navBar};
-  }
 
 `;
 

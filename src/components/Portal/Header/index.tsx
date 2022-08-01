@@ -1,60 +1,60 @@
-
-import { Button, Flex, Input, useColorMode, useColorModeValue } from '@chakra-ui/react';
-import { padding, size } from 'polished';
-import React from 'react';
-import { FaCloud } from 'react-icons/fa';
-import { Link } from 'react-router-dom';
+import { Button, Flex, useColorMode } from '@chakra-ui/react';
+import React, { useState } from 'react';
 import { ThemeProvider } from 'styled-components';
-import PortalStyles from '../../../styles/PortalStyles';
-import useDarkMode from '../../hooks/useDarkmode';
-import Toggle from '../../Shared/Toggle';
 import Avatar from '../Avatar';
 import DropdownMenu from '../DropdownMenu';
-import { darkTheme, lightTheme } from '../Theme';
-import { Switch } from '@chakra-ui/react';
 
 import { Container, HeaderPortal } from './styles';
 import LogoPortal from '../LogoPortal';
 
-import {
-  Menu,
-  MenuButton,
-  MenuList,
-  MenuItem,
-  MenuItemOption,
-  MenuGroup,
-  MenuOptionGroup,
-  MenuDivider,
-} from '@chakra-ui/react';
+import { primaryTheme } from '../../../styles/themes/light';
+import { secondaryTheme } from '../../../styles/themes/dark';
+import useDarkMode from '../../hooks/useDarkmode';
+import Toggle from '../../Shared/Toggle';
+
+interface Props {
+  toggleTheme(): void;
+}
+
+const Header: React.FC<Props> = ({ toggleTheme }) => {
+
+  const { colorMode, toggleColorMode } = useColorMode(); //toggleColorMode
+
+  //toggleTheme = toggleColorMode;
+  console.log("header", toggleTheme);
+  console.log("colorMode", colorMode);
 
 
+  // const toggleTheme = () => {
+  //   setTheme(theme.title === 'light' ? secondaryTheme : primaryTheme);
+  // };
 
-const Header: React.FC = () => {
-
-  const [darkMode, setDarkMode] = useDarkMode();
-  const { colorMode, toggleColorMode } = useColorMode();
-  //const bg = useColorModeValue('red.500', 'red.200')
-
+  //defaultTheme : darkTheme colorMode === 'light' ? primaryTheme : secondaryTheme
+  //const defaultTheme = colorMode === 'light' ? primaryTheme : secondaryTheme
   return (
-    <ThemeProvider theme={colorMode === 'light' ? lightTheme : darkTheme}>
+    // <ThemeProvider theme={defaultTheme}>
 
-      <Container>
-        <HeaderPortal>
+    <Container>
+      <HeaderPortal>
 
-          <LogoPortal />
+        <LogoPortal />
 
-          <Flex justify='space-between' w='100%' ml='30px' >
-            <DropdownMenu />
-            <Button onClick={toggleColorMode} w='0%' mt={2.5} bg={'transparent'} borderRadius={'50%'}>
-              {colorMode === 'light' ? '☀' : '☾'}
-            </Button>
-          </Flex>
-          <Avatar />
+        <Flex justify='space-between' w='100%' ml='30px' >
+          <DropdownMenu />
+          <Toggle setDarkMode={toggleColorMode} darkMode={colorMode} />
+          <Button onClick={toggleTheme} w='0%' mt={2.5} bg={'transparent'} borderRadius={'50%'}>
+            {colorMode === 'light' ? '☀' : '☾'}
+          </Button>
+          {/* <Button onClick={toggleColorMode} w='0%' mt={2.5} bg={'transparent'} borderRadius={'50%'}>
+            {colorMode === 'light' ? '☀' : '☾'}
+          </Button> */}
+        </Flex>
+        <Avatar />
 
 
-        </HeaderPortal>
-      </Container>
-    </ThemeProvider>
+      </HeaderPortal>
+    </Container>
+    // </ThemeProvider>
 
   );
 }

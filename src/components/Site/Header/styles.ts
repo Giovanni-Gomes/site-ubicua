@@ -13,7 +13,7 @@ export const Container = styled.div`
 
 export const Content = styled.header`
   z-index:5;
-  
+
   background: var(--bg-color);
   display: flex;
   align-items: center;
@@ -34,7 +34,7 @@ export const Content = styled.header`
       font-size: 1.8rem;
     }
   }
-  
+
   > div.button {
     display: flex;
     gap: 1rem;

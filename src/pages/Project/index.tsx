@@ -52,7 +52,7 @@ const Project: React.FC = () => {
 
   return (
     <>
-      <Header />
+      {/* <Header /> */}
       {/* {details &&
         <Flex position='fixed' bg={'transparent'} w='100%' h='100%' zIndex='10' justify='center' align='center' pb='5rem'>
         </Flex>
