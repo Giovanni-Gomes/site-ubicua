@@ -1,5 +1,5 @@
-import { shade } from 'polished';
-import styled from 'styled-components';
+import { shade } from 'polished'
+import styled from 'styled-components'
 
 export const Container = styled.div`
   /* position: absolute; */
@@ -23,7 +23,7 @@ export const Container = styled.div`
     display: flex;
     flex-direction: column;
     border-radius: 1rem;
-    background: #EFF6FF;//${(props: any) => props.theme.textSecondary};
+    background: #eff6ff; //${(props: any) => props.theme.textSecondary};
 
     h1 {
       margin-bottom: 0.5rem;
@@ -45,16 +45,8 @@ export const Container = styled.div`
         color: ${shade(0.2, '#F4EDE8')};
       }
     }
-
-
-
   }
-
-
-
-
-
-`;
+`
 
 export const FormFooter = styled.div`
   display: flex;
@@ -63,7 +55,6 @@ export const FormFooter = styled.div`
   justify-content: space-between;
 
   Button {
-
     float: left;
     padding: 1rem;
     border-radius: 0.5rem;
@@ -73,11 +64,9 @@ export const FormFooter = styled.div`
 
     margin: 0.6rem 0rem 0rem 0rem;
   }
-
 `
 
 export const CancelButton = styled.button`
-
   /* flex: 1 1 0%; */
   display: flex;
   align-items: center;
@@ -86,9 +75,6 @@ export const CancelButton = styled.button`
 
   width: 56px;
   height: 56px;
-  color: #EB1500;
+  color: #eb1500;
   border-radius: 5px;
-
 `
-
-

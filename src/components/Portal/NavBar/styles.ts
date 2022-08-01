@@ -1,64 +1,62 @@
-import styled, { keyframes } from 'styled-components';
+import styled, { keyframes } from 'styled-components'
 
 export const Container = styled.nav`
---bg: ${(props: any) => props.theme.navBar};
---bg-accent: #484a4d;
---text-color: #dadce1;
---nav-size: 1rem;
---border-radius: 8px;
---speed: 100ms;//300ms;
-// height: var(--nav-size);
-/* z-index: 10; */
+  --bg: ${(props: any) => props.theme.navBar};
+  --bg-accent: #484a4d;
+  --text-color: #dadce1;
+  --nav-size: 1rem;
+  --border-radius: 8px;
+  --speed: 100ms; //300ms;
+  // height: var(--nav-size);
+  /* z-index: 10; */
 
-/* --border: 1px solid #474a4d; */
-/* background: var(--bg); */
-/* padding: 0 1rem; */
-/* border-bottom: var(--border); */
+  /* --border: 1px solid #474a4d; */
+  /* background: var(--bg); */
+  /* padding: 0 1rem; */
+  /* border-bottom: var(--border); */
 
-// a {
-//   display: flex;
-//   flex-direction: row;
-//   align-items: center;
-//   text-decoration: none;
-//   gap: 0.5rem;
-// }
+  // a {
+  //   display: flex;
+  //   flex-direction: row;
+  //   align-items: center;
+  //   text-decoration: none;
+  //   gap: 0.5rem;
+  // }
 
-button {
-  cursor: pointer;
-  /* padding-top: 0.2rem; */
-  margin-top: 0.3rem;
-  padding-left: 4rem;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  text-decoration: none;
-  gap: 2rem;
-  background: transparent;
-  border: none;
-
-}
-
-> .navbar-nav {
-
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-
-  @media (min-width: 1440px) {
-    overflow-x: scroll;
-  }
-  ::-webkit-scrollbar {
-    height: .4rem;
-  }
-  ::-webkit-scrollbar-track {
+  button {
+    cursor: pointer;
+    /* padding-top: 0.2rem; */
+    margin-top: 0.3rem;
+    padding-left: 4rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    text-decoration: none;
+    gap: 2rem;
     background: transparent;
+    border: none;
   }
-  ::-webkit-scrollbar-thumb {
-    background: violet;
+
+  > .navbar-nav {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    @media (min-width: 1440px) {
+      overflow-x: scroll;
+    }
+    ::-webkit-scrollbar {
+      height: 0.4rem;
+    }
+    ::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: violet;
+    }
+    max-width: 1024px;
   }
-  max-width: 1024px
-}
-`;
+`
 
 const appearFromBottom = keyframes`
   from {
@@ -69,7 +67,7 @@ const appearFromBottom = keyframes`
     opacity: 1;
     transform: translateY(0);
   }
-`;
+`
 
 export const List = styled.ul`
   position: absolute;
@@ -83,12 +81,10 @@ export const List = styled.ul`
   color: #999;
   animation: ${appearFromBottom} 0.2s;
 
-
-
   > li {
     /* padding: 0.5rem 1rem; */
     /* border-bottom: 1px solid #999; */
-    &:first-child{
+    &:first-child {
       padding-top: 0;
     }
 

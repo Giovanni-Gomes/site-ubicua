@@ -1,70 +1,81 @@
-import { Box, Button, Flex, Spinner, Table, Tbody, Td, Text, Th, Thead, Tr, useColorModeValue } from '@chakra-ui/react';
-import { PencilSimpleLine, Trash, TrashSimple } from 'phosphor-react';
-import React, { useState } from 'react';
-import Header from '../../components/Portal/Header';
-import { Pagination } from '../../components/Portal/Pagination';
-import { Panel } from '../../components/Portal/Panel';
-import api from '../../services/api';
-import { queryClient } from "../../services/queryClient";
-import { deleteContract, useContracts } from './useContracts';
-import { Link as RouterLink } from 'react-router-dom';
+import {
+  Box,
+  Button,
+  Flex,
+  Spinner,
+  Table,
+  Tbody,
+  Td,
+  Text,
+  Th,
+  Thead,
+  Tr,
+  useColorModeValue,
+} from '@chakra-ui/react'
+import { PencilSimpleLine, Trash, TrashSimple } from 'phosphor-react'
+import React, { useState } from 'react'
+import Header from '../../components/Portal/Header'
+import { Pagination } from '../../components/Portal/Pagination'
+import { Panel } from '../../components/Portal/Panel'
+import api from '../../services/api'
+import { queryClient } from '../../services/queryClient'
+import { deleteContract, useContracts } from './useContracts'
+import { Link as RouterLink } from 'react-router-dom'
 
-import { useToast } from '../../components/hooks/provider/toast';
+import { useToast } from '../../components/hooks/provider/toast'
 
-import { useMutation } from "react-query"
-import { AxiosError } from 'axios';
+import { useMutation } from 'react-query'
+import { AxiosError } from 'axios'
 
 interface ITableContract {
-  id: string;
-  name: string;
-  description: string;
-  progress: string;
+  id: string
+  name: string
+  description: string
+  progress: string
 }
 
 const Contract: React.FC = () => {
-  //style colors customTheme
-  const bg = useColorModeValue('hoverDark', 'hoverLight');
+  // style colors customTheme
+  const bg = useColorModeValue('hoverDark', 'hoverLight')
 
-  const [page, setPage] = useState(1);
+  const [page, setPage] = useState(1)
 
-  const { data, isLoading, isFetching, error } = useContracts(page, 10);
+  const { data, isLoading, isFetching, error } = useContracts(page, 10)
 
-  const { addToast } = useToast();
+  const { addToast } = useToast()
 
   const [actualId, setActualId] = useState<String>()
   const [actualContractName, setActualContractName] = useState<String>()
   const [alert, setAlert] = useState(false)
 
-
   const removeContract = useMutation(
     async (id: string) => {
-      const response = await api.delete(`/v1/contract/delete/${id}`);
+      const response = await api.delete(`/v1/contract/delete/${id}`)
 
-      return response.data;
+      return response.data
     },
     {
       onSuccess: () => {
-        queryClient.invalidateQueries('contracts');
+        queryClient.invalidateQueries('contracts')
       },
       onError: (error: AxiosError) => {
         addToast({
           type: 'error',
           title: 'Erro ao deletar registro',
-          description:
-            'Ocorreu um erro ao deletar registro, tente novamente',
-        });
-      }
+          description: 'Ocorreu um erro ao deletar registro, tente novamente',
+        })
+      },
     },
-  );
+  )
 
   async function handleRemoveTag(id: string) {
     try {
-      await removeContract.mutateAsync(id);
+      await removeContract.mutateAsync(id)
 
       addToast({
         type: 'success',
         title: 'Deletado com Sucesso!',
-      });
+      })
       setAlert(false)
     } catch {
       console.log('Error happened')
@@ -77,27 +88,47 @@ const Contract: React.FC = () => {
     setAlert(true)
   }
 
-
   return (
     <>
       <Header />
-      {alert &&
-        <Flex position='fixed' bg={'transparent'} w='100%' h='100%' zIndex='10' justify='center' align='center'>
-          <Flex bg='quaternary' color='black' direction='column' p='2rem' borderRadius='10px' gap='2rem' align='center'>
+      {alert && (
+        <Flex
+          position="fixed"
+          bg={'transparent'}
+          w="100%"
+          h="100%"
+          zIndex="10"
+          justify="center"
+          align="center"
+        >
+          <Flex
+            bg="quaternary"
+            color="black"
+            direction="column"
+            p="2rem"
+            borderRadius="10px"
+            gap="2rem"
+            align="center"
+          >
             <p>Tem certeza que deseja excluir este registro?</p>
             <span>{actualContractName}</span>
-            <Flex justify='center' align='center' gap='1rem'>
+            <Flex justify="center" align="center" gap="1rem">
               <Button onClick={() => handleRemoveTag(String(actualId))}>
                 Excluir
               </Button>
-              <Button onClick={() => setAlert(false)}>
-                Cancelar
-              </Button>
+              <Button onClick={() => setAlert(false)}>Cancelar</Button>
             </Flex>
           </Flex>
         </Flex>
-      }
-      <Panel title="List Contracts" back='/dashboard' next='/dashboard' search={true} importFile='/import' create='/create-project'>
+      )}
+      <Panel
+        title="List Contracts"
+        back="/dashboard"
+        next="/dashboard"
+        search={true}
+        importFile="/import"
+        create="/create-project"
+      >
         <Flex>
           {!isLoading && isFetching && (
             <Spinner size="sm" color="gray.500" ml="4" />
@@ -114,8 +145,8 @@ const Contract: React.FC = () => {
           </Flex>
         ) : (
           <>
-            <Table variant='simple' color='black' mt={2} size='sm' >
-              <Thead >
+            <Table variant="simple" color="black" mt={2} size="sm">
+              <Thead>
                 <Tr>
                   <Th>Nº | Name</Th>
                   <Th>Desc</Th>
@@ -128,18 +159,18 @@ const Contract: React.FC = () => {
                   <Th>#</Th>
                 </Tr>
               </Thead>
-              <Tbody >
+              <Tbody>
                 {data?.contracts.map((contract: any) => (
                   <Tr key={contract.id}>
-                    <Td paddingTop="2" paddingBottom="2" >
+                    <Td paddingTop="2" paddingBottom="2">
                       <Box>
                         {/* <Link onMouseEnter={() => handlePrefetchcontract(contract.id)}> */}
                         <Text fontWeight="bold">{contract.name}</Text>
                         {/* </Link> */}
                       </Box>
                     </Td>
-                    <Td paddingTop="2" paddingBottom="2" maxW='8rem'>
-                      <Flex justify='space-between' align='center'>
+                    <Td paddingTop="2" paddingBottom="2" maxW="8rem">
+                      <Flex justify="space-between" align="center">
                         <Text noOfLines={1}>{contract.description}</Text>
                       </Flex>
                     </Td>
@@ -155,7 +186,7 @@ const Contract: React.FC = () => {
                     <Td paddingTop="2" paddingBottom="2">
                       <Text>{contract.progress}</Text>
                     </Td>
-                    <Td paddingTop="2" paddingBottom="2" maxW='8rem'>
+                    <Td paddingTop="2" paddingBottom="2" maxW="8rem">
                       <Text>{contract.negotiated_value}</Text>
                     </Td>
                     <Td paddingTop="2" paddingBottom="2">
@@ -164,13 +195,16 @@ const Contract: React.FC = () => {
                     <Td paddingTop="2" paddingBottom="2">
                       <Text>{contract.user.name}</Text>
                     </Td>
-                    <Td paddingTop="2" paddingBottom="2" maxW='1rem'>
-                      <Flex justify='center' align='center'>
-                        <RouterLink to={`/update-contract/${contract.id}`} >
+                    <Td paddingTop="2" paddingBottom="2" maxW="1rem">
+                      <Flex justify="center" align="center">
+                        <RouterLink to={`/update-contract/${contract.id}`}>
                           <PencilSimpleLine size={24} />
                         </RouterLink>
-                        <Button onClick={() => showAlert(contract.id, contract.name)} p={0}>
-                          <TrashSimple size={24} color='#c53030' />
+                        <Button
+                          onClick={() => showAlert(contract.id, contract.name)}
+                          p={0}
+                        >
+                          <TrashSimple size={24} color="#c53030" />
                         </Button>
                       </Flex>
                     </Td>
@@ -186,11 +220,9 @@ const Contract: React.FC = () => {
           currentPage={page}
           onPageChange={setPage}
         />
-
-      </Panel >
-
+      </Panel>
     </>
-  );
+  )
 }
 
-export default Contract;
+export default Contract

@@ -1,7 +1,7 @@
-import styled, { keyframes } from 'styled-components';
-import { shade } from 'polished';
+import styled, { keyframes } from 'styled-components'
+import { shade } from 'polished'
 
-import signUpBackgroundImg from '/assets/backgrounds/register.svg';
+import signUpBackgroundImg from '/assets/backgrounds/register.svg'
 
 export const Container = styled.div`
   /* position: absolute;
@@ -10,7 +10,7 @@ export const Container = styled.div`
   width: 100%;
   height: 100%;
   display: flex;
-`;
+`
 
 export const Content = styled.div`
   flex-direction: column;
@@ -24,7 +24,7 @@ export const Content = styled.div`
   width: 100%;
   height: 100%;
   overflow: hidden;
-`;
+`
 
 const appearFromRight = keyframes`
   from {
@@ -35,7 +35,7 @@ const appearFromRight = keyframes`
     opacity: 1;
     transform: translate(0);
   }
-`;
+`
 
 export const AnimationContainer = styled.div`
   display: flex;
@@ -77,7 +77,6 @@ export const AnimationContainer = styled.div`
         color: ${shade(0.2, '#F4EDE8')};
       }
     }
-
   }
 
   > a {
@@ -97,9 +96,7 @@ export const AnimationContainer = styled.div`
       color: ${shade(0.2, '#8C30F5')};
     }
   }
-`;
-
-
+`
 
 export const WrapperGif = styled.div`
   /* position: fixed;
@@ -118,10 +115,10 @@ export const WrapperGif = styled.div`
     width: 100%;
     object-fit: cover;
   }
-`;
+`
 
 export const SignInGiphy = styled.div`
- flex: 1;
+  flex: 1;
 `
 export const Input = styled.input`
   background: var(--color-tertiary);

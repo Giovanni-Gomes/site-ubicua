@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
 export const Container = styled.div`
   z-index: 10;
@@ -36,4 +36,4 @@ export const Container = styled.div`
       display: none;
     }
   }
-`;
+`

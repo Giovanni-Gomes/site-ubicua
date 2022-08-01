@@ -10,10 +10,10 @@ export const PopContainer = styled(Popover)`
   flex-direction: column;
   align-items: flex-end;
   @media (min-width: 768px) {
-      bottom: 2.5rem;
-      right: 2.5rem;
+    bottom: 2.5rem;
+    right: 2.5rem;
   }
-`;
+`
 
 export const PopButton = styled(Popover.Button)`
   z-index: 15;
@@ -28,7 +28,9 @@ export const PopButton = styled(Popover.Button)`
   cursor: pointer;
 
   &:hover {
-    > Span, span, :first-child {
+    > Span,
+    span,
+    :first-child {
       max-width: 20rem;
     }
   }
@@ -36,7 +38,7 @@ export const PopButton = styled(Popover.Button)`
     width: 1.5rem;
     height: 1.5rem;
   }
-`;
+`
 
 export const Span = styled.span`
   max-width: 0rem;
@@ -48,4 +50,4 @@ export const Span = styled.span`
   > span {
     padding-left: 0.5rem;
   }
-`;
+`

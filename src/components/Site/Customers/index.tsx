@@ -1,24 +1,24 @@
-import React, { useEffect, useState } from 'react';
-import clientsImages from '../../../data/clients';
+import React, { useEffect, useState } from 'react'
+import clientsImages from '../../../data/clients'
 
-import { Container, LogoSection, Logos } from './styles';
+import { Container, LogoSection, Logos } from './styles'
 
 interface ClientTypes {
-  imageSrc: string;
-  imageAlt: string;
+  imageSrc: string
+  imageAlt: string
 }
 
 const Customers: React.FC = () => {
-  const [clients, setClients] = useState<ClientTypes[]>([]);
+  const [clients, setClients] = useState<ClientTypes[]>([])
 
   useEffect(() => {
     async function fetchClients() {
-      const responseClient = await clientsImages;
+      const responseClient = await clientsImages
 
-      setClients(responseClient);
+      setClients(responseClient)
     }
 
-    fetchClients();
+    fetchClients()
   }, [])
 
   return (
@@ -31,7 +31,7 @@ const Customers: React.FC = () => {
         </Logos>
       </LogoSection>
     </Container>
-  );
+  )
 }
 
-export default Customers;
+export default Customers

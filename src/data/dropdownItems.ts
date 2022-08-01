@@ -23,7 +23,7 @@ export const dropdownItems = [
         name: 'Retornar Feedback',
         link: '/create-user',
       },
-    ]
+    ],
   },
   {
     title: 'Desenvolvimento',
@@ -50,10 +50,10 @@ export const dropdownItems = [
           {
             name: 'Medição',
             link: '/medicao',
-          }
-        ]
+          },
+        ],
       },
-    ]
+    ],
   },
   {
     title: 'Contratos',
@@ -78,7 +78,7 @@ export const dropdownItems = [
         name: 'Orçamentos',
         link: '/create-user',
       },
-    ]
+    ],
   },
   {
     title: 'Site',
@@ -122,8 +122,8 @@ export const dropdownItems = [
             name: 'Criar 5º Secção',
             link: '/create-section-five',
           },
-        ]
-      }
-    ]
-  }
+        ],
+      },
+    ],
+  },
 ]

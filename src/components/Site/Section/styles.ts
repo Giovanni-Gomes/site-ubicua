@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-import sectionOne from '/assets/backgrounds/background.svg';
+import sectionOne from '/assets/backgrounds/background.svg'
 
 export const Container = styled.div`
   --padding-top: 6.25rem;
@@ -67,9 +67,7 @@ export const Container = styled.div`
   background-color: blue;
    margin-top: 6rem;
   }   */
-
-
-`;
+`
 
 export const Content = styled.div`
   max-width: 1440px;
@@ -91,13 +89,13 @@ export const Content = styled.div`
     /* max-width: 95%; */
   }
   padding: var(--padding-top) var(--padding-bottom); /*5rem*/
-`;
+`
 
 export const Background = styled.div`
   flex: 1;
   background: url(${sectionOne}) no-repeat center;
   background-size: cover;
-`;
+`
 
 export const Wrapper = styled.div`
   max-width: 20rem;

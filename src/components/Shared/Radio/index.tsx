@@ -13,12 +13,12 @@ interface Props {
   }[]
 }
 
-type RefInputEl = RefObject<HTMLInputElement[]> | any;
+type RefInputEl = RefObject<HTMLInputElement[]> | any
 
 type InputProps = InputHTMLAttributes<HTMLInputElement> & Props
 
 function Radio({ name, label, options, ...rest }: InputProps) {
-  const inputRefs = useRef([]);
+  const inputRefs = useRef([])
   const { fieldName, registerField, defaultValue = '', error } = useField(name)
 
   useEffect(() => {
@@ -47,7 +47,7 @@ function Radio({ name, label, options, ...rest }: InputProps) {
         <span key={option.id}>
           <input
             type="radio"
-            //ref={inputRefs}
+            // ref={inputRefs}
             // ref={ref => {
             //   //inputRefs?.current[index] = ref
             //   inputRefs.current = ref
@@ -70,4 +70,4 @@ function Radio({ name, label, options, ...rest }: InputProps) {
   )
 }
 
-export default Radio;
+export default Radio

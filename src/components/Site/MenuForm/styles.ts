@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from 'styled-components'
 import { FaCloud } from 'react-icons/fa'
 
 export const Container = styled.div`
@@ -8,7 +8,7 @@ export const Container = styled.div`
   @media (min-width: 1024px) {
     max-width: 480px;
   }
-`;
+`
 
 export const Navigation = styled.div`
   display: flex;
@@ -17,10 +17,10 @@ export const Navigation = styled.div`
   padding: 16px 32px;
   min-height: 61px;
 
-  > h1{
+  > h1 {
     display: flex;
     align-items: center;
-    
+
     > span {
       color: var(--color-quaternary);
       margin-left: 10px;
@@ -43,13 +43,13 @@ export const Navigation = styled.div`
       display: none;
     }
   }
-`;
+`
 
 export const UbicuaLogo = styled(FaCloud)`
   width: 36px;
   height: 32px;
   fill: var(--color-black);
-`;
+`
 
 export const Form = styled.form`
   display: flex;
@@ -95,4 +95,4 @@ export const Form = styled.form`
     opacity: 0.6;
     margin-top: 4px;
   }
-`;
+`

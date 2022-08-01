@@ -1,7 +1,6 @@
-import styled from 'styled-components';
+import styled from 'styled-components'
 
 export const Container = styled.li`
-
   /* width: calc(10rem * 0.8); */
   display: flex;
   align-items: center;
@@ -38,5 +37,4 @@ export const Container = styled.li`
       //color: ${(props: any) => props.theme.hover};//var(--color-quaternary);
     }
   }
-
-`;
+`

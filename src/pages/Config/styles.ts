@@ -1,5 +1,5 @@
-import { shade } from 'polished';
-import styled from 'styled-components';
+import { shade } from 'polished'
+import styled from 'styled-components'
 
 export const Container = styled.div`
   /* position: absolute; */
@@ -35,7 +35,7 @@ export const Container = styled.div`
     flex-direction: column;
     border-radius: 1rem;
     border-top-left-radius: 0;
-    background: #EFF6FF;//${(props: any) => props.theme.textSecondary};
+    background: #eff6ff; //${(props: any) => props.theme.textSecondary};
 
     h1 {
       margin-bottom: 0.5rem;
@@ -57,9 +57,6 @@ export const Container = styled.div`
         color: ${shade(0.2, '#F4EDE8')};
       }
     }
-
-
-
   }
 
   ul {
@@ -90,7 +87,7 @@ export const Container = styled.div`
         background: lightblue;
 
         &.active {
-          background: #EFF6FF;
+          background: #eff6ff;
           /* border-bottom: solid #EFF6FF; */
           /* color: #FFF; */
           &:hover {
@@ -110,7 +107,7 @@ export const Container = styled.div`
       }
     }
   }
-`;
+`
 
 export const FormFooter = styled.div`
   display: flex;
@@ -120,7 +117,6 @@ export const FormFooter = styled.div`
   margin-top: 1rem;
 
   Button {
-
     float: left;
     padding: 1rem;
     border-radius: 0.5rem;
@@ -130,11 +126,9 @@ export const FormFooter = styled.div`
 
     margin: 0.6rem 0rem 0rem 0rem;
   }
-
 `
 
 export const CancelButton = styled.button`
-
   /* flex: 1 1 0%; */
   display: flex;
   align-items: center;
@@ -143,8 +137,6 @@ export const CancelButton = styled.button`
 
   width: 56px;
   height: 56px;
-  color: #EB1500;
+  color: #eb1500;
   border-radius: 5px;
 `
-
-

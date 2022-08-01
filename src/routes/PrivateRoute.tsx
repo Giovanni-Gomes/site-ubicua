@@ -1,68 +1,30 @@
-import React from 'react';
-import { Navigate } from 'react-router-dom';
-import { useAuth } from '../components/hooks/provider/auth';
-import { useToast } from '../components/hooks/provider/toast';
+import React from 'react'
+import { Navigate } from 'react-router-dom'
+import { useAuth } from '../components/hooks/provider/auth'
+import { useToast } from '../components/hooks/provider/toast'
 
 function PrivateRoute({ children }: any) {
-  const { user } = useAuth();
-  const { addToast } = useToast();
+  const { user } = useAuth()
+  const { addToast } = useToast()
   try {
+    console.log('user authenticated')
 
-    console.log("user authenticated");
-
-    return (
-      !!user ? children
-        : <Navigate to="/login" replace />
-
-    );
-
+    return user ? children : <Navigate to="/login" replace />
   } catch (error) {
-
     addToast({
       type: 'error',
       title: 'Erro na autenticação',
-      description:
-        'Ocorreu um erro ao fazer login, cheque suas credenciais',
-    });
+      description: 'Ocorreu um erro ao fazer login, cheque suas credenciais',
+    })
   }
-
 }
 
-export default PrivateRoute;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+export default PrivateRoute
 
 // function PrivateRoute() {
 //   const { user } = useAuth();
 //   return user ? <Outlet /> : <Navigate to="/login" />;
 // }
-
-
 
 // import React from 'react';
 // import {

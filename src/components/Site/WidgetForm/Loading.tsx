@@ -1,5 +1,5 @@
-import { CircleNotch } from "phosphor-react";
-import { WrapperLoading } from "./styles";
+import { CircleNotch } from 'phosphor-react'
+import { WrapperLoading } from './styles'
 
 export function Loading() {
   return (

@@ -1,14 +1,12 @@
-import React from 'react';
-import { Container } from './style';
-
-
+import React from 'react'
+import { Container } from './style'
 
 const WelcomeDash: React.FC = () => {
   return (
     <Container>
       <p>Welcome to your dashboard</p>
     </Container>
-  );
+  )
 }
 
-export default WelcomeDash;
+export default WelcomeDash

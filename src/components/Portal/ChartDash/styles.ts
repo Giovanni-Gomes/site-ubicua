@@ -1,6 +1,6 @@
-import styled from 'styled-components';
+import styled from 'styled-components'
 
-import chartExample from '/assets/portal/chartexample.png';
+import chartExample from '/assets/portal/chartexample.png'
 
 export const Container = styled.div`
   display: flex;
@@ -8,7 +8,7 @@ export const Container = styled.div`
   align-items: flex-start;
   margin: 1rem 0rem 1rem 1rem;
   padding: 1rem;
-  background: #FFFFFF;
+  background: #ffffff;
 
   /* width: 100%; */
   /* @media (min-width: 1440px) {
@@ -29,10 +29,9 @@ export const Container = styled.div`
   /* flex: none;
   order: 0;
   flex-grow: 0; */
-`;
+`
 
 export const ChartBackground = styled.div`
-
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -53,6 +52,4 @@ export const ChartBackground = styled.div`
 
   /* background: url(${chartExample}) no-repeat center;
   background-size: cover; */
-
 `
-

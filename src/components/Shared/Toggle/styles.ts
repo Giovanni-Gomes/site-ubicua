@@ -1,7 +1,6 @@
-import styled from 'styled-components';
+import styled from 'styled-components'
 
 export const Container = styled.div`
-
   display: flex;
   margin: 0.2rem 0.5rem;
 
@@ -22,10 +21,8 @@ export const Container = styled.div`
   > button:focus {
     outline: none;
     opacity: 0.1;
-
   }
-
-`;
+`
 
 export const ToggleControl = styled.span`
   position: relative;
@@ -46,7 +43,6 @@ export const ToggleControl = styled.span`
     opacity: 0.9;
     background-color: #f6f6f6;
   }
-
 `
 
 export const Input = styled.input.attrs({ type: 'checkbox' })`
@@ -62,7 +58,7 @@ export const Input = styled.input.attrs({ type: 'checkbox' })`
   vertical-align: 2px;
   outline: none;
 
-  :checked+label {
+  :checked + label {
     left: 30px;
   }
 

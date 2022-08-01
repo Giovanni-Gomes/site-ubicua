@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { Popover } from '@headlessui/react';
+import { Popover } from '@headlessui/react'
 
 // Index
 export const Container = styled.div`
@@ -17,22 +17,20 @@ export const Container = styled.div`
   @media (min-width: 768px) {
     width: auto;
   }
-
-`;
+`
 
 export const Footer = styled.footer`
-  font-size: 0.75rem/* 12px */;
-  line-height: 1rem/* 16px */;
+  font-size: 0.75rem /* 12px */;
+  line-height: 1rem /* 16px */;
   color: rgb(163 163 163 / 1);
-`;
+`
 
 // FeedbackType
 export const HeaderSpan = styled.span`
-  font-size: 1.25rem/* 20px */;
-  line-height: 1.5rem/* 28px */;
+  font-size: 1.25rem /* 20px */;
+  line-height: 1.5rem /* 28px */;
   color: white;
-
-`;
+`
 
 // CLoseButton
 export const PopButton = styled(Popover.Button)`
@@ -51,14 +49,14 @@ export const PopButton = styled(Popover.Button)`
     width: 1rem;
     height: 1rem;
   }
-`;
+`
 
 export const Content = styled.div`
   display: flex;
   padding: 2rem 0;
   gap: 0.5rem;
   width: 100%;
-`;
+`
 
 export const ButtonCard = styled.button`
   /* background-color: rgb(39 39 42 / 1); */
@@ -83,7 +81,7 @@ export const ButtonCard = styled.button`
     /* border: 2px solid #8257e6; */
     outline: none;
   }
-`;
+`
 
 // FeedbackContent
 export const HeaderButton = styled.button`
@@ -100,11 +98,11 @@ export const HeaderButton = styled.button`
     width: 1rem;
     height: 1rem;
   }
-`;
+`
 
 export const WrapperTitle = styled.span`
-  font-size: 1.25rem/* 20px */;
-  line-height: 1.5rem/* 24px */;
+  font-size: 1.25rem /* 20px */;
+  line-height: 1.5rem /* 24px */;
   display: flex;
   align-items: center;
   gap: 0.5rem;
@@ -113,12 +111,12 @@ export const WrapperTitle = styled.span`
     width: 1.5rem;
     height: 1.5rem;
   }
-`;
+`
 
 export const Form = styled.form`
   margin: 1rem 0;
   width: 100%;
-`;
+`
 
 export const Textarea = styled.textarea`
   display: block;
@@ -127,8 +125,8 @@ export const Textarea = styled.textarea`
   min-width: 404px;
   width: 100%;
   min-height: 120px;
-  font-size: 0.875rem/* 14px */;
-  line-height: 1.25rem/* 20px */;
+  font-size: 0.875rem /* 14px */;
+  line-height: 1.25rem /* 20px */;
   color: rgb(244 244 245 / 1);
   border-color: rgb(82 82 91 / 1);
   background-color: transparent;
@@ -145,7 +143,7 @@ export const Textarea = styled.textarea`
   }
 
   ::-webkit-scrollbar {
-    width: .5rem;
+    width: 0.5rem;
   }
   ::-webkit-scrollbar-track {
     background: #444;
@@ -158,8 +156,7 @@ export const Textarea = styled.textarea`
   }
 
   resize: none;
-`;
-
+`
 
 export const FooterForm = styled.footer`
   display: flex;
@@ -181,7 +178,7 @@ export const FooterForm = styled.footer`
     color: white;
 
     &:hover {
-      background-color: #996DFF;
+      background-color: #996dff;
     }
 
     &:focus {
@@ -191,7 +188,8 @@ export const FooterForm = styled.footer`
       outline-offset: 2px;
     }
 
-    transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
+    transition-property: color, background-color, border-color,
+      text-decoration-color, fill, stroke;
     transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
     transition-duration: 150ms;
     &:disabled {
@@ -220,12 +218,12 @@ export const FooterForm = styled.footer`
       outline-offset: 2px;
     }
 
-
-    transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
+    transition-property: color, background-color, border-color,
+      text-decoration-color, fill, stroke;
     transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
     transition-duration: 150ms;
   }
-`;
+`
 
 // FeedbackSuccess
 export const SuccessContainer = styled.div`
@@ -237,9 +235,9 @@ export const SuccessContainer = styled.div`
   color: white;
 
   > span {
-    font-size: 1.25rem/* 20px */;
-    line-height: 1.75rem/* 28px */;
-    margin-top: 0.5rem/* 8px */;
+    font-size: 1.25rem /* 20px */;
+    line-height: 1.75rem /* 28px */;
+    margin-top: 0.5rem /* 8px */;
   }
 
   > button {
@@ -251,8 +249,8 @@ export const SuccessContainer = styled.div`
     flex: 1 1 0%;
     justify-content: center;
     align-items: center;
-    font-size: 0.875rem/* 14px */;
-    line-height: 1.5rem/* 24px */;
+    font-size: 0.875rem /* 14px */;
+    line-height: 1.5rem /* 24px */;
     margin-top: 1rem;
     color: white;
 
@@ -266,13 +264,12 @@ export const SuccessContainer = styled.div`
       outline: 2px solid transparent;
       outline-offset: 2px;
     }
-    transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
+    transition-property: color, background-color, border-color,
+      text-decoration-color, fill, stroke;
     transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
     transition-duration: 150ms;
   }
-
-`;
-
+`
 
 // Loading
 export const WrapperLoading = styled.div`
@@ -294,11 +291,11 @@ export const WrapperLoading = styled.div`
       }
     }
   }
-`;
+`
 
 // ScreenshotButton
 export const ButtonScreenshot = styled.button`
-  padding: 0.25rem/* 4px */;
+  padding: 0.25rem /* 4px */;
   width: 2.5rem;
   height: 2.5rem;
   border-color: transparent;
@@ -310,30 +307,34 @@ export const ButtonScreenshot = styled.button`
   &:hover {
     color: rgb(244 244 245 / 1);
   }
-  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
+  transition-property: color, background-color, border-color,
+    text-decoration-color, fill, stroke;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-duration: 150ms;
-`;
+`
 
 export const OtherButtonScreenshot = styled.button`
-  padding: 0.5rem/* 8px */;
+  padding: 0.5rem /* 8px */;
   background-color: rgb(39 39 42 / 1);
   border-radius: 4px;
   border-color: transparent;
   &:hover {
     background-color: rgb(63 63 70 / 1);
   }
-  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
+  transition-property: color, background-color, border-color,
+    text-decoration-color, fill, stroke;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-duration: 150ms;
   &:focus {
     outline: 2px solid transparent;
     outline-offset: 2px;
-    box-shadow: inset 0 0 0 2px #18181b, inset 0 0 0 calc(2px + 2px) rgb(130 87 230 / 1), inset 0 0 0 calc(2px + #18181b) #18181b, 0 0 #0000;
+    box-shadow: inset 0 0 0 2px #18181b,
+      inset 0 0 0 calc(2px + 2px) rgb(130 87 230 / 1),
+      inset 0 0 0 calc(2px + #18181b) #18181b, 0 0 #0000;
   }
 
   > :first-child {
     width: 1.5rem;
     height: 1.5rem;
   }
-`;
+`

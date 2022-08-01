@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from 'styled-components'
 
 export const A = styled.a`
   text-decoration: none;
@@ -12,8 +12,6 @@ export const A = styled.a`
   font-weight: 700;
   font-size: 14px;
   line-height: 20px;
-
-
 
   &::after {
     content: '';
@@ -41,4 +39,4 @@ export const A = styled.a`
     outline: 2px solid transparent;
     outline-offset: 2px;
   } */
-`;
+`

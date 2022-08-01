@@ -1,13 +1,14 @@
-import { FeedbackType, feedbackTypes } from "..";
-import { CloseButton } from "../CloseButton";
-import { ButtonCard, Content, HeaderSpan } from "../styles";
-
+import { FeedbackType, feedbackTypes } from '..'
+import { CloseButton } from '../CloseButton'
+import { ButtonCard, Content, HeaderSpan } from '../styles'
 
 interface FeedbackTypeStepProps {
-  onFeedBackTypeChanged: (type: FeedbackType) => void;
+  onFeedBackTypeChanged: (type: FeedbackType) => void
 }
 
-export function FeedbackTypeStep({ onFeedBackTypeChanged }: FeedbackTypeStepProps) {
+export function FeedbackTypeStep({
+  onFeedBackTypeChanged,
+}: FeedbackTypeStepProps) {
   return (
     <>
       <header>

@@ -1,6 +1,6 @@
-import { extendTheme } from "@chakra-ui/react";
+import { extendTheme } from '@chakra-ui/react'
 import { TextStyles as Text } from '../../Portal/Common/TextStyles'
-import { rgba } from "polished";
+import { rgba } from 'polished'
 
 export const defaultColors = {
   bgPrimary: '#FFFFFF',
@@ -9,7 +9,7 @@ export const defaultColors = {
   dark: '#232323',
   primary: '#FFFFFF',
   secondary: '#8C30F5',
-  tertiary: '#8C30F5',//'#D5FAFC',
+  tertiary: '#8C30F5', // '#D5FAFC',
   quaternary: '#2EC5CE',
   footer: '#0B0D17',
   black: '#0B0D17',
@@ -39,7 +39,6 @@ export const darkTheme = {
 }
 
 const customTheme = {
-
   colors: {
     primary: '#FFFFFF',
     secondary: '#8C30F5',
@@ -57,8 +56,7 @@ const customTheme = {
   },
   components: {
     Text,
-  }
-
+  },
 }
 
-export const newTheme = extendTheme(customTheme);
+export const newTheme = extendTheme(customTheme)

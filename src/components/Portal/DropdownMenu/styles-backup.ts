@@ -1,11 +1,11 @@
-import styled, { keyframes } from 'styled-components';
+import styled, { keyframes } from 'styled-components'
 
 export const Container = styled.div`
   position: relative;
-`;
+`
 
 export const Button = styled.button`
-  padding: .25rem 1rem;
+  padding: 0.25rem 1rem;
   font-size: 1rem;
   background: transparent;
   color: #999;
@@ -46,7 +46,7 @@ const appearFromBottom = keyframes`
     opacity: 1;
     transform: translateY(0);
   }
-`;
+`
 
 export const List = styled.ul`
   position: absolute;
@@ -64,7 +64,7 @@ export const List = styled.ul`
     padding: 0.5rem 1rem;
     /* border-bottom: 1px solid #999; */
 
-    &:first-child{
+    &:first-child {
       padding-top: 0;
     }
 

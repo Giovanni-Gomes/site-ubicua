@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-import sectionOne from '/assets/backgrounds/background.svg';
+import sectionOne from '/assets/backgrounds/background.svg'
 
 export const Container = styled.div`
   --padding-top: 6.25rem;
@@ -11,30 +11,30 @@ export const Container = styled.div`
   &.blue {
     --bg-color: var(--color-tertiary);
     --text-color: var(--color-secondary); /*var(--color-quaternary)*/
-    --logo-color: var(--color-black);    
-    --icon-color: var(--color-secondary);    
+    --logo-color: var(--color-black);
+    --icon-color: var(--color-secondary);
   }
   &.beige {
     --bg-color: var(--color-secondary);
     --text-color: var(--color-quaternary);
     --logo-color: var(--color-primary);
-    --icon-color: var(--color-quaternary);  
+    --icon-color: var(--color-quaternary);
   }
   &.white {
     --bg-color: var(--color-primary);
     --text-color: var(--color-quaternary);
     --logo-color: var(--color-secondary);
-    --icon-color: var(--color-quaternary);  
+    --icon-color: var(--color-quaternary);
   }
   &.black {
     --bg-color: var(--color-quaternary);
     --text-color: var(--color-tertiary);
     --logo-color: var(--color-black);
-    --icon-color: var(--color-tertiary);  
+    --icon-color: var(--color-tertiary);
   }
   background: var(--bg-color);
   position: relative;
-`;
+`
 
 export const Content = styled.div`
   max-width: 1440px;
@@ -44,7 +44,6 @@ export const Content = styled.div`
   justify-content: center;
   align-items: center;
   text-align: center;
-
 
   > header h2 {
     font-size: var(--heading-font-size);
@@ -59,7 +58,7 @@ export const Content = styled.div`
     /* max-width: 95%; */
   }
   padding: var(--padding-top) 32px var(--padding-bottom);
-`;
+`
 
 export const Wrapper = styled.div`
   display: flex;
@@ -77,7 +76,6 @@ export const Wrapper = styled.div`
     }
   }
 `
-
 
 // export const Background = styled.div`
 //   flex: 1;

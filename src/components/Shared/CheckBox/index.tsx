@@ -23,11 +23,10 @@ function Checkbox({ name, value, label, ...rest }: InputProps) {
     registerField({
       name: fieldName,
       ref: inputRef,
-      getValue: ref => {
+      getValue: (ref) => {
         return ref.current.checked
       },
-      clearValue: ref => {
-
+      clearValue: (ref) => {
         ref.current.checked = defaultChecked
       },
       setValue: (ref, value) => {
@@ -56,4 +55,4 @@ function Checkbox({ name, value, label, ...rest }: InputProps) {
   )
 }
 
-export default Checkbox;
+export default Checkbox

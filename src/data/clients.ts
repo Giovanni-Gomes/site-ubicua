@@ -23,6 +23,6 @@ const clientsImages = [
     imageSrc: '/assets/clients/walmart.png',
     imageAlt: 'Logo do walmart.',
   },
-];
+]
 
 export default clientsImages
