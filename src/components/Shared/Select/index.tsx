@@ -12,7 +12,6 @@ interface SelectProps {
 
 type Props = SelectHTMLAttributes<HTMLSelectElement> & SelectProps
 
-
 function Select({ name, label, children, ...rest }: Props) {
   const selectRef = useRef<HTMLSelectElement>(null)
 
@@ -22,13 +21,13 @@ function Select({ name, label, children, ...rest }: Props) {
     registerField({
       ref: selectRef,
       name: fieldName,
-      getValue: ref => {
+      getValue: (ref) => {
         return ref.current?.value
       },
       setValue: (ref, newValue) => {
         ref.current.value = newValue
       },
-      clearValue: ref => {
+      clearValue: (ref) => {
         ref.current.value = ''
       },
     })
@@ -51,4 +50,4 @@ function Select({ name, label, children, ...rest }: Props) {
   )
 }
 
-export default Select;
+export default Select

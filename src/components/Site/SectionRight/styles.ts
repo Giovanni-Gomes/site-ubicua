@@ -1,7 +1,7 @@
 import styled from 'styled-components'
-import { FaCloud } from 'react-icons/fa';
+import { FaCloud } from 'react-icons/fa'
 
-import sectionOne from '/assets/backgrounds/background.svg';
+import sectionOne from '/assets/backgrounds/background.svg'
 
 export const Container = styled.div`
   --padding-top: 6.25rem;
@@ -12,28 +12,27 @@ export const Container = styled.div`
   &.blue {
     --bg-color: var(--color-tertiary);
     --text-color: var(--color-quaternary);
-    --logo-color: var(--color-black);    
-    --icon-color: var(--color-secondary);    
+    --logo-color: var(--color-black);
+    --icon-color: var(--color-secondary);
   }
   &.beige {
     --bg-color: var(--color-secondary);
     --text-color: var(--color-quaternary);
     --logo-color: var(--color-primary);
-    --icon-color: var(--color-primary);  
+    --icon-color: var(--color-primary);
   }
   &.white {
     --bg-color: var(--color-primary);
     --text-color: var(--color-quaternary);
     --logo-color: var(--color-secondary);
-    --icon-color: var(--color-secondary);  
+    --icon-color: var(--color-secondary);
   }
   &.black {
     --bg-color: var(--color-quaternary);
     --text-color: var(--color-tertiary);
     --logo-color: var(--color-black);
-    --icon-color: var(--color-tertiary);  
+    --icon-color: var(--color-tertiary);
   }
-
 
   &:first-child {
     --padding-top: 6rem;
@@ -48,8 +47,7 @@ export const Container = styled.div`
 
   background: var(--bg-color);
   position: relative;
-`;
-
+`
 
 export const Content = styled.div`
   max-width: 1440px;
@@ -74,7 +72,6 @@ export const Content = styled.div`
     font-size: 16px;
     color: var(--text-color);
     /* max-width: 95%; */
-
   }
   padding: var(--padding-top) 32px var(--padding-bottom);
 
@@ -86,7 +83,7 @@ export const Content = styled.div`
     border-radius: 1.5rem;
     left: 20rem;
     bottom: -1rem;
-    &.top{
+    &.top {
       left: 10rem;
       top: -1rem;
     }
@@ -95,6 +92,4 @@ export const Content = styled.div`
       bottom: -1rem;
     }
   }
-
-`;
-
+`

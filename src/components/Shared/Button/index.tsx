@@ -1,21 +1,18 @@
-import React, { ButtonHTMLAttributes } from 'react';
-import { ButtonCustom } from './styles';
+import React, { ButtonHTMLAttributes } from 'react'
+import { ButtonCustom } from './styles'
 
 type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
-  loading?: boolean;
-  text?: Element | string | ButtonHTMLAttributes<HTMLButtonElement>;
-};
+  loading?: boolean
+  text?: Element | string | ButtonHTMLAttributes<HTMLButtonElement>
+}
 
 const Button: React.FC<ButtonProps> = ({ children, loading, ...rest }) => (
   <ButtonCustom type="button" {...rest}>
     {loading ? 'Loading...' : children}
   </ButtonCustom>
-);
+)
 
-export default Button;
-
-
-
+export default Button
 
 // code refatorado
 

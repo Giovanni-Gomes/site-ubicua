@@ -1,7 +1,6 @@
-import styled from 'styled-components';
+import styled from 'styled-components'
 
 export const Container = styled.div`
-
   /* @media (min-width: 1360px) {
     width: calc(1370px + ((100vw - 1440px) / 2));
   } */
@@ -46,7 +45,7 @@ export const Container = styled.div`
   &.transparent {
     background-color: transparent;
   }
-`;
+`
 
 export const CardHeader = styled.header`
   /* padding: .2rem .7rem; */
@@ -62,21 +61,21 @@ export const CardHeader = styled.header`
   /* display: flex; */
   /* align-items: center; */
   display: inline;
-`;
+`
 
 export const Title = styled.h2`
   font-size: 1.6rem;
   margin: 0 0.75rem 0 0;
   flex-wrap: wrap;
-`;
+`
 
 export const Subtitle = styled.h4`
-  font-size: .8rem;
+  font-size: 0.8rem;
   font-weight: 300;
   margin: 0;
   padding: 0;
   color: var(--color-primary);
-`;
+`
 
 export const CardToolbar = styled.div`
   display: flex;
@@ -89,6 +88,4 @@ export const CardToolbar = styled.div`
   }
 `
 
-export const CardContent = styled.div`
-
-`;
+export const CardContent = styled.div``

@@ -1,8 +1,8 @@
-import styled from 'styled-components';
-import { shade } from 'polished';
+import styled from 'styled-components'
+import { shade } from 'polished'
 
 export const Container = styled.div`
-    margin-top: 0 auto;
+  margin-top: 0 auto;
   > header {
     height: 66px;
     background: #28262e;
@@ -19,7 +19,7 @@ export const Container = styled.div`
       }
     }
   }
-`;
+`
 
 export const Content = styled.div`
   display: flex;
@@ -53,7 +53,7 @@ export const Content = styled.div`
       margin-top: 18px;
     }
   }
-`;
+`
 
 export const AvatarInput = styled.div`
   margin-bottom: 8px;
@@ -90,4 +90,4 @@ export const AvatarInput = styled.div`
       background: ${shade(0.2, '#ff9000')};
     }
   }
-`;
+`

@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from 'styled-components'
 
 export const Container = styled.div`
   width: 100%;
@@ -9,11 +9,11 @@ export const Container = styled.div`
   bottom: 0;
   /* background-color: var(--bg-color); */
   clip: rect(auto, auto, auto, auto);
-`;
+`
 
 export const Content = styled.header`
-  z-index:5;
-  
+  z-index: 5;
+
   background: var(--bg-color);
   display: flex;
   align-items: center;
@@ -22,19 +22,18 @@ export const Content = styled.header`
   /* padding: 100px 32px; */
   padding: 16px 32px;
 
-
   > h1 {
     display: flex;
     align-items: center;
     min-width: 30rem;
 
-    > span{
+    > span {
       color: var(--text-color);
       margin-left: 10px;
       font-size: 1.8rem;
     }
   }
-  
+
   > div.button {
     display: flex;
     gap: 1rem;
@@ -43,7 +42,7 @@ export const Content = styled.header`
 
     > :nth-child(1) {
       font-weight: bold;
-      padding: 0.5rem ;
+      padding: 0.5rem;
       border-radius: 1rem;
       background: var(--logo-color);
       color: var(--bg-color);
@@ -63,13 +62,14 @@ export const Content = styled.header`
         background-color: var(--bg-color);
       }
 
-      transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
+      transition-property: color, background-color, border-color,
+        text-decoration-color, fill, stroke;
       transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
       transition-duration: 150ms;
     }
     > :nth-child(2) {
       font-weight: bold;
-      padding: 0.5rem ;
+      padding: 0.5rem;
       border-radius: 1rem;
       background: transparent;
       color: var(--logo-color);
@@ -89,7 +89,8 @@ export const Content = styled.header`
         background-color: var(--logo-color);
       }
 
-      transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
+      transition-property: color, background-color, border-color,
+        text-decoration-color, fill, stroke;
       transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
       transition-duration: 150ms;
     }
@@ -101,8 +102,7 @@ export const Content = styled.header`
   top: 0;
   left: 0;
   right: 0;
-
-`;
+`
 
 export const MenuNav = styled.div`
   display: flex;
@@ -112,4 +112,4 @@ export const MenuNav = styled.div`
   padding-right: 3rem;
   width: 100%;
   justify-content: end;
-`;
+`

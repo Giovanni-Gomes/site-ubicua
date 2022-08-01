@@ -1,70 +1,68 @@
-
 export const menuItems = [
   {
     title: 'Dashboard',
     submenu: [
       {
-        title: 'Gerencial / Status Report'
-      }
-    ]
+        title: 'Gerencial / Status Report',
+      },
+    ],
   },
   {
     title: 'Operações',
     submenu: [
       {
-        title: 'Feedbacks'
+        title: 'Feedbacks',
       },
       {
-        title: 'Retornar Feedback'
-      }
-    ]
+        title: 'Retornar Feedback',
+      },
+    ],
   },
   {
     title: 'Desenvolvimento',
     submenu: [
       {
-        title: 'Equipe / Squad'
+        title: 'Equipe / Squad',
       },
       {
-        title: 'Projetos'
+        title: 'Projetos',
       },
       {
         title: 'Acompanhamentos',
         submenu: [
           {
-            title: 'Programação'
+            title: 'Programação',
           },
           {
-            title: 'Produção'
-
+            title: 'Produção',
           },
           {
-            title: 'Medição'
+            title: 'Medição',
           },
-        ]
+        ],
       },
-    ]
+    ],
   },
   {
     title: 'Contrato',
     submenu: [
       {
-        title: 'Contratos'
+        title: 'Contratos',
       },
       {
-        title: 'Tipos de Serviços'
+        title: 'Tipos de Serviços',
       },
       {
-        title: 'Empresas'
+        title: 'Empresas',
       },
       {
-        title: 'Portifólio'
+        title: 'Portifólio',
       },
       {
-        title: 'Orçamentos'
+        title: 'Orçamentos',
       },
-    ]
-  }
-];
+    ],
+  },
+]
 
 export type menuItem = keyof typeof menuItems

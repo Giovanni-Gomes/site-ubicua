@@ -1,39 +1,39 @@
-import React, { useEffect, useState } from 'react';
-import api from '../../../services/api';
-import { Card, Container, Content, Under } from './styles';
+import React, { useEffect, useState } from 'react'
+import api from '../../../services/api'
+import { Card, Container, Content, Under } from './styles'
 
 interface IFooterProps {
-  id: string;
-  name: string;
-  link: string;
-  footer_titles_id: string;
-  copyright: string;
-  midia_social_one: string;
-  midia_social_two: string;
-  midia_social_tree: string;
-  midia_social_for: string;
+  id: string
+  name: string
+  link: string
+  footer_titles_id: string
+  copyright: string
+  midia_social_one: string
+  midia_social_two: string
+  midia_social_tree: string
+  midia_social_for: string
 }
 
 const Footer: React.FC = () => {
-  const [title, setTitle] = useState<IFooterProps[]>([]);
-  const [link, setLink] = useState<IFooterProps[]>([]);
+  const [title, setTitle] = useState<IFooterProps[]>([])
+  const [link, setLink] = useState<IFooterProps[]>([])
   // const [app, setApp] = useState<IFooterProps[]>([]);
-  const [midia, setMidia] = useState<IFooterProps[]>([]);
+  const [midia, setMidia] = useState<IFooterProps[]>([])
 
   useEffect(() => {
     async function fetchFooter() {
-      const responseTitle = await api.get('v1/footer/titles');
-      const responseLink = await api.get('v1/footer/links');
+      const responseTitle = await api.get('v1/footer/titles')
+      const responseLink = await api.get('v1/footer/links')
       // const responseApp = await api.get('v1/footer/apps');
-      const responseMidia = await api.get('v1/footer/midias');
+      const responseMidia = await api.get('v1/footer/midias')
 
-      setTitle(responseTitle.data);
-      setLink(responseLink.data);
+      setTitle(responseTitle.data)
+      setLink(responseLink.data)
       // setApp(responseApp.data);
-      setMidia(responseMidia.data);
+      setMidia(responseMidia.data)
     }
 
-    fetchFooter();
+    fetchFooter()
   }, [])
 
   return (
@@ -45,7 +45,9 @@ const Footer: React.FC = () => {
             <ul className="list">
               {link.map((lk, idx) => (
                 <li key={idx} className="item">
-                  <a href={lk.link}>{lk.footer_titles_id == ti.id ? lk.name : null}</a>
+                  <a href={lk.link}>
+                    {lk.footer_titles_id == ti.id ? lk.name : null}
+                  </a>
                 </li>
               ))}
             </ul>
@@ -59,8 +61,12 @@ const Footer: React.FC = () => {
                 {ap.name}
               </li>
             ))} */}
-            <li><img src="/assets/app/appStore.svg" alt="" /></li>
-            <li><img src="/assets/app/googlePlay.svg" alt="" /></li>
+            <li>
+              <img src="/assets/app/appStore.svg" alt="" />
+            </li>
+            <li>
+              <img src="/assets/app/googlePlay.svg" alt="" />
+            </li>
           </ul>
         </Card>
       </Content>
@@ -84,7 +90,7 @@ const Footer: React.FC = () => {
         </Under>
       ))}
     </Container>
-  );
+  )
 }
 
-export default Footer;
+export default Footer

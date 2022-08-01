@@ -18,7 +18,7 @@ const sectionIcons = [
     icon: '/assets/tpcIcons/icon02.svg',
     title: '140',
     description: 'Countries',
-  }
-];
+  },
+]
 
-export default sectionIcons;
+export default sectionIcons

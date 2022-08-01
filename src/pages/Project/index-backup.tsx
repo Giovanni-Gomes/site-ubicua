@@ -1,64 +1,61 @@
-import React, { useEffect, useState } from 'react';
-import Header from '../../components/Portal/Header';
-import TablePortal from '../../components/Portal/Table';
-import api from '../../services/api';
-import { queryClient } from "../../services/queryClient";
-import { useProjects } from './useProjects';
+import React, { useEffect, useState } from 'react'
+import Header from '../../components/Portal/Header'
+import TablePortal from '../../components/Portal/Table'
+import api from '../../services/api'
+import { queryClient } from '../../services/queryClient'
+import { useProjects } from './useProjects'
 
 interface ITableProject {
-  id: string;
-  name: string;
-  description: string;
-  progress: string;
+  id: string
+  name: string
+  description: string
+  progress: string
 }
 
 const Project: React.FC = () => {
+  const [page, setPage] = useState(1)
+  const { data, isLoading, isFetching, error } = useProjects(page)
 
-  const [page, setPage] = useState(1);
-  const { data, isLoading, isFetching, error } = useProjects(page);
-
-
-
-  const [table, setTable] = useState<ITableProject[]>([]);
-  const [skiping, setSkiping] = useState(0);
-  const [tanking, setTanking] = useState(2);
-  const [count, setCount] = useState(0);
+  const [table, setTable] = useState<ITableProject[]>([])
+  const [skiping, setSkiping] = useState(0)
+  const [tanking, setTanking] = useState(2)
+  const [count, setCount] = useState(0)
 
   useEffect(() => {
     async function fetchTable() {
+      const response = await api.get(`/v1/project/findAll`, {
+        params: {
+          skip: skiping,
+          take: tanking,
+          totalPage: count,
+        },
+      })
+      const { projects, skip, take, totalPage } = response.data
 
-      const response = await api.get(`/v1/project/findAll`,
-        {
-          params:
-          {
-            skip: skiping,
-            take: tanking,
-            totalPage: count
-          }
-        });
-      const { projects, skip, take, totalPage } = response.data;
-
-      setTable(projects);
+      setTable(projects)
       // console.log("skip", skip);
       // console.log("take", take);
       // console.log("totalPage", totalPage);
 
-      setCount(totalPage);
+      setCount(totalPage)
     }
-    console.log(count);
+    console.log(count)
 
-    fetchTable();
-  }, [skiping]);
-
+    fetchTable()
+  }, [skiping])
 
   async function handlePrefetchProject(projectId: string) {
-    await queryClient.prefetchQuery(['projects', projectId], async () => {
-      const response = await api.get(`/projects/${projectId}`);
+    await queryClient.prefetchQuery(
+      ['projects', projectId],
+      async () => {
+        const response = await api.get(`/projects/${projectId}`)
 
-      return response.data;
-    }, {
-      staleTime: 1000 * 60 * 10, // 10 minutes
-    });
+        return response.data
+      },
+      {
+        staleTime: 1000 * 60 * 10, // 10 minutes
+      },
+    )
   }
 
   function skipper(num: number, action: string) {
@@ -69,7 +66,7 @@ const Project: React.FC = () => {
         if (skiping > 1) {
           setSkiping(num - 2)
         } else if (skiping <= 1) {
-          setSkiping(0);
+          setSkiping(0)
         }
       }
     } else {
@@ -81,8 +78,7 @@ const Project: React.FC = () => {
     <>
       <Header />
       <TablePortal style={{ marginTop: '55px' }}>
-
-        <thead >
+        <thead>
           <tr>
             <th>Nome</th>
             <th>Descrição</th>
@@ -90,7 +86,7 @@ const Project: React.FC = () => {
           </tr>
         </thead>
         <tbody>
-          {table.map(data => (
+          {table.map((data) => (
             <tr key={data.id}>
               <td>{data.name}</td>
               <td>{data.description}</td>
@@ -99,14 +95,14 @@ const Project: React.FC = () => {
           ))}
         </tbody>
       </TablePortal>
-      <button type='button' onClick={() => skipper(skiping, 'back')}>
+      <button type="button" onClick={() => skipper(skiping, 'back')}>
         back
       </button>
       <button type="button" onClick={() => skipper(skiping, 'next')}>
         next
       </button>
     </>
-  );
+  )
 }
 
-export default Project;
+export default Project

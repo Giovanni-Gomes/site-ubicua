@@ -1,55 +1,68 @@
-import { useRef, useEffect, InputHTMLAttributes, useState, useCallback } from 'react';
+import {
+  useRef,
+  useEffect,
+  InputHTMLAttributes,
+  useState,
+  useCallback,
+} from 'react'
 
-import { useField, SubmitHandler, FormHandles } from '@unform/core';
-import { Form } from '@unform/web';
+import { useField, SubmitHandler, FormHandles } from '@unform/core'
+import { Form } from '@unform/web'
 
-import { IconBaseProps } from 'react-icons';
-import { FiAlertCircle } from 'react-icons/fi';
+import { IconBaseProps } from 'react-icons'
+import { FiAlertCircle } from 'react-icons/fi'
 
-import { Container, Error, Label } from './styles';
+import { Container, Error, Label } from './styles'
 
 interface Props {
-  name: string,
+  name: string
   type?:
-  | 'text'
-  | 'number'
-  | 'color'
-  | 'date'
-  | 'datetime-local'
-  | 'email'
-  | 'hidden'
-  | 'month'
-  | 'password'
-  | 'time'
-  | 'range'
-  | 'search'
-  | 'tel'
-  | 'url'
-  | 'week'
-  | 'file'
-  label?: string,
-  value?: string,
-  containerStyle?: object;
-  icon?: React.ComponentType<IconBaseProps>;
+    | 'text'
+    | 'number'
+    | 'color'
+    | 'date'
+    | 'datetime-local'
+    | 'email'
+    | 'hidden'
+    | 'month'
+    | 'password'
+    | 'time'
+    | 'range'
+    | 'search'
+    | 'tel'
+    | 'url'
+    | 'week'
+    | 'file'
+  label?: string
+  value?: string
+  containerStyle?: object
+  icon?: React.ComponentType<IconBaseProps>
 }
 
 type InputProps = InputHTMLAttributes<HTMLInputElement> & Props
 
-function Input({ name, type, label, value, containerStyle = {}, icon: Icon, ...rest }: InputProps) {
-
-  const inputRef = useRef<HTMLInputElement>(null);
+function Input({
+  name,
+  type,
+  label,
+  value,
+  containerStyle = {},
+  icon: Icon,
+  ...rest
+}: InputProps) {
+  const inputRef = useRef<HTMLInputElement>(null)
   const { fieldName, defaultValue, registerField, error } = useField(name)
-  const [isFocused, setIsFocused] = useState(false); // esta com foco no input
-  const [isFilled, setIsFilled] = useState(false); // esta preenchido
+  const [isFocused, setIsFocused] = useState(false) // esta com foco no input
+  const [isFilled, setIsFilled] = useState(false) // esta preenchido
 
   const handleInputFocus = useCallback(() => {
-    setIsFocused(true);
-  }, []);
+    setIsFocused(true)
+  }, [])
 
   const handleInputBlur = useCallback(() => {
-    setIsFocused(false);
-    setIsFilled(!!inputRef.current?.value);
-  }, []);
+    setIsFocused(false)
+    setIsFilled(!!inputRef.current?.value)
+  }, [])
 
   /**
    * If you add a value to the input, it will be considered the default
@@ -63,13 +76,13 @@ function Input({ name, type, label, value, containerStyle = {}, icon: Icon, ...r
     registerField({
       name: fieldName,
       ref: inputRef,
-      getValue: ref => {
+      getValue: (ref) => {
         return ref.current.value
       },
       setValue: (ref, newValue) => {
         ref.current.value = newValue
       },
-      clearValue: ref => {
+      clearValue: (ref) => {
         ref.current.value = ''
       },
     })
@@ -85,7 +98,6 @@ function Input({ name, type, label, value, containerStyle = {}, icon: Icon, ...r
         isFocused={isFocused}
         data-testid="input-container"
       >
-
         {Icon && <Icon size={20} />}
         <input
           id={fieldName}
@@ -103,12 +115,11 @@ function Input({ name, type, label, value, containerStyle = {}, icon: Icon, ...r
         )}
       </Container>
       {error && <span style={{ color: 'red' }}>{error}</span>}
-
     </>
   )
 }
 
-export default Input;
+export default Input
 
 // import React, {
 //   InputHTMLAttributes,

@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from 'styled-components'
 
 export const Swiper = styled.div`
   /* width: 120%;
@@ -21,7 +21,6 @@ export const Swiper = styled.div`
     padding: 0 0 0 80px;
     margin: 0;
     transition: transform 0.3s ease-out;
-
 
     > li {
       /* width: 100%; */
@@ -66,4 +65,4 @@ export const Swiper = styled.div`
       background-color: #cccccc;
     }
   }
-`;
+`

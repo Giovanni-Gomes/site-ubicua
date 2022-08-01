@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from 'styled-components'
 
 export const Container = styled.footer`
   background: var(--color-footer);
@@ -6,7 +6,7 @@ export const Container = styled.footer`
   width: 100%;
   position: relative;
   z-index: 2;
-`;
+`
 
 export const Content = styled.div`
   max-width: 1440px;
@@ -15,7 +15,7 @@ export const Content = styled.div`
   justify-content: center;
   gap: 1rem;
   padding: 4rem 0 4rem 8rem;
-`;
+`
 
 export const Card = styled.div`
   width: 18rem;
@@ -46,10 +46,9 @@ export const Card = styled.div`
       a:hover {
         color: var(--color-quaternary);
       }
-
     }
   }
-`;
+`
 
 export const Under = styled.div`
   /* max-width: 1440px;
@@ -70,13 +69,12 @@ export const Under = styled.div`
     gap: 1rem;
 
     > a {
-        opacity: 1;
-        fill: var(--color-primary);
-        fill-opacity: 1;
+      opacity: 1;
+      fill: var(--color-primary);
+      fill-opacity: 1;
       > img {
         width: 1.2rem;
       }
-     
     }
   }
-`;
+`

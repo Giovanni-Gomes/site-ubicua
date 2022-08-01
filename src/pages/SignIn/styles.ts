@@ -1,13 +1,13 @@
-import styled, { keyframes } from 'styled-components';
-import { shade } from 'polished';
+import styled, { keyframes } from 'styled-components'
+import { shade } from 'polished'
 
-import signInBackgroundImg from '/assets/backgrounds/img.svg';
+import signInBackgroundImg from '/assets/backgrounds/img.svg'
 
 export const Container = styled.div`
   width: 100%;
   height: 100%;
-  display: flex; 
-`;
+  display: flex;
+`
 
 export const Content = styled.div`
   flex-direction: column;
@@ -20,7 +20,7 @@ export const Content = styled.div`
   flex: 1 1 0%;
   width: 100%;
   height: 100%;
-`;
+`
 
 const appearFromLeft = keyframes`
   from {
@@ -31,7 +31,7 @@ const appearFromLeft = keyframes`
     opacity: 1;
     transform: translate(0);
   }
-`;
+`
 
 export const AnimationContainer = styled.div`
   display: flex;
@@ -87,12 +87,10 @@ export const AnimationContainer = styled.div`
     }
 
     &:hover {
-      color:  ${shade(0.2, '#8C30F5')}; ;
+      color: ${shade(0.2, '#8C30F5')};
     }
   }
-`;
-
-
+`
 
 export const WrapperGif = styled.div`
   /* position: fixed;
@@ -111,10 +109,10 @@ export const WrapperGif = styled.div`
     width: 100%;
     object-fit: cover;
   }
-`;
+`
 
 export const SignInGiphy = styled.div`
- flex: 1;
+  flex: 1;
 `
 
 export const Input = styled.input`
@@ -130,4 +128,4 @@ export const Background = styled.div`
   background: url(${signInBackgroundImg}) no-repeat center;
   background-size: cover;
   padding-top: 10rem;
-`;
+`

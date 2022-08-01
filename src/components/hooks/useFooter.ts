@@ -1,9 +1,9 @@
-import api from "../../services/api";
+import api from '../../services/api'
 
 interface IHeaderProps {
-  id: string;
-  name: string;
-  description: string;
+  id: string
+  name: string
+  description: string
 }
 
 interface IHeaderResponse {
@@ -11,13 +11,13 @@ interface IHeaderResponse {
 }
 
 export async function useFooter(): Promise<IHeaderResponse> {
-  const { data } = await api.get('v1/footer/titles');
-  //console.log("data" + data);
+  const { data } = await api.get('v1/footer/titles')
+  // console.log("data" + data);
 
   const result = data.map((listHeader: IHeaderProps) => ({
     id: listHeader.id,
     name: listHeader.name,
   }))
-  console.log("result" + result);
-  return result;
+  console.log('result' + result)
+  return result
 }

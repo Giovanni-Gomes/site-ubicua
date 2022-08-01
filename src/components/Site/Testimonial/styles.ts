@@ -1,6 +1,6 @@
-import styled from 'styled-components';
+import styled from 'styled-components'
 
-import quoteMark from '/assets/testimonial/quote.png';
+import quoteMark from '/assets/testimonial/quote.png'
 
 export const Container = styled.div`
   /* width: 100%; */
@@ -19,7 +19,7 @@ export const Container = styled.div`
     /*background-color: lime;
     margin-top: 6rem; */
   }
-  
+
   > :nth-child(2) {
     position: absolute;
     left: 44rem;
@@ -37,7 +37,7 @@ export const Container = styled.div`
     left: 14rem;
     top: 22rem;
   }
-`;
+`
 
 export const TestimonialOne = styled.div`
   z-index: 3;
@@ -98,18 +98,17 @@ export const TestimonialThree = styled.div`
 `
 
 export const QuoteMark = styled.div`
-position: absolute;
-width: 12%;
-height: 120px;
-left: 205px;
-top: 1.5rem;
+  position: absolute;
+  width: 12%;
+  height: 120px;
+  left: 205px;
+  top: 1.5rem;
 
-
-flex: 1;
-/* background-color: red; */
-/* background: red; */
-background: url(${quoteMark}) no-repeat center;
-opacity: 0.6;
+  flex: 1;
+  /* background-color: red; */
+  /* background: red; */
+  background: url(${quoteMark}) no-repeat center;
+  opacity: 0.6;
 `
 
 export const LogoTestimonial = styled.div`
@@ -149,7 +148,7 @@ export const FeedbackTestimonial = styled.div`
   /* or 178% */
   font-feature-settings: 'liga' off;
   /* Text / Gray 900 */
-  color: #18191F;
+  color: #18191f;
   /* Inside auto layout */
   flex: none;
   order: 0;
@@ -174,7 +173,6 @@ export const Author = styled.div`
   /* padding: 0px; */
   /* width: 142px;
   height: 52px; */
-
 `
 export const WrapperTestimonial = styled.div`
   z-index: 3;

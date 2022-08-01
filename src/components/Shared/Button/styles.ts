@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from 'styled-components'
 
 export const ButtonCustom = styled.button`
   background-color: #8257e6;
@@ -8,26 +8,27 @@ export const ButtonCustom = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 1.0rem/* 14px */;
-  line-height: 1.25rem/* 20px */;
+  font-size: 1rem /* 14px */;
+  line-height: 1.25rem /* 20px */;
   color: white;
-  margin:1rem 0.5rem;
+  margin: 1rem 0.5rem;
   padding: 0.7rem;
   cursor: pointer;
   min-width: 6rem;
 
   &:hover {
-    background-color: #996DFF;
+    background-color: #996dff;
   }
 
   &:focus {
     border-color: #8257e6;
-    box-shadow: inset 0 0 0 calc(1px + 0px) ;
+    box-shadow: inset 0 0 0 calc(1px + 0px);
     outline: 1px solid transparent;
     outline-offset: 2px;
   }
 
-  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
+  transition-property: color, background-color, border-color,
+    text-decoration-color, fill, stroke;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-duration: 150ms;
   &:disabled {
@@ -36,4 +37,4 @@ export const ButtonCustom = styled.button`
   &:disabled:hover {
     background-color: rgb(130 87 230 / 1);
   }
-`;
+`

@@ -1,43 +1,54 @@
-import { Box, Button, Flex, Input as InputChakra, Spinner, Table, Tbody, Td, Text, Th, Thead, Tr, useColorModeValue } from '@chakra-ui/react';
-import { ArrowLeft, ArrowRight, DotsThree, Pencil, PencilCircle, PencilLine, PencilSimple, PencilSimpleLine, Trash, TrashSimple } from 'phosphor-react';
-import React, { ChangeEvent, Component, FormEvent, useCallback, useEffect, useRef, useState } from 'react';
-import Header from '../../components/Portal/Header';
-import { Pagination } from '../../components/Portal/Pagination';
-import { Panel } from '../../components/Portal/Panel';
-import api from '../../services/api';
-import { queryClient } from "../../services/queryClient";
-import { useProjects } from './useProjects';
-import { Link as RouterLink, useNavigate } from 'react-router-dom';
-import { FaFileImport, FaPlus } from 'react-icons/fa';
-import { FiArrowLeft, FiArrowRight } from 'react-icons/fi';
-import { useToast } from '../../components/hooks/provider/toast';
-import { Loading } from '../../components/Site/WidgetForm/Loading';
-import { useMutation } from "react-query"
-import { AxiosError } from 'axios';
-import ProjectDetails from './projectDetails';
-import AlertDelete from './alertDelete';
-import { ButtonAlert, ButtonDetails, PopContainer, PopPanelAlert, PopPanelDetails } from './styles';
-import { Popover } from '@headlessui/react';
+import {
+  Box,
+  Flex,
+  Input as InputChakra,
+  Spinner,
+  Table,
+  Tbody,
+  Td,
+  Text,
+  Th,
+  Thead,
+  Tr,
+  useColorModeValue,
+} from '@chakra-ui/react'
+import { PencilSimpleLine, TrashSimple } from 'phosphor-react'
+import React, { useRef, useState } from 'react'
+import Header from '../../components/Portal/Header'
+import { Pagination } from '../../components/Portal/Pagination'
+import { Panel } from '../../components/Portal/Panel'
+import { useProjects } from './useProjects'
+import { Link as RouterLink } from 'react-router-dom'
 
-import { FormHandles } from '@unform/core';
-import { Form } from '@unform/web';
-import Input from '../../components/Shared/Input';
+import ProjectDetails from './projectDetails'
+import AlertDelete from './alertDelete'
+import {
+  ButtonAlert,
+  ButtonDetails,
+  PopContainer,
+  PopPanelAlert,
+  PopPanelDetails,
+} from './styles'
+
+import { FormHandles } from '@unform/core'
+import { Form } from '@unform/web'
 
 const Project: React.FC = () => {
-  //style colors customTheme
-  const bg = useColorModeValue('hoverDark', 'hoverLight');
+  // style colors customTheme
+  const bg = useColorModeValue('hoverDark', 'hoverLight')
 
-  const [page, setPage] = useState(1);
-  const [searchQuery, setSearchQuery] = useState('');
+  const [page, setPage] = useState(1)
+  const [searchQuery, setSearchQuery] = useState('')
 
-  const { data, isLoading, isFetching, error } = useProjects(page, 10, searchQuery);
+  const { data, isLoading, isFetching, error } = useProjects(
+    page,
+    10,
+    searchQuery,
+  )
 
-  //const { register, handleSubmit } = useForm();
-  const formRef = useRef<FormHandles>(null);
+  // const { register, handleSubmit } = useForm()
+  // const formRef = useRef<FormHandles>(null)
 
-  type SearchContactsFormData = {
-    search?: string;
-  };
   // const handleSearchContacts: SubmitHandler<SearchContactsFormData> = async ({ search }) => {
   //   setSearchQuery(String(search));
   // };
@@ -49,16 +60,19 @@ const Project: React.FC = () => {
   //   setSearchQuery(String(data.search));
   // };
 
-
   return (
     <>
       <Header />
-      {/* {details &&
-        <Flex position='fixed' bg={'transparent'} w='100%' h='100%' zIndex='10' justify='center' align='center' pb='5rem'>
-        </Flex>
-      } */}
 
-      <Panel title="List Projects" back='/dashboard' next='/dashboard' search={true} searchState={setSearchQuery} importFile='/import' create='/create-project'>
+      <Panel
+        title="List Projects"
+        back="/dashboard"
+        next="/dashboard"
+        search={true}
+        searchState={setSearchQuery}
+        importFile="/import"
+        create="/create-project"
+      >
         {/* <Form ref={formRef} onSubmit={handleSearchContacts}> */}
         {/* <Input
 
@@ -76,14 +90,11 @@ const Project: React.FC = () => {
 
         </Form> */}
 
-
-
         <Flex>
           {!isLoading && isFetching && (
             <Spinner size="sm" color="gray.500" ml="4" />
           )}
         </Flex>
-
 
         {isLoading ? (
           <Flex py="10" justify="center">
@@ -95,8 +106,8 @@ const Project: React.FC = () => {
           </Flex>
         ) : (
           <>
-            <Table variant='simple' color='black' mt={2} size='sm' >
-              <Thead >
+            <Table variant="simple" color="black" mt={2} size="sm">
+              <Thead>
                 <Tr>
                   <Th>Nome</Th>
                   <Th>Desc</Th>
@@ -111,10 +122,10 @@ const Project: React.FC = () => {
                   <Th>#</Th>
                 </Tr>
               </Thead>
-              <Tbody >
+              <Tbody>
                 {data?.projects.map((project: any) => (
                   <Tr key={project.id}>
-                    <Td paddingTop="2" paddingBottom="2" >
+                    <Td paddingTop="2" paddingBottom="2">
                       <PopContainer>
                         <PopPanelDetails>
                           <ProjectDetails id={project.id} />
@@ -128,8 +139,8 @@ const Project: React.FC = () => {
                         </ButtonDetails>
                       </PopContainer>
                     </Td>
-                    <Td paddingTop="2" paddingBottom="2" maxW='8rem'>
-                      <Flex justify='space-between' align='center'>
+                    <Td paddingTop="2" paddingBottom="2" maxW="8rem">
+                      <Flex justify="space-between" align="center">
                         <Text noOfLines={1}>{project.description}</Text>
                       </Flex>
                     </Td>
@@ -158,17 +169,20 @@ const Project: React.FC = () => {
                       <Text>{project.user.name}</Text>
                     </Td>
                     <Td paddingTop="2" paddingBottom="2">
-                      <Flex justify='center' align='baseline'>
-                        <RouterLink to={`/update-project/${project.id}`} >
+                      <Flex justify="center" align="baseline">
+                        <RouterLink to={`/update-project/${project.id}`}>
                           <PencilSimpleLine size={24} />
                         </RouterLink>
 
                         <PopContainer>
-                          <PopPanelAlert >
-                            <AlertDelete id={project.id} actualProjectName={project.name} />
+                          <PopPanelAlert>
+                            <AlertDelete
+                              id={project.id}
+                              actualProjectName={project.name}
+                            />
                           </PopPanelAlert>
                           <ButtonAlert>
-                            <TrashSimple size={24} color='#c53030' />
+                            <TrashSimple size={24} color="#c53030" />
                           </ButtonAlert>
                         </PopContainer>
                       </Flex>
@@ -185,12 +199,9 @@ const Project: React.FC = () => {
           currentPage={page}
           onPageChange={setPage}
         />
-
-      </Panel >
-
-
+      </Panel>
     </>
-  );
+  )
 }
 
-export default Project;
+export default Project

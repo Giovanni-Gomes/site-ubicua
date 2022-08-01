@@ -1,8 +1,6 @@
-import styled from 'styled-components';
+import styled from 'styled-components'
 
-export const Container = styled.div`
-
-`;
+export const Container = styled.div``
 
 export const TableCustom = styled.table`
   /* margin-top: 5rem; */
@@ -42,7 +40,7 @@ export const TableCustom = styled.table`
         padding: 10px;
         text-align: left;
         &.title {
-        color: #15db95;
+          color: #15db95;
         }
         img {
           /* width: 38px;
@@ -53,4 +51,4 @@ export const TableCustom = styled.table`
       }
     }
   }
-`;
+`

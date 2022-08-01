@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from 'styled-components'
 
 export const Container = styled.div`
   display: flex;
@@ -19,11 +19,11 @@ export const Container = styled.div`
   height: 14rem;
 
   /* Dark Theme/Blue */
-  background: #2EC5CE;
+  background: #2ec5ce;
   border-radius: 8px;
 
   /* Inside auto layout */
   /* flex: none;
   order: 0;
   flex-grow: 0; */
-`;
+`

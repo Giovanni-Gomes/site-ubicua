@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from 'styled-components'
 
 export const Container = styled.div`
   /* width: 309px; */
@@ -8,12 +8,12 @@ export const Container = styled.div`
   border-radius: 0.8rem;
 
   &.info {
-    background: #2EC5CE;//blue;
+    background: #2ec5ce; //blue;
     color: white;
   }
 
   &.success {
-    background: #c1f7fa;//green;
+    background: #c1f7fa; //green;
   }
 
   &.danger {
@@ -27,8 +27,7 @@ export const Container = styled.div`
   &.white {
     background: ${(props: any) => props.theme.navBar};
   }
-
-`;
+`
 
 export const CardContainer = styled.div`
   display: flex;
@@ -39,20 +38,18 @@ export const CardContainer = styled.div`
 `
 
 export const CardHeader = styled.header`
-  padding: 0.20rem 0.8rem;
-`;
+  padding: 0.2rem 0.8rem;
+`
 
 export const Title = styled.h2`
   font-size: 2.2rem;
-`;
+`
 
 export const Subtitle = styled.h4`
   font-size: 1rem;
   font-weight: 500;
   margin: 0;
   padding: 0;
-`;
+`
 
-export const CardContent = styled.div`
-
-`;
+export const CardContent = styled.div``

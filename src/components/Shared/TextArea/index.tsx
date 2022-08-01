@@ -24,13 +24,13 @@ function TextArea({ name, label, ...rest }: TextareaProps) {
     registerField({
       name: fieldName,
       ref: textareaRef,
-      getValue: ref => {
+      getValue: (ref) => {
         return ref.current.value
       },
       setValue: (ref, value) => {
         ref.current.value = value
       },
-      clearValue: ref => {
+      clearValue: (ref) => {
         ref.current.value = ''
       },
     })
@@ -61,4 +61,4 @@ function TextArea({ name, label, ...rest }: TextareaProps) {
   )
 }
 
-export default TextArea;
+export default TextArea

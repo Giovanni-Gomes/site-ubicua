@@ -1,14 +1,14 @@
-import { Container } from './styles';
+import { Container } from './styles'
 
 interface NavBarProps {
-  children: any;
+  children: any
 }
 
 const NavBar: React.FC<NavBarProps> = ({ children }) => {
   return (
     <Container style={{ marginBottom: '0.5rem' }}>
-      <ul className='navbar-nav'>
-        <button type='button'>{children}</button>
+      <ul className="navbar-nav">
+        <button type="button">{children}</button>
         {/* <a href="#">{children}</a> */}
         {/* <Link to="/">{children}</Link> */}
       </ul>
@@ -16,4 +16,4 @@ const NavBar: React.FC<NavBarProps> = ({ children }) => {
   )
 }
 
-export default NavBar;
+export default NavBar

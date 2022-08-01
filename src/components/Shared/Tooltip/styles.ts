@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from 'styled-components'
 
 export const Container = styled.div`
   position: relative;
@@ -32,4 +32,4 @@ export const Container = styled.div`
     opacity: 1;
     visibility: visible;
   }
-`;
+`

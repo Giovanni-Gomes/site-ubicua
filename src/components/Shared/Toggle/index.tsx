@@ -1,5 +1,5 @@
-//import React from "react";
-import { Container, Input, ToggleControl } from "./styles";
+// import React from "react";
+import { Container, Input, ToggleControl } from './styles'
 
 const Toggle = (props: any) => (
   <Container>
@@ -19,16 +19,14 @@ const Toggle = (props: any) => (
       ☾
     </button>
   </Container>
-);
+)
 
-export default Toggle;
-
+export default Toggle
 
 // import React from 'react';
 // import useLocalStorage from '../../hooks/useLocalStorage';
 // import useMedia from '../../hooks/useMedia';
 // import useToggle from '../../hooks/useToggle';
-
 
 // import { Container, Input, ToggleControl } from './styles';
 
@@ -73,4 +71,3 @@ export default Toggle;
 // }
 
 // export default Toggle;
-

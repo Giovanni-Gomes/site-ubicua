@@ -1,23 +1,22 @@
-import styled from 'styled-components';
+import styled from 'styled-components'
 
 export const Container = styled.div`
   --padding-top: 6.25rem;
   --padding-bottom: 8rem;
   --heading-font-size: 3rem;
   --content-width: 100%;
-  
+
   &.blue {
     --bg-color: var(--color-tertiary);
-    --text-color: var(--color-secondary); 
-    --logo-color: var(--color-black);    
-    --icon-color: var(--color-secondary);    
+    --text-color: var(--color-secondary);
+    --logo-color: var(--color-black);
+    --icon-color: var(--color-secondary);
   }
   background: var(--bg-color);
   height: 65rem;
   padding: 2rem 0;
   position: relative;
-
-`;
+`
 
 export const Content = styled.div`
   max-width: 1440px;
@@ -25,7 +24,7 @@ export const Content = styled.div`
   display: flex;
   align-items: center;
   position: relative;
- 
+
   > header {
     position: absolute;
     left: 15rem;
@@ -54,4 +53,4 @@ export const Content = styled.div`
     color: var(--text-color);
     max-width: 26rem;
   }
-`;
+`

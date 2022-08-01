@@ -1,16 +1,19 @@
-import React from "react";
-import tpcItems from "../../../data/tpcItems";
-import Header from "../Header";
-import { Container, Content, Wrapper } from "./styles";
+import React from 'react'
+import tpcItems from '../../../data/tpcItems'
+import Header from '../Header'
+import { Container, Content, Wrapper } from './styles'
 
 interface Props {
-  variant: 'blue' | 'beige' | 'white' | 'black';
-  sectionTitle: string;
-  description: string;
+  variant: 'blue' | 'beige' | 'white' | 'black'
+  sectionTitle: string
+  description: string
 }
 
-
-const SectionTpc: React.FC<Props> = ({ variant, sectionTitle, description }) => {
+const SectionTpc: React.FC<Props> = ({
+  variant,
+  sectionTitle,
+  description,
+}) => {
   return (
     <Container className={variant}>
       <Header />
@@ -33,4 +36,4 @@ const SectionTpc: React.FC<Props> = ({ variant, sectionTitle, description }) => 
   )
 }
 
-export default SectionTpc;
+export default SectionTpc

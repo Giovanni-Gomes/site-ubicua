@@ -1,5 +1,5 @@
 import { ComponentStyleConfig } from '@chakra-ui/react'
-import { mode, } from '@chakra-ui/theme-tools';
+import { mode } from '@chakra-ui/theme-tools'
 
 export const TextStyles: ComponentStyleConfig = {
   // style object for base or default style
@@ -9,7 +9,7 @@ export const TextStyles: ComponentStyleConfig = {
   // styles for different visual variants ("outline", "solid")
   variants: {
     primary: (props) => ({
-      color: mode("dark", "secondary")(props),
+      color: mode('dark', 'secondary')(props),
     }),
   },
   // default values for 'size', 'variant' and 'colorScheme'
