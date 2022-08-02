@@ -27,14 +27,16 @@ export const Container = styled.nav`
     cursor: pointer;
     /* padding-top: 0.2rem; */
     margin-top: 0.3rem;
-    padding-left: 4rem;
+    margin-left: 4rem;
+    /* padding-left:4rem; */
+    /* flex-direction: row; */
     display: flex;
-    flex-direction: row;
     align-items: center;
+    justify-content: space-between;
+
     text-decoration: none;
-    gap: 2rem;
+    gap: 3rem;
     background: transparent;
-    border: none;
   }
 
   > .navbar-nav {
@@ -75,7 +77,7 @@ export const List = styled.ul`
   list-style: none;
   display: flex;
   flex-direction: column;
-  margin: 1rem 0 0 1rem;
+  /* margin: 1rem 0 0 1rem; */
   /* padding: 0.5rem 1rem; */
   border-radius: 4px;
   color: #999;

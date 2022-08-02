@@ -10,9 +10,9 @@ export const Container = styled.div`
   border-bottom-right-radius: var(--border-radius);
   padding: 1rem;
   overflow: hidden;
-  transition: height 100ms ease;
-  max-width: 100%;
-  min-width: 14rem;
+  /* transition: height 100ms ease; */
+  /* max-width: 100%; */
+  min-width: 10rem;
 
   > .menu {
     padding-bottom: 2rem;
@@ -23,25 +23,25 @@ export const Container = styled.div`
       color: ${(props: any) => props.theme.textPrimary};
       height: 50px;
       /* width: 100%; */
-      min-width: 12rem;
+      /* min-width: 12rem; */
       display: flex;
       align-items: center;
-      justify-content: center;
-      border-radius: 1rem;
-      /* transition: 100ms; */
-      padding: 0.4rem;
-      font-size: 16px;
+      justify-content: left;
+      /* border-radius: 1rem; */
+      /* padding: 0.4rem; */
+      /* font-size: 16px; */
 
       &.space {
         gap: 0.5rem;
       }
 
       &:hover {
-        background: ${(props: any) => props.theme.hover};
+        border-bottom: 3px solid red;
+        /* background: ${(props: any) => props.theme.hover}; */
       }
-      > .icon-right {
+      /* > .icon-right {
         margin-left: auto;
-      }
+      } */
     }
   }
 
