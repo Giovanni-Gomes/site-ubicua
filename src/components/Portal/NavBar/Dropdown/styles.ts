@@ -20,7 +20,7 @@ export const Container = styled.div`
     a,
     div {
       text-decoration: none;
-      color: ${(props: any) => props.theme.colors.primary};
+      color: ${(props: any) => props.theme.colors['text-menu']};
       height: 50px;
       /* width: 100%; */
       /* min-width: 12rem; */
@@ -36,7 +36,7 @@ export const Container = styled.div`
       }
 
       &:hover {
-        border-bottom: 3px solid red;
+        border-bottom: 3px solid ${(props: any) => props.theme.colors.secondary};
         /* background: ${(props: any) => props.theme.hover}; */
       }
       /* > .icon-right {

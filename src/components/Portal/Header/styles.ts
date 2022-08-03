@@ -1,5 +1,4 @@
 import styled from 'styled-components'
-import { FaCloud } from 'react-icons/fa'
 
 export const Container = styled.nav`
   z-index: 3;
@@ -16,7 +15,7 @@ export const HeaderPortal = styled.div`
   // top: 0;
   // left: 0;
   // right: 0;
-  background: ${(props: any) => props.theme.colors.primary};
+  background: ${(props) => props.theme.colors.primary};
   display: flex;
   justify-content: space-around;
   // align-items: baseline;
