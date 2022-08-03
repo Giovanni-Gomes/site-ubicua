@@ -1,4 +1,3 @@
-import { Flex, useColorModeValue } from '@chakra-ui/react'
 import React from 'react'
 import { TableCustom } from '../Table/styles'
 
@@ -17,20 +16,13 @@ const CardProject: React.FC<CardProps> = ({
   subtitle,
   children,
 }) => {
-  const bg = useColorModeValue('hoverDark', 'hoverLight')
 
   return (
     <Container className={variant}>
-      <Flex
-        bg={bg}
-        borderTopLeftRadius={10}
-        borderTopRightRadius={10}
-        p={2}
-        w={1278}
-      >
+      <div>
         <Title>{title}</Title>
         {subtitle ? <Subtitle>{subtitle}</Subtitle> : null}
-      </Flex>
+      </div>
       <CardContent>
         {children}
         <TableCustom></TableCustom>

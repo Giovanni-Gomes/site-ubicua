@@ -19,12 +19,12 @@ const ProjectDetails: React.FC<ProjectDetailsProps> = ({ id }) => {
       bg="var(--bg-secondary)"
       color="white"
       direction="column"
-      p="2rem"
-      borderRadius="10px"
-      gap="4rem"
+      p="1rem"
+      borderRadius="8px"
+      gap="2rem"
       align="center"
     >
-      <Flex fontSize="2rem" align="center" w="100%" justify="space-between">
+      <Flex fontSize="1rem" align="center" w="100%" justify="space-between">
         <Box w="2rem"></Box>
         <h1>{data?.name}</h1>
         <Popover.Button>
@@ -33,43 +33,43 @@ const ProjectDetails: React.FC<ProjectDetailsProps> = ({ id }) => {
       </Flex>
       <Flex justify="space-around" w="100%" align="center">
         <Flex direction="column" gap="3rem">
-          <Flex direction="column" h="2rem" gap="1rem">
+          <Flex direction="column" h="2rem" gap="0.25rem">
             <Span>Ativo:</Span>
             <span>{data?.active}</span>
           </Flex>
-          <Flex direction="column" h="2rem" gap="1rem">
+          <Flex direction="column" h="2rem" gap="0.25rem">
             <Span>Valor Negociado:</Span>
             <p>{data?.negotiated_value}</p>
           </Flex>
-          <Flex direction="column" h="2rem" gap="1rem">
+          <Flex direction="column" h="2rem" gap="0.25rem">
             <Span>Data de Início:</Span>
             <p>{data?.date_start}</p>
           </Flex>
-          <Flex direction="column" h="2rem" gap="1rem">
+          <Flex direction="column" h="2rem" gap="0.25rem">
             <Span>Status:</Span>
             <p>{data?.status.name}</p>
           </Flex>
         </Flex>
         <Flex direction="column" gap="3rem">
-          <Flex direction="column" h="2rem" gap="1rem">
+          <Flex direction="column" h="2rem" gap="0.25rem">
             <Span>Progresso:</Span>
             <p>{data?.progress}</p>
           </Flex>
-          <Flex direction="column" h="2rem" gap="1rem">
+          <Flex direction="column" h="2rem" gap="0.25rem">
             <Span>Custo Real:</Span>
             <p>{data?.real_cost}</p>
           </Flex>
-          <Flex direction="column" h="2rem" gap="1rem">
+          <Flex direction="column" h="2rem" gap="0.25rem">
             <Span>Data de Finalização:</Span>
             <p>{data?.date_end}</p>
           </Flex>
-          <Flex direction="column" h="2rem" gap="1rem">
+          <Flex direction="column" h="2rem" gap="0.25rem">
             <Span>Responsável:</Span>
             <p>{data?.user.name}</p>
           </Flex>
         </Flex>
       </Flex>
-      <Flex direction="column" gap="1rem">
+      <Flex direction="column" gap="0.25rem">
         <Span>Descrição:</Span>
         <p>{data?.description}</p>
       </Flex>

@@ -1,6 +1,6 @@
 import React from 'react'
 import { FaCloud } from 'react-icons/fa'
-import { Link, NavLink } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 
 // import { Container } from './styles';
 

@@ -1,5 +1,5 @@
 import React from 'react'
-import { ChartBackground, Container } from './styles'
+import { Container } from './styles'
 
 const ChartDash: React.FC = () => {
   return (

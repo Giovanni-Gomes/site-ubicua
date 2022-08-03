@@ -1,23 +1,4 @@
-import {
-  Button,
-  Flex,
-  Input,
-  useColorMode,
-  useColorModeValue,
-  Switch,
-  Menu,
-  MenuButton,
-  MenuList,
-  MenuItem,
-  MenuItemOption,
-  MenuGroup,
-  MenuOptionGroup,
-  MenuDivider,
-} from '@chakra-ui/react'
-import { padding, size } from 'polished'
-import React, { useState } from 'react'
-import { FaCloud } from 'react-icons/fa'
-import { Link } from 'react-router-dom'
+import React from 'react'
 import { ThemeProvider } from 'styled-components'
 import PortalStyles from '../../../styles/PortalStyles'
 import useDarkMode from '../../hooks/useDarkmode'
@@ -47,11 +28,11 @@ const Header: React.FC = () => {
         <HeaderPortal>
           <LogoPortal />
 
-          <Flex justify="space-between" w="100%" ml="30px">
+          <div className="wrapper">
             <DropdownMenu />
             <Toggle darkMode={darkMode} setDarkMode={setDarkMode} />
             {/* <button onClick={() => setDarkMode}>{darkMode ? '☀' : '☾'}</button> */}
-          </Flex>
+          </div>
           <Avatar />
           <PortalStyles />
         </HeaderPortal>
