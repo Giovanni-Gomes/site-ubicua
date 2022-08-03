@@ -57,6 +57,9 @@ const customTheme = {
   components: {
     Text,
   },
+  green: '#00875F',
+  red: '#AB222E',
+  yellow: '#FBA94C',
 }
 
 export const newTheme = extendTheme(customTheme)

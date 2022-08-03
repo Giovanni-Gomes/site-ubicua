@@ -8,12 +8,14 @@ export const Container = styled.div`
   border-radius: 0.8rem;
 
   &.info {
-    background: #2ec5ce; //blue;
+    background: ${(props: any) => props.theme.colors.primary};
     color: white;
+    //#2ec5ce;//blue;
   }
 
   &.success {
-    background: #c1f7fa; //green;
+    background: ${(props: any) => props.theme.colors.secondary};
+    //#c1f7fa;//green;
   }
 
   &.danger {
@@ -25,7 +27,7 @@ export const Container = styled.div`
   }
 
   &.white {
-    background: ${(props: any) => props.theme.navBar};
+    background: ${(props: any) => props.theme.colors.primary};
   }
 `
 

@@ -20,7 +20,7 @@ export const Container = styled.div`
     a,
     div {
       text-decoration: none;
-      color: ${(props: any) => props.theme.textPrimary};
+      color: ${(props: any) => props.theme.colors.primary};
       height: 50px;
       /* width: 100%; */
       /* min-width: 12rem; */
