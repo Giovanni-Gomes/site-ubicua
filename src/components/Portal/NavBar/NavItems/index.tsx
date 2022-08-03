@@ -21,7 +21,7 @@ const NavItems: React.FC<NavItemsProps> = ({ icon, children, title }) => {
   return (
     <Container ref={dropdownRef} className="nav-item">
       <a className="icon-button" onClick={() => setOpen(!open)}>
-        {icon}
+        {/* {icon} */}
         <span>{title}</span>
       </a>
 

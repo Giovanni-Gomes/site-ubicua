@@ -45,7 +45,7 @@ const Header: React.FC = () => {
             <Button
               onClick={toggleColorMode}
               w="0%"
-              mt={2.5}
+
               bg={'transparent'}
               borderRadius={'50%'}
             >
