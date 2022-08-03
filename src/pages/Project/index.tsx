@@ -1,19 +1,16 @@
 import {
   Box,
   Flex,
-  Input as InputChakra,
   Spinner,
-  Table,
   Tbody,
   Td,
   Text,
   Th,
   Thead,
   Tr,
-  useColorModeValue,
 } from '@chakra-ui/react'
 import { PencilSimpleLine, TrashSimple } from 'phosphor-react'
-import React, { useRef, useState } from 'react'
+import React, { useState } from 'react'
 import Header from '../../components/Portal/Header'
 import { Pagination } from '../../components/Portal/Pagination'
 import { Panel } from '../../components/Portal/Panel'
@@ -30,12 +27,10 @@ import {
   PopPanelDetails,
 } from './styles'
 
-import { FormHandles } from '@unform/core'
-import { Form } from '@unform/web'
+import { Status, TableCustom } from '../../components/Portal/Table/styles'
 
 const Project: React.FC = () => {
   // style colors customTheme
-  const bg = useColorModeValue('hoverDark', 'hoverLight')
 
   const [page, setPage] = useState(1)
   const [searchQuery, setSearchQuery] = useState('')
@@ -102,30 +97,29 @@ const Project: React.FC = () => {
           </Flex>
         ) : error ? (
           <Flex py="10" justify="center">
-            <Text>failed to get the data!</Text>
+            failed to get the data!
           </Flex>
         ) : (
           <>
-            <Table variant="simple" color="black" mt={2} size="sm">
-              <Thead>
-                <Tr>
-                  <Th>Nome</Th>
-                  <Th>Desc</Th>
-                  <Th>Ativo</Th>
-                  <Th>Início</Th>
-                  <Th>Fim</Th>
-                  <Th>Progresso</Th>
-                  <Th>R$-VN</Th>
-                  <Th>R$-CR</Th>
-                  <Th>Status</Th>
-                  <Th>Resp</Th>
-                  <Th>#</Th>
-                </Tr>
-              </Thead>
-              <Tbody>
+            <TableCustom color="black">
+              <thead>
+                <tr>
+                  <th>Nome</th>
+                  <th>Início</th>
+                  <th>Fim</th>
+                  <th>%</th>
+                  <th>R$ VN</th>
+                  <th>R$ CR</th>
+                  <th>Status</th>
+                  <th>Resp</th>
+                  <th>Ativo</th>
+                  <th>#</th>
+                </tr>
+              </thead>
+              <tbody>
                 {data?.projects.map((project: any) => (
-                  <Tr key={project.id}>
-                    <Td paddingTop="2" paddingBottom="2">
+                  <tr key={project.id}>
+                    <td>
                       <PopContainer>
                         <PopPanelDetails>
                           <ProjectDetails id={project.id} />
@@ -133,42 +127,24 @@ const Project: React.FC = () => {
                         <ButtonDetails>
                           <Box>
                             {/* <Link onMouseEnter={() => handlePrefetchProject(project.id)}> */}
-                            <Text fontWeight="bold">{project.name}</Text>
+                            <p style={{ fontWeight: 'bold' }}>{project.name}</p>
                             {/* </Link> */}
                           </Box>
                         </ButtonDetails>
                       </PopContainer>
-                    </Td>
-                    <Td paddingTop="2" paddingBottom="2" maxW="8rem">
-                      <Flex justify="space-between" align="center">
-                        <Text noOfLines={1}>{project.description}</Text>
-                      </Flex>
-                    </Td>
-                    <Td paddingTop="2" paddingBottom="2">
-                      <Text>{project.active}</Text>
-                    </Td>
-                    <Td paddingTop="2" paddingBottom="2">
-                      {project.date_start}
-                    </Td>
-                    <Td paddingTop="2" paddingBottom="2">
-                      <Text>{project.date_end}</Text>
-                    </Td>
-                    <Td paddingTop="2" paddingBottom="2">
-                      <Text>{project.progress}</Text>
-                    </Td>
-                    <Td paddingTop="2" paddingBottom="2">
-                      <Text>{project.negotiated_value}</Text>
-                    </Td>
-                    <Td paddingTop="2" paddingBottom="2">
-                      <Text>{project.real_cost}</Text>
-                    </Td>
-                    <Td paddingTop="2" paddingBottom="2">
-                      <Text>{project.status.name}</Text>
-                    </Td>
-                    <Td paddingTop="2" paddingBottom="2">
-                      <Text>{project.user.name}</Text>
-                    </Td>
-                    <Td paddingTop="2" paddingBottom="2">
+                    </td>
+
+                    <td>{project.date_start}</td>
+                    <td>{project.date_end}</td>
+                    <td>{project.progress}</td>
+                    <td>{project.negotiated_value}</td>
+                    <td>{project.real_cost}</td>
+                    <td>
+                      <Status statusColor="green">{project.status.name}</Status>
+                    </td>
+                    <td>{project.active}</td>
+                    <td>{project.user.name}</td>
+                    <td>
                       <Flex justify="center" align="baseline">
                         <RouterLink to={`/update-project/${project.id}`}>
                           <PencilSimpleLine size={24} />
@@ -186,11 +162,11 @@ const Project: React.FC = () => {
                           </ButtonAlert>
                         </PopContainer>
                       </Flex>
-                    </Td>
-                  </Tr>
+                    </td>
+                  </tr>
                 ))}
-              </Tbody>
-            </Table>
+              </tbody>
+            </TableCustom>
           </>
         )}
         <Pagination

@@ -16,7 +16,7 @@ export const HeaderPortal = styled.div`
   // top: 0;
   // left: 0;
   // right: 0;
-  background: ${(props: any) => props.theme.navBar};
+  background: ${(props: any) => props.theme.colors.primary};
   display: flex;
   justify-content: space-around;
   // align-items: baseline;

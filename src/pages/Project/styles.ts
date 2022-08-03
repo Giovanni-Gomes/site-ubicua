@@ -3,7 +3,10 @@ import styled from 'styled-components'
 
 export const Container = styled.div``
 
-export const ButtonAlert = styled(Popover.Button)``
+export const ButtonAlert = styled(Popover.Button)`
+  cursor: pointer;
+  background-color: transparent;
+`
 
 export const ButtonDetails = styled(Popover.Button)``
 

@@ -32,19 +32,17 @@ export default createGlobalStyle`
 
   body {
     /* background: var(--bg-portal); */
+
     color: #c4c4c4;
     transition: background-color 0.30s ease;
     -webkit-font-smoothing: antialiased;
   }
 
-  *, button, input {
-      font-family: 'Poppins', sans-serif;
+  *, button, input, a, p {
+    border-style: none;
+    font-family: 'Poppins', sans-serif;
   }
 
-  a {
-    /* font-size: 16px; */
-
-  }
 
 
 

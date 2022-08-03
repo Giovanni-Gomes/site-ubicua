@@ -1,7 +1,7 @@
 import styled, { keyframes } from 'styled-components'
 
 export const Container = styled.nav`
-  --bg: ${(props: any) => props.theme.navBar};
+  --bg: ${(props: any) => props.theme.colors.secondary};
   --bg-accent: #484a4d;
   --text-color: #dadce1;
   --nav-size: 1rem;

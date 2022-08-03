@@ -4,29 +4,27 @@ export const Container = styled.li`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  color: ${(props: any) => props.theme.textPrimary};
-
+  color: ${(props: any) => props.theme.colors['text-menu']};
   /* color: red;
   background-color: red; */
-    a {
-      display: flex;
-      justify-content: center;
-      border-top: 3px solid transparent;
-      border-bottom: 3px solid transparent;
-
-      &:hover {
+  a {
+    display: flex;
+    justify-content: center;
+    border-top: 3px solid transparent;
+    border-bottom: 3px solid transparent;
+    font-size: 1rem;
+    font-weight: 700;
+    &:hover {
       /* filter: brightness(1.2); */
       /*background-color: ${(props: any) => props.theme.hover};*/
-      border-bottom: 3px solid red;
+      border-bottom: 3px solid
+        ${(props: any) => props.theme.colors['text-menu']};
 
       /* border-radius: 1rem;
       padding: 0.5rem 0.5rem; */
       //color: ${(props: any) => props.theme.hover};//var(--color-quaternary);
-      }
     }
-
-
-
+  }
 `
 
 /* width: calc(10rem * 0.8); */

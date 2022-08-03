@@ -6,15 +6,24 @@ import AppProvider from './components/hooks/provider'
 import { ReactQueryDevtools } from 'react-query/devtools'
 import { QueryClientProvider } from 'react-query'
 import { queryClient } from './services/queryClient'
-
-import { ChakraProvider } from '@chakra-ui/react'
-import { newTheme } from './components/Portal/Theme'
+import { ThemeProvider } from 'styled-components'
+import { darkTheme } from './styles/theme/dark'
+import { lightTheme } from './styles/theme/light'
+import { useState } from 'react'
+import useDarkMode from './components/hooks/useDarkmode'
+import Toggle from './components/Shared/Toggle'
 
 export function App() {
+  // const [theme, setTheme] = useState(lightTheme)
+  // const toggleTheme = () => {
+  //   setTheme(theme.title === 'light' ? darkTheme : lightTheme)
+  // }
+  const [darkMode, setDarkMode] = useDarkMode()
+
   return (
     <>
-      <QueryClientProvider client={queryClient}>
-        <ChakraProvider resetCSS theme={newTheme}>
+      <ThemeProvider theme={darkMode ? darkTheme : lightTheme}>
+        <QueryClientProvider client={queryClient}>
           <BrowserRouter>
             <AppProvider>
               <Routes />
@@ -23,8 +32,8 @@ export function App() {
             <GlobalStyles />
           </BrowserRouter>
           <ReactQueryDevtools />
-        </ChakraProvider>
-      </QueryClientProvider>
+        </QueryClientProvider>
+      </ThemeProvider>
     </>
   )
 }
