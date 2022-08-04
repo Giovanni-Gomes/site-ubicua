@@ -14,7 +14,7 @@ interface ITableProject {
 
 const Project: React.FC = () => {
   const [page, setPage] = useState(1)
-  const { data, isLoading, isFetching, error } = useProjects(page)
+  // const { data, isLoading, isFetching, error } = useProjects(page)
 
   const [table, setTable] = useState<ITableProject[]>([])
   const [skiping, setSkiping] = useState(0)

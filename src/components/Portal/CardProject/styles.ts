@@ -5,15 +5,16 @@ export const Container = styled.div`
     width: calc(1370px + ((100vw - 1440px) / 2));
   } */
   /* max-width: 100%; */
-  border-radius: 0.8rem;
+  /* border-radius: 0.8rem; */
   /* margin-top: 8rem; */
   /* margin: 1rem; */
-
+  width: 100%;
   opacity: 0.8;
   display: flex;
   /* width: 100%; */
   /* height: 100vh; */
   flex-direction: column;
+
   word-wrap: break-word;
   /* background-color: #ffffff; */
   /* border: 1px solid #EFF2F5; */
@@ -46,11 +47,11 @@ export const Container = styled.div`
     background-color: transparent;
   }
 
-  > div {
+  :first-child {
     background: ${(props: any) => props.theme.colors.primary};
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
-    padding: 2px;
+    /* padding: 2px; */
     max-width: 1278px;
   }
 `
@@ -73,8 +74,8 @@ export const CardHeader = styled.header`
 
 export const Title = styled.h2`
   font-size: 1.6rem;
-  margin: 0 0.75rem 0 0;
-  flex-wrap: wrap;
+  /* margin: 0 0.75rem 0 0; */
+  /* flex-wrap: wrap; */
 `
 
 export const Subtitle = styled.h4`

@@ -1,29 +1,29 @@
 import React, { useCallback, useRef, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { useToast } from '../../components/hooks/provider/toast'
+import { useToast } from '../../../components/hooks/provider/toast'
 
-import getValidationErrors from '../../utils/getValidationsErros'
+import getValidationErrors from '../../../utils/getValidationsErros'
 import { FormHandles } from '@unform/core'
 import { Form } from '@unform/web'
 import * as Yup from 'yup'
 
-import api from '../../services/api'
+import api from '../../../services/api'
 
 import { FaTrash, FaSave } from 'react-icons/fa'
-import Button from '../../components/Shared/Button'
-import Header from '../../components/Portal/Header'
+import Button from '../../../components/Shared/Button'
+import Header from '../../../components/Portal/Header'
 
-import { Flex, useColorModeValue } from '@chakra-ui/react'
-import { Panel } from '../../components/Portal/Panel'
+import { Panel } from '../../../components/Portal/Panel'
 
-import { CancelButton, FormFooter } from '../Config/styles'
+import { CancelButton } from '../../Config/styles'
 
-import Input from '../../components/Shared/Input'
+import Input from '../../../components/Shared/Input'
 
-import { Loading } from '../../components/Site/WidgetForm/Loading'
-import { useUsers } from '../User/useUsers'
-import Select from '../../components/Shared/Select'
-import { useStatus } from '../Config/useStatus'
+import { Loading } from '../../../components/Site/WidgetForm/Loading'
+import { useUsers } from '../../User/useUsers'
+import Select from '../../../components/Shared/Select'
+import { useStatus } from '../../Config/useStatus'
+import { Div, Footer, WrapperInputs } from './styles'
 
 interface CreateProjectProps {
   name: string
@@ -129,8 +129,8 @@ const CreateProject: React.FC = () => {
           onSubmit={handleSubmitCreateProject}
           style={{ width: '90%', margin: '0rem auto 0' }}
         >
-          <Flex w="100%" gap="2rem" justify="center" align="center" mb="0.5rem">
-            <Flex direction="column" w="100%">
+          <Div>
+            <WrapperInputs>
               <Input
                 id="name"
                 type="text"
@@ -164,9 +164,9 @@ const CreateProject: React.FC = () => {
                 label="Data Início:"
               />
               {/* <Radio name="active" options={radioOptions} /> */}
-            </Flex>
+            </WrapperInputs>
 
-            <Flex direction="column" w="100%">
+            <WrapperInputs>
               <Input
                 type="number"
                 name="negotiated_value"
@@ -194,15 +194,15 @@ const CreateProject: React.FC = () => {
                 label="Data Fim:"
               />
               {/* <Input id='user_id' type='text' name='user_id' placeholder='Responsável' /> */}
-            </Flex>
-          </Flex>
+            </WrapperInputs>
+          </Div>
           <Input
             id="description"
             type="text"
             name="description"
             placeholder="Description"
           />
-          <Flex align="center" w="100%" justify="space-between">
+          <Footer>
             <Button
               disabled={isSendingProject}
               onClick={() => formRef.current?.submitForm()}
@@ -213,7 +213,7 @@ const CreateProject: React.FC = () => {
             <CancelButton onClick={handleResetForm}>
               <FaTrash size={25} />
             </CancelButton>
-          </Flex>
+          </Footer>
         </Form>
       </Panel>
     </>

@@ -5,21 +5,16 @@ import signInBackgroundImg from '/assets/backgrounds/img.svg'
 
 export const Container = styled.div`
   width: 100%;
-  height: 100%;
+  height: 100vh;
   display: flex;
 `
 
 export const Content = styled.div`
   flex-direction: column;
-  position: relative;
   display: flex;
-  -webkit-box-align: center;
   align-items: center;
-  -webkit-box-pack: center;
   justify-content: center;
   flex: 1 1 0%;
-  width: 100%;
-  height: 100%;
 `
 
 const appearFromLeft = keyframes`

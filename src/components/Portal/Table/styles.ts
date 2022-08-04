@@ -7,6 +7,7 @@ export const TableCustom = styled.table`
   /* align-items: center; */
   border-collapse: collapse;
   width: 100%;
+  /* margin: 0 auto; */
   border-spacing: 0 6px;
   min-width: 600px;
   thead {
@@ -19,14 +20,14 @@ export const TableCustom = styled.table`
       color: ${(props) => props.theme.colors['gray-100']};
       line-height: 1.6;
 
-      &:first-child {
+      /* &:first-child {
         border-top-left-radius: 8px;
         padding-left: 1.5rem;
       }
       &:last-child {
         border-top-right-radius: 8px;
         padding-right: 1.5rem;
-      }
+      } */
     }
   }
   th {

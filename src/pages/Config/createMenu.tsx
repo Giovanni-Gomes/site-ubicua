@@ -12,7 +12,7 @@ import Input from '../../components/Shared/Input'
 import { BiText } from 'react-icons/bi'
 import { FaTrash, FaImage } from 'react-icons/fa'
 import Button from '../../components/Shared/Button'
-import { CancelButton, Container, FormFooter } from './styles'
+import { CancelButton, FormFooter } from './styles'
 
 interface CreateMenuProps {
   title: string

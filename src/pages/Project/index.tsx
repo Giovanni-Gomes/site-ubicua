@@ -1,14 +1,3 @@
-import {
-  Box,
-  Flex,
-  Spinner,
-  Tbody,
-  Td,
-  Text,
-  Th,
-  Thead,
-  Tr,
-} from '@chakra-ui/react'
 import { PencilSimpleLine, TrashSimple } from 'phosphor-react'
 import React, { useState } from 'react'
 import Header from '../../components/Portal/Header'
@@ -17,9 +6,10 @@ import { Panel } from '../../components/Portal/Panel'
 import { useProjects } from './useProjects'
 import { Link as RouterLink } from 'react-router-dom'
 
-import ProjectDetails from './projectDetails'
-import AlertDelete from './alertDelete'
+import ProjectDetails from './DetailsProject'
+import AlertDelete from './AlertDelete'
 import {
+  Actions,
   ButtonAlert,
   ButtonDetails,
   PopContainer,
@@ -28,6 +18,7 @@ import {
 } from './styles'
 
 import { Status, TableCustom } from '../../components/Portal/Table/styles'
+import { Loading } from '../../components/Site/WidgetForm/Loading'
 
 const Project: React.FC = () => {
   // style colors customTheme
@@ -85,20 +76,20 @@ const Project: React.FC = () => {
 
         </Form> */}
 
-        <Flex>
+        <div>
           {!isLoading && isFetching && (
-            <Spinner size="sm" color="gray.500" ml="4" />
+            <Loading />
           )}
-        </Flex>
+        </div>
 
         {isLoading ? (
-          <Flex py="10" justify="center">
-            <Spinner />
-          </Flex>
+          <div>
+            <Loading />
+          </div>
         ) : error ? (
-          <Flex py="10" justify="center">
+          <div>
             failed to get the data!
-          </Flex>
+          </div>
         ) : (
           <>
             <TableCustom color="black">
@@ -125,11 +116,9 @@ const Project: React.FC = () => {
                           <ProjectDetails id={project.id} />
                         </PopPanelDetails>
                         <ButtonDetails>
-                          <Box>
-                            {/* <Link onMouseEnter={() => handlePrefetchProject(project.id)}> */}
-                            <p style={{ fontWeight: 'bold' }}>{project.name}</p>
-                            {/* </Link> */}
-                          </Box>
+                          {/* <Link onMouseEnter={() => handlePrefetchProject(project.id)}> */}
+                          <p style={{ fontWeight: 'bold' }}>{project.name}</p>
+                          {/* </Link> */}
                         </ButtonDetails>
                       </PopContainer>
                     </td>
@@ -147,7 +136,7 @@ const Project: React.FC = () => {
                     <td>{project.active}</td>
                     <td>{project.user.name}</td>
                     <td>
-                      <Flex justify="center" align="baseline">
+                      <Actions>
                         <RouterLink to={`/update-project/${project.id}`}>
                           <PencilSimpleLine size={24} />
                         </RouterLink>
@@ -163,7 +152,7 @@ const Project: React.FC = () => {
                             <TrashSimple size={24} color="#c53030" />
                           </ButtonAlert>
                         </PopContainer>
-                      </Flex>
+                      </Actions>
                     </td>
                   </tr>
                 ))}

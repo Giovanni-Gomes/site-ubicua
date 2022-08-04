@@ -24,7 +24,7 @@ export const Container = styled.nav`
   // }
 
   button {
-    cursor: pointer;
+    /* cursor: pointer; */
     /* padding-top: 0.2rem; */
     margin-top: 0.3rem;
     margin-left: 4rem;
@@ -32,7 +32,7 @@ export const Container = styled.nav`
     /* flex-direction: row; */
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    /* justify-content: center; */
 
     text-decoration: none;
     gap: 3rem;

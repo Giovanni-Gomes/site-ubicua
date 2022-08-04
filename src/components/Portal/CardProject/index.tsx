@@ -25,7 +25,6 @@ const CardProject: React.FC<CardProps> = ({
       </div>
       <CardContent>
         {children}
-        <TableCustom></TableCustom>
       </CardContent>
     </Container>
   )
