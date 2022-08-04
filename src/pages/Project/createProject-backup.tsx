@@ -209,7 +209,6 @@ const CreateProject: React.FC = () => {
 
   return (
     <>
-      <Header />
       <Panel title="Create a new Project">
         <Flex>
           <Flex flex={1} justify="left" align="center">

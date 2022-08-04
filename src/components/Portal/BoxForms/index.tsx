@@ -9,9 +9,7 @@ interface BoxProps {
 const BoxForms: React.FC<BoxProps> = ({ title, children }) => {
   return (
     <Container>
-      <p>
-        {title}
-      </p>
+      <p>{title}</p>
       {children}
     </Container>
   )

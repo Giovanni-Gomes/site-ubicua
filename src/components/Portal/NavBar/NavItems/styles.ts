@@ -7,17 +7,17 @@ export const Container = styled.li`
   color: ${(props: any) => props.theme.colors['text-menu']};
   /* color: red;
   background-color: red; */
-  a {
+  > a {
     display: flex;
     justify-content: center;
     border-top: 3px solid transparent;
     border-bottom: 3px solid transparent;
     font-size: 1rem;
-    font-weight: 700;
+    font-weight: 400;
     &:hover {
       /* filter: brightness(1.2); */
       /*background-color: ${(props: any) => props.theme.hover};*/
-      border-bottom: 3px solid ${(props: any) => props.theme.colors.secondary}; //['text-menu']
+      border-bottom: 3px solid ${(props: any) => props.theme.colors.quaternary}; //['text-menu']
 
       /* border-radius: 1rem;
       padding: 0.5rem 0.5rem; */

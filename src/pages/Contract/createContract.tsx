@@ -126,7 +126,6 @@ const CreateContract: React.FC = () => {
   ]
   return (
     <>
-      <Header />
       <Panel title="Create a new Contract" back="/contract">
         <Form
           ref={formRef}

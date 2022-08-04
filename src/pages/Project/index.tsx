@@ -1,14 +1,4 @@
-import {
-  Box,
-  Flex,
-  Spinner,
-  Tbody,
-  Td,
-  Text,
-  Th,
-  Thead,
-  Tr,
-} from '@chakra-ui/react'
+import { Box, Flex, Spinner } from '@chakra-ui/react'
 import { PencilSimpleLine, TrashSimple } from 'phosphor-react'
 import React, { useState } from 'react'
 import Header from '../../components/Portal/Header'
@@ -30,8 +20,6 @@ import {
 import { Status, TableCustom } from '../../components/Portal/Table/styles'
 
 const Project: React.FC = () => {
-  // style colors customTheme
-
   const [page, setPage] = useState(1)
   const [searchQuery, setSearchQuery] = useState('')
 
@@ -57,7 +45,6 @@ const Project: React.FC = () => {
 
   return (
     <>
-      <Header />
 
       <Panel
         title="List Projects"
@@ -68,23 +55,6 @@ const Project: React.FC = () => {
         importFile="/import"
         create="/create-project"
       >
-        {/* <Form ref={formRef} onSubmit={handleSearchContacts}> */}
-        {/* <Input
-
-            id='search'
-            type='text'
-            name="search"
-            placeholder="Buscar contatos"
-            onSubmit={(event: ChangeEvent<HTMLInputElement>) => handleSearchContracts(event?.target.value)}
-          /> */}
-        {/* <InputChakra
-            id='search'
-            type='text'
-            name="search"
-          />
-
-        </Form> */}
-
         <Flex>
           {!isLoading && isFetching && (
             <Spinner size="sm" color="gray.500" ml="4" />

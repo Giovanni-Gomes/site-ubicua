@@ -34,9 +34,9 @@ export function Pagination({
   const nextPage =
     currentPage < lastPage
       ? generatesPageArray(
-        currentPage,
-        Math.min(currentPage + siblingsCount, lastPage),
-      )
+          currentPage,
+          Math.min(currentPage + siblingsCount, lastPage),
+        )
       : []
 
   return (
@@ -56,11 +56,7 @@ export function Pagination({
           <>
             {console.log(currentPage)}
             <PaginationItem onPageChange={onPageChange} number={1} />
-            {currentPage > 2 + siblingsCount && (
-              <p>
-                ...
-              </p>
-            )}
+            {currentPage > 2 + siblingsCount && <p>...</p>}
           </>
         )}
 
@@ -90,11 +86,7 @@ export function Pagination({
 
         {currentPage + siblingsCount < lastPage && (
           <>
-            {currentPage + 1 + siblingsCount < lastPage && (
-              <p>
-                ...
-              </p>
-            )}
+            {currentPage + 1 + siblingsCount < lastPage && <p>...</p>}
             <PaginationItem onPageChange={onPageChange} number={lastPage} />
           </>
         )}

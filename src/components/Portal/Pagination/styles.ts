@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from 'styled-components'
 
 export const Container = styled.div`
   display: flex;
@@ -7,7 +7,7 @@ export const Container = styled.div`
   align-items: center;
   width: 95%;
   margin: 8px auto;
-`;
+`
 
 export const Button = styled.button`
   display: flex;
@@ -26,10 +26,10 @@ export const Button = styled.button`
   }
 
   &:disabled {
-    background: ${(props) => props.theme.colors['primary-300']} ;
+    background: ${(props) => props.theme.colors['primary-300']};
     cursor: default;
   }
-`;
+`
 
 export const WrapperButton = styled.div`
   display: flex;
@@ -42,4 +42,4 @@ export const WrapperButton = styled.div`
     width: 8px;
     text-align: center;
   }
-`;
+`

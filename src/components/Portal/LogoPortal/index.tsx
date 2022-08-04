@@ -6,14 +6,14 @@ import { NavLink } from 'react-router-dom'
 
 const LogoPortal: React.FC = () => {
   return (
-    <NavLink to="/dashboard" title='cloud dashboard'>
+    <NavLink to="/dashboard" title="cloud dashboard">
       <FaCloud
-        style={{ color: '#2EC5CE', position: 'absolute', top: '-4px' }}
+        style={{ color: '#00BBF9', position: 'absolute', top: '-4px' }}
         size={54}
       />
       <FaCloud
         style={{
-          color: '#c1f7fa',
+          color: '#00F5D4',
           position: 'absolute',
           top: '0px',
           left: '29px',
