@@ -1,5 +1,5 @@
 import React from 'react'
-import { Box, Container, Text } from '@chakra-ui/react'
+import { Container } from './styles'
 
 interface BoxProps {
   title?: string
@@ -8,18 +8,10 @@ interface BoxProps {
 
 const BoxForms: React.FC<BoxProps> = ({ title, children }) => {
   return (
-    <Container
-      maxW="90%"
-      maxH={700}
-      h={520}
-      mt={70}
-      bg="var(--bg-portal)"
-      color="white"
-      borderRadius={8}
-    >
-      <Text fontSize="xl" align="center" p={[3]} color="var(--bg-dark)">
+    <Container>
+      <p>
         {title}
-      </Text>
+      </p>
       {children}
     </Container>
   )

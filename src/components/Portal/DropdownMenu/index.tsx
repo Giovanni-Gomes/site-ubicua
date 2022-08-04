@@ -1,5 +1,5 @@
 import { ChatTeardropDots } from 'phosphor-react'
-import React, { useEffect, useRef, useState } from 'react'
+import React from 'react'
 import { dropdownItems } from '../../../data/dropdownItems'
 import NavBar from '../NavBar'
 import Dropdown from '../NavBar/Dropdown'

@@ -45,6 +45,14 @@ export const Container = styled.div`
   &.transparent {
     background-color: transparent;
   }
+
+  > div {
+    background: ${(props: any) => props.theme.colors.primary};
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    padding: 2px;
+    max-width: 1278px;
+  }
 `
 
 export const CardHeader = styled.header`
