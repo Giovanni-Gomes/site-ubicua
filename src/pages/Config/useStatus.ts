@@ -1,6 +1,5 @@
 import { useQuery } from 'react-query'
 import api from '../../services/api'
-import { queryClient } from '../../services/queryClient'
 
 export interface FindAllStatusProps {
   id: string

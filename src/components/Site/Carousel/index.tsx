@@ -1,8 +1,7 @@
-import React, { useState, useRef, useEffect } from 'react'
+import React, { useState, useRef } from 'react'
 import { Swiper } from './styles'
 import { getRefValue, useStateRef } from '../../../lib/hooks'
 import { getTouchEventData } from '../../../lib/dom'
-import api from '../../../services/api'
 
 type CarouselItemProps = {
   imageSrc: string
@@ -141,9 +140,8 @@ const Carousel: React.FC<CarouselProps> = ({ items }) => {
         {items.map((_item, idx) => (
           <li
             key={idx}
-            className={`swiper-indicator-item ${
-              currentIdx === idx ? 'active' : ''
-            }`}
+            className={`swiper-indicator-item ${currentIdx === idx ? 'active' : ''
+              }`}
             onClick={() => indicatorOnClick(idx)}
             data-testid="indicator"
           />

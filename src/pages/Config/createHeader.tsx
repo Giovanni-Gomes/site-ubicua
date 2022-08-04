@@ -9,7 +9,6 @@ import * as Yup from 'yup'
 
 import api from '../../services/api'
 import Input from '../../components/Shared/Input'
-import { GrStatusGood } from 'react-icons/gr'
 import { BiText } from 'react-icons/bi'
 import { FaTrash, FaImage } from 'react-icons/fa'
 import Button from '../../components/Shared/Button'
@@ -140,7 +139,7 @@ const CreateHeader: React.FC = () => {
               </FormFooter>
             </Form>
           )) ||
-            (isActiveForm === 1 && <CreateMenu />)
+          (isActiveForm === 1 && <CreateMenu />)
           /* || isActiveForm === 2 && */
         }
       </Container>

@@ -1,7 +1,6 @@
 import { useEffect, useRef, InputHTMLAttributes } from 'react'
 
-import { useField, SubmitHandler, FormHandles } from '@unform/core'
-import { Form } from '@unform/web'
+import { useField } from '@unform/core'
 
 import { Container } from './style'
 

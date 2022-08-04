@@ -1,7 +1,6 @@
 import { useRef, useEffect, TextareaHTMLAttributes } from 'react'
 
-import { useField, SubmitHandler, FormHandles } from '@unform/core'
-import { Form } from '@unform/web'
+import { useField } from '@unform/core'
 import { Textarea } from './style'
 
 /**
