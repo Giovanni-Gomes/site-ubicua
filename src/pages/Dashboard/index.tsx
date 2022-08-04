@@ -43,7 +43,6 @@ const Dashboard: React.FC = () => {
   const bg = useColorModeValue('hoverDark', 'hoverLight')
   return (
     <>
-      <Header />
       <Container>
         <DashboardSection
           element={

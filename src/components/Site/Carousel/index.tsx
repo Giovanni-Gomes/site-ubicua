@@ -140,8 +140,9 @@ const Carousel: React.FC<CarouselProps> = ({ items }) => {
         {items.map((_item, idx) => (
           <li
             key={idx}
-            className={`swiper-indicator-item ${currentIdx === idx ? 'active' : ''
-              }`}
+            className={`swiper-indicator-item ${
+              currentIdx === idx ? 'active' : ''
+            }`}
             onClick={() => indicatorOnClick(idx)}
             data-testid="indicator"
           />

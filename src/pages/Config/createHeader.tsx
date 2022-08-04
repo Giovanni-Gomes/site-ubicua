@@ -81,7 +81,6 @@ const CreateHeader: React.FC = () => {
 
   return (
     <>
-      <Header />
       <Container>
         <ul>
           <li>

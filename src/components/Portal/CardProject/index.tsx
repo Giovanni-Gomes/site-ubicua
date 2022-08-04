@@ -16,7 +16,6 @@ const CardProject: React.FC<CardProps> = ({
   subtitle,
   children,
 }) => {
-
   return (
     <Container className={variant}>
       <div>

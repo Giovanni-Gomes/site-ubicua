@@ -8,28 +8,29 @@ interface ContainerProps {
 }
 
 export const Container = styled.div<ContainerProps>`
-  background: var(--color-primary);
+  background: ${(props) => props.theme.colors.white}; //var(--color-primary);
   border-radius: 10px;
   padding: 16px;
   margin-bottom: 0.1rem;
   width: 100%;
-  border: 0.5px solid var(--color-primary);
-  color: #666360;
+  border: 2px solid ${(props) => props.theme.colors.primary}; //var(--color-primary)
+  //color: #666360;
   ${(props) =>
     props.isErrored &&
     css`
-      border-color: #eb1500; //#c53030;
+      border-color: ${(props) => props.theme.colors.red}; //#c53030;
     `}
   ${(props) =>
     props.isFocused &&
     css`
-      border: 1px solid var(--color-login);
-      color: var(--color-login);
+      border: 2px solid ${(props) => props.theme.colors.secondary};
+      //var(--color-login);
+      color: ${(props) => props.theme.colors.secondary}; //var(--color-login);
     `}
   ${(props) =>
     props.isFilled &&
     css`
-      color: var(color-secondary);
+      color: ${(props) => props.theme.colors.secondary}; //var(color-secondary);
     `}
   display: flex;
   align-items: center;
@@ -45,12 +46,13 @@ export const Container = styled.div<ContainerProps>`
 
     background: transparent;
     border: 0;
-    color: var(--color-secondary);
+    color: ${(props) => props.theme.colors.primary}; //var(--color-secondary);
     &::placeholder {
-      color: var(--color-secondary);
+      color: ${(props) => props.theme.colors.primary}; //var(--color-secondary);
     }
     &:focus {
-      border-color: var(--color-secondary);
+      border-color: ${(props) => props.theme.colors.primary};
+      //var(--color-secondary);
       /* box-shadow: inset 0 0 0 calc(2px + 0px) rgb(24 24 27); */
       outline: 2px solid transparent;
       outline-offset: 2px;
@@ -68,15 +70,16 @@ export const Error = styled(Tooltip)`
     margin: 0;
   }
   span {
-    background: #eb1500;
+    background: ${(props) => props.theme.colors.red};
     color: #fff !important;
     &::before {
-      border-color: #eb1500 transparent;
+      border-color: ${(props) => props.theme.colors.red} transparent; //#eb1500
     }
   }
 `
 
 export const Label = styled.label`
-  color: black;
-  margin-top: 8px;
+  color: ${(props) => props.theme.colors['text-color']};
+  margin-top: 0.2rem;
+  margin-left: 0.5rem;
 `

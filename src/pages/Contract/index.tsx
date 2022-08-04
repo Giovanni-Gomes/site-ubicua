@@ -90,7 +90,6 @@ const Contract: React.FC = () => {
 
   return (
     <>
-      <Header />
       {alert && (
         <Flex
           position="fixed"

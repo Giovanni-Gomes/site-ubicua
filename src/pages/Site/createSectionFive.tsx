@@ -99,7 +99,6 @@ const createSectionFive: React.FC = () => {
 
   return (
     <>
-      <Header />
       <Container>
         <ul>
           <li>

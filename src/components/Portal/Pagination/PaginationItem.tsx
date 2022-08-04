@@ -1,4 +1,4 @@
-import { Button } from "./styles"
+import { Button } from './styles'
 
 interface PaginationItemProps {
   number: number
@@ -12,16 +12,8 @@ export function PaginationItem({
   number,
 }: PaginationItemProps) {
   if (isCurrent) {
-    return (
-      <Button disabled>
-        {number}
-      </Button>
-    )
+    return <Button disabled>{number}</Button>
   }
 
-  return (
-    <Button onClick={() => onPageChange(number)}>
-      {number}
-    </Button>
-  )
+  return <Button onClick={() => onPageChange(number)}>{number}</Button>
 }

@@ -119,7 +119,7 @@ export const FormFooter = styled.div`
   Button {
     float: left;
     padding: 1rem;
-    border-radius: 0.5rem;
+    border-radius: 8px;
     font-size: 1.4rem;
     /* align-items: center; */
     /* justify-content: space-between; */
@@ -137,6 +137,6 @@ export const CancelButton = styled.button`
 
   width: 56px;
   height: 56px;
-  color: #eb1500;
-  border-radius: 5px;
+  color: ${(props) => props.theme.colors.red}; // #eb1500;
+  border-radius: 8px;
 `

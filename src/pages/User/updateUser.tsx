@@ -115,7 +115,6 @@ const UpdateUser: React.FC = () => {
 
   return (
     <>
-      <Header />
       <Container>
         <Form
           ref={formRef}

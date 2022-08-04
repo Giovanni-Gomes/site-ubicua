@@ -30,13 +30,16 @@ export const Container = styled.div`
       /* border-radius: 1rem; */
       /* padding: 0.4rem; */
       /* font-size: 16px; */
+      border-top: 3px solid transparent;
+      border-bottom: 3px solid transparent;
 
       &.space {
         gap: 0.5rem;
       }
 
       &:hover {
-        border-bottom: 3px solid ${(props: any) => props.theme.colors.secondary};
+        border-bottom: 3px solid
+          ${(props: any) => props.theme.colors.quaternary};
         /* background: ${(props: any) => props.theme.hover}; */
       }
       /* > .icon-right {

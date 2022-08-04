@@ -39,7 +39,7 @@ export async function getProjects(
   console.log(page)
   console.log(take)
   console.log(search)
-  const { data, request } = await api.get('/v1/project/findAll', {
+  const { data } = await api.get('/v1/project/findAll', {
     params: {
       skip: page,
       take,
@@ -80,7 +80,8 @@ export async function getProjects(
     }).format(project.negotiated_value),
     real_cost: project.real_cost
       ? Intl.NumberFormat('pt-BR', {
-          style: 'currency',
+          // eslint-disable-next-line prettier/prettier
+        style: 'currency',
           currency: 'BRL',
         }).format(project.real_cost)
       : 'not value',

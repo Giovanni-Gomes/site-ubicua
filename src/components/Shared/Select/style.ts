@@ -1,28 +1,43 @@
-import styled, { css } from 'styled-components'
+import styled from 'styled-components'
 import Tooltip from '../Tooltip'
-
-export const Container = styled.div`
+interface ContainerProps {
+  isFocused: boolean
+  isFilled: boolean
+  isErrored: boolean
+}
+export const Container = styled.div<ContainerProps>`
   label {
     color: black;
   }
 
   select {
-    background: var(--color-primary);
-    border-radius: 10px;
-    padding: 16px;
-    /* margin-bottom: 0.1rem; */
+    background: ${(props) => props.theme.colors.white};
+    border-radius: 8px;
+    padding: 1rem;
     width: 100%;
     border: 1px solid var(--color-primary);
-    color: #666360;
+    color: ${(props) => props.theme.colors.primary}; //#666360;
     display: flex;
     align-items: center;
     :hover {
-      border-radius: 10px;
-      border: 1px solid var(--color-secondary);
+      border-radius: 8px;
     }
+    :focus {
+      border: 1px solid ${(props) => props.theme.colors.primary};
+      border-radius: 8px;
+      -moz-appearance: none;
+      -webkit-appearance: none;
+    }
+
+    -webkit-border-radius: 8px;
+    /* -moz-appearance: none;
+      -webkit-appearance: none; */
+  }
+
+  select::-ms-expand {
+    display: none;
   }
 `
-
 export const Error = styled(Tooltip)`
   height: 20px;
   margin-left: 16px;
@@ -37,3 +52,25 @@ export const Error = styled(Tooltip)`
     }
   }
 `
+
+// ${(props) =>
+//   props.isErrored &&
+//   css`
+//     border-color: ${(props) => props.theme.colors.red}; //#c53030;
+//   `}
+// ${(props) =>
+//   props.isFocused &&
+//   css`
+//     border: 2px solid red;
+//     //var(--color-login);
+//     color: ${(props) => props.theme.colors.secondary}; //var(--color-login);
+//   `}
+// ${(props) =>
+//   props.isFilled &&
+//   css`
+//     color: ${(props) => props.theme.colors.secondary}; //var(color-secondary);
+//   `}
+
+/* -moz-appearance: none;
+    -webkit-appearance: none; */
+/* -webkit-transform: rotate(-45deg); */
