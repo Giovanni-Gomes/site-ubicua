@@ -1,6 +1,6 @@
-import React, { ButtonHTMLAttributes, HTMLAttributes } from 'react'
+import React, { HTMLAttributes } from 'react'
 
-import { Container, TableCustom } from './styles'
+import { TableCustom } from './styles'
 
 type TableProps = HTMLAttributes<HTMLTableElement> & {
   children?: any | string | HTMLAttributes<HTMLTableElement> // JSX.Element;

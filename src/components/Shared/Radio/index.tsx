@@ -1,7 +1,6 @@
 import { useEffect, useRef, InputHTMLAttributes, RefObject } from 'react'
 
-import { useField, SubmitHandler, FormHandles } from '@unform/core'
-import { Form } from '@unform/web'
+import { useField } from '@unform/core'
 
 interface Props {
   name: string

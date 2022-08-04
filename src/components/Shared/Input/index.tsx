@@ -6,8 +6,7 @@ import {
   useCallback,
 } from 'react'
 
-import { useField, SubmitHandler, FormHandles } from '@unform/core'
-import { Form } from '@unform/web'
+import { useField } from '@unform/core'
 
 import { IconBaseProps } from 'react-icons'
 import { FiAlertCircle } from 'react-icons/fi'
@@ -17,22 +16,22 @@ import { Container, Error, Label } from './styles'
 interface Props {
   name: string
   type?:
-    | 'text'
-    | 'number'
-    | 'color'
-    | 'date'
-    | 'datetime-local'
-    | 'email'
-    | 'hidden'
-    | 'month'
-    | 'password'
-    | 'time'
-    | 'range'
-    | 'search'
-    | 'tel'
-    | 'url'
-    | 'week'
-    | 'file'
+  | 'text'
+  | 'number'
+  | 'color'
+  | 'date'
+  | 'datetime-local'
+  | 'email'
+  | 'hidden'
+  | 'month'
+  | 'password'
+  | 'time'
+  | 'range'
+  | 'search'
+  | 'tel'
+  | 'url'
+  | 'week'
+  | 'file'
   label?: string
   value?: string
   containerStyle?: object

@@ -9,11 +9,9 @@ import * as Yup from 'yup'
 
 import api from '../../services/api'
 import Input from '../../components/Shared/Input'
-import { GrStatusGood } from 'react-icons/gr'
 import { BiText } from 'react-icons/bi'
 import { FaTrash, FaImage } from 'react-icons/fa'
 import Button from '../../components/Shared/Button'
-import Header from '../../components/Portal/Header'
 import { CancelButton, Container, FormFooter } from './styles'
 
 interface CreateMenuProps {

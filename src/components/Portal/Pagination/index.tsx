@@ -1,5 +1,5 @@
-import { Box, Stack, Text } from '@chakra-ui/react'
 import { PaginationItem } from './PaginationItem'
+import { Container, WrapperButton } from './styles'
 
 interface PaginationProps {
   totalCountOfRegisters?: number
@@ -40,34 +40,26 @@ export function Pagination({
       : []
 
   return (
-    <Stack
-      direction={['column', 'row']}
-      spacing="6"
-      mt="8"
-      justify="space-between"
-      align="center"
-    >
-      <Box>
-        <Text>
-          <strong>
-            {' '}
-            {registersPerPage > Number(totalCountOfRegisters)
-              ? totalCountOfRegisters
-              : registersPerPage}
-          </strong>{' '}
-          de <strong>{totalCountOfRegisters}</strong>
-        </Text>
-      </Box>
+    <Container>
+      <p>
+        <strong>
+          {' '}
+          {registersPerPage > Number(totalCountOfRegisters)
+            ? totalCountOfRegisters
+            : registersPerPage}
+        </strong>{' '}
+        de <strong>{totalCountOfRegisters}</strong>
+      </p>
 
-      <Stack direction="row" spacing="2">
+      <WrapperButton>
         {currentPage > 1 + siblingsCount && (
           <>
             {console.log(currentPage)}
             <PaginationItem onPageChange={onPageChange} number={1} />
             {currentPage > 2 + siblingsCount && (
-              <Text color="gray.300" w="8" textAlign="center">
+              <p>
                 ...
-              </Text>
+              </p>
             )}
           </>
         )}
@@ -99,14 +91,14 @@ export function Pagination({
         {currentPage + siblingsCount < lastPage && (
           <>
             {currentPage + 1 + siblingsCount < lastPage && (
-              <Text color="gray.300" w="8" textAlign="center">
+              <p>
                 ...
-              </Text>
+              </p>
             )}
             <PaginationItem onPageChange={onPageChange} number={lastPage} />
           </>
         )}
-      </Stack>
-    </Stack>
+      </WrapperButton>
+    </Container>
   )
 }
