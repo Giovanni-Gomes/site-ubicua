@@ -140,7 +140,9 @@ const Project: React.FC = () => {
                     <td>{project.negotiated_value}</td>
                     <td>{project.real_cost}</td>
                     <td>
-                      <Status statusColor="green">{project.status.name}</Status>
+                      <Status statusColor={project.status.name}>
+                        {project.status.name}
+                      </Status>
                     </td>
                     <td>{project.active}</td>
                     <td>{project.user.name}</td>

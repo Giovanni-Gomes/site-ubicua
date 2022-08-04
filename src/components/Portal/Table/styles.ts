@@ -11,12 +11,12 @@ export const TableCustom = styled.table`
   min-width: 600px;
   thead {
     th {
-      background: ${(props: any) => props.theme.primary};
+      background: ${(props) => props.theme.colors.primary};
       padding: 0.5rem;
       text-align: center;
       text-transform: uppercase;
       font-size: 0.875rem;
-      color: #28262e;
+      color: ${(props) => props.theme.colors['gray-100']};
       line-height: 1.6;
 
       &:first-child {
@@ -35,7 +35,7 @@ export const TableCustom = styled.table`
     /* width: 1295px;
     height: auto; */
     padding: 5px;
-    background: ${(props: any) => props.theme.primary};
+    background: ${(props) => props.theme.colors.primary};
   }
   tbody {
     width: 100%;
@@ -45,14 +45,13 @@ export const TableCustom = styled.table`
       td {
         /* padding: 150px 10px; */
         border: 0;
-        background: ${(props: any) => props.theme.secondary}; //#28262e;
         font-size: 14px;
         font-weight: normal;
-        color: #28262e; //${(props: any) => props.theme.navBar};
+        color: ${(props) => props.theme.colors['text-color']};
         padding: 0.5rem;
         text-align: center;
         &.title {
-          color: #15db95;
+          color: ${(props) => props.theme.colors.quaternary};
         }
         &:first-child {
           width: 20%;
@@ -67,15 +66,19 @@ export const TableCustom = styled.table`
           border-radius: 50%; */
           align-items: center;
         }
+
+        p {
+          color: ${(props) => props.theme.colors['text-color']};
+        }
       }
     }
   }
 `
 
 const STATUS_COLORS = {
-  yellow: 'yellow',
-  green: 'green',
-  red: 'red',
+  desenvolvimento: 'desenvolvimento',
+  concluído: 'concluído',
+  interrompido: 'interrompido',
 } as const
 
 interface StatusProps {
@@ -84,14 +87,14 @@ interface StatusProps {
 
 export const Status = styled.span<StatusProps>`
   display: flex;
+  justify-content: center;
   align-items: center;
   gap: 0.5rem;
   &::before {
     content: '';
     width: 0.5rem;
     height: 0.5rem;
-    border-radius: 9999px;
+    border-radius: 50%;
     background: ${(props) => props.theme[STATUS_COLORS[props.statusColor]]};
-    //${(props) => props.theme[STATUS_COLORS[props.statusColor]]};
   }
 `

@@ -1,7 +1,7 @@
 import styled, { keyframes } from 'styled-components'
 
 export const Container = styled.nav`
-  --bg: ${(props: any) => props.theme.colors.secondary};
+  --bg: ${(props: any) => props.theme.colors.primary};
   --bg-accent: #484a4d;
   --text-color: #dadce1;
   --nav-size: 1rem;
@@ -80,7 +80,7 @@ export const List = styled.ul`
   /* margin: 1rem 0 0 1rem; */
   /* padding: 0.5rem 1rem; */
   border-radius: 4px;
-  color: #999;
+  /* color: #999; */
   animation: ${appearFromBottom} 0.2s;
 
   > li {

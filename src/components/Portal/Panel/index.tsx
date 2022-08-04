@@ -4,7 +4,14 @@ import React, { ReactNode, useRef } from 'react'
 import { FaFileImport, FaPlus } from 'react-icons/fa'
 import { FiArrowLeft, FiArrowRight } from 'react-icons/fi'
 import { Link } from 'react-router-dom'
-import { Container, WrapperHeader, HeaderLeft, HeaderRight, Input, Title } from './styles'
+import {
+  Container,
+  WrapperHeader,
+  HeaderLeft,
+  HeaderRight,
+  Input,
+  Title,
+} from './styles'
 
 interface PanelProps {
   children?: ReactNode
@@ -55,18 +62,12 @@ export function Panel({
           )}
           {search && (
             <Form ref={formRef} onSubmit={handleSearch}>
-              <Input
-                placeholder="search"
-                id="search"
-                name="search"
-              />
+              <Input placeholder="search" id="search" name="search" />
             </Form>
           )}
         </HeaderLeft>
         {/* <Spacer /> */}
-        <Title>
-          {title}
-        </Title>
+        <Title>{title}</Title>
         <HeaderRight>
           {importFile && (
             <Link to={importFile}>

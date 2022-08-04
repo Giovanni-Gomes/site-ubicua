@@ -17,8 +17,7 @@ export const Container = styled.li`
     &:hover {
       /* filter: brightness(1.2); */
       /*background-color: ${(props: any) => props.theme.hover};*/
-      border-bottom: 3px solid
-        ${(props: any) => props.theme.colors['text-menu']};
+      border-bottom: 3px solid ${(props: any) => props.theme.colors.secondary}; //['text-menu']
 
       /* border-radius: 1rem;
       padding: 0.5rem 0.5rem; */
