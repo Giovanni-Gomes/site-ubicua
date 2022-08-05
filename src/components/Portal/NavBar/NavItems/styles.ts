@@ -7,11 +7,8 @@ export const Container = styled.li`
   color: ${(props: any) => props.theme.colors['text-menu']};
   /* color: red;
   background-color: red; */
-  /* width: 10rem;
-  border-left: 0.5px solid black;
-  border-right: 0.5px solid black; */
-  a {
-    cursor: pointer;
+
+  > a {
     display: flex;
     justify-content: center;
     border-top: 3px solid transparent;

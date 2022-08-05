@@ -1,5 +1,4 @@
 import React from 'react'
-import { TableCustom } from '../Table/styles'
 
 import { Container, Title, Subtitle, CardContent } from './styles'
 
@@ -16,7 +15,6 @@ const CardProject: React.FC<CardProps> = ({
   subtitle,
   children,
 }) => {
-
   return (
     <Container className={variant}>
       <div>

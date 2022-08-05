@@ -14,7 +14,6 @@ const Dashboard: React.FC = () => {
   const { data, isLoading, isFetching, error } = useProjects(0, 0, '')
   return (
     <>
-      <Header />
       <Container>
         <DashboardSection
           element={

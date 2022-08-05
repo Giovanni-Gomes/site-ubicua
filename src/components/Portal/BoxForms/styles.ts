@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from 'styled-components'
 
 export const Container = styled.div`
   max-width: 90%;
@@ -13,4 +13,4 @@ export const Container = styled.div`
     padding: 3px;
     color: var(--bg-dark);
   }
-`;
+`

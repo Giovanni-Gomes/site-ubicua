@@ -136,7 +136,6 @@ const UpdateContract: React.FC = () => {
 
   return (
     <>
-      <Header />
       <Panel
         title={dataContract?.name ? dataContract.name : 'Atualize o Projeto'}
         back="/contract"

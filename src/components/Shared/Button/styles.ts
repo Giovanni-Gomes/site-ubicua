@@ -1,8 +1,8 @@
 import styled from 'styled-components'
 
 export const ButtonCustom = styled.button`
-  background-color: #8257e6;
-  border-radius: 1rem;
+  background-color: ${(props) => props.theme.colors['primary-500']}; //#8257e6;
+  border-radius: 8px;
   border-color: transparent;
   /* flex: 1 1 0%; */
   display: flex;
@@ -12,16 +12,17 @@ export const ButtonCustom = styled.button`
   line-height: 1.25rem /* 20px */;
   color: white;
   margin: 1rem 0.5rem;
-  padding: 0.7rem;
+  padding: 1rem;
   cursor: pointer;
   min-width: 6rem;
 
   &:hover {
-    background-color: #996dff;
+    background-color: ${(props) => props.theme.colors['primary-300']};
+    //#996dff;
   }
 
   &:focus {
-    border-color: #8257e6;
+    border-color: ${(props) => props.theme.colors['primary-300']}; //#8257e6;
     box-shadow: inset 0 0 0 calc(1px + 0px);
     outline: 1px solid transparent;
     outline-offset: 2px;

@@ -11,7 +11,6 @@ import api from '../../../services/api'
 
 import { FaTrash, FaSave } from 'react-icons/fa'
 import Button from '../../../components/Shared/Button'
-import Header from '../../../components/Portal/Header'
 
 import { Panel } from '../../../components/Portal/Panel'
 
@@ -68,7 +67,7 @@ const UpdateProject: React.FC = () => {
   )
   formRef.current?.setFieldValue('user_id', dataProject?.user.id)
   formRef.current?.setFieldValue('status_id', dataProject?.status.id)
-  console.log('status name: ', dataProject?.status.id)
+  console.log('status name: ', dataProject)
   console.log('user name: ', dataProject?.user.id)
   console.log('data: ', dataProject)
   const handleSubmitCreateProject = useCallback(
@@ -113,7 +112,6 @@ const UpdateProject: React.FC = () => {
         await api.post(`/v1/project/update/${id}`, formData)
         // console.log("formData", result)
         navigate('/project')
-
         addToast({
           type: 'success',
           title: 'Cadastro Realizado!',
@@ -144,7 +142,6 @@ const UpdateProject: React.FC = () => {
 
   return (
     <>
-      <Header />
       <Panel
         title={dataProject?.name ? dataProject.name : 'Atualize o Projeto'}
         back="/project"
@@ -162,7 +159,6 @@ const UpdateProject: React.FC = () => {
                 type="text"
                 name="name"
                 placeholder="Number Project"
-                label="Nome do Projeto"
               />
 
               <Input
@@ -170,17 +166,10 @@ const UpdateProject: React.FC = () => {
                 type="text"
                 name="progress"
                 placeholder="Progress"
-                label="Progresso"
               />
 
-              <Select
-                name="status_id"
-                label="Status"
-                defaultValue={dataProject?.status.id}
-              >
-                <option key={0} value="Select a status">
-                  Selecione um status
-                </option>
+              <Select name="status_id" defaultValue={dataProject?.status.id}>
+                <option key={0}>Select status</option>
                 {selectOptionsStatus?.map((option) => (
                   <option key={option.id} value={option.id}>
                     {option.name}
@@ -203,21 +192,11 @@ const UpdateProject: React.FC = () => {
                 type="number"
                 name="negotiated_value"
                 placeholder="Valor Negociado"
-                label="Valor Negociado"
               />
 
-              <Input
-                type="number"
-                name="real_cost"
-                placeholder="Custo Real"
-                label="Custo Real"
-              />
+              <Input type="number" name="real_cost" placeholder="Custo Real" />
 
-              <Select
-                name="user_id"
-                label="Responsável"
-                defaultValue={dataProject?.user.id}
-              >
+              <Select name="user_id" defaultValue={dataProject?.user.id}>
                 <option key={0} value="Select a user">
                   Select a user
                 </option>
@@ -243,7 +222,6 @@ const UpdateProject: React.FC = () => {
             type="text"
             name="description"
             placeholder="Description"
-            label="Descrição"
           />
 
           <Footer>

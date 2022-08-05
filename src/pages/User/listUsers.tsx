@@ -44,7 +44,6 @@ const ListUsers: React.FC = () => {
 
   return (
     <>
-      <Header />
       <Panel title="List Users">
         <Flex>
           <Flex flex={1} justify="left" align="center">

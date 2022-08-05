@@ -123,7 +123,6 @@ const Profile: React.FC = () => {
 
   return (
     <>
-      {/* <Header /> */}
       <Container>
         <header>
           <div>

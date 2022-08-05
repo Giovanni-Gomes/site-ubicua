@@ -11,7 +11,6 @@ import api from '../../../services/api'
 
 import { FaTrash, FaSave } from 'react-icons/fa'
 import Button from '../../../components/Shared/Button'
-import Header from '../../../components/Portal/Header'
 
 import { Panel } from '../../../components/Portal/Panel'
 
@@ -32,7 +31,7 @@ interface CreateProjectProps {
   start: Date
   end: Date
   progress: string
-  negotiated: string
+  negotiated_value: string
   real_cost: string
   status_id: string
   user_id: string
@@ -62,7 +61,9 @@ const CreateProject: React.FC = () => {
           start: Yup.string(), // Yup.date().required('Data é obrigatório'),
           end: Yup.string(), // Yup.date().required('Data é obrigatório'),
           progress: Yup.string().required('Progresso é obrigatório'),
-          negotiated: Yup.string().required('Valor negociado é obrigatório'),
+          negotiated_value: Yup.string().required(
+            'Valor negociado é obrigatório',
+          ),
           real_cost: Yup.string().required('Custo real é obrigatório'),
           status_id: Yup.string().required('Status é obrigatório'),
           user_id: Yup.string().required('Usuário é obrigatório'),
@@ -79,15 +80,14 @@ const CreateProject: React.FC = () => {
           date_start: data.start,
           date_end: data.end,
           progress: data.progress,
-          negotiated_value: data.negotiated,
+          negotiated_value: data.negotiated_value,
           real_cost: data.real_cost,
           status_id: data.status_id,
           user_id: data.user_id,
         }
 
         setIsSendingProject(true)
-        const result = await api.post(`/v1/project/create/`, formData)
-        // console.log('formData', result)
+        await api.post(`/v1/project/create/`, formData)
 
         navigate('/project')
 
@@ -122,7 +122,6 @@ const CreateProject: React.FC = () => {
 
   return (
     <>
-      <Header />
       <Panel title="Create a new Project" back="/project">
         <Form
           ref={formRef}
@@ -146,9 +145,7 @@ const CreateProject: React.FC = () => {
               />
 
               <Select name="status_id">
-                <option key={0} value="Select a status">
-                  Selecione um status
-                </option>
+                <option key={0}>Select for status</option>
                 {selectOptionsStatus?.map((option) => (
                   <option key={option.id} value={option.id}>
                     {option.name}
@@ -161,7 +158,7 @@ const CreateProject: React.FC = () => {
                 min="01/01/2021"
                 max="31/12/2030"
                 name="date_start"
-                label="Data Início:"
+                label="Data Start:"
               />
               {/* <Radio name="active" options={radioOptions} /> */}
             </WrapperInputs>
@@ -170,15 +167,13 @@ const CreateProject: React.FC = () => {
               <Input
                 type="number"
                 name="negotiated_value"
-                placeholder="Valor Negociado"
+                placeholder="Negotiated Value"
               />
 
-              <Input type="number" name="real_cost" placeholder="Custo Real" />
+              <Input type="number" name="real_cost" placeholder="Real cost" />
 
               <Select name="user_id">
-                <option key={0} value="Select a user">
-                  Select a user
-                </option>
+                <option key={0}>Select a user</option>
                 {selectOptionsUsers?.map((option) => (
                   <option key={option.id} value={option.id}>
                     {option.name}
@@ -191,7 +186,7 @@ const CreateProject: React.FC = () => {
                 min="01/01/2021"
                 max="31/12/2030"
                 name="date_end"
-                label="Data Fim:"
+                label="Data End:"
               />
               {/* <Input id='user_id' type='text' name='user_id' placeholder='Responsável' /> */}
             </WrapperInputs>
@@ -221,55 +216,3 @@ const CreateProject: React.FC = () => {
 }
 
 export default CreateProject
-
-/*
-EXAMPLE DE FORM CHACARA UI
-*/
-
-{
-  /* <Form ref={formRef} onSubmit={handleSubmitCreateProject} style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'flex-start', justifyContent: 'center' }}>
-
-<Flex direction='column' ml={10} mr={10} mt={5} w={585}>
-
-  <InputChakra ref={inputRef} id='name' type='name' name='name' mb='2rem' placeholder='Nome' />
-  <InputChakra ref={emailRef} id='email' type='email' name='email' mb='2rem' placeholder='Nome' />
-
-</Flex>
-</Form> */
-}
-
-{
-  /* <Flex align='center' ml={10} w='100%'>
-<Button type='submit' >
-  <FaSave style={{ marginRight: '0.5rem' }} />
-  Salvar Registro
-</Button>
-<CancelButton onClick={handleResetForm} >
-  <FaTrash size={25} />
-</CancelButton>
-
-</Flex> */
-}
-
-{
-  /* <NumberInput max={50} min={10} mb='2rem'>
-<NumberInputField id='amount' placeholder='valor negociado' />
-<NumberInputStepper>
-  <NumberIncrementStepper />
-  <NumberDecrementStepper />
-</NumberInputStepper>
-</NumberInput>
-
-<NumberInput max={50} min={10} mb='2rem'>
-<NumberInputField id='amount' placeholder='Custo Real' />
-<NumberInputStepper>
-  <NumberIncrementStepper />
-  <NumberDecrementStepper />
-</NumberInputStepper>
-</NumberInput> */
-}
-
-// const radioOptions = [
-//   { id: 'ativo', value: 'ativo', label: 'Ativo' },
-//   { id: 'inativo', value: 'inativo', label: 'Inativo' },
-// ]

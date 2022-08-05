@@ -76,7 +76,6 @@ const Project: React.FC = () => {
 
   return (
     <>
-      <Header />
       <TablePortal style={{ marginTop: '55px' }}>
         <thead>
           <tr>

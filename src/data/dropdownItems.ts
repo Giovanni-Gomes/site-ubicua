@@ -37,6 +37,10 @@ export const dropdownItems = [
         link: '/project',
       },
       {
+        name: 'Portais Whats',
+        link: '/whats',
+      },
+      {
         name: 'Acompanhamentos',
         subtitles: [
           {
@@ -59,12 +63,8 @@ export const dropdownItems = [
     title: 'Contratos',
     subtitles: [
       {
-        name: 'Contratos',
-        link: '/create-user',
-      },
-      {
-        name: 'Serviços',
-        link: '/create-user',
+        name: 'Lista de Contratos',
+        link: '/contract',
       },
       {
         name: 'Empresas',

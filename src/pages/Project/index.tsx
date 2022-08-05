@@ -1,6 +1,5 @@
 import { PencilSimpleLine, TrashSimple } from 'phosphor-react'
 import React, { useState } from 'react'
-import Header from '../../components/Portal/Header'
 import { Pagination } from '../../components/Portal/Pagination'
 import { Panel } from '../../components/Portal/Panel'
 import { useProjects } from './useProjects'
@@ -21,8 +20,6 @@ import { Status, TableCustom } from '../../components/Portal/Table/styles'
 import { Loading } from '../../components/Site/WidgetForm/Loading'
 
 const Project: React.FC = () => {
-  // style colors customTheme
-
   const [page, setPage] = useState(1)
   const [searchQuery, setSearchQuery] = useState('')
 
@@ -48,7 +45,6 @@ const Project: React.FC = () => {
 
   return (
     <>
-      <Header />
 
       <Panel
         title="List Projects"

@@ -111,7 +111,6 @@ const CreateUser: React.FC = () => {
 
   return (
     <>
-      <Header />
       <Container>
         <Form ref={formRef} onSubmit={handleSubmitCreateUser}>
           <h1>Cadastrar novo usuário</h1>
