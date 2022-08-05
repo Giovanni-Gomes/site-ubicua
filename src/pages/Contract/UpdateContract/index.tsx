@@ -1,44 +1,46 @@
 import React, { useCallback, useRef, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
-import { useToast } from '../../components/hooks/provider/toast'
+import { useToast } from '../../../components/hooks/provider/toast'
 
-import getValidationErrors from '../../utils/getValidationsErros'
+import getValidationErrors from '../../../utils/getValidationsErros'
 import { FormHandles } from '@unform/core'
 import { Form } from '@unform/web'
 import * as Yup from 'yup'
 
-import api from '../../services/api'
+import api from '../../../services/api'
 
 import { FaTrash, FaSave } from 'react-icons/fa'
-import Button from '../../components/Shared/Button'
-import Header from '../../components/Portal/Header'
+import Button from '../../../components/Shared/Button'
 
-import { Flex, useColorModeValue } from '@chakra-ui/react'
-import { Panel } from '../../components/Portal/Panel'
+import { Panel } from '../../../components/Portal/Panel'
 
-import { CancelButton } from '../Config/styles'
-import Input from '../../components/Shared/Input'
+import { CancelButton } from '../../Config/styles'
 
-import { Loading } from '../../components/Site/WidgetForm/Loading'
-import { useUsers } from '../User/useUsers'
-import Select from '../../components/Shared/Select'
-import { useStatus } from '../Config/useStatus'
-import { useContract } from './useContracts'
+import Input from '../../../components/Shared/Input'
 
-interface UpdateContractProps {
+import { Loading } from '../../../components/Site/WidgetForm/Loading'
+import { useUsers } from '../../User/useUsers'
+import Select from '../../../components/Shared/Select'
+import { useStatus } from '../../Config/useStatus'
+import { useContract } from '../useContracts'
+import { Div, Footer, Wrapper } from './styles'
+
+interface CreateContractProps {
   id: string
   name: string
   description: string
   active?: boolean
   date_start: string
   date_end: string
+  phase_contract: string
   negotiated_value: string
+  real_cost: string
   user_id: string
 }
 
 const UpdateContract: React.FC = () => {
   // style colors customTheme
-  const bg = useColorModeValue('hoverDark', 'hoverLight')
+  // const bg = useColorModeValue('hoverDark', 'hoverLight')
   const formRef = useRef<FormHandles>(null)
   const [isSendingContract, setIsSendingContract] = useState(false)
   const navigate = useNavigate()
@@ -46,12 +48,15 @@ const UpdateContract: React.FC = () => {
 
   const { id } = useParams()
   const { data } = useUsers()
+  const { data: dataStatus } = useStatus()
   const { data: dataContract } = useContract(String(id))
 
   const selectOptionsUsers = data?.users
+  const selectOptionsStatus = dataStatus?.status
 
   formRef.current?.setFieldValue('name', dataContract?.name)
   formRef.current?.setFieldValue('description', dataContract?.description)
+  formRef.current?.setFieldValue('phase_contract', dataContract?.phase_contract)
   formRef.current?.setFieldValue('date_start', dataContract?.date_start)
   formRef.current?.setFieldValue('date_end', dataContract?.date_end)
   formRef.current?.setFieldValue(
@@ -59,18 +64,11 @@ const UpdateContract: React.FC = () => {
     dataContract?.negotiated_value,
   )
   formRef.current?.setFieldValue('user_id', dataContract?.user.id)
-
-  const selectOptions = [
-    { value: 'USER' },
-    { value: 'ADMIN' },
-    { value: 'SUPER_ADMIN' },
-    { value: 'CLIENT' },
-    { value: 'OPERATOR' },
-    { value: 'COMERCIAL' },
-  ]
-
-  const handleSubmitUpdateContract = useCallback(
-    async (data: UpdateContractProps) => {
+  console.log('status name: ', dataContract)
+  console.log('user name: ', dataContract?.user.id)
+  console.log('data: ', dataContract)
+  const handleSubmitCreateContract = useCallback(
+    async (data: CreateContractProps) => {
       try {
         formRef.current?.setErrors({})
 
@@ -80,9 +78,11 @@ const UpdateContract: React.FC = () => {
           description: Yup.string().required('Descrição é obrigatório'),
           date_start: Yup.string(), // Yup.date().required('Data é obrigatório'),
           date_end: Yup.string(), // Yup.date().required('Data é obrigatório'),
+          phase_contract: Yup.string().required('Fase do contrato é obrigatório'),
           negotiated_value: Yup.string().required(
             'Valor negociado é obrigatório',
           ),
+          real_cost: Yup.string().required('Custo real é obrigatório'),
           user_id: Yup.string().required('Usuário é obrigatório'),
         })
 
@@ -97,15 +97,16 @@ const UpdateContract: React.FC = () => {
           active: data.active,
           date_start: data.date_start,
           date_end: data.date_end,
+          phase_contract: data.phase_contract,
           negotiated_value: data.negotiated_value,
+          real_cost: data.real_cost,
           user_id: data.user_id,
         }
 
         setIsSendingContract(true)
         await api.post(`/v1/contract/update/${id}`, formData)
-
+        // console.log("formData", result)
         navigate('/contract')
-
         addToast({
           type: 'success',
           title: 'Cadastro Realizado!',
@@ -143,31 +144,31 @@ const UpdateContract: React.FC = () => {
         <Form
           ref={formRef}
           initialData={dataContract}
-          onSubmit={handleSubmitUpdateContract}
+          onSubmit={handleSubmitCreateContract}
           style={{ width: '90%', margin: '0rem auto 0' }}
         >
-          <Flex w="100%" gap="2rem" justify="center" align="center" mb="0.5rem">
-            <Flex direction="column" w="100%">
+          <Div>
+            <Wrapper>
               <Input
                 id="name"
                 type="text"
                 name="name"
-                placeholder="Name | Number Contract"
-                label="Nome do Projeto"
+                placeholder="Number Project"
               />
+
               <Input
                 id="progress"
                 type="text"
                 name="progress"
                 placeholder="Progress"
-                label="Progresso"
               />
-              <Select name="phase_contract" label="Tipo de Usuário">
-                {selectOptions.map((option) => (
-                  <option key={option.value} value={option.value}>
-                    {option.value}
-                  </option>
-                ))}
+
+              <Select name="phase_contract">
+                <option key={0}>Select a phase</option>
+                <option key={1} value="negociação">negociação</option>
+                <option key={2} value="descartado">descartado</option>
+                <option key={3} value="cliente conquistado">cliente conquistado</option>
+                <option key={3} value="novo contato">novo contato</option>
               </Select>
 
               <Input
@@ -178,28 +179,18 @@ const UpdateContract: React.FC = () => {
                 label="Data Início:"
               />
               {/* <Radio name="active" options={radioOptions} /> */}
-            </Flex>
+            </Wrapper>
 
-            <Flex direction="column" w="100%">
+            <Wrapper>
               <Input
                 type="number"
                 name="negotiated_value"
                 placeholder="Valor Negociado"
-                label="Valor Negociado"
               />
 
-              <Input
-                type="number"
-                name="real_cost"
-                placeholder="Custo Real"
-                label="Custo Real"
-              />
+              <Input type="number" name="real_cost" placeholder="Custo Real" />
 
-              <Select
-                name="user_id"
-                label="Responsável"
-                defaultValue={dataContract?.user.id}
-              >
+              <Select name="user_id" defaultValue={dataContract?.user.id}>
                 <option key={0} value="Select a user">
                   Select a user
                 </option>
@@ -218,17 +209,16 @@ const UpdateContract: React.FC = () => {
                 label="Data Fim:"
               />
               {/* <Input id='user_id' type='text' name='user_id' placeholder='Responsável' /> */}
-            </Flex>
-          </Flex>
+            </Wrapper>
+          </Div>
           <Input
             id="description"
             type="text"
             name="description"
             placeholder="Description"
-            label="Descrição"
           />
 
-          <Flex align="center" w="100%" justify="space-between">
+          <Footer>
             <Button
               disabled={isSendingContract}
               onClick={() => formRef.current?.submitForm()}
@@ -239,7 +229,7 @@ const UpdateContract: React.FC = () => {
             <CancelButton onClick={handleResetForm}>
               <FaTrash size={25} />
             </CancelButton>
-          </Flex>
+          </Footer>
         </Form>
       </Panel>
       {/* ))} */}
