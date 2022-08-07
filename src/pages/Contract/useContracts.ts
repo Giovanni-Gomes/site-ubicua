@@ -44,6 +44,7 @@ export async function getContracts(
     id: contract.id,
     name: contract.name,
     description: contract.description,
+    phase_contract: contract.phase_contract,
     active: contract.active ? 'Ativo' : 'Inativo',
     date_start: new Date(contract.date_start).toLocaleDateString('pt-BR', {
       day: '2-digit',
@@ -100,10 +101,10 @@ export async function getOneContractById(id: string): Promise<ContractProps> {
   }
   return contract
 }
-
 export async function deleteContract(id: string) {
   await api.delete(`/v1/contract/delete/${id}`)
 }
+
 
 export function useContracts(page: number, take: number, searchQuery?: string) {
   return useQuery(
@@ -114,6 +115,7 @@ export function useContracts(page: number, take: number, searchQuery?: string) {
     },
   )
 }
+
 
 export function useContract(id: string) {
   return useQuery(['contract', id], () => getOneContractById(id), {
