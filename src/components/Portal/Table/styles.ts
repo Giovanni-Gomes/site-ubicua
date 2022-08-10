@@ -19,6 +19,7 @@ export const TableCustom = styled.table`
       font-size: 0.875rem;
       color: ${(props) => props.theme.colors['gray-100']};
       line-height: 1.6;
+      border-bottom: 1px solid ${(props) => props.theme.colors['gray-100']};
 
       /* &:first-child {
         border-top-left-radius: 8px;

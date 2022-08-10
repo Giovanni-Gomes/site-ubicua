@@ -26,7 +26,7 @@ export const Content = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin: -52px auto 0;
+  margin: 3rem auto 0;
   width: 100%;
   form {
     margin: 50px 0;
@@ -68,7 +68,7 @@ export const AvatarInput = styled.div`
     position: absolute;
     width: 48px;
     height: 48px;
-    background: #ff9000;
+    background: ${(props) => props.theme.colors.secondary};//#ff9000;
     border-radius: 50px;
     right: 0;
     bottom: 0;
@@ -87,7 +87,7 @@ export const AvatarInput = styled.div`
       color: #312e38;
     }
     &:hover {
-      background: ${shade(0.2, '#ff9000')};
+      background: ${shade(0.2, '#F15BB5')};
     }
   }
 `

@@ -9,16 +9,18 @@ import TablePortal from '../../components/Portal/Table'
 import WelcomeDash from '../../components/Portal/WelcomeDash'
 import { Container } from './styles'
 import { useProjects } from '../Project/useProjects'
+import { useDashboard } from './useDashboard'
 
 const Dashboard: React.FC = () => {
   const { data, isLoading, isFetching, error } = useProjects(0, 0, '')
+  const { data: dataDashboard } = useDashboard()
   return (
     <>
       <Container>
         <DashboardSection
           element={
             <>
-              <Card variant="info" title="69" subtitle="Active Projects" />
+              <Card variant="info" title={String(dataDashboard?.totalProjects)} subtitle="Active Projects" />
 
               <Card variant="success" title="69" subtitle="Active Projects" />
               <Card variant="info" title="69" subtitle="Active Projects" />

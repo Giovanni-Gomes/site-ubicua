@@ -1,4 +1,4 @@
-import React, { useCallback, useRef } from 'react'
+import React, { useCallback, useRef, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useToast } from '../../components/hooks/provider/toast'
 
@@ -13,6 +13,7 @@ import { BiText } from 'react-icons/bi'
 import { FaTrash, FaImage } from 'react-icons/fa'
 import Button from '../../components/Shared/Button'
 import { CancelButton, FormFooter } from './styles'
+import { Loading } from '../../components/Site/WidgetForm/Loading'
 
 interface CreateMenuProps {
   title: string
@@ -25,6 +26,7 @@ const CreateMenu: React.FC = () => {
   const formRef = useRef<FormHandles>(null)
   const navigate = useNavigate()
   const { addToast } = useToast()
+  const [isSendingMenu, setIsSendingMenu] = useState(false)
 
   const handleSubmitCreateMenu = useCallback(
     async (data: CreateMenuProps) => {
@@ -41,7 +43,7 @@ const CreateMenu: React.FC = () => {
         await schema.validate(data, {
           abortEarly: false,
         })
-
+        setIsSendingMenu(true)
         await api.post('/v1/menu/create-menu', {
           title: data.title,
           link: data.link,
@@ -55,11 +57,14 @@ const CreateMenu: React.FC = () => {
           type: 'success',
           title: 'Cadastro Realizado',
         })
+        setIsSendingMenu(false)
+
       } catch (err) {
         if (err instanceof Yup.ValidationError) {
           const errors = getValidationErrors(err)
 
           formRef.current?.setErrors(errors)
+          setIsSendingMenu(false)
           return
         }
 
@@ -89,7 +94,7 @@ const CreateMenu: React.FC = () => {
       {/* <Input name="active" type="text" placeholder='Status' icon={GrStatusGood} /> */}
 
       <FormFooter>
-        <Button type="submit">Salvar Registro</Button>
+        <Button disabled={isSendingMenu} type="submit">{isSendingMenu ? <Loading /> : 'Save Register'}</Button>
         <CancelButton onClick={handleResetForm}>
           <FaTrash />
         </CancelButton>

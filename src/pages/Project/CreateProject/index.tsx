@@ -102,6 +102,7 @@ const CreateProject: React.FC = () => {
           const errors = getValidationErrors(err)
 
           formRef.current?.setErrors(errors)
+          setIsSendingProject(false)
           return
         }
 
