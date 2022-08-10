@@ -21,9 +21,7 @@ const CardProject: React.FC<CardProps> = ({
         <Title>{title}</Title>
         {subtitle ? <Subtitle>{subtitle}</Subtitle> : null}
       </div>
-      <CardContent>
-        {children}
-      </CardContent>
+      <CardContent>{children}</CardContent>
     </Container>
   )
 }

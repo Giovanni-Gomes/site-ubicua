@@ -78,7 +78,9 @@ const UpdateContract: React.FC = () => {
           description: Yup.string().required('Descrição é obrigatório'),
           date_start: Yup.string(), // Yup.date().required('Data é obrigatório'),
           date_end: Yup.string(), // Yup.date().required('Data é obrigatório'),
-          phase_contract: Yup.string().required('Fase do contrato é obrigatório'),
+          phase_contract: Yup.string().required(
+            'Fase do contrato é obrigatório',
+          ),
           negotiated_value: Yup.string().required(
             'Valor negociado é obrigatório',
           ),
@@ -165,10 +167,18 @@ const UpdateContract: React.FC = () => {
 
               <Select name="phase_contract">
                 <option key={0}>Select a phase</option>
-                <option key={1} value="negociação">negociação</option>
-                <option key={2} value="descartado">descartado</option>
-                <option key={3} value="cliente conquistado">cliente conquistado</option>
-                <option key={3} value="novo contato">novo contato</option>
+                <option key={1} value="negociação">
+                  negociação
+                </option>
+                <option key={2} value="descartado">
+                  descartado
+                </option>
+                <option key={3} value="cliente conquistado">
+                  cliente conquistado
+                </option>
+                <option key={3} value="novo contato">
+                  novo contato
+                </option>
               </Select>
 
               <Input

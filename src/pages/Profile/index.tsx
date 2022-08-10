@@ -64,10 +64,10 @@ const Profile: React.FC = () => {
           email: data.email, // Object.Assing()
           ...(data.old_password
             ? {
-              old_password: data.old_password,
-              password: data.password,
-              password_confirmation: data.password_confirmation,
-            }
+                old_password: data.old_password,
+                password: data.password,
+                password_confirmation: data.password_confirmation,
+              }
             : {}),
         }
 

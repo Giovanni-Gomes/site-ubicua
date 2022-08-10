@@ -1,5 +1,5 @@
-import { Popover } from '@headlessui/react';
-import styled from 'styled-components';
+import { Popover } from '@headlessui/react'
+import styled from 'styled-components'
 
 export const Container = styled.div`
   background: ${(props) => props.theme.colors['gray-600']};
@@ -10,14 +10,14 @@ export const Container = styled.div`
   border-radius: 10px;
   gap: 2rem;
   align-items: center;
-`;
+`
 
 export const Footer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 1rem;
-`;
+`
 
 export const ButtonAlertClose = styled(Popover.Button)`
   background-color: #8257e6;
@@ -47,7 +47,7 @@ export const ButtonAlertClose = styled(Popover.Button)`
   }
 
   transition-property: color, background-color, border-color,
-  text-decoration-color, fill, stroke;
+    text-decoration-color, fill, stroke;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-duration: 150ms;
   &:disabled {

@@ -45,7 +45,6 @@ const Project: React.FC = () => {
 
   return (
     <>
-
       <Panel
         title="List Projects"
         back="/dashboard"
@@ -72,20 +71,14 @@ const Project: React.FC = () => {
 
         </Form> */}
 
-        <div>
-          {!isLoading && isFetching && (
-            <Loading />
-          )}
-        </div>
+        <div>{!isLoading && isFetching && <Loading />}</div>
 
         {isLoading ? (
           <div>
             <Loading />
           </div>
         ) : error ? (
-          <div>
-            failed to get the data!
-          </div>
+          <div>failed to get the data!</div>
         ) : (
           <>
             <TableCustom color="black">

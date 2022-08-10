@@ -72,9 +72,7 @@ const Dashboard: React.FC = () => {
                         <td>
                           <p>{project.active}</p>
                         </td>
-                        <td>
-                          {project.date_start}
-                        </td>
+                        <td>{project.date_start}</td>
                         <td>
                           <p>{project.date_end}</p>
                         </td>

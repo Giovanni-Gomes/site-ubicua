@@ -12,7 +12,10 @@ interface AlertDeleteProps {
   actualContractName: string
 }
 
-const AlertDelete: React.FC<AlertDeleteProps> = ({ id, actualContractName }) => {
+const AlertDelete: React.FC<AlertDeleteProps> = ({
+  id,
+  actualContractName,
+}) => {
   const { addToast } = useToast()
 
   const removeContract = useMutation(
