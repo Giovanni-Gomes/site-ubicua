@@ -23,6 +23,7 @@ import ListUsers from '../pages/User/listUsers'
 import UpdateUser from '../pages/User/updateUser'
 import { PortalLayout } from '../pages/layouts/PortalLayout'
 import Contract from '../pages/Contract'
+import CreateMenu from '../pages/Config/createMenu'
 
 const RoutesPage: React.FC = () => {
   return (
@@ -32,23 +33,61 @@ const RoutesPage: React.FC = () => {
       <Route path="/" caseSensitive={false} element={<Home />} />
 
       {/* <Route path='/dashboard' caseSensitive={false} element={<Dashboard />} /> */}
-      <Route path='/' element={<PortalLayout />} >
-
-        <Route path="/dashboard" element={<PrivateRoute><Dashboard /></PrivateRoute>} />
+      <Route path="/" element={<PortalLayout />}>
+        <Route
+          path="/dashboard"
+          element={
+            <PrivateRoute>
+              <Dashboard />
+            </PrivateRoute>
+          }
+        />
 
         {/* ROUTES LIST */}
-        <Route path="/list-users" element={<PrivateRoute> <ListUsers /> </PrivateRoute>} />
-        <Route path="/list-section-one" element={<PrivateRoute> <ListSectionOne /> </PrivateRoute>} />
+        <Route
+          path="/list-users"
+          element={
+            <PrivateRoute>
+              {' '}
+              <ListUsers />{' '}
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/list-section-one"
+          element={
+            <PrivateRoute>
+              {' '}
+              <ListSectionOne />{' '}
+            </PrivateRoute>
+          }
+        />
 
         {/* ROUTES CREATED */}
-        <Route path="/create-user" element={<PrivateRoute> <CreateUser /> </PrivateRoute>} />
-        {/* <Route path="/create-menu" element={<PrivateRoute> <CreateMenu /> </PrivateRoute>} /> */}
+        <Route
+          path="/create-user"
+          element={
+            <PrivateRoute>
+              {' '}
+              <CreateUser />{' '}
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/create-menu"
+          element={
+            <PrivateRoute>
+              {' '}
+              <CreateMenu />{' '}
+            </PrivateRoute>
+          }
+        />
         <Route
           path="/create-header"
           element={
             <PrivateRoute>
-
-              <CreateHeader />
+              {' '}
+              <CreateHeader />{' '}
             </PrivateRoute>
           }
         />
@@ -64,7 +103,6 @@ const RoutesPage: React.FC = () => {
           path="/create-section-two"
           element={
             <PrivateRoute>
-
               <CreateSectionTwo />
             </PrivateRoute>
           }
@@ -73,7 +111,6 @@ const RoutesPage: React.FC = () => {
           path="/create-section-three"
           element={
             <PrivateRoute>
-
               <CreateSectionThree />
             </PrivateRoute>
           }
@@ -82,7 +119,6 @@ const RoutesPage: React.FC = () => {
           path="/create-section-four"
           element={
             <PrivateRoute>
-
               <CreateSectionFour />
             </PrivateRoute>
           }
@@ -91,7 +127,6 @@ const RoutesPage: React.FC = () => {
           path="/create-section-five"
           element={
             <PrivateRoute>
-
               <CreateSectionFive />
             </PrivateRoute>
           }
@@ -100,7 +135,6 @@ const RoutesPage: React.FC = () => {
           path="/create-project"
           element={
             <PrivateRoute>
-
               <CreateProject />
             </PrivateRoute>
           }
@@ -109,7 +143,6 @@ const RoutesPage: React.FC = () => {
           path="/update-project/:id"
           element={
             <PrivateRoute>
-
               <UpdateProject />
             </PrivateRoute>
           }
@@ -118,7 +151,6 @@ const RoutesPage: React.FC = () => {
           path="/update-user/:id"
           element={
             <PrivateRoute>
-
               <UpdateUser />
             </PrivateRoute>
           }
@@ -127,7 +159,6 @@ const RoutesPage: React.FC = () => {
           path="/project"
           element={
             <PrivateRoute>
-
               <Project />
             </PrivateRoute>
           }
@@ -136,7 +167,6 @@ const RoutesPage: React.FC = () => {
           path="/contract"
           element={
             <PrivateRoute>
-
               <Contract />
             </PrivateRoute>
           }
@@ -145,14 +175,12 @@ const RoutesPage: React.FC = () => {
           path="/profile"
           element={
             <PrivateRoute>
-
               <Profile />
             </PrivateRoute>
           }
         />
       </Route>
-    </Routes >
-
+    </Routes>
   )
 }
 

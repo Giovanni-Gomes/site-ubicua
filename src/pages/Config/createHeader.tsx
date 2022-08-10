@@ -138,7 +138,7 @@ const CreateHeader: React.FC = () => {
               </FormFooter>
             </Form>
           )) ||
-          (isActiveForm === 1 && <CreateMenu />)
+            (isActiveForm === 1 && <CreateMenu />)
           /* || isActiveForm === 2 && */
         }
       </Container>

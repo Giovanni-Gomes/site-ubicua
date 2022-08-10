@@ -105,7 +105,6 @@ export async function deleteContract(id: string) {
   await api.delete(`/v1/contract/delete/${id}`)
 }
 
-
 export function useContracts(page: number, take: number, searchQuery?: string) {
   return useQuery(
     ['contracts', page, take, searchQuery],
@@ -115,7 +114,6 @@ export function useContracts(page: number, take: number, searchQuery?: string) {
     },
   )
 }
-
 
 export function useContract(id: string) {
   return useQuery(['contract', id], () => getOneContractById(id), {

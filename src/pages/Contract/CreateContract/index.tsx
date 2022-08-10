@@ -145,10 +145,18 @@ const CreateContract: React.FC = () => {
 
               <Select name="phase_contract">
                 <option key={0}>Select a phase</option>
-                <option key={1} value="negociação">negociação</option>
-                <option key={2} value="descartado">descartado</option>
-                <option key={3} value="cliente conquistado">cliente conquistado</option>
-                <option key={3} value="novo contato">novo contato</option>
+                <option key={1} value="negociação">
+                  negociação
+                </option>
+                <option key={2} value="descartado">
+                  descartado
+                </option>
+                <option key={3} value="cliente conquistado">
+                  cliente conquistado
+                </option>
+                <option key={3} value="novo contato">
+                  novo contato
+                </option>
               </Select>
 
               <Input
