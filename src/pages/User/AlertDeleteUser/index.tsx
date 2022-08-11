@@ -2,10 +2,9 @@ import { AxiosError } from 'axios'
 import React from 'react'
 import { useMutation } from 'react-query'
 import { useToast } from '../../../components/hooks/provider/toast'
-import Button from '../../../components/Shared/Button'
 import api from '../../../services/api'
 import { queryClient } from '../../../services/queryClient'
-import { ButtonAlertClose, Container, Footer } from './styles'
+import { Button, ButtonAlertClose, Container, Footer } from './styles'
 
 interface AlertDeleteProps {
   id: string

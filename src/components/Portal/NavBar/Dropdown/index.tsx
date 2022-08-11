@@ -13,9 +13,11 @@ const Dropdown: React.FC<DropdownProps> = ({ subtitle }) => {
   const [activeMenu, setActiveMenu] = useState('main')
   const [menuHeight, setMenuHeight] = useState<string | number>('10rem')
   const dropdownRef = useRef(null) as any
+  const nodeRef = useRef(null)
 
   useEffect(() => {
     setMenuHeight(dropdownRef.current?.firstChild.offsetHeight)
+
   }, [])
 
   function calcHeight(el: any) {
@@ -31,6 +33,7 @@ const Dropdown: React.FC<DropdownProps> = ({ subtitle }) => {
         timeout={500}
         classNames="menu-primary"
         onEnter={calcHeight}
+        nodeRef={nodeRef}
       >
         <div className="menu">
           {subtitle.map((sb, key) =>
@@ -40,7 +43,7 @@ const Dropdown: React.FC<DropdownProps> = ({ subtitle }) => {
               </Link>
             ) : (
               <div
-                className={sb.name === 'Secções' ? 'space expand' : 'expand'}
+                className={sb.name === 'Secções' ? 'space expand' : 'expand' || sb.name === 'Acompanhamentos' ? 'expand width' : 'expand'}
                 key={key.toString()}
                 onClick={() => setActiveMenu(sb.name)}
               >
@@ -57,6 +60,7 @@ const Dropdown: React.FC<DropdownProps> = ({ subtitle }) => {
         timeout={500}
         classNames="menu-secondary"
         onEnter={calcHeight}
+        nodeRef={nodeRef}
       >
         <div className="menu">
           <div className="space" onClick={() => setActiveMenu('main')}>
@@ -74,6 +78,7 @@ const Dropdown: React.FC<DropdownProps> = ({ subtitle }) => {
         timeout={500}
         classNames="menu-secondary"
         onEnter={calcHeight}
+        nodeRef={nodeRef}
       >
         <div className="menu">
           <div className="space" onClick={() => setActiveMenu('main')}>

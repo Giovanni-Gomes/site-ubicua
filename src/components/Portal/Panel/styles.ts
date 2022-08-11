@@ -9,14 +9,15 @@ export const Container = styled.div`
   height: 100%;
   background: ${(props) => props.theme.colors.primary};
   border-radius: 10px;
-  padding: 3px;
+  /* padding: 3px; */
 `
 // var(--color-tertiary);
 export const WrapperHeader = styled.div`
+  padding: 1rem 0 0;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
 `
 
 export const HeaderLeft = styled.div`

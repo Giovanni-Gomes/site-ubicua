@@ -24,7 +24,7 @@ const Dashboard: React.FC = () => {
 
               <Card variant="success" title={String(dataDashboard?.totalUsers)} subtitle="Active Users" />
               <Card variant="info" title={String(dataDashboard?.totalContracts)} subtitle="Active Contracts" />
-              <Card variant="success" title={String(dataDashboard?.totalProjects)} subtitle="Active Feedbacks" />
+              <Card variant="success" title={String(dataDashboard?.totalFeedbacks)} subtitle="Active Feedbacks" />
 
               {/* <Card variant="info" title="69" subtitle="Active Projects" />
               <Card variant="success" title="69" subtitle="Active Projects" />

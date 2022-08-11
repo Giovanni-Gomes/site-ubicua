@@ -15,21 +15,21 @@ export const Container = styled.div<ContainerProps>`
     border-radius: 8px;
     padding: 1rem;
     width: 100%;
-    border: 1px solid var(--color-primary);
+    border: 2px solid var(--color-primary);
     color: ${(props) => props.theme.colors.primary}; //#666360;
     display: flex;
     align-items: center;
-    :hover {
+    /* :hover {
       border-radius: 8px;
-    }
+    } */
     :focus {
-      border: 1px solid ${(props) => props.theme.colors.primary};
+      /* border: 1px solid ${(props) => props.theme.colors.primary}; */
       border-radius: 8px;
       -moz-appearance: none;
       -webkit-appearance: none;
     }
 
-    -webkit-border-radius: 8px;
+    /* -webkit-border-radius: 8px; */
     /* -moz-appearance: none;
       -webkit-appearance: none; */
   }
