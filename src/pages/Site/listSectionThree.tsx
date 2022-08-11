@@ -1,169 +1,94 @@
-import {
-  Box,
-  Button,
-  Flex,
-  Link,
-  Spinner,
-  Table,
-  Tbody,
-  Td,
-  Text,
-  Th,
-  Thead,
-  Tr,
-  useColorModeValue,
-} from '@chakra-ui/react'
-import React from 'react'
-import Header from '../../components/Portal/Header'
+import { PencilSimpleLine, TrashSimple } from 'phosphor-react'
+import React, { useState } from 'react'
+import { Pagination } from '../../components/Portal/Pagination'
 import { Panel } from '../../components/Portal/Panel'
 import { Link as RouterLink } from 'react-router-dom'
-import { FiArrowLeft, FiArrowRight } from 'react-icons/fi'
+
+import {
+  Actions,
+  ButtonAlert,
+  ButtonDetails,
+  PopContainer,
+  PopPanelAlert,
+  PopPanelDetails,
+} from './styles'
+
+import { TableCustom } from '../../components/Portal/Table/styles'
+import { Loading } from '../../components/Site/WidgetForm/Loading'
 import { deleteSectionThree, useSectionThree } from './useSections'
-import { FaPlus } from 'react-icons/fa'
-import { queryClient } from '../../services/queryClient'
-import api from '../../services/api'
-import { PencilSimpleLine, TrashSimple } from 'phosphor-react'
 
 const ListSectionThree: React.FC = () => {
-  // style colors customTheme
-  const bg = useColorModeValue('hoverDark', 'hoverLight')
+  const [page, setPage] = useState(1)
   const { data, isLoading, isFetching, error } = useSectionThree()
-
-  async function handlePrefetchSectioThree(sectionThreeId: string) {
-    await queryClient.prefetchQuery(
-      ['sectionThree', sectionThreeId],
-      async () => {
-        const response = await api.get(`/sectionThree/${sectionThreeId}`)
-        return response.data
-      },
-      {
-        staleTime: 1000 * 60 * 10, // 10 minutes
-      },
-    )
-  }
-
   return (
     <>
-      <Header />
-      <Panel title="List Section Three">
-        <Flex>
-          <Flex flex={1} justify="left" align="center">
-            <Flex justifyContent="space-between" borderRadius={10}>
-              <Link
-                as={RouterLink}
-                to="/dashboard"
-                bg={bg}
-                mr={1}
-                p={2}
-                borderRadius={10}
-              >
-                <FiArrowLeft />
-              </Link>
-              <Link
-                as={RouterLink}
-                to="/dashboard"
-                bg={bg}
-                mr={1}
-                p={2}
-                borderRadius={10}
-              >
-                <FiArrowRight />
-              </Link>
-            </Flex>
-            {/* <Input maxW={250} placeholder='search' size='sm' name="search" borderRadius={20} color='tomato' _placeholder={{ opacity: 0.6, color: 'gray.600' }} backgroundColor={bg} focusBorderColor={bg} /> */}
-          </Flex>
-
-          {!isLoading && isFetching && (
-            <Spinner size="sm" color="gray.500" ml="4" />
-          )}
-
-          <Flex flex={1} justify="right" align="center">
-            <Flex borderRadius={10}>
-              {/* <Link as={RouterLink} to={'/import'} bg={bg} mr={1} p={2} borderRadius={10}>
-                <FaFileImport />
-              </Link> */}
-              <Link
-                as={RouterLink}
-                to={'/create-section-three'}
-                bg={bg}
-                mr={1}
-                p={2}
-                borderRadius={10}
-              >
-                <FaPlus />
-              </Link>
-            </Flex>
-          </Flex>
-        </Flex>
+      <Panel
+        title="List Section Three"
+        back="/dashboard"
+        next="/dashboard"
+        search={true}
+        importFile="/import"
+        create="/create-section-three"
+      >
+        <div>{!isLoading && isFetching && <Loading />}</div>
 
         {isLoading ? (
-          <Flex py="10" justify="center">
-            <Spinner />
-          </Flex>
+          <div>
+            <Loading />
+          </div>
         ) : error ? (
-          <Flex py="10" justify="center">
-            <Text>failed to get the data!</Text>
-          </Flex>
+          <div>failed to get the data!</div>
         ) : (
           <>
-            <Table variant="simple" color="black" mt={2}>
-              <Thead>
-                <Tr>
-                  <Th>Title</Th>
-                  <Th>Desc</Th>
-                  <Th>Image</Th>
-                  <Th>Created</Th>
-                  <Th>Updated</Th>
-                </Tr>
-              </Thead>
-              <Tbody>
-                {data?.sections.map((section) => (
-                  <Tr key={section.id}>
-                    <Td paddingTop="2" paddingBottom="2" minW="8rem">
-                      <Box>
-                        <Link
-                          onMouseEnter={() =>
-                            handlePrefetchSectioThree(section.id)
-                          }
-                        >
-                          <Text fontWeight="bold">{section.title}</Text>
-                        </Link>
-                      </Box>
-                    </Td>
-                    <Td paddingTop="2" paddingBottom="2" maxW="8rem">
-                      <Flex justify="space-between" align="center">
-                        <Text noOfLines={1}>{section.description_one}</Text>
-                      </Flex>
-                    </Td>
-                    <Td paddingTop="2" paddingBottom="2">
-                      <Text>{section.image_one}</Text>
-                    </Td>
-                    <Td paddingTop="2" paddingBottom="2">
-                      {section.created_at}
-                    </Td>
-                    <Td paddingTop="2" paddingBottom="2">
-                      <Text>{section.updated_at}</Text>
-                    </Td>
-
-                    <Td paddingTop="2" paddingBottom="2" maxW="1rem">
-                      <Flex justify="center" align="center" gap="1">
-                        <RouterLink to={`/update-project/${section.id}`}>
-                          <PencilSimpleLine size={24} />
+            <TableCustom color="black">
+              <thead>
+                <tr>
+                  <th>Title</th>
+                  <th>Desc</th>
+                  <th>Image</th>
+                  <th>Created</th>
+                  <th>Updated</th>
+                  <th>#</th>
+                </tr>
+              </thead>
+              <tbody>
+                {data?.sectionsThree.map((section: any) => (
+                  <tr key={section.id}>
+                    <td> <p style={{ fontWeight: 'bold' }}>{section.title}</p> </td>
+                    <td>{section.description_one}</td>
+                    <td>{section.image_one}</td>
+                    <td>{section.created_at}</td>
+                    <td>{section.update_at}</td>
+                    <td>
+                      <Actions>
+                        <RouterLink to={`/update-section/${section.id}`}>
+                          <PencilSimpleLine size={24} color="#9B5DE5" />
                         </RouterLink>
-                        <Button
-                          onClick={() => deleteSectionThree(section.id)}
-                          p={0}
-                        >
-                          <TrashSimple size={24} color="#c53030" />
-                        </Button>
-                      </Flex>
-                    </Td>
-                  </Tr>
+                        <PopContainer>
+
+                          <PopPanelAlert>
+                            <button
+                              onClick={() => deleteSectionThree(section.id)} >
+                              <TrashSimple size={24} color="#c53030" />
+                            </button>
+
+                          </PopPanelAlert>
+
+                        </PopContainer>
+                      </Actions>
+                    </td>
+                  </tr>
                 ))}
-              </Tbody>
-            </Table>
+              </tbody>
+            </TableCustom>
           </>
         )}
+        <Pagination
+          registersPerPage={10}
+          totalCountOfRegisters={data?.totalPage}
+          currentPage={page}
+          onPageChange={setPage}
+        />
       </Panel>
     </>
   )

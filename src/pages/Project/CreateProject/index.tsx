@@ -28,8 +28,8 @@ interface CreateProjectProps {
   name: string
   description: string
   active?: boolean
-  start: Date
-  end: Date
+  date_start: Date
+  date_end: Date
   progress: string
   negotiated_value: string
   real_cost: string
@@ -58,8 +58,8 @@ const CreateProject: React.FC = () => {
         const schema = Yup.object().shape({
           name: Yup.string().required('Nome do Projeto é Obrigatório'),
           description: Yup.string().required('Descrição é obrigatório'),
-          start: Yup.string(), // Yup.date().required('Data é obrigatório'),
-          end: Yup.string(), // Yup.date().required('Data é obrigatório'),
+          date_start: Yup.string(), // Yup.date().required('Data é obrigatório'),
+          date_end: Yup.string(), // Yup.date().required('Data é obrigatório'),
           progress: Yup.string().required('Progresso é obrigatório'),
           negotiated_value: Yup.string().required(
             'Valor negociado é obrigatório',
@@ -77,8 +77,8 @@ const CreateProject: React.FC = () => {
           name: data.name,
           description: data.description,
           active: data.active,
-          date_start: data.start,
-          date_end: data.end,
+          date_start: data.date_start,
+          date_end: data.date_end,
           progress: data.progress,
           negotiated_value: data.negotiated_value,
           real_cost: data.real_cost,
