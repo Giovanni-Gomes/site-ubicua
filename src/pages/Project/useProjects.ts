@@ -36,9 +36,9 @@ export async function getProjects(
   take: number,
   search: string,
 ): Promise<GetProjectResponse> {
-  console.log(page)
-  console.log(take)
-  console.log(search)
+  // console.log(page)
+  // console.log(take)
+  // console.log(search)
   const { data } = await api.get('/v1/project/findAll', {
     params: {
       skip: page,
@@ -61,10 +61,10 @@ export async function getProjects(
     }),
     date_end: project.date_end
       ? new Date(project.date_end).toLocaleDateString('pt-BR', {
-          day: '2-digit',
-          month: '2-digit',
-          year: 'numeric',
-        })
+        day: '2-digit',
+        month: '2-digit',
+        year: 'numeric',
+      })
       : 'not value',
     progress: project.progress,
     createdAt:
@@ -80,10 +80,10 @@ export async function getProjects(
     }).format(project.negotiated_value),
     real_cost: project.real_cost
       ? Intl.NumberFormat('pt-BR', {
-          // eslint-disable-next-line prettier/prettier
+        // eslint-disable-next-line prettier/prettier
         style: 'currency',
-          currency: 'BRL',
-        }).format(project.real_cost)
+        currency: 'BRL',
+      }).format(project.real_cost)
       : 'not value',
     status: project.status,
     user: project.user,

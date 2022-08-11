@@ -8,7 +8,7 @@ export interface FindAllUserProps {
   password: string
   avatar: string
   active: boolean
-  type_user: string
+  type_user_id: string
   created_at: string
 }
 
@@ -24,7 +24,7 @@ interface GetUserByIdResponse {
   password: string
   avatar: string
   active: boolean
-  type_user: string
+  type_user_id: string
   created_at: string
   // users: FindAllUserProps;
 }
@@ -32,11 +32,13 @@ interface GetUserByIdResponse {
 export async function getUsers(
   page?: number,
   take?: number,
+  search?: string,
 ): Promise<GetUserResponse> {
   const { data } = await api.get('/v1/users/', {
     params: {
       skip: page,
       take,
+      search,
     },
   })
 
@@ -72,8 +74,8 @@ export async function deleteUser(id: string) {
   await api.delete(`/v1/users/delete/${id}`)
 }
 
-export function useUsers(page?: number, take?: number) {
-  return useQuery(['users', page, take], () => getUsers(page, take), {
+export function useUsers(page?: number, take?: number, search?: string) {
+  return useQuery(['users', page, take, search], () => getUsers(page, take, search), {
     staleTime: 1000 * 60 * 10, // 1000 * 60 * 10 10 minutes // 1000 * 60 * 60 * 12, // 12 hours,
   })
 }

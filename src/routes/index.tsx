@@ -7,7 +7,6 @@ import Dashboard from '../pages/Dashboard'
 import Home from '../pages/Home'
 import SignIn from '../pages/SignIn'
 import SignUp from '../pages/SignUp'
-import CreateUser from '../pages/User/createUser'
 import CreateHeader from '../pages/Config/createHeader'
 import CreateSectionOne from '../pages/Site/createSectionOne'
 import CreateSectionTwo from '../pages/Site/createSectionTwo'
@@ -19,11 +18,12 @@ import Profile from '../pages/Profile'
 import CreateProject from '../pages/Project/CreateProject'
 import UpdateProject from '../pages/Project/UpdateProject'
 import ListSectionOne from '../pages/Site/listSectionOne'
-import ListUsers from '../pages/User/listUsers'
-import UpdateUser from '../pages/User/updateUser'
 import { PortalLayout } from '../pages/layouts/PortalLayout'
 import Contract from '../pages/Contract'
 import CreateMenu from '../pages/Config/createMenu'
+import UpdateUser from '../pages/User/UpdateUser'
+import CreateUser from '../pages/User/CreateUser'
+import User from '../pages/User'
 
 const RoutesPage: React.FC = () => {
   return (
@@ -49,7 +49,7 @@ const RoutesPage: React.FC = () => {
           element={
             <PrivateRoute>
               {' '}
-              <ListUsers />{' '}
+              <User />{' '}
             </PrivateRoute>
           }
         />
@@ -68,8 +68,7 @@ const RoutesPage: React.FC = () => {
           path="/create-user"
           element={
             <PrivateRoute>
-              {' '}
-              <CreateUser />{' '}
+              <CreateUser />
             </PrivateRoute>
           }
         />

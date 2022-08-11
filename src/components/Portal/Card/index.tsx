@@ -11,7 +11,7 @@ import {
 
 interface CardProps {
   variant: 'info' | 'success' | 'danger' | 'black' | 'white'
-  title: string
+  title?: string
   subtitle?: string
   description?: any
 }

@@ -15,6 +15,7 @@ import Button from '../../components/Shared/Button'
 import Header from '../../components/Portal/Header'
 import { CancelButton, Container, FormFooter } from './styles'
 import CreateMenu from './createMenu'
+import { Loading } from '../../components/Site/WidgetForm/Loading'
 
 interface CreateMenuProps {
   title: string
@@ -26,6 +27,7 @@ const CreateHeader: React.FC = () => {
   const navigate = useNavigate()
   const { addToast } = useToast()
   const [isActiveForm, setIsActiveForm] = useState(0)
+  const [isSendingHeader, setIsSendingHeader] = useState(false)
 
   function showActiveForm(id: number) {
     setIsActiveForm(id)
@@ -44,7 +46,7 @@ const CreateHeader: React.FC = () => {
         await schema.validate(data, {
           abortEarly: false,
         })
-
+        setIsSendingHeader(true)
         await api.post('/v1/home/create-header', {
           title: data.title,
           logo: data.logo,
@@ -56,11 +58,14 @@ const CreateHeader: React.FC = () => {
           type: 'success',
           title: 'Cadastro Realizado!',
         })
+        setIsSendingHeader(false)
+
       } catch (err) {
         if (err instanceof Yup.ValidationError) {
           const errors = getValidationErrors(err)
 
           formRef.current?.setErrors(errors)
+          setIsSendingHeader(false)
           return
         }
 
@@ -131,15 +136,13 @@ const CreateHeader: React.FC = () => {
               />
 
               <FormFooter>
-                <Button type="submit">Salvar Registro</Button>
+                <Button disabled={isSendingHeader} type="submit">{isSendingHeader ? <Loading /> : 'Save Register'}</Button>
                 <CancelButton onClick={handleResetForm}>
                   <FaTrash />
                 </CancelButton>
               </FormFooter>
             </Form>
-          )) ||
-            (isActiveForm === 1 && <CreateMenu />)
-          /* || isActiveForm === 2 && */
+          )) || (isActiveForm === 1 && <CreateMenu />)
         }
       </Container>
     </>

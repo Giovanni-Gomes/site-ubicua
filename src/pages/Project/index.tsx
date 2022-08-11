@@ -5,7 +5,7 @@ import { Panel } from '../../components/Portal/Panel'
 import { useProjects } from './useProjects'
 import { Link as RouterLink } from 'react-router-dom'
 
-import ProjectDetails from './DetailsProject'
+import DetailsProject from './DetailsProject'
 import AlertDelete from './AlertDelete'
 import {
   Actions,
@@ -102,7 +102,7 @@ const Project: React.FC = () => {
                     <td>
                       <PopContainer>
                         <PopPanelDetails>
-                          <ProjectDetails id={project.id} />
+                          <DetailsProject id={project.id} />
                         </PopPanelDetails>
                         <ButtonDetails>
                           {/* <Link onMouseEnter={() => handlePrefetchProject(project.id)}> */}
@@ -127,7 +127,7 @@ const Project: React.FC = () => {
                     <td>
                       <Actions>
                         <RouterLink to={`/update-project/${project.id}`}>
-                          <PencilSimpleLine size={24} />
+                          <PencilSimpleLine size={24} color="#9B5DE5" />
                         </RouterLink>
 
                         <PopContainer>
