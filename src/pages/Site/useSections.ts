@@ -26,7 +26,7 @@ export interface FindSectionThreeProps {
   created_at: string
   updated_at: string
 }
-export interface FindSectionForProps {
+export interface FindSectionFourProps {
   id: string
   title: string
   description_one?: string
@@ -44,24 +44,23 @@ export interface FindSectionFiveProps {
 }
 
 // get response from sections
-interface GetProjectResponse {
-  totalPage: number
-  sections:
-    | FindSectionOneProps[]
-    | FindSectionTwoProps[]
-    | FindSectionThreeProps[]
-    | FindSectionForProps[]
-    | FindSectionFiveProps[]
+interface GetSectionsResponse {
+  totalPage?: number
+  sectionsOne?: FindSectionOneProps[] | any
+  sectionsTwo?: FindSectionTwoProps[] | any
+  sectionsThree?: FindSectionThreeProps[] | any
+  sectionsFour?: FindSectionFourProps[] | any
+  sectionsFive?: FindSectionFiveProps[] | any
 }
 
 // get data from section one
-export async function getSectionOne(): Promise<GetProjectResponse> {
+export async function getSectionOne(): Promise<GetSectionsResponse> {
   // | null
   const { data } = await api.get('/v1/sectionOne/')
   // if (data.length <= 0) {
   //   return null;
   // }
-  const sectionOne = data.sectionOne.map((section: FindSectionOneProps) => ({
+  const sectionsOne = data.map((section: FindSectionOneProps) => ({
     id: section.id,
     title: section.title,
     description_one: section.description_one,
@@ -77,16 +76,16 @@ export async function getSectionOne(): Promise<GetProjectResponse> {
       year: 'numeric',
     }),
   }))
-  return sectionOne
+  return { sectionsOne }
 }
 // get data from section two
-export async function getSectionTwo(): Promise<GetProjectResponse> {
+export async function getSectionTwo(): Promise<GetSectionsResponse> {
   // | null
   const { data } = await api.get('/v1/sectionTwo/')
   // if (data.length <= 0) {
   //   return null;
   // }
-  const sectionTwo = data.sectionTwo.map((section: FindSectionTwoProps) => ({
+  const sectionsTwo = data.map((section: FindSectionTwoProps) => ({
     id: section.id,
     title: section.title,
     description_one: section.description_one,
@@ -102,16 +101,16 @@ export async function getSectionTwo(): Promise<GetProjectResponse> {
       year: 'numeric',
     }),
   }))
-  return sectionTwo
+  return { sectionsTwo }
 }
 // get data from section three
-export async function getSectionThree(): Promise<GetProjectResponse> {
+export async function getSectionThree(): Promise<GetSectionsResponse> {
   // | null
   const { data } = await api.get('/v1/sectionThree/')
   // if (data.length <= 0) {
   //   return null;
   // }
-  const sectionThree = data.sectionThree.map(
+  const sectionsThree = data.map(
     (section: FindSectionThreeProps) => ({
       id: section.id,
       title: section.title,
@@ -129,16 +128,16 @@ export async function getSectionThree(): Promise<GetProjectResponse> {
       }),
     }),
   )
-  return sectionThree
+  return { sectionsThree }
 }
 // get data from section for
-export async function getSectionFor(): Promise<GetProjectResponse> {
+export async function getSectionFor(): Promise<GetSectionsResponse> {
   // | null
-  const { data } = await api.get('/v1/sectionFor/')
+  const { data } = await api.get('/v1/sectionFour/')
   // if (data.length <= 0) {
   //   return null;
   // }
-  const sectionFor = data.sectionFor.map((section: FindSectionForProps) => ({
+  const sectionsFour = data.map((section: FindSectionFourProps) => ({
     id: section.id,
     title: section.title,
     description_one: section.description_one,
@@ -154,21 +153,19 @@ export async function getSectionFor(): Promise<GetProjectResponse> {
       year: 'numeric',
     }),
   }))
-  return sectionFor
+  return { sectionsFour }
 }
 // get data from section five
-export async function getSectionFive(): Promise<GetProjectResponse> {
+export async function getSectionFive(): Promise<GetSectionsResponse> {
   // | null
+  //const result = await api.get('/v1/sectionFive/')
   const { data } = await api.get('/v1/sectionFive/')
-  // if (data.length <= 0) {
-  //   return null;
-  // }
-  const sectionFive = data.sectionFive.map((section: FindSectionFiveProps) => ({
+  const sectionsFive = data.map((section: FindSectionFiveProps) => ({
     id: section.id,
     title: section.title,
     description_one: section.description_one,
     image_one: section.image_one ? section.image_one : 'not image',
-    created_at: new Date(section.created_at).toLocaleDateString('pt-BR', {
+    created_at: new Date(section?.created_at).toLocaleDateString('pt-BR', {
       day: '2-digit',
       month: '2-digit',
       year: 'numeric',
@@ -179,8 +176,9 @@ export async function getSectionFive(): Promise<GetProjectResponse> {
       year: 'numeric',
     }),
   }))
-  return sectionFive
+  return { sectionsFive }
 }
+
 
 // use sections One, Two, Three, For and Five
 export function useSectionOne() {
@@ -225,3 +223,23 @@ export async function deleteSectionFor(id: string) {
 export async function deleteSectionFive(id: string) {
   await api.delete(`/v1/sectionFive/delete/${id}`)
 }
+
+// if (data.length <= 0) {
+  //   return null;
+  // }
+  // const sectionFive = data[0].sectionFive.map((section: FindSectionFiveProps) => ({
+  //   id: section.id,
+  //   title: section.title,
+  //   description_one: section.description_one,
+  //   image_one: section.image_one ? section.image_one : 'not image',
+  //   created_at: new Date(section.created_at).toLocaleDateString('pt-BR', {
+  //     day: '2-digit',
+  //     month: '2-digit',
+  //     year: 'numeric',
+  //   }),
+  //   update_at: new Date(section.updated_at).toLocaleDateString('pt-BR', {
+  //     day: '2-digit',
+  //     month: '2-digit',
+  //     year: 'numeric',
+  //   }),
+  // }))

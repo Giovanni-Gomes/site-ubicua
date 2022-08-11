@@ -15,23 +15,22 @@ import {
 
 import { TableCustom } from '../../components/Portal/Table/styles'
 import { Loading } from '../../components/Site/WidgetForm/Loading'
-import { deleteSectionOne, useSectionOne } from './useSections'
+import { deleteSectionFor, useSectionFor } from './useSections'
 
-const ListSectionOne: React.FC = () => {
+const ListSectionFour: React.FC = () => {
   const [page, setPage] = useState(1)
-  const { data, isLoading, isFetching, error } = useSectionOne()
+  const { data, isLoading, isFetching, error } = useSectionFor()
   return (
     <>
       <Panel
-        title="List Section Three"
+        title="List Section Five"
         back="/dashboard"
         next="/dashboard"
         search={true}
         importFile="/import"
-        create="/create-section-three"
+        create="/create-section-five"
       >
         <div>{!isLoading && isFetching && <Loading />}</div>
-
         {isLoading ? (
           <div>
             <Loading />
@@ -52,7 +51,7 @@ const ListSectionOne: React.FC = () => {
                 </tr>
               </thead>
               <tbody>
-                {data?.sectionsOne.map((section: any) => (
+                {data?.sectionsFour.map((section: any) => (
                   <tr key={section.id}>
                     <td> <p style={{ fontWeight: 'bold' }}>{section.title}</p> </td>
                     <td>{section.description_one}</td>
@@ -68,7 +67,7 @@ const ListSectionOne: React.FC = () => {
 
                           <PopPanelAlert>
                             <button
-                              onClick={() => deleteSectionOne(section.id)} >
+                              onClick={() => deleteSectionFor(section.id)} >
                               <TrashSimple size={24} color="#c53030" />
                             </button>
 
@@ -94,4 +93,4 @@ const ListSectionOne: React.FC = () => {
   )
 }
 
-export default ListSectionOne
+export default ListSectionFour

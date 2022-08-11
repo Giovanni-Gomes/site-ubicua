@@ -24,6 +24,10 @@ import CreateMenu from '../pages/Config/createMenu'
 import UpdateUser from '../pages/User/UpdateUser'
 import CreateUser from '../pages/User/CreateUser'
 import User from '../pages/User'
+import ListSectionFive from '../pages/Site/listSectionFive'
+import ListSectionThree from '../pages/Site/listSectionThree'
+import ListSectionTwo from '../pages/Site/listSectionTwo'
+import ListSectionFour from '../pages/Site/listSectionFour'
 
 const RoutesPage: React.FC = () => {
   return (
@@ -53,15 +57,11 @@ const RoutesPage: React.FC = () => {
             </PrivateRoute>
           }
         />
-        <Route
-          path="/list-section-one"
-          element={
-            <PrivateRoute>
-              {' '}
-              <ListSectionOne />{' '}
-            </PrivateRoute>
-          }
-        />
+        <Route path="/list-section-one" element={<PrivateRoute><ListSectionOne /></PrivateRoute>} />
+        <Route path="/list-section-two" element={<PrivateRoute><ListSectionTwo /></PrivateRoute>} />
+        <Route path="/list-section-three" element={<PrivateRoute><ListSectionThree /></PrivateRoute>} />
+        <Route path="/list-section-four" element={<PrivateRoute><ListSectionFour /></PrivateRoute>} />
+        <Route path="/list-section-five" element={<PrivateRoute><ListSectionFive /></PrivateRoute>} />
 
         {/* ROUTES CREATED */}
         <Route
