@@ -31,7 +31,7 @@ interface UpdateUserProps {
   email: string
   password: string
   active?: boolean
-  type_user_id: string
+  type_user: string
 }
 
 const UpdateUser: React.FC = () => {
@@ -51,7 +51,7 @@ const UpdateUser: React.FC = () => {
   formRef.current?.setFieldValue('email', dataUser?.email)
   formRef.current?.setFieldValue('password', dataUser?.password)
   formRef.current?.setFieldValue('active', dataUser?.active)
-  formRef.current?.setFieldValue('type_user_id', dataUser?.type_user_id)
+  formRef.current?.setFieldValue('type_user_id', dataUser?.type_user)
   //console.log('data: ', dataUser)
   const handleSubmitCreateUser = useCallback(
     async (data: UpdateUserProps) => {
@@ -79,7 +79,7 @@ const UpdateUser: React.FC = () => {
           email: data.email,
           password: data.password,
           active: data.active,
-          type_user: data.type_user_id,
+          type_user: data.type_user,
         }
 
         setIsSendingUser(true)

@@ -7,6 +7,12 @@ export interface DashboardProps {
   totalUsers: number
   totalFeedbacks: number
 }
+
+export interface DashboardActiveProps {
+  activeProjects: number
+  activeContracts: number
+  activeUsers: number
+}
 // interface DashboardResponse {
 //   dashboard: DashboardProps[]
 // }
@@ -21,8 +27,24 @@ export async function getDashboard(): Promise<DashboardProps> {
   return { totalUsers, totalProjects, totalContracts, totalFeedbacks }
 }
 
+export async function getActiveRegistries(): Promise<DashboardActiveProps> {
+  const { data } = await api.get('/v1/dashboard/active')
+  // console.log("console log useUsers data", data);
+  const activeUsers = data.activeUsers;
+  const activeProjects = data.activeProjects;
+  const activeContracts = data.activeContracts;
+
+  return { activeUsers, activeProjects, activeContracts }
+}
+
 export function useDashboard() {
   return useQuery(['dashboard'], () => getDashboard(), {
+    staleTime: 1000 * 60 * 10, // 1000 * 60 * 10 10 minutes
+  })
+}
+
+export function useActiveRegistries() {
+  return useQuery(['dashboard'], () => getActiveRegistries(), {
     staleTime: 1000 * 60 * 10, // 1000 * 60 * 10 10 minutes
   })
 }

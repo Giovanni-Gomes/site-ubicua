@@ -72,7 +72,7 @@ const User: React.FC = () => {
                     </td>
                     <td>{user.email}</td>
                     <td>{user.active}</td>
-                    <td>{user.type_user_id}</td>
+                    <td>{user.type_user}</td>
                     <td>
                       <Actions>
                         <RouterLink to={`/update-user/${user.id}`}>

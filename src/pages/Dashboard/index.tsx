@@ -9,22 +9,30 @@ import TablePortal from '../../components/Portal/Table'
 import WelcomeDash from '../../components/Portal/WelcomeDash'
 import { Container } from './styles'
 import { useProjects } from '../Project/useProjects'
-import { useDashboard } from './useDashboard'
+import { useActiveRegistries, useDashboard } from './useDashboard'
 
 const Dashboard: React.FC = () => {
   const { data, isLoading, isFetching, error } = useProjects(0, 0, '')
   const { data: dataDashboard } = useDashboard()
+  const { data: dataActiveRegistries } = useActiveRegistries()
+
+  const graphCard = [
+    ['Data', 'Total Numbers of Active Data'],
+    ['Projects', dataActiveRegistries?.activeProjects],
+    ['Users', dataActiveRegistries?.activeUsers],
+    ['Contracts', dataActiveRegistries?.activeContracts],
+  ]
   return (
     <>
       <Container>
         <DashboardSection
           element={
             <>
-              <Card variant="info" title={String(dataDashboard?.totalProjects)} subtitle="Active Projects" />
+              <Card variant="info" title={String(dataDashboard?.totalProjects)} subtitle="Total Projects" />
 
-              <Card variant="success" title={String(dataDashboard?.totalUsers)} subtitle="Active Users" />
-              <Card variant="info" title={String(dataDashboard?.totalContracts)} subtitle="Active Contracts" />
-              <Card variant="success" title={String(dataDashboard?.totalFeedbacks)} subtitle="Active Feedbacks" />
+              <Card variant="success" title={String(dataDashboard?.totalUsers)} subtitle="Total Users" />
+              <Card variant="info" title={String(dataDashboard?.totalContracts)} subtitle="Total Contracts" />
+              <Card variant="success" title={String(dataDashboard?.totalFeedbacks)} subtitle="Total Feedbacks" />
 
               {/* <Card variant="info" title="69" subtitle="Active Projects" />
               <Card variant="success" title="69" subtitle="Active Projects" />
@@ -39,7 +47,7 @@ const Dashboard: React.FC = () => {
           element={
             <>
               <WelcomeDash />
-              <ChartDash />
+              <ChartDash graph={graphCard} />
             </>
           }
           className="WrapperCard"

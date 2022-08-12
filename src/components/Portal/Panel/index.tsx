@@ -4,6 +4,7 @@ import React, { ReactNode, useRef } from 'react'
 import { FaFileImport, FaPlus } from 'react-icons/fa'
 import { FiArrowLeft, FiArrowRight } from 'react-icons/fi'
 import { Link } from 'react-router-dom'
+import Header from '../Header'
 import {
   Container,
   WrapperHeader,
@@ -47,42 +48,44 @@ export function Panel({
   }
 
   return (
-    <Container>
-      <WrapperHeader>
-        <HeaderLeft>
-          {back && (
-            <Link to={back}>
-              <FiArrowLeft />
-            </Link>
-          )}
-          {next && (
-            <Link to={next}>
-              <FiArrowRight />
-            </Link>
-          )}
-          {search && (
-            <Form ref={formRef} onSubmit={handleSearch}>
-              <Input placeholder="search" id="search" name="search" />
-            </Form>
-          )}
-        </HeaderLeft>
-        {/* <Spacer /> */}
-        <Title>{title}</Title>
-        <HeaderRight>
-          {importFile && (
-            <Link to={importFile}>
-              <FaFileImport />
-            </Link>
-          )}
-          {create && (
-            <Link to={create}>
-              <FaPlus />
-            </Link>
-          )}
-        </HeaderRight>
-      </WrapperHeader>
-      {children}
-    </Container>
+    <>
+      <Container>
+        <WrapperHeader>
+          <HeaderLeft>
+            {back && (
+              <Link to={back}>
+                <FiArrowLeft />
+              </Link>
+            )}
+            {next && (
+              <Link to={next}>
+                <FiArrowRight />
+              </Link>
+            )}
+            {search && (
+              <Form ref={formRef} onSubmit={handleSearch}>
+                <Input placeholder="search" id="search" name="search" />
+              </Form>
+            )}
+          </HeaderLeft>
+          {/* <Spacer /> */}
+          <Title>{title}</Title>
+          <HeaderRight>
+            {importFile && (
+              <Link to={importFile}>
+                <FaFileImport />
+              </Link>
+            )}
+            {create && (
+              <Link to={create}>
+                <FaPlus />
+              </Link>
+            )}
+          </HeaderRight>
+        </WrapperHeader>
+        {children}
+      </Container>
+    </>
   )
 }
 
