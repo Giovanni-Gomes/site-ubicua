@@ -134,7 +134,7 @@ const createSectionFour: React.FC = () => {
           </li>
         </ul>
         {(isActiveForm === 0 && (
-          <Form ref={formRef} onSubmit={handleSubmitCreateMenu}>
+          <Form ref={formRef} onSubmit={handleSubmitCreateMenu} className="pages">
             <h1>Cadastrar | Alterar 4º Secção</h1>
             <span className="subtitle">preencha o formulário abaixo</span>
 

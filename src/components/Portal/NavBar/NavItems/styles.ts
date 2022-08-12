@@ -8,7 +8,8 @@ export const Container = styled.li`
   /* color: red;
   background-color: red; */
 
-  > a {
+  > :first-child {
+    cursor: pointer;
     display: flex;
     justify-content: center;
     border-top: 3px solid transparent;

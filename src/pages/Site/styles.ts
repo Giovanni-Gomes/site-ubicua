@@ -1,7 +1,108 @@
 import { Popover } from '@headlessui/react'
 import styled from 'styled-components'
+import { shade } from 'polished'
 
-export const Container = styled.div``
+export const Container = styled.div`
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  justify-content: baseline;
+  margin: 0 auto;
+  &:first-of-type {
+    margin-top: 6rem;
+  }
+  form {
+    /* position: absolute; */
+    /* align-items: center; */
+    /* margin: 6rem auto; */
+
+    /* top: 400rem; */
+    /* left: 8rem; */
+    /* right: 8rem; */
+    width: 100%;
+    /* width: 80%; */
+    /* margin-top: 1.563rem; */
+
+    padding: 2rem 6rem 2rem;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    border-radius: 1rem;
+    &.pages {
+      border-top-left-radius: 0;
+    }
+    background: #eff6ff; //${(props: any) => props.theme.textSecondary};
+
+    h1 {
+      margin-bottom: 0.5rem;
+      color: var(--color-secondary);
+    }
+
+    span {
+      margin-bottom: 0.2rem;
+      color: var(--color-secondary);
+    }
+
+    a {
+      color: var(--color-secondary);
+      display: block;
+      margin-top: 0.2rem;
+      text-decoration: none;
+      transition: color 0.2s;
+      &:hover {
+        color: ${shade(0.2, '#F4EDE8')};
+      }
+    }
+  }
+  ul {
+    display: flex;
+    list-style: none;
+
+    li {
+      /* position: relative; */
+
+      /* &:nth-child(2) {
+        left: 4.5rem;
+      }
+
+      &:nth-child(3) {
+        left: 9.375rem;
+      } */
+
+      button {
+        /* position: absolute; */
+        padding: 0 1rem;
+        border-radius: 0.5rem;
+        border-bottom-left-radius: 0rem;
+        border-bottom-right-radius: 0rem;
+        border: none;
+
+        font-size: 16px;
+        color: var(--color-secondary);
+        background: lightblue;
+
+        &.active {
+          background: #eff6ff;
+          /* border-bottom: solid #EFF6FF; */
+          /* color: #FFF; */
+          &:hover {
+            color: var(--color-secondary);
+          }
+        }
+
+        /* &:first-of-type{
+          border-left: none;
+        } */
+
+        &:hover {
+          color: ${shade(0.2, '#F4EDE8')};
+          /* border: 0.01rem solid #8257e6;
+          border-bottom: none; */
+        }
+      }
+    }
+  }
+`
 
 export const ButtonAlert = styled(Popover.Button)`
   cursor: pointer;

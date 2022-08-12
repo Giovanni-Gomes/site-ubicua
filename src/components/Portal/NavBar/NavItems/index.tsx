@@ -20,10 +20,10 @@ const NavItems: React.FC<NavItemsProps> = ({ icon, children, title }) => {
   window.addEventListener('click', handleOutsideDropdown)
   return (
     <Container ref={dropdownRef} className="nav-item">
-      <a className="icon-button" onClick={() => setOpen(!open)}>
+      <div className="icon-button" onClick={() => setOpen(!open)}>
         {/* {icon} */}
         <span>{title}</span>
-      </a>
+      </div>
 
       {open && children}
     </Container>

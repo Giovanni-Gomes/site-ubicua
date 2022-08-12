@@ -28,7 +28,7 @@ const ListSectionOne: React.FC = () => {
         next="/dashboard"
         search={true}
         importFile="/import"
-        create="/create-section-three"
+        create="/create-section-one"
       >
         <div>{!isLoading && isFetching && <Loading />}</div>
 

@@ -13,6 +13,10 @@ export const WrapperInputs = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
+  > span {
+    text-align: center;
+    padding-bottom: 0.5rem;
+  }
 `
 
 export const Footer = styled.div`

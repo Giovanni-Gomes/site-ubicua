@@ -15,10 +15,11 @@ export const Container = styled.div`
   min-width: 10rem;
 
   > .menu {
-    padding-bottom: 2rem;
+    /* padding-bottom: 1rem; */
 
     a,
     div {
+      cursor: pointer;
       text-decoration: none;
       color: ${(props: any) => props.theme.colors['text-menu']};
       height: 50px;
@@ -32,9 +33,14 @@ export const Container = styled.div`
       /* font-size: 16px; */
       border-top: 3px solid transparent;
       border-bottom: 3px solid transparent;
+      max-width: 8rem;
 
       &.space {
         gap: 0.5rem;
+      }
+
+      &.width {
+        font-size: 0.7rem;
       }
 
       &:hover {

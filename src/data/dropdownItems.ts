@@ -95,10 +95,10 @@ export const dropdownItems = [
       //   name: 'Criar Menus',
       //   link: '/create-menu',
       // },
-      {
-        name: 'Criar Menus Portal',
-        link: '/create-menu',
-      },
+      // {
+      //   name: 'Criar Menus Portal',
+      //   link: '/create-menu',
+      // },
       {
         name: 'Secções',
         subtitles: [
