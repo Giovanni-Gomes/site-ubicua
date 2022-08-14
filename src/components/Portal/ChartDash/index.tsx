@@ -1,6 +1,5 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import Chart from 'react-google-charts'
-import api from '../../../services/api'
 import { Container } from './styles'
 
 interface ChartDashProps {

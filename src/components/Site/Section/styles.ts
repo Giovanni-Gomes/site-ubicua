@@ -1,50 +1,77 @@
-import styled from 'styled-components'
+import { shade } from 'polished'
+import styled, { keyframes } from 'styled-components'
 
-import sectionOne from '/assets/backgrounds/background.svg'
+const appearFromRight = keyframes`
+  from {
+    opacity: 0;
+    transform: translate(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translate(0);
+  }
+`
 
 export const Container = styled.div`
-  --padding-top: 6.25rem;
-  --padding-bottom: 8rem;
+  --padding-top: 2.25rem;
+  --padding-bottom: 6rem;
   --heading-font-size: 3rem;
   --content-width: 100%;
 
   &.blue {
-    --bg-color: var(--color-tertiary);
-    --text-color: var(--color-secondary); /*var(--color-quaternary)*/
-    --logo-color: var(--color-black);
-    --icon-color: var(--color-secondary);
+    --bg-color: ${(props) => props.theme.colors.tertiary};
+    --text-color: ${(props) => props.theme.colors.secondary};
+    --logo-color: ${(props) => props.theme.colors.hoverDark};
+    --icon-color: ${(props) => props.theme.colors.secondary};
   }
   &.beige {
-    --bg-color: var(--color-secondary);
-    --text-color: var(--color-quaternary);
-    --logo-color: var(--color-primary);
-    --icon-color: var(--color-quaternary);
+    --bg-color: ${(props) => props.theme.colors.secondary};
+    --text-color: ${(props) => props.theme.colors.quaternary};
+    --logo-color: ${(props) => props.theme.colors.primary};
+    --icon-color: ${(props) => props.theme.colors.quaternary};
   }
   &.white {
-    --bg-color: var(--color-primary);
-    --text-color: var(--color-quaternary);
-    --logo-color: var(--color-secondary);
-    --icon-color: var(--color-quaternary);
+    --bg-color: ${(props) => props.theme.colors.primary};
+    --text-color: ${(props) => props.theme.colors.quaternary};
+    --logo-color: ${(props) => props.theme.colors.secondary};
+    --icon-color: ${(props) => props.theme.colors.quaternary};
   }
   &.black {
-    --bg-color: var(--color-quaternary);
-    --text-color: var(--color-tertiary);
-    --logo-color: var(--color-black);
-    --icon-color: var(--color-tertiary);
+    --bg-color: ${(props) => props.theme.colors.quaternary};
+    --text-color: ${(props) => props.theme.colors.tertiary};
+    --logo-color: ${(props) => props.theme.colors.hoverDark};
+    --icon-color: ${(props) => props.theme.colors.tertiary};
   }
 
   &:first-child {
-    --padding-top: 6rem;
+    /* --padding-top: 2rem;
     --heading-font-size: 41px;
-    --padding-bottom: 4rem;
+    --padding-bottom: 8rem;
 
     flex: 1;
-    background: url(${sectionOne}) no-repeat center;
     background-size: cover;
-    text-align: center;
+    text-align: center; */
     p {
-      text-align: justify;
-      color: var(--color-quaternary);
+      /* text-align: justify; */
+      padding-left: 0.5rem;
+      color: ${(props) => props.theme.colors['text-menu']};
+    }
+    button {
+      animation: ${appearFromRight} 4s;
+      text-align: center;
+      padding: 0.6rem 2rem 0.6rem 2rem;
+      font-size: 1.4rem;
+      color: ${(props) => props.theme.colors['text-menu']};
+      background-color: ${(props) => props.theme.colors.primary};
+      border-radius: 8px;
+      /* text-shadow: black 0.1em 0.1em 2px; */
+      /* max-width: 20%; */
+      cursor: pointer;
+      &:hover {
+        color: ${shade(0.8, '#9B5DE5')};
+        background-color: ${(props) => props.theme.colors.secondary};
+        transition: 0.5s ease-in-out;
+      }
     }
 
     /* font-style: normal;
@@ -59,44 +86,33 @@ export const Container = styled.div`
     }
   }
 
-  background: var(--bg-color);
+  /* background: ${(props) => props.theme.colors.hoverLight}; */
   position: relative;
   z-index: 2;
-  /* :nth-child(2n) {
-  position: absolute;
-  background-color: blue;
-   margin-top: 6rem;
-  }   */
 `
 
 export const Content = styled.div`
-  max-width: 1440px;
+  /* max-width: 1440px; */
   margin: 0 auto;
   display: flex;
   align-items: center;
   position: relative;
-
-  > header h2 {
-    font-size: var(--heading-font-size);
-    color: var(--logo-color);
-    max-width: 100rem;
-  }
-  > header p {
+  header p {
     margin: 1.8rem 0;
     font-size: 20px;
-    color: var(--text-color);
-    max-width: 40rem;
-    /* max-width: 95%; */
+    color: ${(props) => props.theme.colors['text-menu']};
   }
-  padding: var(--padding-top) var(--padding-bottom); /*5rem*/
+  > header h2 {
+    animation: ${appearFromRight} 2s;
+    font-size: var(--heading-font-size);
+    color: ${(props) => props.theme.colors.white};
+    text-shadow: black 0.1rem 0.1em 2px;
+    //text-shadow: black 0.1em 0.1em 0.2em;
+    padding: 2rem 0 2rem 0;
+    max-width: 100rem;
+  }
+  padding: 0 0 6rem 4rem;
 `
-
-export const Background = styled.div`
-  flex: 1;
-  background: url(${sectionOne}) no-repeat center;
-  background-size: cover;
-`
-
 export const Wrapper = styled.div`
   max-width: 20rem;
   display: flex;
@@ -112,3 +128,17 @@ export const Wrapper = styled.div`
     max-width: 10rem;
   }
 `
+
+/* padding: var(--padding-top) var(--padding-bottom);  */
+/* 5rem */
+/* > header p {
+    margin: 1.8rem 0;
+    font-size: 20px;
+    color: ${(props) => props.theme.colors['text-menu']};
+
+  }; */
+// export const Background = styled.div`
+//   flex: 1;
+//   background: url(${sectionOne}) no-repeat center;
+//   background-size: cover;
+// `

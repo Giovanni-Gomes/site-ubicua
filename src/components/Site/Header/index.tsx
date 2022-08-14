@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { FaCloud } from 'react-icons/fa'
+import { FaCloud, FaUserLock } from 'react-icons/fa'
 import { Link } from 'react-router-dom'
 import api from '../../../services/api'
 import MenuLink from '../../Shared/MenuLink'

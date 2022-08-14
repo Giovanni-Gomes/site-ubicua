@@ -1,12 +1,12 @@
 import React from 'react'
-import { A } from './styles'
+import { ContainerA } from './styles'
 
 interface MenuLinkProps {
   title: string
 }
 
 const MenuLink: React.FC<MenuLinkProps> = ({ title }) => {
-  return <A href={'#' + title.toLowerCase()}>{title.toUpperCase()}</A>
+  return <ContainerA href={'#' + title.toLowerCase()}>{title.toUpperCase()}</ContainerA>
 }
 
 export default MenuLink

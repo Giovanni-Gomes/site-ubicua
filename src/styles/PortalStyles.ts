@@ -26,5 +26,16 @@ export default createGlobalStyle`
     font-family: 'Poppins', sans-serif;
   }
 
+  /* .app-chatbot-button {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: ${(props: any) => props.theme.colors.secondary};
+    border: none;
+    position: fixed;
+    bottom: 3rem;
+    z-index: 9999;
+    left: 40px;
+  } */
 
 `
