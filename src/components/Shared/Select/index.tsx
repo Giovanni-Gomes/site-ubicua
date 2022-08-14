@@ -1,19 +1,26 @@
-import { useRef, useEffect, ReactNode, SelectHTMLAttributes } from 'react'
+import { useRef, useEffect, ReactNode, SelectHTMLAttributes, useState } from 'react'
 
 import { useField } from '@unform/core'
 
-import { Container } from './style'
+import { Container, Error } from './style'
+import { IconBaseProps } from 'react-icons'
+import { FiAlertCircle } from 'react-icons/fi'
 
 interface SelectProps {
   name: string
   label?: string
   children: ReactNode
+  value?: string
+  containerStyle?: object
+  icon?: React.ComponentType<IconBaseProps>
 }
 
 type Props = SelectHTMLAttributes<HTMLSelectElement> & SelectProps
 
-function Select({ name, label, children, ...rest }: Props) {
+function Select({ name, label, value, containerStyle = {}, children, icon: Icon, ...rest }: Props) {
   const selectRef = useRef<HTMLSelectElement>(null)
+  const [isFocused, setIsFocused] = useState(false) // esta com foco no input
+  const [isFilled, setIsFilled] = useState(false) // esta preenchido
 
   const { fieldName, defaultValue, registerField, error } = useField(name)
 
@@ -34,8 +41,15 @@ function Select({ name, label, children, ...rest }: Props) {
   }, [fieldName, registerField])
 
   return (
-    <Container>
+    <Container
+      style={containerStyle}
+      isErrored={!!error}
+      isFilled={isFilled}
+      isFocused={isFocused}
+      data-testid="input-container"
+    >
       {label && <label htmlFor={fieldName}>{label}</label>}
+      {Icon && <Icon size={20} />}
       <select
         id={fieldName}
         ref={selectRef}
@@ -45,7 +59,11 @@ function Select({ name, label, children, ...rest }: Props) {
         {children}
       </select>
 
-      {error && <span className="error">{error}</span>}
+      {error && (
+        <Error title={error}>
+          <FiAlertCircle color="#c53030" size={20} />
+        </Error>
+      )}
     </Container>
   )
 }

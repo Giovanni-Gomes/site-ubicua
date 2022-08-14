@@ -60,6 +60,7 @@ export async function getSectionOne(): Promise<GetSectionsResponse> {
   // if (data.length <= 0) {
   //   return null;
   // }
+  console.log(data)
   const sectionsOne = data.map((section: FindSectionOneProps) => ({
     id: section.id,
     title: section.title,

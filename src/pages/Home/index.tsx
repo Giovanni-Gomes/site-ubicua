@@ -12,7 +12,9 @@ import SideMenu from '../../components/Site/SideMenu'
 import MenuForm from '../../components/Site/MenuForm'
 import { Widget } from '../../components/Site/Widget'
 import SectionRight from '../../components/Site/SectionRight'
-
+import ChatBotInitial from '../../components/Site/WidgetForm/ChatBot'
+import { FaRobot } from 'react-icons/fa'
+// import { ReactComponent as Button } from '../../components/Site/WidgetForm/ChatBot/assets/robot.svg'
 // import { Container } from './styles';
 
 interface IContentProps {
@@ -22,14 +24,21 @@ interface IContentProps {
 }
 
 const Home: React.FC = () => {
-  const showCarousel = <Carousel items={carouselImages} />
+  // const showCarousel = <Carousel items={carouselImages} />
+  // const [showBot, setBot] = useState(true)
+  // function handleBot() {
+  //   console.log('bot iniciado')
+  //   const botState = !showBot
+  //   setBot(botState)
+  // }
+
   const imgs = (
     <>
-      <img src="/assets/cell.svg" className="top" />{' '}
-      <img src="/assets/cell02.svg" className="bottom" />
+      <img src="/assets/cell.svg" className="top" alt="cell" />
+      <img src="/assets/cell02.svg" className="bottom" alt="cellTwo" />
     </>
   )
-  const img = <img src="/assets/container.svg" />
+  const img = <img src="/assets/container.svg" alt="imagem update" />
 
   const [sectionOne, setSectionOne] = useState<IContentProps[]>([])
   const [sectionTwo, setSectionTwo] = useState<IContentProps[]>([])
@@ -57,14 +66,15 @@ const Home: React.FC = () => {
 
   return (
     <>
+      {/* {showBot && <ChatBotInitial />} */}
       {sectionOne.map((st, key) => (
         <Section
           key={key}
           variant="white"
           sectionTitle={st.title}
           description={st.description_one}
-          element={showCarousel}
         />
+        /* element={showCarousel} */
       ))}
 
       {sectionTwo.map((st, key) => (
@@ -116,6 +126,9 @@ const Home: React.FC = () => {
         <MenuForm />
       </SideMenu>
       <Widget />
+      {/* <button className="app-chatbot-button" onClick={handleBot}>
+        <FaRobot size={38} />
+      </button> */}
     </>
   )
 }

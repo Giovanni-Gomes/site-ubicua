@@ -1,8 +1,8 @@
 import styled from 'styled-components'
 
-export const A = styled.a`
+export const ContainerA = styled.a`
   text-decoration: none;
-  color: var(--logo-color);
+  color: ${(props) => props.theme.colors.white};
   display: block;
   position: relative;
   padding: 0.5rem 0;
@@ -20,7 +20,7 @@ export const A = styled.a`
     left: 0;
     width: 100%;
     height: 0.2rem;
-    background-color: var(--logo-color);
+    background-color: ${(props) => props.theme.colors.secondary};
     opacity: 0;
     transition: opacity 300ms, transform 300ms;
   }

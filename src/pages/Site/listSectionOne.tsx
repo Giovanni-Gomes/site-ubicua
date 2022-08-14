@@ -23,7 +23,7 @@ const ListSectionOne: React.FC = () => {
   return (
     <>
       <Panel
-        title="List Section Three"
+        title="List Section One"
         back="/dashboard"
         next="/dashboard"
         search={true}

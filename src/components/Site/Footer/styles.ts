@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 export const Container = styled.footer`
-  background: var(--color-footer);
+  background: ${(props) => props.theme.colors.black};
   max-height: 393px;
   width: 100%;
   position: relative;
@@ -22,29 +22,26 @@ export const Card = styled.div`
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  /* padding: 0rem 4rem; */
-  /* width: 475px; */
-  /* left: 500px; */
   > h3 {
-    color: var(--color-quaternary);
-    font-size: 1.125rem;
+    color: ${(props) => props.theme.colors.quaternary};
+    font-size: 1.2rem;
   }
 
   > ul {
     list-style: none;
 
     > li {
-      font-size: 0.875rem;
+      font-size: 1rem;
       font-style: normal;
       font-weight: 400;
       margin: 1rem auto;
 
       a {
-        color: var(--color-tertiary);
+        color: ${(props) => props.theme.colors['primary-300']};
         text-decoration: none;
       }
       a:hover {
-        color: var(--color-quaternary);
+        color: ${(props) => props.theme.colors['primary-500']};
       }
     }
   }
@@ -56,10 +53,10 @@ export const Under = styled.div`
   display: flex;
   justify-content: space-around;
   padding: 1rem;
-  border-top: 1px solid var(--color-primary);
+  border-top: 1px solid ${(props) => props.theme.colors.primary};
   opacity: 0.1;
   > a {
-    color: var(--color-tertiary);
+    color: ${(props) => props.theme.colors.tertiary};
     font-size: 0.875rem;
     text-decoration: none;
   }
@@ -70,7 +67,7 @@ export const Under = styled.div`
 
     > a {
       opacity: 1;
-      fill: var(--color-primary);
+      fill: ${(props) => props.theme.colors.primary};
       fill-opacity: 1;
       > img {
         width: 1.2rem;

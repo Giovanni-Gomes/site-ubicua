@@ -1,8 +1,10 @@
 import React from 'react'
+import { FaMeteor, FaRegBuilding } from 'react-icons/fa'
 import sectionItems from '../../../data/sectionItems'
+import CarouselNew from '../CarouselNew'
 
 import Header from '../Header'
-import { Background, Container, Content, Wrapper } from './styles'
+import { Container, Content, Wrapper } from './styles' /* Background */
 
 interface Props {
   variant: 'blue' | 'beige' | 'white' | 'black'
@@ -34,11 +36,18 @@ const Section: React.FC<Props> = ({
   return (
     <Container className={variant}>
       <Header />
+      <CarouselNew />
+
       <Content>
         <header>
-          <Background />
-          <h2>{sectionTitle}</h2>
-          <p>{description}</p>
+          {/* <Background /> {sectionTitle} */}
+          <h2>Ubicua Cloud Soluções Tecnologicas</h2>
+          <p>
+            <button>
+              <FaRegBuilding size={16} /> Saiba mais
+            </button>
+          </p>
+          {/* {description} */}
         </header>
         {element === null ? null : element}
       </Content>
