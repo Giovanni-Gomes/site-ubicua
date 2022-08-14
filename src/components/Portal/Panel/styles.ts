@@ -7,7 +7,7 @@ export const Container = styled.div`
   flex-direction: column;
   margin: 5rem auto 2rem;
   height: 100%;
-  background: ${(props) => props.theme.colors.primary};
+  background: ${(props: any) => props.theme.colors.primary};
   border-radius: 10px;
   /* padding: 3px; */
 `

@@ -12,6 +12,7 @@ import { lightTheme } from './styles/theme/light'
 import { useState } from 'react'
 import useDarkMode from './components/hooks/useDarkmode'
 import Toggle from './components/Shared/Toggle'
+import PortalStyles from './styles/PortalStyles'
 
 export function App() {
   // const [theme, setTheme] = useState(lightTheme)
@@ -29,7 +30,8 @@ export function App() {
               <Routes />
             </AppProvider>
 
-            <GlobalStyles />
+            {/* <GlobalStyles /> */}
+            <PortalStyles />
           </BrowserRouter>
           <ReactQueryDevtools />
         </QueryClientProvider>

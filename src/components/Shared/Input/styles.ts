@@ -8,13 +8,21 @@ interface ContainerProps {
 }
 
 export const Container = styled.div<ContainerProps>`
-  background: ${(props) => props.theme.colors.white}; //var(--color-primary);
+  /* background: ${(props) => props.theme.colors.white}; 
   border-radius: 10px;
   padding: 16px;
   margin-bottom: 0.1rem;
   width: 100%;
-  border: 2px solid ${(props) => props.theme.colors.primary}; //var(--color-primary)
+  border: 2px solid ${(props) => props.theme.colors.primary}; */
   //color: #666360;
+  background: ${(props) => props.theme.colors.white};
+  border-radius: 8px;
+  padding: 1rem;
+  width: 100%;
+  border: 2px solid var(--color-primary);
+  color: ${(props) => props.theme.colors.primary}; //#666360;
+  display: flex;
+  align-items: center;
   ${(props) =>
     props.isErrored &&
     css`
@@ -32,8 +40,6 @@ export const Container = styled.div<ContainerProps>`
     css`
       color: ${(props) => props.theme.colors.secondary}; //var(color-secondary);
     `}
-  display: flex;
-  align-items: center;
   & + div {
     margin-top: 0.5rem;
   }

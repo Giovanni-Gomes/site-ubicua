@@ -8,7 +8,7 @@ export interface FindAllUserProps {
   password: string
   avatar: string
   active: boolean
-  type_user_id: string
+  type_user: string
   created_at: string
 }
 
@@ -24,7 +24,7 @@ interface GetUserByIdResponse {
   password: string
   avatar: string
   active: boolean
-  type_user_id: string
+  type_user: string
   created_at: string
   // users: FindAllUserProps;
 }
@@ -50,6 +50,7 @@ export async function getUsers(
     email: user.email,
     avatar: user.avatar ? user.avatar : 'not avatar',
     active: user.active ? 'Ativo' : 'Inativo',
+    type_user: user.type_user,
     created_at: new Date(user.created_at).toLocaleDateString('pt-BR', {
       day: '2-digit',
       month: 'short',

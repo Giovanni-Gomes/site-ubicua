@@ -18,6 +18,7 @@ import {
 
 import { Status, TableCustom } from '../../components/Portal/Table/styles'
 import { Loading } from '../../components/Site/WidgetForm/Loading'
+import Header from '../../components/Portal/Header'
 
 const Project: React.FC = () => {
   const [page, setPage] = useState(1)

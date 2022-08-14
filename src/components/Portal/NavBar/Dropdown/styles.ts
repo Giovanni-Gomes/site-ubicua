@@ -2,27 +2,26 @@ import styled from 'styled-components'
 
 export const Container = styled.div`
   position: absolute;
-  top: 50px;
+  top: 55px;
   /* transform: translateX(45%); */
   background: var(--bg);
-  border: var(--border);
+  border: 1px solid ${(props: any) => props.theme.colors['gray-900']};
+  border-top: none;
   border-bottom-left-radius: var(--border-radius);
   border-bottom-right-radius: var(--border-radius);
-  padding: 1rem;
+  padding: 0 1rem 1rem;
   overflow: hidden;
-  /* transition: height 100ms ease; */
+  transition: height 200ms ease;
   /* max-width: 100%; */
   min-width: 10rem;
 
   > .menu {
-    /* padding-bottom: 1rem; */
-
-    a,
-    div {
+    /* padding-bottom: 1.5rem; */
+    > a, div {
       cursor: pointer;
       text-decoration: none;
       color: ${(props: any) => props.theme.colors['text-menu']};
-      height: 50px;
+      min-height: 3.125rem;
       /* width: 100%; */
       /* min-width: 12rem; */
       display: flex;
@@ -34,7 +33,8 @@ export const Container = styled.div`
       border-top: 3px solid transparent;
       border-bottom: 3px solid transparent;
       max-width: 8rem;
-
+      /* height: 100%; */
+      /* transform: translateX(45%); */
       &.space {
         gap: 0.5rem;
       }

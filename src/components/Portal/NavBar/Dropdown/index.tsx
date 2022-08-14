@@ -11,31 +11,30 @@ interface DropdownProps {
 
 const Dropdown: React.FC<DropdownProps> = ({ subtitle }) => {
   const [activeMenu, setActiveMenu] = useState('main')
-  const [menuHeight, setMenuHeight] = useState<string | number>('10rem')
-  const dropdownRef = useRef(null) as any
+  // const [menuHeight, setMenuHeight] = useState<string | number>('11rem')
+  // const dropdownRef = useRef(null) as any
   const nodeRef = useRef(null)
 
-  useEffect(() => {
-    setMenuHeight(dropdownRef.current?.firstChild.offsetHeight)
+  // useEffect(() => {
+  //   setMenuHeight(dropdownRef.current?.firstChild.offsetHeight)
+  // }, [])
 
-  }, [])
-
-  function calcHeight(el: any) {
-    const height = el.offsetHeight
-    setMenuHeight(height)
-  }
+  // function calcHeight(el: any) {
+  //   const height = el.offsetHeight
+  //   setMenuHeight(height)
+  // }
 
   return (
-    <Container ref={dropdownRef} style={{ height: menuHeight }}>
+    <Container  >
       <CSSTransition
         in={activeMenu === 'main'}
         unmountOnExit
         timeout={500}
         classNames="menu-primary"
-        onEnter={calcHeight}
+
         nodeRef={nodeRef}
       >
-        <div className="menu">
+        <div className='menu'>
           {subtitle.map((sb, key) =>
             sb.link ? (
               <Link to={sb.link} key={key.toString()}>
@@ -59,7 +58,7 @@ const Dropdown: React.FC<DropdownProps> = ({ subtitle }) => {
         unmountOnExit
         timeout={500}
         classNames="menu-secondary"
-        onEnter={calcHeight}
+        // onEnter={calcHeight}
         nodeRef={nodeRef}
       >
         <div className="menu">
@@ -77,7 +76,7 @@ const Dropdown: React.FC<DropdownProps> = ({ subtitle }) => {
         unmountOnExit
         timeout={500}
         classNames="menu-secondary"
-        onEnter={calcHeight}
+        // onEnter={calcHeight}
         nodeRef={nodeRef}
       >
         <div className="menu">
