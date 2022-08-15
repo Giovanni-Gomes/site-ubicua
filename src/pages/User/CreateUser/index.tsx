@@ -55,9 +55,7 @@ const CreateUser: React.FC = () => {
             .required('Email Obrigatório')
             .email('Digite um email válido'),
           password: Yup.string().required('Senha Obrigatória'),
-          type_user_id: Yup.string().required(
-            'Tipo de usuário é obrigatório',
-          ),
+          type_user_id: Yup.string().required('Tipo de usuário é obrigatório'),
         })
 
         await schema.validate(data, {
@@ -128,7 +126,12 @@ const CreateUser: React.FC = () => {
               <span className="subtitle">preencha o formulário abaixo</span>
 
               <Input name="name" type="text" placeholder="Nome" icon={FiUser} />
-              <Input name="email" type="email" placeholder="E-mail" icon={FiMail} />
+              <Input
+                name="email"
+                type="email"
+                placeholder="E-mail"
+                icon={FiMail}
+              />
               <Input
                 name="password"
                 type="password"
@@ -137,7 +140,9 @@ const CreateUser: React.FC = () => {
               />
               {/* <Input name="type_user_id" type="text" placeholder='Tipo de Usuário' icon={FiLock} /> */}
               <Select name="type_user_id">
-                <option key="0" value="">Select Type User</option>
+                <option key="0" value="">
+                  Select Type User
+                </option>
                 {selectOptions.map((option) => (
                   <option key={option.value} value={option.value}>
                     {option.value}

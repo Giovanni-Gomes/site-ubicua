@@ -76,9 +76,13 @@ export async function deleteUser(id: string) {
 }
 
 export function useUsers(page?: number, take?: number, search?: string) {
-  return useQuery(['users', page, take, search], () => getUsers(page, take, search), {
-    staleTime: 1000 * 60 * 10, // 1000 * 60 * 10 10 minutes // 1000 * 60 * 60 * 12, // 12 hours,
-  })
+  return useQuery(
+    ['users', page, take, search],
+    () => getUsers(page, take, search),
+    {
+      staleTime: 1000 * 60 * 10, // 1000 * 60 * 10 10 minutes // 1000 * 60 * 60 * 12, // 12 hours,
+    },
+  )
 }
 
 export function useByIdUser(id: string) {

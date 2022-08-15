@@ -52,7 +52,7 @@ const UpdateUser: React.FC = () => {
   formRef.current?.setFieldValue('password', dataUser?.password)
   formRef.current?.setFieldValue('active', dataUser?.active)
   formRef.current?.setFieldValue('type_user_id', dataUser?.type_user)
-  //console.log('data: ', dataUser)
+  // console.log('data: ', dataUser)
   const handleSubmitCreateUser = useCallback(
     async (data: UpdateUserProps) => {
       try {
@@ -140,7 +140,12 @@ const UpdateUser: React.FC = () => {
           <FormInputsContainer>
             <Wrapper>
               <Input name="name" type="text" placeholder="name" icon={FiUser} />
-              <Input name="email" type="email" placeholder="e-mail" icon={FiMail} />
+              <Input
+                name="email"
+                type="email"
+                placeholder="e-mail"
+                icon={FiMail}
+              />
               <Input
                 name="password"
                 type="password"
@@ -148,7 +153,7 @@ const UpdateUser: React.FC = () => {
                 icon={FiLock}
               />
 
-              <Select name="type_user_id" >
+              <Select name="type_user_id">
                 {selectOptions.map((type) => (
                   <option key={type.value} value={type.value}>
                     {type.value}
@@ -171,7 +176,6 @@ const UpdateUser: React.FC = () => {
           </Footer>
         </Form>
       </Panel>
-
     </>
   )
 }

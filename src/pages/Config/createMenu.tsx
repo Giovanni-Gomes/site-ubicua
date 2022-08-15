@@ -58,7 +58,6 @@ const CreateMenu: React.FC = () => {
           title: 'Cadastro Realizado',
         })
         setIsSendingMenu(false)
-
       } catch (err) {
         if (err instanceof Yup.ValidationError) {
           const errors = getValidationErrors(err)
@@ -94,7 +93,9 @@ const CreateMenu: React.FC = () => {
       {/* <Input name="active" type="text" placeholder='Status' icon={GrStatusGood} /> */}
 
       <FormFooter>
-        <Button disabled={isSendingMenu} type="submit">{isSendingMenu ? <Loading /> : 'Save Register'}</Button>
+        <Button disabled={isSendingMenu} type="submit">
+          {isSendingMenu ? <Loading /> : 'Save Register'}
+        </Button>
         <CancelButton onClick={handleResetForm}>
           <FaTrash />
         </CancelButton>

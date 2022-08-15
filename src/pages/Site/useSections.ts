@@ -111,24 +111,22 @@ export async function getSectionThree(): Promise<GetSectionsResponse> {
   // if (data.length <= 0) {
   //   return null;
   // }
-  const sectionsThree = data.map(
-    (section: FindSectionThreeProps) => ({
-      id: section.id,
-      title: section.title,
-      description_one: section.description_one,
-      image_one: section.image_one ? section.image_one : 'not image',
-      created_at: new Date(section.created_at).toLocaleDateString('pt-BR', {
-        day: '2-digit',
-        month: '2-digit',
-        year: 'numeric',
-      }),
-      update_at: new Date(section.updated_at).toLocaleDateString('pt-BR', {
-        day: '2-digit',
-        month: '2-digit',
-        year: 'numeric',
-      }),
+  const sectionsThree = data.map((section: FindSectionThreeProps) => ({
+    id: section.id,
+    title: section.title,
+    description_one: section.description_one,
+    image_one: section.image_one ? section.image_one : 'not image',
+    created_at: new Date(section.created_at).toLocaleDateString('pt-BR', {
+      day: '2-digit',
+      month: '2-digit',
+      year: 'numeric',
     }),
-  )
+    update_at: new Date(section.updated_at).toLocaleDateString('pt-BR', {
+      day: '2-digit',
+      month: '2-digit',
+      year: 'numeric',
+    }),
+  }))
   return { sectionsThree }
 }
 // get data from section for
@@ -159,7 +157,7 @@ export async function getSectionFor(): Promise<GetSectionsResponse> {
 // get data from section five
 export async function getSectionFive(): Promise<GetSectionsResponse> {
   // | null
-  //const result = await api.get('/v1/sectionFive/')
+  // const result = await api.get('/v1/sectionFive/')
   const { data } = await api.get('/v1/sectionFive/')
   const sectionsFive = data.map((section: FindSectionFiveProps) => ({
     id: section.id,
@@ -179,7 +177,6 @@ export async function getSectionFive(): Promise<GetSectionsResponse> {
   }))
   return { sectionsFive }
 }
-
 
 // use sections One, Two, Three, For and Five
 export function useSectionOne() {
@@ -226,21 +223,21 @@ export async function deleteSectionFive(id: string) {
 }
 
 // if (data.length <= 0) {
-  //   return null;
-  // }
-  // const sectionFive = data[0].sectionFive.map((section: FindSectionFiveProps) => ({
-  //   id: section.id,
-  //   title: section.title,
-  //   description_one: section.description_one,
-  //   image_one: section.image_one ? section.image_one : 'not image',
-  //   created_at: new Date(section.created_at).toLocaleDateString('pt-BR', {
-  //     day: '2-digit',
-  //     month: '2-digit',
-  //     year: 'numeric',
-  //   }),
-  //   update_at: new Date(section.updated_at).toLocaleDateString('pt-BR', {
-  //     day: '2-digit',
-  //     month: '2-digit',
-  //     year: 'numeric',
-  //   }),
-  // }))
+//   return null;
+// }
+// const sectionFive = data[0].sectionFive.map((section: FindSectionFiveProps) => ({
+//   id: section.id,
+//   title: section.title,
+//   description_one: section.description_one,
+//   image_one: section.image_one ? section.image_one : 'not image',
+//   created_at: new Date(section.created_at).toLocaleDateString('pt-BR', {
+//     day: '2-digit',
+//     month: '2-digit',
+//     year: 'numeric',
+//   }),
+//   update_at: new Date(section.updated_at).toLocaleDateString('pt-BR', {
+//     day: '2-digit',
+//     month: '2-digit',
+//     year: 'numeric',
+//   }),
+// }))

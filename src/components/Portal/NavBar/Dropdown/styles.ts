@@ -17,7 +17,8 @@ export const Container = styled.div`
 
   > .menu {
     /* padding-bottom: 1.5rem; */
-    > a, div {
+    > a,
+    div {
       cursor: pointer;
       text-decoration: none;
       color: ${(props: any) => props.theme.colors['text-menu']};

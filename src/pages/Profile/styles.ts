@@ -68,7 +68,7 @@ export const AvatarInput = styled.div`
     position: absolute;
     width: 48px;
     height: 48px;
-    background: ${(props) => props.theme.colors.secondary};//#ff9000;
+    background: ${(props) => props.theme.colors.secondary}; //#ff9000;
     border-radius: 50px;
     right: 0;
     bottom: 0;

@@ -39,9 +39,7 @@ const DetailsUser: React.FC<UserDetailsProps> = ({ id }) => {
             <p>{data?.type_user_id ? data?.type_user_id : '---'}</p>
           </Detail>
         </Wrapper>
-
       </Content>
-
     </Container>
   )
 }

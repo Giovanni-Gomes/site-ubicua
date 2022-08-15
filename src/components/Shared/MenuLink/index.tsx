@@ -6,7 +6,11 @@ interface MenuLinkProps {
 }
 
 const MenuLink: React.FC<MenuLinkProps> = ({ title }) => {
-  return <ContainerA href={'#' + title.toLowerCase()}>{title.toUpperCase()}</ContainerA>
+  return (
+    <ContainerA href={'#' + title.toLowerCase()}>
+      {title.toUpperCase()}
+    </ContainerA>
+  )
 }
 
 export default MenuLink

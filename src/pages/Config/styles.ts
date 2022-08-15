@@ -141,7 +141,6 @@ export const CancelButton = styled.button`
   border-radius: 8px;
 `
 
-
 export const FormInputsContainer = styled.div`
   /* width: 100%; */
   display: flex;

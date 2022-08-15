@@ -52,34 +52,34 @@ const ListSectionTwo: React.FC = () => {
                 </tr>
               </thead>
               <tbody>
-                {
-                  data?.sectionsTwo.map((section: any) => (
-                    <tr key={section.id}>
-                      <td> <p style={{ fontWeight: 'bold' }}>{section.title}</p> </td>
-                      <td>{section.description_one}</td>
-                      <td>{section.image_one}</td>
-                      <td>{section.created_at}</td>
-                      <td>{section.update_at}</td>
-                      <td>
-                        <Actions>
-                          <RouterLink to={`/update-section/${section.id}`}>
-                            <PencilSimpleLine size={24} color="#9B5DE5" />
-                          </RouterLink>
-                          <PopContainer>
-
-                            <PopPanelAlert>
-                              <button
-                                onClick={() => deleteSectionTwo(section.id)} >
-                                <TrashSimple size={24} color="#c53030" />
-                              </button>
-
-                            </PopPanelAlert>
-
-                          </PopContainer>
-                        </Actions>
-                      </td>
-                    </tr>
-                  ))}
+                {data?.sectionsTwo.map((section: any) => (
+                  <tr key={section.id}>
+                    <td>
+                      {' '}
+                      <p style={{ fontWeight: 'bold' }}>{section.title}</p>{' '}
+                    </td>
+                    <td>{section.description_one}</td>
+                    <td>{section.image_one}</td>
+                    <td>{section.created_at}</td>
+                    <td>{section.update_at}</td>
+                    <td>
+                      <Actions>
+                        <RouterLink to={`/update-section/${section.id}`}>
+                          <PencilSimpleLine size={24} color="#9B5DE5" />
+                        </RouterLink>
+                        <PopContainer>
+                          <PopPanelAlert>
+                            <button
+                              onClick={() => deleteSectionTwo(section.id)}
+                            >
+                              <TrashSimple size={24} color="#c53030" />
+                            </button>
+                          </PopPanelAlert>
+                        </PopContainer>
+                      </Actions>
+                    </td>
+                  </tr>
+                ))}
               </tbody>
             </TableCustom>
           </>

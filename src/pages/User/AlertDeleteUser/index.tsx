@@ -11,7 +11,10 @@ interface AlertDeleteProps {
   actualUserName: string
 }
 
-const AlertDeleteUser: React.FC<AlertDeleteProps> = ({ id, actualUserName }) => {
+const AlertDeleteUser: React.FC<AlertDeleteProps> = ({
+  id,
+  actualUserName,
+}) => {
   const { addToast } = useToast()
 
   const removeUser = useMutation(
