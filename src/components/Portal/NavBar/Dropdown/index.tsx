@@ -25,16 +25,15 @@ const Dropdown: React.FC<DropdownProps> = ({ subtitle }) => {
   // }
 
   return (
-    <Container  >
+    <Container>
       <CSSTransition
         in={activeMenu === 'main'}
         unmountOnExit
         timeout={500}
         classNames="menu-primary"
-
         nodeRef={nodeRef}
       >
-        <div className='menu'>
+        <div className="menu">
           {subtitle.map((sb, key) =>
             sb.link ? (
               <Link to={sb.link} key={key.toString()}>
@@ -42,7 +41,13 @@ const Dropdown: React.FC<DropdownProps> = ({ subtitle }) => {
               </Link>
             ) : (
               <div
-                className={sb.name === 'Secções' ? 'space expand' : 'expand' || sb.name === 'Acompanhamentos' ? 'expand width' : 'expand'}
+                className={
+                  sb.name === 'Secções'
+                    ? 'space expand'
+                    : 'expand' || sb.name === 'Acompanhamentos'
+                    ? 'expand width'
+                    : 'expand'
+                }
                 key={key.toString()}
                 onClick={() => setActiveMenu(sb.name)}
               >

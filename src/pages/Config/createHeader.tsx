@@ -59,7 +59,6 @@ const CreateHeader: React.FC = () => {
           title: 'Cadastro Realizado!',
         })
         setIsSendingHeader(false)
-
       } catch (err) {
         if (err instanceof Yup.ValidationError) {
           const errors = getValidationErrors(err)
@@ -116,34 +115,30 @@ const CreateHeader: React.FC = () => {
             </button>
           </li>
         </ul>
-        {
-          (isActiveForm === 0 && (
-            <Form ref={formRef} onSubmit={handleSubmitCreateMenu}>
-              <h1>Cadastrar novo Logo</h1>
-              <span className="subtitle">preencha o formulário abaixo</span>
+        {(isActiveForm === 0 && (
+          <Form ref={formRef} onSubmit={handleSubmitCreateMenu}>
+            <h1>Cadastrar novo Logo</h1>
+            <span className="subtitle">preencha o formulário abaixo</span>
 
-              <Input
-                name="title"
-                type="text"
-                placeholder="Título"
-                icon={BiText}
-              />
-              <Input
-                name="logo"
-                type="text"
-                placeholder="Logo"
-                icon={FaImage}
-              />
+            <Input
+              name="title"
+              type="text"
+              placeholder="Título"
+              icon={BiText}
+            />
+            <Input name="logo" type="text" placeholder="Logo" icon={FaImage} />
 
-              <FormFooter>
-                <Button disabled={isSendingHeader} type="submit">{isSendingHeader ? <Loading /> : 'Save Register'}</Button>
-                <CancelButton onClick={handleResetForm}>
-                  <FaTrash />
-                </CancelButton>
-              </FormFooter>
-            </Form>
-          )) || (isActiveForm === 1 && <CreateMenu />)
-        }
+            <FormFooter>
+              <Button disabled={isSendingHeader} type="submit">
+                {isSendingHeader ? <Loading /> : 'Save Register'}
+              </Button>
+              <CancelButton onClick={handleResetForm}>
+                <FaTrash />
+              </CancelButton>
+            </FormFooter>
+          </Form>
+        )) ||
+          (isActiveForm === 1 && <CreateMenu />)}
       </Container>
     </>
   )

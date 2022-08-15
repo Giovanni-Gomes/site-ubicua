@@ -1,4 +1,10 @@
-import { useRef, useEffect, ReactNode, SelectHTMLAttributes, useState } from 'react'
+import {
+  useRef,
+  useEffect,
+  ReactNode,
+  SelectHTMLAttributes,
+  useState,
+} from 'react'
 
 import { useField } from '@unform/core'
 
@@ -17,7 +23,15 @@ interface SelectProps {
 
 type Props = SelectHTMLAttributes<HTMLSelectElement> & SelectProps
 
-function Select({ name, label, value, containerStyle = {}, children, icon: Icon, ...rest }: Props) {
+function Select({
+  name,
+  label,
+  value,
+  containerStyle = {},
+  children,
+  icon: Icon,
+  ...rest
+}: Props) {
   const selectRef = useRef<HTMLSelectElement>(null)
   const [isFocused, setIsFocused] = useState(false) // esta com foco no input
   const [isFilled, setIsFilled] = useState(false) // esta preenchido

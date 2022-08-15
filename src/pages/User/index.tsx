@@ -36,7 +36,6 @@ const User: React.FC = () => {
         importFile="/import"
         create="/create-user"
       >
-
         <div>{!isLoading && isFetching && <Loading />}</div>
 
         {isLoading ? (

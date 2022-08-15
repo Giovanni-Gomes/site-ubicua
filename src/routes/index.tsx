@@ -57,11 +57,46 @@ const RoutesPage: React.FC = () => {
             </PrivateRoute>
           }
         />
-        <Route path="/list-section-one" element={<PrivateRoute><ListSectionOne /></PrivateRoute>} />
-        <Route path="/list-section-two" element={<PrivateRoute><ListSectionTwo /></PrivateRoute>} />
-        <Route path="/list-section-three" element={<PrivateRoute><ListSectionThree /></PrivateRoute>} />
-        <Route path="/list-section-four" element={<PrivateRoute><ListSectionFour /></PrivateRoute>} />
-        <Route path="/list-section-five" element={<PrivateRoute><ListSectionFive /></PrivateRoute>} />
+        <Route
+          path="/list-section-one"
+          element={
+            <PrivateRoute>
+              <ListSectionOne />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/list-section-two"
+          element={
+            <PrivateRoute>
+              <ListSectionTwo />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/list-section-three"
+          element={
+            <PrivateRoute>
+              <ListSectionThree />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/list-section-four"
+          element={
+            <PrivateRoute>
+              <ListSectionFour />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/list-section-five"
+          element={
+            <PrivateRoute>
+              <ListSectionFive />
+            </PrivateRoute>
+          }
+        />
 
         {/* ROUTES CREATED */}
         <Route

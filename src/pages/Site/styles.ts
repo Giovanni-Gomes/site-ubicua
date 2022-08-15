@@ -282,5 +282,3 @@ export const CancelButton = styled.button`
 //     }
 //   }
 // `
-
-

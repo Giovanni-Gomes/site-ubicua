@@ -64,10 +64,10 @@ const Profile: React.FC = () => {
           email: data.email, // Object.Assing()
           ...(data.old_password
             ? {
-              old_password: data.old_password,
-              password: data.password,
-              password_confirmation: data.password_confirmation,
-            }
+                old_password: data.old_password,
+                password: data.password,
+                password_confirmation: data.password_confirmation,
+              }
             : {}),
         }
 
@@ -123,7 +123,6 @@ const Profile: React.FC = () => {
 
   return (
     <>
-
       <Container>
         {/* <header>
           <div>
@@ -141,16 +140,13 @@ const Profile: React.FC = () => {
             ref={formRef}
             onSubmit={handleSubmit}
           >
-
             <AvatarInput>
-
               <img src={user.avatar_url} alt={user.name} />
               <label htmlFor="avatar">
                 <FiCamera />
 
                 <input type="file" id="avatar" onChange={handleAvatarChange} />
               </label>
-
             </AvatarInput>
 
             <h1>Meu Perfil</h1>

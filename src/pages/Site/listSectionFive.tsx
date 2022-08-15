@@ -30,8 +30,6 @@ const ListSectionFive: React.FC = () => {
         importFile="/import"
         create="/create-section-five"
       >
-
-
         <div>{!isLoading && isFetching && <Loading />}</div>
 
         {isLoading ? (
@@ -56,7 +54,10 @@ const ListSectionFive: React.FC = () => {
               <tbody>
                 {data?.sectionsFive.map((section: any) => (
                   <tr key={section.id}>
-                    <td> <p style={{ fontWeight: 'bold' }}>{section.title}</p> </td>
+                    <td>
+                      {' '}
+                      <p style={{ fontWeight: 'bold' }}>{section.title}</p>{' '}
+                    </td>
                     <td>{section.description_one}</td>
                     <td>{section.image_one}</td>
                     <td>{section.created_at}</td>
@@ -67,15 +68,13 @@ const ListSectionFive: React.FC = () => {
                           <PencilSimpleLine size={24} color="#9B5DE5" />
                         </RouterLink>
                         <PopContainer>
-
                           <PopPanelAlert>
                             <button
-                              onClick={() => deleteSectionFive(section.id)} >
+                              onClick={() => deleteSectionFive(section.id)}
+                            >
                               <TrashSimple size={24} color="#c53030" />
                             </button>
-
                           </PopPanelAlert>
-
                         </PopContainer>
                       </Actions>
                     </td>

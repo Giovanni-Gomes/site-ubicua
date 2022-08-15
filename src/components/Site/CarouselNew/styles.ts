@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from 'styled-components'
 
 export const ContainerCarousel = styled.div`
   text-align: center;
@@ -13,4 +13,4 @@ export const ContainerCarousel = styled.div`
   max-width: 600px; */
   /* min-height: 490px;
   max-height: 500px; */
-`;
+`

@@ -1,14 +1,14 @@
 import styled from 'styled-components'
 
-import chartExample from '/assets/portal/chartexample.png'
+// import chartExample from '/assets/portal/chartexample.png'
 
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
   margin: 1rem 0rem 1rem 1rem;
-  padding: 1rem;
-  background: #ffffff;
+  padding: 1rem 0.5rem 0;
+  background: ${(props) => props.theme.colors.white};
 
   /* width: 100%; */
   /* @media (min-width: 1440px) {
@@ -49,7 +49,7 @@ export const ChartBackground = styled.div`
 
   min-width: 420px;
   height: 14rem;
-
-  /* background: url(${chartExample}) no-repeat center;
-  background-size: cover; */
 `
+
+/* background: url(${chartExample}) no-repeat center;
+background-size: cover; */

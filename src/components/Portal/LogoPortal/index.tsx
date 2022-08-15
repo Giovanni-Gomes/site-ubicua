@@ -8,7 +8,12 @@ const LogoPortal: React.FC = () => {
   return (
     <NavLink to="/dashboard" title="cloud dashboard">
       <FaCloud
-        style={{ color: '#00BBF9', position: 'absolute', top: '-0.25rem', left: '1rem' }}
+        style={{
+          color: '#00BBF9',
+          position: 'absolute',
+          top: '-0.25rem',
+          left: '1rem',
+        }}
         size={54}
       />
       <FaCloud
