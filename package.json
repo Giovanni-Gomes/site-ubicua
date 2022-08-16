@@ -25,11 +25,8 @@
     "lint": "eslint src --ext .ts,.tsx"
   },
   "dependencies": {
-    "@chakra-ui/react": "^2.2.3",
     "@emotion/react": "^11",
     "@emotion/styled": "^11",
-    "@giphy/js-fetch-api": "^4.2.0",
-    "@giphy/react-components": "^5.8.0",
     "@headlessui/react": "^1.6.1",
     "@types/react-router-dom": "^5.3.3",
     "@unform/core": "^2.1.6",
@@ -41,7 +38,6 @@
     "polished": "^4.2.2",
     "react": "^18.0.0",
     "react-async-hook": "^4.0.0",
-    "react-background-slider": "^2.0.0",
     "react-chatbot-kit": "^2.1.0",
     "react-dom": "^18.0.0",
     "react-google-charts": "^4.0.0",
