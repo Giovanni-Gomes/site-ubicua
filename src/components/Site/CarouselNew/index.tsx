@@ -1,5 +1,5 @@
 import React from 'react'
-import BackgroundSlider from 'react-background-slider'
+import Slider from '../Slider'
 import { ContainerCarousel } from './styles'
 // import Jump from "react-reveal/Jump";
 
@@ -19,7 +19,7 @@ const CarouselNew: React.FC = () => {
         </Jump> */}
       </div>
       <div>
-        <BackgroundSlider images={images} duration={10} transition={2} />
+        <Slider images={images} duration={10} transition={2} titles={titles} />
       </div>
     </ContainerCarousel>
   )

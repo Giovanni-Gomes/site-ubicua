@@ -19,7 +19,7 @@ export const Container = styled.div<ContainerProps>`
   border-radius: 8px;
   padding: 1rem;
   width: 100%;
-  border: 2px solid var(--color-primary);
+  border: 2px solid transparent;
   color: ${(props) => props.theme.colors.primary}; //#666360;
   display: flex;
   align-items: center;
