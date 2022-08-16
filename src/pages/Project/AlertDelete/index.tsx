@@ -1,11 +1,11 @@
 import { AxiosError } from 'axios'
 import React from 'react'
+import { FaTrash } from 'react-icons/fa'
 import { useMutation } from 'react-query'
 import { useToast } from '../../../components/hooks/provider/toast'
-import Button from '../../../components/Shared/Button'
 import api from '../../../services/api'
 import { queryClient } from '../../../services/queryClient'
-import { ButtonAlertClose, Container, Footer } from './styles'
+import { ButtonAlertClose, ButtonDelete, Container, Footer } from './styles'
 
 interface AlertDeleteProps {
   id: string
@@ -53,7 +53,7 @@ const AlertDelete: React.FC<AlertDeleteProps> = ({ id, actualProjectName }) => {
       <p>Tem certeza que deseja excluir este registro?</p>
       <span>{actualProjectName}</span>
       <Footer>
-        <Button onClick={() => handleRemoveTag(String(id))}>Excluir</Button>
+        <ButtonDelete onClick={() => handleRemoveTag(String(id))}><FaTrash /> Excluir</ButtonDelete>
         <ButtonAlertClose>Cancelar</ButtonAlertClose>
       </Footer>
     </Container>

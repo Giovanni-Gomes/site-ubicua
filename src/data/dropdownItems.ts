@@ -67,8 +67,8 @@ export const dropdownItems = [
         link: '/contract',
       },
       {
-        name: 'Empresas',
-        link: '/create-user',
+        name: 'Clientes',
+        link: '/client',
       },
       {
         name: 'Portifólio',

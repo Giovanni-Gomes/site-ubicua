@@ -3,30 +3,31 @@ import React from 'react'
 import { FaTrash } from 'react-icons/fa'
 import { useMutation } from 'react-query'
 import { useToast } from '../../../components/hooks/provider/toast'
+import Button from '../../../components/Shared/Button'
 import api from '../../../services/api'
 import { queryClient } from '../../../services/queryClient'
-import { ButtonAlertClose, ButtonDelete, Container, Footer } from './styles'
+import { ButtonAlertClose, Container, ButtonDelete, Footer } from './styles'
 
-interface AlertDeleteProps {
+interface AlertDeleteClientProps {
   id: string
-  actualContractName: string
+  actualClientName: string
 }
 
-const AlertDeleteContract: React.FC<AlertDeleteProps> = ({
+const AlertDeleteClient: React.FC<AlertDeleteClientProps> = ({
   id,
-  actualContractName,
+  actualClientName,
 }) => {
   const { addToast } = useToast()
 
-  const removeContract = useMutation(
+  const removeClient = useMutation(
     async (id: string) => {
-      const response = await api.delete(`/v1/contract/delete/${id}`)
+      const response = await api.delete(`/v1/client/delete/${id}`)
 
       return response.data
     },
     {
       onSuccess: () => {
-        queryClient.invalidateQueries('contracts')
+        queryClient.invalidateQueries('clients')
       },
       onError: (error: AxiosError) => {
         addToast({
@@ -40,7 +41,7 @@ const AlertDeleteContract: React.FC<AlertDeleteProps> = ({
 
   async function handleRemoveTag(id: string) {
     try {
-      await removeContract.mutateAsync(id)
+      await removeClient.mutateAsync(id)
 
       addToast({
         type: 'success',
@@ -54,7 +55,7 @@ const AlertDeleteContract: React.FC<AlertDeleteProps> = ({
   return (
     <Container>
       <p>Tem certeza que deseja excluir este registro?</p>
-      <span>{actualContractName}</span>
+      <span>{actualClientName}</span>
       <Footer>
         <ButtonDelete onClick={() => handleRemoveTag(String(id))}><FaTrash /> Excluir</ButtonDelete>
         <ButtonAlertClose>Cancelar</ButtonAlertClose>
@@ -63,4 +64,4 @@ const AlertDeleteContract: React.FC<AlertDeleteProps> = ({
   )
 }
 
-export default AlertDeleteContract
+export default AlertDeleteClient

@@ -53,7 +53,7 @@ export const menuItems = [
         title: 'Tipos de Serviços',
       },
       {
-        title: 'Empresas',
+        title: 'Clientes',
       },
       {
         title: 'Portifólio',
