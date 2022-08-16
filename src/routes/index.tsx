@@ -28,6 +28,11 @@ import ListSectionFive from '../pages/Site/listSectionFive'
 import ListSectionThree from '../pages/Site/listSectionThree'
 import ListSectionTwo from '../pages/Site/listSectionTwo'
 import ListSectionFour from '../pages/Site/listSectionFour'
+import CreateContract from '../pages/Contract/CreateContract'
+import UpdateContract from '../pages/Contract/UpdateContract'
+import CreateClient from '../pages/Client/CreateClient'
+import Client from '../pages/Client'
+import UpdateClient from '../pages/Client/UpdateClient'
 
 const RoutesPage: React.FC = () => {
   return (
@@ -182,6 +187,39 @@ const RoutesPage: React.FC = () => {
           }
         />
         <Route
+          path="/create-contract"
+          element={
+            <PrivateRoute>
+              <CreateContract />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/update-contract/:id"
+          element={
+            <PrivateRoute>
+              <UpdateContract />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/create-client"
+          element={
+            <PrivateRoute>
+              <CreateClient />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/update-client/:id"
+          element={
+            <PrivateRoute>
+              <UpdateClient />
+            </PrivateRoute>
+          }
+        />
+
+        <Route
           path="/update-user/:id"
           element={
             <PrivateRoute>
@@ -202,6 +240,14 @@ const RoutesPage: React.FC = () => {
           element={
             <PrivateRoute>
               <Contract />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/client"
+          element={
+            <PrivateRoute>
+              <Client />
             </PrivateRoute>
           }
         />
