@@ -10,6 +10,7 @@ export type ContractProps = {
   date_end: string
   negotiated_value: number
   phase_contract: string
+  progress?: string
   user: {
     id?: string
     name?: string

@@ -47,7 +47,7 @@ export const HeaderPortal = styled.div`
   }*/
 
   > div.wrapper {
-    margin-left: 30px;
+    margin-left: 1.80rem;
     width: 100%;
     display: flex;
     justify-content: space-between;

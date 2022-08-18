@@ -25,16 +25,16 @@ import { useStatus } from '../../Config/useStatus'
 import { useContract } from '../useContracts'
 import { Div, Footer, Wrapper } from './styles'
 
-interface CreateContractProps {
+interface UpdateContractProps {
   id: string
   name: string
   description: string
   active?: boolean
-  date_start: string
-  date_end: string
-  phase_contract: string
+  date_start: Date
+  date_end: Date
+  progress: string
   negotiated_value: string
-  real_cost: string
+  phase_contract: string
   user_id: string
 }
 
@@ -54,37 +54,29 @@ const UpdateContract: React.FC = () => {
   const selectOptionsUsers = data?.users
   const selectOptionsStatus = dataStatus?.status
 
+
   formRef.current?.setFieldValue('name', dataContract?.name)
   formRef.current?.setFieldValue('description', dataContract?.description)
-  formRef.current?.setFieldValue('phase_contract', dataContract?.phase_contract)
   formRef.current?.setFieldValue('date_start', dataContract?.date_start)
   formRef.current?.setFieldValue('date_end', dataContract?.date_end)
-  formRef.current?.setFieldValue(
-    'negotiated_value',
-    dataContract?.negotiated_value,
-  )
+  formRef.current?.setFieldValue('progress', dataContract?.progress)
+  formRef.current?.setFieldValue('negotiated_value', dataContract?.negotiated_value)
+  formRef.current?.setFieldValue('phase_contract', dataContract?.phase_contract)
   formRef.current?.setFieldValue('user_id', dataContract?.user.id)
-  console.log('status name: ', dataContract)
-  console.log('user name: ', dataContract?.user.id)
-  console.log('data: ', dataContract)
+
   const handleSubmitCreateContract = useCallback(
-    async (data: CreateContractProps) => {
+    async (data: UpdateContractProps) => {
       try {
         formRef.current?.setErrors({})
 
         const schema = Yup.object().shape({
           id: Yup.string(),
-          name: Yup.string().required('Nome do Projeto é Obrigatório'),
-          description: Yup.string().required('Descrição é obrigatório'),
-          date_start: Yup.string(), // Yup.date().required('Data é obrigatório'),
-          date_end: Yup.string(), // Yup.date().required('Data é obrigatório'),
-          phase_contract: Yup.string().required(
-            'Fase do contrato é obrigatório',
-          ),
-          negotiated_value: Yup.string().required(
-            'Valor negociado é obrigatório',
-          ),
-          real_cost: Yup.string().required('Custo real é obrigatório'),
+          name: Yup.string().required('Contract name is required'),
+          description: Yup.string().required('Description is required'),
+          date_start: Yup.string(),
+          date_end: Yup.string(),
+          negotiated_value: Yup.string().required('Negotiated value is required'),
+          phase_contract: Yup.string().required('Phase cost is required'),
           user_id: Yup.string().required('Usuário é obrigatório'),
         })
 
@@ -99,9 +91,9 @@ const UpdateContract: React.FC = () => {
           active: data.active,
           date_start: data.date_start,
           date_end: data.date_end,
-          phase_contract: data.phase_contract,
+          progress: data.progress,
           negotiated_value: data.negotiated_value,
-          real_cost: data.real_cost,
+          phase_contract: data.phase_contract,
           user_id: data.user_id,
         }
 
@@ -137,6 +129,15 @@ const UpdateContract: React.FC = () => {
     formRef.current?.reset()
   }
 
+  const selectOptions = [
+    { value: 'INICIAL' },
+    { value: 'NEGOCIACAO' },
+    { value: 'CONCLUIDO' },
+    { value: 'FECHADO' },
+    { value: 'PERDIDO' },
+    { value: 'ANDAMENTO' },
+  ]
+
   return (
     <>
       <Panel
@@ -155,30 +156,18 @@ const UpdateContract: React.FC = () => {
                 id="name"
                 type="text"
                 name="name"
-                placeholder="Number Project"
+                placeholder="Number Contract"
               />
 
-              <Input
-                id="progress"
-                type="text"
-                name="progress"
-                placeholder="Progress"
-              />
-
-              <Select name="phase_contract">
-                <option key={0}>Select a phase</option>
-                <option key={1} value="negociação">
-                  negociação
+              <Select name="phase_contract" defaultValue={dataContract?.phase_contract}>
+                <option key="0">
+                  Select phase contract
                 </option>
-                <option key={2} value="descartado">
-                  descartado
-                </option>
-                <option key={3} value="cliente conquistado">
-                  cliente conquistado
-                </option>
-                <option key={3} value="novo contato">
-                  novo contato
-                </option>
+                {selectOptions.map((option) => (
+                  <option key={option.value} value={option.value}>
+                    {option.value}
+                  </option>
+                ))}
               </Select>
 
               <Input
@@ -186,7 +175,7 @@ const UpdateContract: React.FC = () => {
                 min="01/01/2021"
                 max="31/12/2030"
                 name="date_start"
-                label="Data Início:"
+                label="Date Start:"
               />
               {/* <Radio name="active" options={radioOptions} /> */}
             </Wrapper>
@@ -195,13 +184,12 @@ const UpdateContract: React.FC = () => {
               <Input
                 type="number"
                 name="negotiated_value"
-                placeholder="Valor Negociado"
+                placeholder="Negotiated Value"
+                step="500"
               />
 
-              <Input type="number" name="real_cost" placeholder="Custo Real" />
-
               <Select name="user_id" defaultValue={dataContract?.user.id}>
-                <option key={0} value="Select a user">
+                <option key={0} >
                   Select a user
                 </option>
                 {selectOptionsUsers?.map((option) => (
