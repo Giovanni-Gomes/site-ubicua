@@ -72,8 +72,8 @@ const Contract: React.FC = () => {
                   <th>End</th>
                   <th>Phase</th>
                   <th>R$ VN</th>
-                  <th>Resp</th>
-                  <th>Ativo</th>
+                  <th>Owner</th>
+                  <th>Active</th>
                   <th>#</th>
                 </tr>
               </thead>
@@ -102,7 +102,7 @@ const Contract: React.FC = () => {
                     <td>
                       <Actions>
                         <RouterLink to={`/update-contract/${contract.id}`}>
-                          <PencilSimpleLine size={24} />
+                          <PencilSimpleLine size={24} color="#9B5DE5" />
                         </RouterLink>
 
                         <PopContainer>

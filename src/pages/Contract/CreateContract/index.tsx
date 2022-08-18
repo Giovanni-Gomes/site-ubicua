@@ -32,8 +32,7 @@ interface CreateContractProps {
   date_end: Date
   progress: string
   negotiated_value: string
-  real_cost: string
-  status_id: string
+  phase_contract: string
   user_id: string
 }
 
@@ -56,15 +55,12 @@ const CreateContract: React.FC = () => {
         formRef.current?.setErrors({})
 
         const schema = Yup.object().shape({
-          name: Yup.string().required('Nome do Projeto é Obrigatório'),
-          description: Yup.string().required('Descrição é obrigatório'),
-          date_start: Yup.string(), // Yup.date().required('Data é obrigatório'),
-          date_end: Yup.string(), // Yup.date().required('Data é obrigatório'),
-          negotiated_value: Yup.string().required(
-            'Valor negociado é obrigatório',
-          ),
-          real_cost: Yup.string().required('Custo real é obrigatório'),
-          phase_contract: Yup.string().required('Status é obrigatório'),
+          name: Yup.string().required('Contract name is required'),
+          description: Yup.string().required('Description is required'),
+          date_start: Yup.string(),
+          date_end: Yup.string(),
+          negotiated_value: Yup.string().required('Negotiated value is required'),
+          phase_contract: Yup.string().required('Phase cost is required'),
           user_id: Yup.string().required('Usuário é obrigatório'),
         })
 
@@ -80,8 +76,7 @@ const CreateContract: React.FC = () => {
           date_end: data.date_end,
           progress: data.progress,
           negotiated_value: data.negotiated_value,
-          real_cost: data.real_cost,
-          status_id: data.status_id,
+          phase_contract: data.phase_contract,
           user_id: data.user_id,
         }
 
@@ -119,6 +114,14 @@ const CreateContract: React.FC = () => {
     formRef.current?.reset()
   }
 
+  const selectOptions = [
+    { value: 'INICIAL' },
+    { value: 'NEGOCIACAO' },
+    { value: 'CONCLUIDO' },
+    { value: 'FECHADO' },
+    { value: 'PERDIDO' },
+    { value: 'ANDAMENTO' },
+  ]
   return (
     <>
       <Panel title="Create a new Contract" back="/contract">
@@ -144,19 +147,14 @@ const CreateContract: React.FC = () => {
               />
 
               <Select name="phase_contract">
-                <option key={0}>Select a phase</option>
-                <option key={1} value="negociação">
-                  negociação
+                <option key="0" value="">
+                  Select phase contract
                 </option>
-                <option key={2} value="descartado">
-                  descartado
-                </option>
-                <option key={3} value="cliente conquistado">
-                  cliente conquistado
-                </option>
-                <option key={3} value="novo contato">
-                  novo contato
-                </option>
+                {selectOptions.map((option) => (
+                  <option key={option.value} value={option.value}>
+                    {option.value}
+                  </option>
+                ))}
               </Select>
 
               <Input

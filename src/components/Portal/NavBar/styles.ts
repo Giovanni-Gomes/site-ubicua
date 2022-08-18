@@ -7,6 +7,8 @@ export const Container = styled.nav`
   --nav-size: 1rem;
   --border-radius: 8px;
   --speed: 100ms; //300ms;
+  padding-left: 4rem;
+  margin-bottom: 0.5rem;
   // height: var(--nav-size);
   /* z-index: 10; */
 
@@ -27,7 +29,8 @@ export const Container = styled.nav`
     /* cursor: pointer; */
     /* padding-top: 0.2rem; */
     margin-top: 0.3rem;
-    margin-left: 4rem;
+    padding: 0rem 0.5rem;
+    /* margin-left: 4rem; */
     /* padding-left:4rem; */
     /* flex-direction: row; */
     display: flex;
@@ -44,10 +47,27 @@ export const Container = styled.nav`
     flex-direction: row;
     align-items: center;
 
-    @media (min-width: 1440px) {
+
+
+    @media (min-width: 1720px) {
       overflow-x: scroll;
+      scrollbar-color: rebeccapurple transparent;
+      background: transparent;
+      /* height: 4rem; */
+      /* background: red; */
     }
+
+    /* .scroller {
+      width: 1440px;
+      height: 100px;
+      overflow-y: scroll;
+      scrollbar-color: rebeccapurple green;
+    } */
+
+
     ::-webkit-scrollbar {
+      overflow-x: scroll;
+      scrollbar-color: rebeccapurple ${(props: any) => props.theme.colors.secondary};
       height: 0.4rem;
     }
     ::-webkit-scrollbar-track {
