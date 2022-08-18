@@ -47,10 +47,10 @@ export const Container = styled.div`
     /* --padding-top: 2rem;
     --heading-font-size: 41px;
     --padding-bottom: 8rem;
-
     flex: 1;
     background-size: cover;
     text-align: center; */
+    height: 100vh;
     p {
       /* text-align: justify; */
       padding-left: 0.5rem;
@@ -91,28 +91,28 @@ export const Container = styled.div`
   z-index: 2;
 `
 
-export const Content = styled.div`
-  /* max-width: 1440px; */
-  margin: 0 auto;
-  display: flex;
-  align-items: center;
-  position: relative;
-  header p {
-    margin: 1.8rem 0;
-    font-size: 20px;
-    color: ${(props) => props.theme.colors['text-menu']};
-  }
-  > header h2 {
-    animation: ${appearFromRight} 2s;
-    font-size: var(--heading-font-size);
-    color: ${(props) => props.theme.colors.white};
-    text-shadow: black 0.1rem 0.1em 2px;
-    //text-shadow: black 0.1em 0.1em 0.2em;
-    padding: 2rem 0 2rem 0;
-    max-width: 100rem;
-  }
-  padding: 0 0 6rem 4rem;
-`
+// export const Content = styled.div`
+//   /* max-width: 1440px; */
+//   margin: 0 auto;
+//   display: flex;
+//   align-items: center;
+//   position: relative;
+//   div p {
+//     margin: 1.8rem 0;
+//     font-size: 20px;
+//     color: ${(props) => props.theme.colors['text-menu']};
+//   }
+//   > div h2 {
+//     animation: ${appearFromRight} 2s;
+//     font-size: var(--heading-font-size);
+//     color: ${(props) => props.theme.colors.white};
+//     text-shadow: black 0.1rem 0.1em 2px;
+//     //text-shadow: black 0.1em 0.1em 0.2em;
+//     padding: 2rem 0 2rem 0;
+//     max-width: 100rem;
+//   }
+//   padding: 0 0 6rem 4rem;
+// `
 export const Wrapper = styled.div`
   max-width: 20rem;
   display: flex;

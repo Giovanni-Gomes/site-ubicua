@@ -1,9 +1,9 @@
-import styled from 'styled-components'
+import styled, { keyframes } from 'styled-components'
 
 export const ContainerCarousel = styled.div`
   text-align: center;
   overflow: hidden;
-  color: ${(props) => props.theme.colors.primary};
+  /* color: ${(props) => props.theme.colors.primary}; */
   /* font-family: sans-serif; */
   /* background-color: black; */
 

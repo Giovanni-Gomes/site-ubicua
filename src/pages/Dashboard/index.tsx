@@ -16,12 +16,20 @@ const Dashboard: React.FC = () => {
   const { data: dataDashboard } = useDashboard()
   const { data: dataActiveRegistries } = useActiveRegistries()
 
-  const graphCard = [
+  const activeGraphCard = [
     ['Data', 'Total Numbers of Active Data'],
     ['Projects', dataActiveRegistries?.activeProjects],
     ['Users', dataActiveRegistries?.activeUsers],
     ['Contracts', dataActiveRegistries?.activeContracts],
   ]
+
+  const contractGraphCard = [
+    ['Data', 'Total Numbers of Active Data'],
+    ['Projects', dataActiveRegistries?.activeProjects],
+    ['Users', dataActiveRegistries?.activeUsers],
+    ['Contracts', dataActiveRegistries?.activeContracts],
+  ]
+
   return (
     <>
       <Container>
@@ -63,7 +71,7 @@ const Dashboard: React.FC = () => {
           element={
             <>
               <WelcomeDash />
-              <ChartDash graph={graphCard} />
+              <ChartDash graph={activeGraphCard} />
             </>
           }
           className="WrapperCard"

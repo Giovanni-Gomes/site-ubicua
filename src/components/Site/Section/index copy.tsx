@@ -4,7 +4,7 @@ import sectionItems from '../../../data/sectionItems'
 import CarouselNew from '../CarouselNew'
 
 import Header from '../Header'
-import { Container, Wrapper } from './styles' /* Background */
+import { Container, Content, Wrapper } from './styles' /* Background */
 
 interface Props {
   variant: 'blue' | 'beige' | 'white' | 'black'
@@ -37,6 +37,20 @@ const Section: React.FC<Props> = ({
     <Container className={variant}>
       <Header />
       <CarouselNew />
+
+      <Content>
+        <header>
+          {/* <Background /> {sectionTitle} */}
+          <h2>Ubicua Cloud Soluções Tecnologicas</h2>
+          <p>
+            <button>
+              <FaRegBuilding size={16} /> Saiba mais
+            </button>
+          </p>
+          {/* {description} */}
+        </header>
+        {element === null ? null : element}
+      </Content>
     </Container>
   )
 }

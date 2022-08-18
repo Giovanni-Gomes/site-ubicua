@@ -72,15 +72,13 @@ const Contract: React.FC = () => {
                   <th>End</th>
                   <th>Phase</th>
                   <th>R$ VN</th>
-                  <th>R$ CR</th>
-                  <th>Status</th>
                   <th>Resp</th>
                   <th>Ativo</th>
                   <th>#</th>
                 </tr>
               </thead>
               <tbody>
-                {data?.contracts.map((contract: any) => (
+                {data?.contracts.map(contract => (
                   <tr key={contract.id}>
                     <td>
                       <PopContainer>
@@ -97,16 +95,10 @@ const Contract: React.FC = () => {
 
                     <td>{contract.date_start}</td>
                     <td>{contract.date_end}</td>
-                    <td>{contract.progress}</td>
+                    <td>{contract.phase_contract}</td>
                     <td>{contract.negotiated_value}</td>
-                    <td>{contract.real_cost}</td>
-                    <td>
-                      <Status statusColor={contract.status.name}>
-                        {contract.status.name}
-                      </Status>
-                    </td>
-                    <td>{contract.active}</td>
                     <td>{contract.user.name}</td>
+                    <td>{contract.active}</td>
                     <td>
                       <Actions>
                         <RouterLink to={`/update-contract/${contract.id}`}>

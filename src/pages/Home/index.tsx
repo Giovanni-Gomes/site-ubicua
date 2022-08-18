@@ -105,7 +105,7 @@ const Home: React.FC = () => {
         />
       ))}
 
-      {sectionFive.map((st, key) => (
+      {/* {sectionFive.map((st, key) => (
         <Section
           key={key}
           variant="white"
@@ -113,7 +113,7 @@ const Home: React.FC = () => {
           description={st.description_one}
           element={items}
         />
-      ))}
+      ))} */}
 
       <SectionRight
         variant="black"
