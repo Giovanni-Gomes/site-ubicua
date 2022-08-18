@@ -11,7 +11,7 @@ const ChartDash: React.FC<ChartDashProps> = ({ graph }) => {
     <Container>
       <p style={{ color: 'black' }}>Active Registries</p>
 
-      <Chart chartType="PieChart" data={graph} width="100%" height="100%" />
+      <Chart chartType="Bar" data={graph} width="100%" height="100%" />
     </Container>
   )
 }

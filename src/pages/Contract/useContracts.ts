@@ -19,7 +19,7 @@ export type ContractProps = {
 
 export type GetContractResponse = {
   totalPage: number
-  contracts: ContractProps[] | any
+  contracts: ContractProps[]
 }
 
 export type GetOneContractResponse = {
@@ -69,9 +69,12 @@ export async function getContracts(
       style: 'currency',
       currency: 'BRL',
     }).format(contract.negotiated_value),
-    user: contract.user,
+    user: {
+      id: contract.user.id,
+      name: contract.user.name
+    },
   })) // .slice(pageStart, pageEnd);
-  // console.log(Contracts);
+  console.log(contracts);
   return {
     contracts,
     totalPage,
