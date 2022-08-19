@@ -1,16 +1,16 @@
 import React from 'react'
 
 interface FlagProps {
-  img?: string
+  image?: string
   isSelected?: string
   props?: React.ReactNode
 }
 
-const I18nFlag: React.FC = ({ img, isSelected, ...props }: FlagProps) => {
+const I18nFlag: React.FC = ({ image, isSelected, ...props }: FlagProps) => {
   return (
     <img
       alt="flag"
-      src={img}
+      src={image}
       className={isSelected ? 'flag selected' : 'flag'}
       {...props}
     />

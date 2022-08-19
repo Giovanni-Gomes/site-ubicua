@@ -16,7 +16,7 @@ import {
 
 interface PanelProps {
   children?: ReactNode
-  title?: string
+  title?: ReactNode
   back?: string
   next?: string
   search?: boolean

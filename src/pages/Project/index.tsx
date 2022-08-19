@@ -19,6 +19,7 @@ import {
 import { Status, TableCustom } from '../../components/Portal/Table/styles'
 import { Loading } from '../../components/Site/WidgetForm/Loading'
 import Header from '../../components/Portal/Header'
+import { Translator } from '../../components/Portal/I18n/Translator'
 
 const Project: React.FC = () => {
   const [page, setPage] = useState(1)
@@ -46,8 +47,9 @@ const Project: React.FC = () => {
 
   return (
     <>
+
       <Panel
-        title="List Projects"
+        title={<Translator path="project.title" />}
         back="/dashboard"
         next="/dashboard"
         search={true}
@@ -55,23 +57,6 @@ const Project: React.FC = () => {
         importFile="/import"
         create="/create-project"
       >
-        {/* <Form ref={formRef} onSubmit={handleSearchContacts}> */}
-        {/* <Input
-
-            id='search'
-            type='text'
-            name="search"
-            placeholder="Buscar contatos"
-            onSubmit={(event: ChangeEvent<HTMLInputElement>) => handleSearchContracts(event?.target.value)}
-          /> */}
-        {/* <InputChakra
-            id='search'
-            type='text'
-            name="search"
-          />
-
-        </Form> */}
-
         <div>{!isLoading && isFetching && <Loading />}</div>
 
         {isLoading ? (
@@ -85,15 +70,15 @@ const Project: React.FC = () => {
             <TableCustom color="black">
               <thead>
                 <tr>
-                  <th>Nome</th>
-                  <th>Início</th>
-                  <th>Fim</th>
+                  <th><Translator path="project.tr.th_one" /></th>
+                  <th><Translator path="project.tr.th_two" /></th>
+                  <th><Translator path="project.tr.th_three" /></th>
                   <th>%</th>
-                  <th>R$ VN</th>
-                  <th>R$ CR</th>
-                  <th>Status</th>
-                  <th>Resp</th>
-                  <th>Ativo</th>
+                  <th>$ VN</th>
+                  <th>$ CR</th>
+                  <th><Translator path="project.tr.th_four" /></th>
+                  <th><Translator path="project.tr.th_five" /></th>
+                  <th><Translator path="project.tr.th_six" /></th>
                   <th>#</th>
                 </tr>
               </thead>

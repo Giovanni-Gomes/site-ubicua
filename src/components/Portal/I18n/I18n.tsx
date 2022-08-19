@@ -23,14 +23,14 @@ const I18nComponent: React.FC = () => {
     <ContainerFlags>
       <SelectFlag>
         <I18nFlag
-          img={BrasilFlag}
+          image={BrasilFlag}
           isSelected={selectedLanguage === 'pt-BR'} // Verifica o idioma escolhido
           onClick={() => handleChangeLanguage('pt-BR')} // Troca o idioma para pt-BR
         />
       </SelectFlag>
       <SelectFlag>
         <I18nFlag
-          img={EuaFlag}
+          image={EuaFlag}
           isSelected={selectedLanguage === 'en-US'} // Verifica o idioma escolhido
           onClick={() => handleChangeLanguage('en-US')} // Troca o idioma para en-US
         />
