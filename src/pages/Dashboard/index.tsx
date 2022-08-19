@@ -10,6 +10,8 @@ import WelcomeDash from '../../components/Portal/WelcomeDash'
 import { Container } from './styles'
 import { useProjects } from '../Project/useProjects'
 import { useActiveRegistries, useDashboard } from './useDashboard'
+import { Translator } from '../../components/Portal/I18n/Translator'
+import I18nComponent from '../../components/Portal/I18n/I18n'
 
 const Dashboard: React.FC = () => {
   const { data, isLoading, isFetching, error } = useProjects(0, 0, '')
@@ -66,6 +68,7 @@ const Dashboard: React.FC = () => {
           }
           className="card-section"
         />
+        <Translator path="home.message" />
 
         <DashboardSection
           element={

@@ -10,6 +10,7 @@ import { Container, HeaderPortal } from './styles'
 import LogoPortal from '../LogoPortal'
 import { lightTheme } from '../../../styles/theme/light'
 import { darkTheme } from '../../../styles/theme/dark'
+import I18nComponent from '../I18n/I18n'
 
 const Header: React.FC = () => {
   // const [darkMode, setDarkMode] = useDarkMode()
@@ -30,7 +31,9 @@ const Header: React.FC = () => {
 
           <div className="wrapper">
             <DropdownMenu />
+
             <Toggle darkMode={darkMode} setDarkMode={setDarkMode} />
+
             {/* <button onClick={() => setDarkMode}>{darkMode ? '☀' : '☾'}</button> */}
           </div>
           <Avatar />
