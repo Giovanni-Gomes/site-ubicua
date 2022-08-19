@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { ReactNode } from 'react'
 
 import {
   Container,
@@ -12,7 +12,7 @@ import {
 interface CardProps {
   variant: 'info' | 'success' | 'danger' | 'black' | 'white'
   title?: string
-  subtitle?: string
+  subtitle?: ReactNode
   description?: any
 }
 

@@ -1,8 +1,14 @@
 export default {
   translations: {
     home: {
-      message: 'Olá Mundo!',
+      icon: '😁 ',
+      message: 'Seja bem vindo ',
+      DashTitle: 'Informação de Contratos',
       chartDashTitle: 'Registros Ativos',
+      totalProjects: 'Total de Projetos',
+      totalUsers: 'Total de Usuários',
+      totalContracts: 'Total de Contratos',
+      totalFeedbacks: 'Total de Feedbacks',
     },
     project: {
       title: 'Lista de Projetos',
