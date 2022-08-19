@@ -1,4 +1,5 @@
 // import React from "react";
+import I18nComponent from '../../Portal/I18n/I18n'
 import { Container, Input, ToggleControl } from './styles'
 
 const Toggle = (props: any) => (
@@ -18,6 +19,8 @@ const Toggle = (props: any) => (
     <button type="button" onClick={() => props.setDarkMode(true)}>
       ☾
     </button>
+
+    <I18nComponent />
   </Container>
 )
 

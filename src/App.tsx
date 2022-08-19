@@ -13,6 +13,7 @@ import { useState } from 'react'
 import useDarkMode from './components/hooks/useDarkmode'
 import Toggle from './components/Shared/Toggle'
 import PortalStyles from './styles/PortalStyles'
+import './i18n'
 
 export function App() {
   // const [theme, setTheme] = useState(lightTheme)
