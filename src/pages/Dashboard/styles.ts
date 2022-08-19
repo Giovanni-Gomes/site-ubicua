@@ -5,10 +5,16 @@ export const Container = styled.div`
   /* width: 1440px;
   height: 1877px; */
 
+
   max-width: 1440px;
-  margin: 0 auto;
+  margin: 4rem auto 0;
   height: 100%;
   /* width: 100%; */
+  > p {
+    text-align: center;
+    font-size: 1.5rem;
+    color: ${(props) => props.theme.colors['text-color']};
+  }
 `
 
 // export const TableContainer = styled.section`

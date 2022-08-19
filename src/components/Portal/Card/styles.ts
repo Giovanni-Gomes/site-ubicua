@@ -3,8 +3,9 @@ import styled from 'styled-components'
 export const Container = styled.div`
   /* width: 309px; */
   min-width: 18.445rem;
-  margin: 0.5rem 1rem;
-  justify-content: space-between;
+  width: 100%;
+  margin: 0.5rem 0;
+  /* justify-content: space-between; */
   border-radius: 0.8rem;
 
   &.info {

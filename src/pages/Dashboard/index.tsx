@@ -26,15 +26,25 @@ const Dashboard: React.FC = () => {
   ]
 
   const contractGraphCard = [
-    ['Data', 'Total Numbers of Active Data'],
-    ['Projects', dataActiveRegistries?.activeProjects],
-    ['Users', dataActiveRegistries?.activeUsers],
-    ['Contracts', dataActiveRegistries?.activeContracts],
+    ['Monch', 'Total Numbers of Active Data'],
+    ['Jan', dataActiveRegistries?.activeProjects],
+    ['Feb', dataActiveRegistries?.activeUsers],
+    ['Mar', dataActiveRegistries?.activeContracts],
+    ['Abr', dataActiveRegistries?.activeContracts],
+    ['Mai', dataActiveRegistries?.activeContracts],
+    ['Jun', dataActiveRegistries?.activeContracts],
+    ['Jul', dataActiveRegistries?.activeContracts],
+    ['Ago', dataActiveRegistries?.activeContracts],
+    ['Set', dataActiveRegistries?.activeContracts],
+    ['Oct', dataActiveRegistries?.activeContracts],
+    ['Nov', dataActiveRegistries?.activeContracts],
+    ['Dez', dataActiveRegistries?.activeContracts],
   ]
 
   return (
     <>
       <Container>
+        <p><Translator path="home.message" /></p>
         <DashboardSection
           element={
             <>
@@ -68,7 +78,6 @@ const Dashboard: React.FC = () => {
           }
           className="card-section"
         />
-        <Translator path="home.message" />
 
         <DashboardSection
           element={

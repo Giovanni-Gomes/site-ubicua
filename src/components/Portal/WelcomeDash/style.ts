@@ -6,7 +6,7 @@ export const Container = styled.div`
   justify-content: center;
   align-items: flex-start;
   padding: 1rem;
-  margin: 1rem 1rem 1rem 0;
+  margin: 0.5rem 0.5rem 1rem 0;
   /* width */
   /* @media (max-width: 1440px) {
     width: calc(840px + ((100vw - 1440px) / 2));
@@ -16,7 +16,7 @@ export const Container = styled.div`
   /* border-spacing: 0 6px; */
 
   /* min-width: 800px; */
-  height: 14rem;
+  height: 18rem;
 
   /* Dark Theme/Blue */
   background: #2ec5ce;

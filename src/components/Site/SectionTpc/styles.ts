@@ -34,7 +34,10 @@ export const Container = styled.div`
   }
   background: var(--bg-color);
   position: relative;
+
 `
+
+
 
 export const Content = styled.div`
   max-width: 1440px;
@@ -58,6 +61,20 @@ export const Content = styled.div`
     /* max-width: 95%; */
   }
   padding: var(--padding-top) 32px var(--padding-bottom);
+  background: linear-gradient(-45deg, ${(props) => props.theme.colors['bg-color']}, ${(props) => props.theme.colors.primary}, ${(props) => props.theme.colors.hoverDark}, ${(props) => props.theme.colors['gray-800']});
+  background-size: 400% 400%;
+  animation: gradient 15s ease infinite;
+  @keyframes gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+  }
 `
 
 export const Wrapper = styled.div`

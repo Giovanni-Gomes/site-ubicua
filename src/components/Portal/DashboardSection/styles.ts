@@ -17,10 +17,13 @@ export const Container = styled.section`
 
   &.card-section {
     width: 100%;
-    margin-top: 5rem;
+    /* margin-top: 5rem; */
     display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+    gap: 1rem;
+    max-width: 1278px;
+    margin: 0 auto;
+    /* flex-wrap: wrap; */
+    /* justify-content: center; */
   }
 
   &.table-section {

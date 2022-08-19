@@ -2,6 +2,7 @@ export default {
   translations: {
     home: {
       message: 'Olá Mundo!',
+      chartDashTitle: 'Registros Ativos',
     },
     project: {
       title: 'Lista de Projetos',
