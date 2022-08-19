@@ -13,6 +13,22 @@ export interface DashboardActiveProps {
   activeContracts: number | string
   activeUsers: number | string
 }
+
+export interface DashboardContractsProps {
+  janContracts: string;
+  fevContracts: string;
+  marContracts: string;
+  abrContracts: string;
+  maiContracts: string;
+  junContracts: string;
+  julContracts: string;
+  agoContracts: string;
+  setContracts: string;
+  outContracts: string;
+  novContracts: string;
+  dezContracts: string;
+}
+
 // interface DashboardResponse {
 //   dashboard: DashboardProps[]
 // }
@@ -37,9 +53,35 @@ export async function getActiveRegistries(): Promise<DashboardActiveProps> {
   return { activeUsers, activeProjects, activeContracts }
 }
 
-export async function getContracts() {
-  const { data } = await api.get('/h1/dashboard/contracts')
+export async function getContracts(): Promise<DashboardContractsProps> {
+  const { data } = await api.get('/v1/dashboard/contracts')
 
+  const janContracts = data.janContracts;
+  const fevContracts = data.fevContracts;
+  const marContracts = data.marContracts;
+  const abrContracts = data.abrContracts;
+  const maiContracts = data.maiContracts;
+  const junContracts = data.junContracts;
+  const julContracts = data.julContracts;
+  const agoContracts = data.agoContracts;
+  const setContracts = data.setContracts;
+  const outContracts = data.outContracts;
+  const novContracts = data.novContracts;
+  const dezContracts = data.dezContracts;
+  return {
+    janContracts,
+    fevContracts,
+    marContracts,
+    abrContracts,
+    maiContracts,
+    junContracts,
+    julContracts,
+    agoContracts,
+    setContracts,
+    outContracts,
+    novContracts,
+    dezContracts
+  }
 }
 
 export function useDashboard() {
@@ -50,6 +92,12 @@ export function useDashboard() {
 
 export function useActiveRegistries() {
   return useQuery(['dashboardActive'], () => getActiveRegistries(), {
+    staleTime: 1000 * 60 * 10, // 1000 * 60 * 10 10 minutes
+  })
+}
+
+export function useContractsRegistries() {
+  return useQuery(['dashboardContracts'], () => getContracts(), {
     staleTime: 1000 * 60 * 10, // 1000 * 60 * 10 10 minutes
   })
 }

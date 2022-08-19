@@ -9,7 +9,7 @@ import TablePortal from '../../components/Portal/Table'
 import WelcomeDash from '../../components/Portal/WelcomeDash'
 import { Container } from './styles'
 import { useProjects } from '../Project/useProjects'
-import { useActiveRegistries, useDashboard } from './useDashboard'
+import { useActiveRegistries, useContractsRegistries, useDashboard } from './useDashboard'
 import { Translator } from '../../components/Portal/I18n/Translator'
 import I18nComponent from '../../components/Portal/I18n/I18n'
 import { useAuth } from '../../components/hooks/provider/auth'
@@ -19,6 +19,7 @@ const Dashboard: React.FC = () => {
   const { data, isLoading, isFetching, error } = useProjects(0, 0, '')
   const { data: dataDashboard } = useDashboard()
   const { data: dataActiveRegistries } = useActiveRegistries()
+  const { data: dataContractsRegistries } = useContractsRegistries()
 
   const activeGraphCard = [
     ['Data', 'Total Numbers of Active Data'],
@@ -28,19 +29,19 @@ const Dashboard: React.FC = () => {
   ]
 
   const contractGraphCard = [
-    ['Monch', 'Total Numbers of Active Data'],
-    ['Jan', dataActiveRegistries?.activeProjects],
-    ['Feb', dataActiveRegistries?.activeUsers],
-    ['Mar', dataActiveRegistries?.activeContracts],
-    ['Abr', dataActiveRegistries?.activeContracts],
-    ['Mai', dataActiveRegistries?.activeContracts],
-    ['Jun', dataActiveRegistries?.activeContracts],
-    ['Jul', dataActiveRegistries?.activeContracts],
-    ['Ago', dataActiveRegistries?.activeContracts],
-    ['Set', dataActiveRegistries?.activeContracts],
-    ['Oct', dataActiveRegistries?.activeContracts],
-    ['Nov', dataActiveRegistries?.activeContracts],
-    ['Dez', dataActiveRegistries?.activeContracts],
+    ['Month', 'Total Numbers of Contracts Value per Month'],
+    ['Jan', dataContractsRegistries?.janContracts],
+    ['Feb', dataContractsRegistries?.fevContracts],
+    ['Mar', dataContractsRegistries?.marContracts],
+    ['Abr', dataContractsRegistries?.abrContracts],
+    ['Mai', dataContractsRegistries?.maiContracts],
+    ['Jun', dataContractsRegistries?.junContracts],
+    ['Jul', dataContractsRegistries?.julContracts],
+    ['Ago', dataContractsRegistries?.agoContracts],
+    ['Set', dataContractsRegistries?.setContracts],
+    ['Oct', dataContractsRegistries?.outContracts],
+    ['Nov', dataContractsRegistries?.novContracts],
+    ['Dez', dataContractsRegistries?.dezContracts],
   ]
 
 
@@ -86,7 +87,7 @@ const Dashboard: React.FC = () => {
         <DashboardSection
           element={
             <>
-              <WelcomeDash />
+              <WelcomeDash data={contractGraphCard} />
               <ChartDash graph={activeGraphCard} />
             </>
           }
