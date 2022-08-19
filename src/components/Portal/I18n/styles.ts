@@ -11,19 +11,18 @@ export const SelectFlag = styled.div`
   height: 28px;
   margin-left: 0.5rem;
   /* margin: 0rem 0.3rem 0rem 0.3rem; */
-  filter: grayscale(0);
-
-  :hover {
-    filter: grayscale(0.5);
-  }
-
-  .selected {
-    /* background: red; */
+  > img {
     filter: grayscale(1);
-  }
 
-  .selected:hover {
-    /* background: blue; */
-    filter: grayscale(0);
+    &.selected {
+      /* background: red; */
+      filter: grayscale(0);
+      &:hover {
+        filter: grayscale(0);
+      }
+    }
+    &:hover {
+      filter: grayscale(0.5);
+    }
   }
 `

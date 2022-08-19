@@ -14,6 +14,7 @@ import { Widget } from '../../components/Site/Widget'
 import SectionRight from '../../components/Site/SectionRight'
 import ChatBotInitial from '../../components/Site/WidgetForm/ChatBot'
 import { FaRobot } from 'react-icons/fa'
+import { BotButton } from './styles'
 // import { ReactComponent as Button } from '../../components/Site/WidgetForm/ChatBot/assets/robot.svg'
 // import { Container } from './styles';
 
@@ -24,13 +25,13 @@ interface IContentProps {
 }
 
 const Home: React.FC = () => {
-  // const showCarousel = <Carousel items={carouselImages} />
-  // const [showBot, setBot] = useState(true)
-  // function handleBot() {
-  //   console.log('bot iniciado')
-  //   const botState = !showBot
-  //   setBot(botState)
-  // }
+  const showCarousel = <Carousel items={carouselImages} />
+  const [showBot, setBot] = useState(true)
+  function handleBot() {
+    console.log('bot iniciado')
+    const botState = !showBot
+    setBot(botState)
+  }
 
   const imgs = (
     <>
@@ -66,7 +67,6 @@ const Home: React.FC = () => {
 
   return (
     <>
-      {/* {showBot && <ChatBotInitial />} */}
       {sectionOne.map((st, key) => (
         <Section
           key={key}
@@ -126,9 +126,11 @@ const Home: React.FC = () => {
         <MenuForm />
       </SideMenu>
       <Widget />
-      {/* <button className="app-chatbot-button" onClick={handleBot}>
+      {showBot && <ChatBotInitial />}
+
+      <BotButton className="app-chatbot-button" onClick={handleBot}>
         <FaRobot size={38} />
-      </button> */}
+      </BotButton>
     </>
   )
 }

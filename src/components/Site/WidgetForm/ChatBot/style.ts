@@ -6,8 +6,8 @@ export const ContainerChatBot = styled.div`
   bottom: 1rem;
   right: 1rem;
   display: flex;
-  flex-direction: column;
-  align-items: flex-end;
+  /* flex-direction: column; */
+  /* align-items: flex-end; */
   max-width: 280px;
   @media (min-width: 768px) {
     bottom: 2.5rem;

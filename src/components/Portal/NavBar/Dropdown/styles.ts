@@ -2,11 +2,11 @@ import styled from 'styled-components'
 
 export const Container = styled.div`
   position: absolute;
-  top: 55px;
+  top: 3.50rem;
   /* transform: translateX(45%); */
-  background: var(--bg);
-  border: 1px solid ${(props: any) => props.theme.colors['gray-900']};
-  border-top: none;
+  background: ${(props: any) => props.theme.colors.primary};
+  /* border: 1px solid ${(props: any) => props.theme.colors['gray-900']}; */
+  /* border-top: none; */
   border-bottom-left-radius: var(--border-radius);
   border-bottom-right-radius: var(--border-radius);
   padding: 0 1rem 1rem;
@@ -14,7 +14,7 @@ export const Container = styled.div`
   transition: height 200ms ease;
   /* max-width: 100%; */
   min-width: 10rem;
-
+  box-shadow: ${(props) => props.theme.colors['primary-500']} 0.3rem 0.2em 0.7em 1px;
   > .menu {
     /* padding-bottom: 1.5rem; */
     > a,

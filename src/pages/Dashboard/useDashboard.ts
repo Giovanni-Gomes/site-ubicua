@@ -37,6 +37,11 @@ export async function getActiveRegistries(): Promise<DashboardActiveProps> {
   return { activeUsers, activeProjects, activeContracts }
 }
 
+export async function getContracts() {
+  const { data } = await api.get('/h1/dashboard/contracts')
+
+}
+
 export function useDashboard() {
   return useQuery(['dashboard'], () => getDashboard(), {
     staleTime: 1000 * 60 * 10, // 1000 * 60 * 10 10 minutes
@@ -48,3 +53,4 @@ export function useActiveRegistries() {
     staleTime: 1000 * 60 * 10, // 1000 * 60 * 10 10 minutes
   })
 }
+

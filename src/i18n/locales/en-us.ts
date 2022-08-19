@@ -3,6 +3,7 @@ export default {
     // Mesmo valor usado nas configurações (defaultNS)
     home: {
       message: 'Hello World!',
+      chartDashTitle: 'Active Registries',
     },
     project: {
       title: 'List Projects',

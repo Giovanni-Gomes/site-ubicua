@@ -6,7 +6,7 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 1rem 0rem 1rem 1rem;
+  margin: 0.5rem 0rem 1rem 0.5rem;
   padding: 1rem 0.5rem 0;
   background: ${(props) => props.theme.colors.white};
 
@@ -18,8 +18,8 @@ export const Container = styled.div`
 
   border-spacing: 0 6px;
 
-  min-width: 27.8rem;
-  height: 14rem;
+  min-width: 29rem;
+  height: 18rem;
 
   /* Dark Theme/Green */
   /* background: #FFFF; */

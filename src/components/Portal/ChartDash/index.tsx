@@ -1,5 +1,6 @@
 import React from 'react'
 import Chart from 'react-google-charts'
+import { Translator } from '../I18n/Translator'
 import { Container } from './styles'
 
 interface ChartDashProps {
@@ -9,7 +10,7 @@ interface ChartDashProps {
 const ChartDash: React.FC<ChartDashProps> = ({ graph }) => {
   return (
     <Container>
-      <p style={{ color: 'black' }}>Active Registries</p>
+      <p style={{ color: 'black' }}><Translator path="home.chartDashTitle" /></p>
 
       <Chart chartType="PieChart" data={graph} width="100%" height="100%" />
     </Container>
