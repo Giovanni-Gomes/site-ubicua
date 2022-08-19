@@ -9,14 +9,13 @@ export const Container = styled.div`
   border-radius: 0.8rem;
 
   &.info {
-    background: ${(props: any) => props.theme.colors.primary};
-    color: white;
-    //#2ec5ce;//blue;
+    background: ${(props) => props.theme.colors.primary};
+    color: ${(props) => props.theme.colors['text-menu']};
   }
 
   &.success {
-    background: ${(props: any) => props.theme.colors.secondary};
-    //#c1f7fa;//green;
+    background: ${(props) => props.theme.colors.secondary};
+    color: ${(props) => props.theme.colors['gray-600']};
   }
 
   &.danger {
@@ -28,7 +27,9 @@ export const Container = styled.div`
   }
 
   &.white {
-    background: ${(props: any) => props.theme.colors.primary};
+    background: ${(props) => props.theme.colors.primary};
+    color: ${(props) => props.theme.colors['gray-800']};
+
   }
 `
 

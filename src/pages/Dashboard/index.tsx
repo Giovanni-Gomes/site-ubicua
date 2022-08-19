@@ -12,8 +12,10 @@ import { useProjects } from '../Project/useProjects'
 import { useActiveRegistries, useDashboard } from './useDashboard'
 import { Translator } from '../../components/Portal/I18n/Translator'
 import I18nComponent from '../../components/Portal/I18n/I18n'
+import { useAuth } from '../../components/hooks/provider/auth'
 
 const Dashboard: React.FC = () => {
+  const { user } = useAuth();
   const { data, isLoading, isFetching, error } = useProjects(0, 0, '')
   const { data: dataDashboard } = useDashboard()
   const { data: dataActiveRegistries } = useActiveRegistries()
@@ -41,33 +43,35 @@ const Dashboard: React.FC = () => {
     ['Dez', dataActiveRegistries?.activeContracts],
   ]
 
+
   return (
+
     <>
       <Container>
-        <p><Translator path="home.message" /></p>
+        <p><span><Translator path="home.icon" /></span><Translator path="home.message" /> <b>{user.name[0].toUpperCase() + user.name.slice(1)}</b></p>
         <DashboardSection
           element={
             <>
               <Card
                 variant="info"
                 title={String(dataDashboard?.totalProjects)}
-                subtitle="Total Projects"
+                subtitle={< Translator path="home.totalProjects" />}
               />
 
               <Card
                 variant="success"
                 title={String(dataDashboard?.totalUsers)}
-                subtitle="Total Users"
+                subtitle={< Translator path="home.totalUsers" />}
               />
               <Card
                 variant="info"
                 title={String(dataDashboard?.totalContracts)}
-                subtitle="Total Contracts"
+                subtitle={< Translator path="home.totalContracts" />}
               />
               <Card
                 variant="success"
                 title={String(dataDashboard?.totalFeedbacks)}
-                subtitle="Total Feedbacks"
+                subtitle={< Translator path="home.totalFeedbacks" />}
               />
 
               {/* <Card variant="info" title="69" subtitle="Active Projects" />

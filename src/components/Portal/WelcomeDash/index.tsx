@@ -1,10 +1,11 @@
 import React from 'react'
+import { Translator } from '../I18n/Translator'
 import { Container } from './style'
 
 const WelcomeDash: React.FC = () => {
   return (
     <Container>
-      <p>Welcome to your dashboard</p>
+      <p><Translator path="home.DashTitle" /></p>
     </Container>
   )
 }

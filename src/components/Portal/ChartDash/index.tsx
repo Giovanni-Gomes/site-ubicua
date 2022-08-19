@@ -10,7 +10,7 @@ interface ChartDashProps {
 const ChartDash: React.FC<ChartDashProps> = ({ graph }) => {
   return (
     <Container>
-      <p style={{ color: 'black' }}><Translator path="home.chartDashTitle" /></p>
+      <p><Translator path="home.chartDashTitle" /></p>
 
       <Chart chartType="PieChart" data={graph} width="100%" height="100%" />
     </Container>

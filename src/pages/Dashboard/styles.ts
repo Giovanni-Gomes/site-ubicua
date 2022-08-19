@@ -12,9 +12,16 @@ export const Container = styled.div`
   /* width: 100%; */
   > p {
     text-align: center;
-    font-size: 1.5rem;
+    font-size: 1rem;
+    padding: 0.5rem 0.5rem;
     color: ${(props) => props.theme.colors['text-color']};
+    span {
+      font-size: 1.2rem;
+    }
   }
+
+
+
 `
 
 // export const TableContainer = styled.section`

@@ -15,20 +15,16 @@ export const Container = styled.div`
     width: calc(28rem + ((100vw - 1440px) / 2));
   } */
   max-width: 450px;
-
   border-spacing: 0 6px;
-
   min-width: 29rem;
   height: 18rem;
 
   /* Dark Theme/Green */
   /* background: #FFFF; */
   border-radius: 8px;
-
-  /* Inside auto layout */
-  /* flex: none;
-  order: 0;
-  flex-grow: 0; */
+  > p{
+    color: ${(props) => props.theme.colors.primary};
+  }
 `
 
 export const ChartBackground = styled.div`

@@ -2,8 +2,14 @@ export default {
   translations: {
     // Mesmo valor usado nas configurações (defaultNS)
     home: {
-      message: 'Hello World!',
+      icon: '😁 ',
+      message: 'Be welcome ',
+      DashTitle: 'Contract Information',
       chartDashTitle: 'Active Registries',
+      totalProjects: 'Total Projects',
+      totalUsers: 'Total Users',
+      totalContracts: 'Total Contracts',
+      totalFeedbacks: 'Total Feedback',
     },
     project: {
       title: 'List Projects',

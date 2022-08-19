@@ -19,11 +19,10 @@ export const Container = styled.div`
   height: 18rem;
 
   /* Dark Theme/Blue */
-  background: #2ec5ce;
+  background: ${(props) => props.theme.colors['primary-300']};
   border-radius: 8px;
 
-  /* Inside auto layout */
-  /* flex: none;
-  order: 0;
-  flex-grow: 0; */
+  > p{
+    color: ${(props) => props.theme.colors['text-menu']};
+  }
 `
