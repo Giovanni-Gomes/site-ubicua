@@ -8,12 +8,12 @@ export const ContainerUser = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 1rem;
-  margin-left: 0.875rem;
+  padding: 1.2rem;
+  margin-left: 0.4rem;
 
   > img {
-    max-width: 28px;
-    max-height: 28px;
+    max-width: 32px;
+    max-height: 32px;
   }
   /* margin-left: 12.5px; */
   /* font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI'; */

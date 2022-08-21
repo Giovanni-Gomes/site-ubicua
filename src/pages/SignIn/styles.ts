@@ -53,7 +53,7 @@ export const AnimationContainer = styled.div`
     h1 {
       margin-bottom: 24px;
       color: ${(props) =>
-        props.theme.colors['primary-500']}; //var(--color-secondary);
+    props.theme.colors['primary-500']}; //var(--color-secondary);
     }
 
     a {

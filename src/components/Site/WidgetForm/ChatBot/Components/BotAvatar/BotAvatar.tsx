@@ -1,4 +1,4 @@
-import botAvatar from '../../../../../../../public/assets/chatbot/bot.png'
+import botAvatar from '/assets/chatbot/bot.png'
 import { ContainerAvatar } from './styles'
 function BotAvatar() {
   return (
