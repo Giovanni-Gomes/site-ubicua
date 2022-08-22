@@ -15,8 +15,12 @@ import SectionRight from '../../components/Site/SectionRight'
 import ChatBotInitial from '../../components/Site/WidgetForm/ChatBot'
 import { FaRobot } from 'react-icons/fa'
 import { BotButton } from './styles'
+import Map from '../../components/Site/Map/Map'
 // import { ReactComponent as Button } from '../../components/Site/WidgetForm/ChatBot/assets/robot.svg'
 // import { Container } from './styles';
+import mapMarkerImg from '/assets/chatbot/robot.svg';
+import L from 'leaflet';
+import { Marker } from "react-leaflet";
 
 interface IContentProps {
   id: string
@@ -26,9 +30,9 @@ interface IContentProps {
 
 const Home: React.FC = () => {
   const showCarousel = <Carousel items={carouselImages} />
-  const [showBot, setBot] = useState(true)
+  const [showBot, setBot] = useState(false)
   function handleBot() {
-    console.log('bot iniciado')
+    console.log('bot start')
     const botState = !showBot
     setBot(botState)
   }
@@ -64,6 +68,14 @@ const Home: React.FC = () => {
 
     fetchSection()
   }, [])
+
+  const happyMapIcon = L.icon({
+    iconUrl: mapMarkerImg,
+    iconSize: [58, 68],
+    iconAnchor: [29, 68],
+    popupAnchor: [0, -60]
+  })
+
 
   return (
     <>
@@ -121,11 +133,25 @@ const Home: React.FC = () => {
         description={data[5].description}
         element={imgs}
       />
+
+      {/* <Map
+        interactive={false}
+        center={{ lat: -23.55386927083221, lng: -46.66239774232902 }}
+        zoom={10}
+        style={{ width: '100%', height: 280 }}
+      >
+        <Marker interactive={false} icon={happyMapIcon} position={{ lat: -23.55386927083221, lng: -46.66239774232902 }} />
+      </Map> */}
+
       <Footer />
+
       <SideMenu>
         <MenuForm />
       </SideMenu>
+
       <Widget />
+
+
       {showBot && <ChatBotInitial />}
 
       <BotButton className="app-chatbot-button" onClick={handleBot}>

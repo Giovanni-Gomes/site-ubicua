@@ -1,0 +1,1 @@
+"react-chatbot-kit": "^2.1.0",

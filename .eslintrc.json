@@ -2,5 +2,8 @@
   "extends": "@rocketseat/eslint-config/react",
   "rules": {
     "no-unused-vars": "off"
-  }
+  },
+  "esmodule": true,
+  "commonjs": true,
+  "amd": false
 }
