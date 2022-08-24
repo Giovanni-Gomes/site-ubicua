@@ -15,7 +15,7 @@ const WelcomeDash: React.FC<WelcomeDashProps> = ({ data }) => {
     <Container>
 
       <p><Translator path="home.DashTitle" /></p>
-      <Chart chartType='Bar' data={data}></Chart>
+      <Chart chartType='Bar' data={data} width="100%" height="100%" />
 
     </Container>
   )
