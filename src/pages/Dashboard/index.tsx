@@ -29,19 +29,19 @@ const Dashboard: React.FC = () => {
   ]
 
   const contractGraphCard = [
-    ['Month', 'Total Numbers of Contracts Value per Month'],
-    ['Jan', dataContractsRegistries?.janContracts],
-    ['Feb', dataContractsRegistries?.fevContracts],
-    ['Mar', dataContractsRegistries?.marContracts],
-    ['Abr', dataContractsRegistries?.abrContracts],
-    ['Mai', dataContractsRegistries?.maiContracts],
-    ['Jun', dataContractsRegistries?.junContracts],
-    ['Jul', dataContractsRegistries?.julContracts],
-    ['Ago', dataContractsRegistries?.agoContracts],
-    ['Set', dataContractsRegistries?.setContracts],
-    ['Oct', dataContractsRegistries?.outContracts],
-    ['Nov', dataContractsRegistries?.novContracts],
-    ['Dez', dataContractsRegistries?.dezContracts],
+    ['Month', 'Value per Month'],
+    ['Jan', dataContractsRegistries?.janContracts[0] ? dataContractsRegistries?.janContracts[0]._sum.negotiated_value : null],
+    ['Feb', dataContractsRegistries?.fevContracts[0] ? dataContractsRegistries?.fevContracts[0]._sum.negotiated_value : null],
+    ['Mar', dataContractsRegistries?.marContracts[0] ? dataContractsRegistries?.marContracts[0]._sum.negotiated_value : null],
+    ['Abr', dataContractsRegistries?.abrContracts[0] ? dataContractsRegistries?.abrContracts[0]._sum.negotiated_value : null],
+    ['Mai', dataContractsRegistries?.maiContracts[0] ? dataContractsRegistries?.maiContracts[0]._sum.negotiated_value : null],
+    ['Jun', dataContractsRegistries?.junContracts[0] ? dataContractsRegistries?.junContracts[0]._sum.negotiated_value : null],
+    ['Jul', dataContractsRegistries?.julContracts[0] ? dataContractsRegistries?.julContracts[0]._sum.negotiated_value : null],
+    ['Ago', dataContractsRegistries?.agoContracts[0] ? dataContractsRegistries?.agoContracts[0]._sum.negotiated_value : null],
+    ['Set', dataContractsRegistries?.setContracts[0] ? dataContractsRegistries?.setContracts[0]._sum.negotiated_value : null],
+    ['Oct', dataContractsRegistries?.outContracts[0] ? dataContractsRegistries?.outContracts[0]._sum.negotiated_value : null],
+    ['Nov', dataContractsRegistries?.novContracts[0] ? dataContractsRegistries?.novContracts[0]._sum.negotiated_value : null],
+    ['Dez', dataContractsRegistries?.dezContracts[0] ? dataContractsRegistries?.dezContracts[0]._sum.negotiated_value : null],
   ]
 
 

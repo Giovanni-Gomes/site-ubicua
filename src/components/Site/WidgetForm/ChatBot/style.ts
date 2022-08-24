@@ -3,12 +3,12 @@ import styled from 'styled-components'
 export const ContainerChatBot = styled.div`
   z-index: 16;
   position: fixed;
-  bottom: 1rem;
+  bottom: 0;
   right: 1rem;
   display: flex;
   max-width: 25rem;
   @media (min-width: 768px) {
-    bottom: 2.5rem;
+    bottom: 0;
     right: 2.5rem;
   }
 
