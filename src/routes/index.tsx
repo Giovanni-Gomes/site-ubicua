@@ -33,6 +33,8 @@ import UpdateContract from '../pages/Contract/UpdateContract'
 import CreateClient from '../pages/Client/CreateClient'
 import Client from '../pages/Client'
 import UpdateClient from '../pages/Client/UpdateClient'
+import MenuPortal from '../pages/Config/Portal/MenuPortal'
+import CreateMenuPortal from '../pages/Config/Portal/MenuPortal/CreateMenuPortal/createMenuPortal'
 
 const RoutesPage: React.FC = () => {
   return (
@@ -256,6 +258,24 @@ const RoutesPage: React.FC = () => {
           element={
             <PrivateRoute>
               <Profile />
+            </PrivateRoute>
+          }
+        />
+
+        <Route
+          path="/menu-portal"
+          element={
+            <PrivateRoute>
+              <MenuPortal />
+            </PrivateRoute>
+          }
+        />
+
+        <Route
+          path="/create-menu-portal"
+          element={
+            <PrivateRoute>
+              <CreateMenuPortal />
             </PrivateRoute>
           }
         />

@@ -3,7 +3,6 @@ import Card from '../../components/Portal/Card'
 import CardProject from '../../components/Portal/CardProject'
 import ChartDash from '../../components/Portal/ChartDash'
 import DashboardSection from '../../components/Portal/DashboardSection'
-import Header from '../../components/Portal/Header'
 import TablePortal from '../../components/Portal/Table'
 // import { lightTheme, darkTheme } from '../../components/Portal/Theme';
 import WelcomeDash from '../../components/Portal/WelcomeDash'
@@ -11,7 +10,6 @@ import { Container } from './styles'
 import { useProjects } from '../Project/useProjects'
 import { useActiveRegistries, useContractsRegistries, useDashboard } from './useDashboard'
 import { Translator } from '../../components/Portal/I18n/Translator'
-import I18nComponent from '../../components/Portal/I18n/I18n'
 import { useAuth } from '../../components/hooks/provider/auth'
 
 const Dashboard: React.FC = () => {

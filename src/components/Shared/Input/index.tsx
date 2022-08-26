@@ -4,6 +4,7 @@ import React, {
   InputHTMLAttributes,
   useState,
   useCallback,
+  ReactNode,
 } from 'react'
 
 import { useField } from '@unform/core'
@@ -16,26 +17,27 @@ import { Container, Error, Label } from './styles'
 interface Props {
   name: string
   type?:
-    | 'text'
-    | 'number'
-    | 'color'
-    | 'date'
-    | 'datetime-local'
-    | 'email'
-    | 'hidden'
-    | 'month'
-    | 'password'
-    | 'time'
-    | 'range'
-    | 'search'
-    | 'tel'
-    | 'url'
-    | 'week'
-    | 'file'
+  | 'text'
+  | 'number'
+  | 'color'
+  | 'date'
+  | 'datetime-local'
+  | 'email'
+  | 'hidden'
+  | 'month'
+  | 'password'
+  | 'time'
+  | 'range'
+  | 'search'
+  | 'tel'
+  | 'url'
+  | 'week'
+  | 'file'
   label?: string
   value?: string
   containerStyle?: object
   icon?: React.ComponentType<IconBaseProps>
+  placeholder: any
 }
 
 type InputProps = InputHTMLAttributes<HTMLInputElement> & Props
@@ -45,6 +47,7 @@ function Input({
   type,
   label,
   value,
+  placeholder,
   containerStyle = {},
   icon: Icon,
   ...rest
@@ -105,6 +108,7 @@ function Input({
           onBlur={handleInputBlur}
           defaultValue={defaultInputValue}
           ref={inputRef}
+          placeholder={placeholder}
           {...rest}
         />
         {error && (
