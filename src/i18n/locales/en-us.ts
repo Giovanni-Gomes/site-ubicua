@@ -25,5 +25,12 @@ export default {
         th_eight: 'REAL COST',
       }
     },
+    menuPortal: {
+      title: 'Register new portal menu',
+      subTitle: 'Fill in the form below',
+      button: 'Save Record',
+      inputTitle: 'Title',
+      inputLink: 'Link'
+    },
   },
 }

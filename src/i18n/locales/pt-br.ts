@@ -25,5 +25,12 @@ export default {
         th_eight: 'CUSTO REAL',
       }
     },
+    menuPortal: {
+      title: 'Cadastrar novo menu do portal',
+      subTitle: 'Preencha o formulário abaixo',
+      button: 'Salvar Registro',
+      inputTitle: 'Título',
+      inputLink: 'Link'
+    },
   },
 }
