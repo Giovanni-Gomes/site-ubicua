@@ -25,6 +25,7 @@ export const Container = styled.div`
   border-bottom-left-radius: 0rem;
 
   padding: 1rem;
+  margin-bottom: 1rem;
 
   &.blue {
     background: blue;

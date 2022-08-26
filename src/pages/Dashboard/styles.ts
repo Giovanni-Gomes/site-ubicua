@@ -11,6 +11,24 @@ export const Container = styled.div`
   height: 100%;
   /* width: 100%; */
   > p {
+    /* display: flex; */
+    max-width: 1278px;
+    margin: 0.5rem auto;
+    border-radius: 8px;
+    background: linear-gradient(90deg, ${(props) => props.theme.colors['gray-800']}, ${(props) => props.theme.colors.hoverDark}, ${(props) => props.theme.colors.primary}, ${(props) => props.theme.colors['bg-color']});
+    background-size: 400% 400%;
+    animation: gradient 15s ease infinite;
+    @keyframes gradient {
+      0% {
+          background-position: 100% 50%;
+      }
+      50% {
+          background-position: 0% 50%;
+      }
+      100% {
+          background-position: 100% 50%;
+      }
+    }
     text-align: center;
     font-size: 1rem;
     padding: 0.5rem 0.5rem;

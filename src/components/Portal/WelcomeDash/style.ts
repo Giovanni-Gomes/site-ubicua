@@ -5,8 +5,9 @@ export const Container = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  gap: 2rem;
   margin: 0.5rem 0.5rem 0 0;
-  padding: 1rem 0.5rem ;
+  padding: 1rem;
   /* width */
   /* @media (max-width: 1440px) {
     width: calc(840px + ((100vw - 1440px) / 2));
@@ -15,7 +16,7 @@ export const Container = styled.div`
   /* border-spacing: 0 6px; */
 
   /* min-width: 800px; */
-  height: 18rem;
+  height: 20rem;
   border: 1px solid ${(props) => props.theme.colors['gray-700']};
 
   /* Dark Theme/Blue */

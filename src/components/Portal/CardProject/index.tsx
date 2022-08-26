@@ -4,7 +4,7 @@ import { Container, Title, Subtitle, CardContent } from './styles'
 
 interface CardProps {
   variant?: string // 'blue' | 'beige' | 'white' | 'black' | 'transparent'
-  title: string
+  title: JSX.Element
   subtitle?: string
   children?: JSX.Element
 }

@@ -95,11 +95,17 @@ export const Content = styled.div`
     z-index: 0;
     overflow: hidden;
     border-radius: 1.5rem;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
     left: 20rem;
-    bottom: -1rem;
+    bottom: 0;
     &.top {
       left: 10rem;
-      top: -1rem;
+      top: 0rem;
+      border-top-left-radius: 0;
+      border-top-right-radius: 0;
+      border-bottom-left-radius: 1.5rem;
+      border-bottom-right-radius: 1.5rem;
     }
     &.bottom {
       left: 26rem;
