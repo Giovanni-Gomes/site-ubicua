@@ -3,6 +3,7 @@ import styled from 'styled-components'
 export const Container = styled.div`
   /* Default / White */
   background: var(--color-tertiary);
+  z-index:2;
 
   /* Inside auto layout */
   /* flex: none;
@@ -21,9 +22,10 @@ export const LogoSection = styled.div`
   /* flex-direction: column; */
   align-items: center;
   justify-content: center;
-  padding: 0px;
-  margin: 1rem auto;
+  padding: 1rem 0;
+  margin: 0rem auto;
   gap: 24px;
+  z-index:2;
 
   /* position: relative;
 width: 1110px;
@@ -33,16 +35,14 @@ top: 16px; */
 
 export const Logos = styled.div`
   /* Auto layout */
-  z-index: 2;
   display: flex;
   /* flex-direction: row; */
   align-items: center;
-  padding: 1rem 0;
   gap: 64px;
 
-  width: 891px;
-  height: 60px;
-
+  /* width: 891px;
+  height: 60px; */
+  z-index:2;
   /* Inside auto layout */
   /* flex: none;
 order: 1;

@@ -29,11 +29,14 @@ export const Content = styled.div`
   margin: 3rem auto 0;
   width: 100%;
   form {
-    margin: 50px 0;
-    width: 340px;
+    margin: 2.3rem 0;
+    width: 30rem;
     text-align: center;
     display: flex;
     flex-direction: column;
+    padding: 2rem 2rem 0;
+    border: 1px solid ${(props) => props.theme.colors.secondary};
+    border-radius: 8px;
     h1 {
       margin-bottom: 8px;
       font-size: 32px;

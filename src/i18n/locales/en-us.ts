@@ -10,6 +10,7 @@ export default {
       totalUsers: 'Total Users',
       totalContracts: 'Total Contracts',
       totalFeedbacks: 'Total Feedback',
+      tableProjects: 'Latest projects added',
     },
     project: {
       title: 'List Projects',

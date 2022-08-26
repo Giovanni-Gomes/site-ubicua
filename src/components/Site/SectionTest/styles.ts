@@ -14,8 +14,9 @@ export const Container = styled.div`
   }
   background: var(--bg-color);
   height: 65rem;
-  padding: 2rem 0;
+  /* padding: 2rem 0; */
   position: relative;
+  z-index: 1;
 `
 
 export const Content = styled.div`
@@ -24,6 +25,8 @@ export const Content = styled.div`
   display: flex;
   align-items: center;
   position: relative;
+  z-index: 1;
+
 
   > header {
     position: absolute;
@@ -35,7 +38,6 @@ export const Content = styled.div`
 
   > header h2 {
     /* position: absolute; */
-    z-index: 1;
     /* left: 15rem;
     top: 6rem; */
     font-size: var(--heading-font-size);

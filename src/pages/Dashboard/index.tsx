@@ -104,7 +104,7 @@ const Dashboard: React.FC = () => {
           element={
             <>
               <CardProject
-                title="Latest projects added"
+                title={< Translator path="home.tableProjects" />}
                 subtitle="Updated 37 minutes ago"
               >
                 <TablePortal>
