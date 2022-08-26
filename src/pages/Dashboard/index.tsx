@@ -27,23 +27,29 @@ const Dashboard: React.FC = () => {
     ['Users', dataActiveRegistries?.activeUsers],
     ['Contracts', dataActiveRegistries?.activeContracts],
   ]
-
   const contractGraphCard = [
-    ['Month', 'Value per Month'],
-    ['Jan', dataContractsRegistries?.janContracts[0] ? dataContractsRegistries?.janContracts[0]._sum.negotiated_value : null],
-    ['Feb', dataContractsRegistries?.fevContracts[0] ? dataContractsRegistries?.fevContracts[0]._sum.negotiated_value : null],
-    ['Mar', dataContractsRegistries?.marContracts[0] ? dataContractsRegistries?.marContracts[0]._sum.negotiated_value : null],
-    ['Abr', dataContractsRegistries?.abrContracts[0] ? dataContractsRegistries?.abrContracts[0]._sum.negotiated_value : null],
-    ['Mai', dataContractsRegistries?.maiContracts[0] ? dataContractsRegistries?.maiContracts[0]._sum.negotiated_value : null],
-    ['Jun', dataContractsRegistries?.junContracts[0] ? dataContractsRegistries?.junContracts[0]._sum.negotiated_value : null],
-    ['Jul', dataContractsRegistries?.julContracts[0] ? dataContractsRegistries?.julContracts[0]._sum.negotiated_value : null],
-    ['Ago', dataContractsRegistries?.agoContracts[0] ? dataContractsRegistries?.agoContracts[0]._sum.negotiated_value : null],
-    ['Set', dataContractsRegistries?.setContracts[0] ? dataContractsRegistries?.setContracts[0]._sum.negotiated_value : null],
-    ['Oct', dataContractsRegistries?.outContracts[0] ? dataContractsRegistries?.outContracts[0]._sum.negotiated_value : null],
-    ['Nov', dataContractsRegistries?.novContracts[0] ? dataContractsRegistries?.novContracts[0]._sum.negotiated_value : null],
-    ['Dez', dataContractsRegistries?.dezContracts[0] ? dataContractsRegistries?.dezContracts[0]._sum.negotiated_value : null],
+    ["Month", "Value per Month", "Meta"],
+    ["Jan", dataContractsRegistries?.janContracts[0] ? Number(dataContractsRegistries?.janContracts[0]._sum.negotiated_value) : 0, 18000000],
+    ["Feb", dataContractsRegistries?.fevContracts[0] ? Number(dataContractsRegistries?.fevContracts[0]._sum.negotiated_value) : 0, 19000000],
+    ["Mar", dataContractsRegistries?.marContracts[0] ? Number(dataContractsRegistries?.marContracts[0]._sum.negotiated_value) : 0, 20000000],
+    ["Abr", dataContractsRegistries?.abrContracts[0] ? Number(dataContractsRegistries?.abrContracts[0]._sum.negotiated_value) : 0, 18000000],
+    ["Mai", dataContractsRegistries?.maiContracts[0] ? Number(dataContractsRegistries?.maiContracts[0]._sum.negotiated_value) : 0, 18000000],
+    ["Jun", dataContractsRegistries?.junContracts[0] ? Number(dataContractsRegistries?.junContracts[0]._sum.negotiated_value) : 0, 18000000],
+    ["Jul", dataContractsRegistries?.julContracts[0] ? Number(dataContractsRegistries?.julContracts[0]._sum.negotiated_value) : 0, 18000000],
+    ["Ago", dataContractsRegistries?.agoContracts[0] ? Number(dataContractsRegistries?.agoContracts[0]._sum.negotiated_value) : 0, 18000000],
+    ["Set", dataContractsRegistries?.setContracts[0] ? Number(dataContractsRegistries?.setContracts[0]._sum.negotiated_value) : 0, 18000000],
+    ["Oct", dataContractsRegistries?.outContracts[0] ? Number(dataContractsRegistries?.outContracts[0]._sum.negotiated_value) : 0, 18000000],
+    ["Nov", dataContractsRegistries?.novContracts[0] ? Number(dataContractsRegistries?.novContracts[0]._sum.negotiated_value) : 0, 18000000],
+    ["Dez", dataContractsRegistries?.dezContracts[0] ? Number(dataContractsRegistries?.dezContracts[0]._sum.negotiated_value) : 0, 18000000],
   ]
 
+  const options = {
+    title: "Monthly Contract Value",
+    vAxis: { title: "Contracts" },
+    hAxis: { title: "Month" },
+    seriesType: "bars",
+    series: { 1: { type: "line" } },
+  };
 
   return (
 
@@ -87,7 +93,7 @@ const Dashboard: React.FC = () => {
         <DashboardSection
           element={
             <>
-              <WelcomeDash data={contractGraphCard} />
+              <WelcomeDash data={contractGraphCard} options={options} />
               <ChartDash graph={activeGraphCard} />
             </>
           }

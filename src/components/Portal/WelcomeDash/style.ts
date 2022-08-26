@@ -16,6 +16,7 @@ export const Container = styled.div`
 
   /* min-width: 800px; */
   height: 18rem;
+  border: 1px solid ${(props) => props.theme.colors['gray-700']};
 
   /* Dark Theme/Blue */
   background: ${(props) => props.theme.colors.white}; // ['primary-300']
@@ -23,5 +24,9 @@ export const Container = styled.div`
 
   > p{
     color: black; //${(props) => props.theme.colors['text-menu']}
+    text-decoration: underline;
+    font-size: 1.1rem;
+    font-weight: 300;
+    font-style: oblique;
   }
 `
