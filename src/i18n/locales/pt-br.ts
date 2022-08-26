@@ -9,6 +9,7 @@ export default {
       totalUsers: 'Total de Usuários',
       totalContracts: 'Total de Contratos',
       totalFeedbacks: 'Total de Feedbacks',
+      chartContractTitle: 'Contratos',
     },
     project: {
       title: 'Lista de Projetos',

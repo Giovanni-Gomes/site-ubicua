@@ -15,15 +15,19 @@ export const Container = styled.div`
     width: calc(28rem + ((100vw - 1440px) / 2));
   } */
   max-width: 450px;
-  border-spacing: 0 6px;
+  /* border-spacing: 0 6px; */
   min-width: 29rem;
   height: 18rem;
-
+  border: 1px solid ${(props) => props.theme.colors['gray-700']};
   /* Dark Theme/Green */
   /* background: #FFFF; */
   border-radius: 8px;
   > p{
-    color: ${(props) => props.theme.colors.primary};
+    color: black; //${(props) => props.theme.colors['text-menu']}
+    text-decoration: underline;
+    font-size: 1.1rem;
+    font-weight: 300;
+    font-style: oblique;
   }
 `
 
