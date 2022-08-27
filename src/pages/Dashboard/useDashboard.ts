@@ -29,6 +29,21 @@ export interface DashboardContractsProps {
   dezContracts: [{ _sum: { negotiated_value: number }, active: boolean }];
 }
 
+export interface DashboardTargetContractsProps {
+  january: [{ value_target: number }];
+  february: [{ value_target: number }];
+  march: [{ value_target: number }];
+  april: [{ value_target: number }];
+  may: [{ value_target: number }];
+  june: [{ value_target: number }];
+  july: [{ value_target: number }];
+  august: [{ value_target: number }];
+  september: [{ value_target: number }];
+  october: [{ value_target: number }];
+  november: [{ value_target: number }];
+  december: [{ value_target: number }];
+}
+
 // interface DashboardResponse {
 //   dashboard: DashboardProps[]
 // }
@@ -68,18 +83,6 @@ export async function getContracts(): Promise<DashboardContractsProps> {
   const outContracts = data.outContracts;
   const novContracts = data.novContracts;
   const dezContracts = data.dezContracts;
-  console.log('janeiro: ', janContracts)
-  console.log('fevereiro: ', fevContracts)
-  console.log('março: ', marContracts)
-  console.log('abril: ', abrContracts)
-  console.log('maio: ', maiContracts)
-  console.log('junho: ', junContracts)
-  console.log('julho: ', julContracts)
-  console.log('agosto: ', agoContracts)
-  console.log('setembro: ', setContracts)
-  console.log('outubro: ', outContracts)
-  console.log('novembro: ', novContracts)
-  console.log('dezembro: ', dezContracts)
   return {
     janContracts,
     fevContracts,
@@ -93,6 +96,48 @@ export async function getContracts(): Promise<DashboardContractsProps> {
     outContracts,
     novContracts,
     dezContracts
+  }
+}
+
+export async function getTargetContracts(): Promise<DashboardTargetContractsProps> {
+  const { data } = await api.get('/v1/dashboard/target_contracts');
+  const january = data.january;
+  const february = data.february;
+  const march = data.march;
+  const april = data.april;
+  const may = data.may;
+  const june = data.june;
+  const july = data.july;
+  const august = data.august;
+  const september = data.september;
+  const october = data.october;
+  const november = data.november;
+  const december = data.december;
+  console.log(january)
+  console.log(february)
+  console.log(march)
+  console.log(april)
+  console.log(may)
+  console.log(june)
+  console.log(july)
+  console.log(august)
+  console.log(september)
+  console.log(october)
+  console.log(november)
+  console.log(december)
+  return {
+    january,
+    february,
+    march,
+    april,
+    may,
+    june,
+    july,
+    august,
+    september,
+    october,
+    november,
+    december
   }
 }
 
@@ -110,6 +155,12 @@ export function useActiveRegistries() {
 
 export function useContractsRegistries() {
   return useQuery(['dashboardContracts'], () => getContracts(), {
+    staleTime: 1000 * 60 * 10, // 1000 * 60 * 10 10 minutes
+  })
+}
+
+export function useTargetContracts() {
+  return useQuery(['dashboardTargetContracts'], () => getTargetContracts(), {
     staleTime: 1000 * 60 * 10, // 1000 * 60 * 10 10 minutes
   })
 }
