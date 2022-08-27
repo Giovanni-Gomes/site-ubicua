@@ -1,12 +1,12 @@
-import { PencilSimpleLine, PlusCircle, TrashSimple } from 'phosphor-react'
+import { PencilSimpleLine, TrashSimple } from 'phosphor-react'
 import React, { useState } from 'react'
 import { Pagination } from '../../components/Portal/Pagination'
 import { Panel } from '../../components/Portal/Panel'
-import { useProjects } from './useProjects'
+import { useSprints } from './useSprints'
 import { Link as RouterLink } from 'react-router-dom'
 
-import DetailsProject from './DetailsProject'
-import AlertDelete from './AlertDelete'
+import DetailsSprint from './DetailsSprint'
+import AlertDeleteSprint from './AlertDeleteSprint'
 import {
   Actions,
   ButtonAlert,
@@ -18,44 +18,25 @@ import {
 
 import { Status, TableCustom } from '../../components/Portal/Table/styles'
 import { Loading } from '../../components/Site/WidgetForm/Loading'
-import Header from '../../components/Portal/Header'
 import { Translator } from '../../components/Portal/I18n/Translator'
 
-const Project: React.FC = () => {
+const Sprint: React.FC = () => {
   const [page, setPage] = useState(1)
   const [searchQuery, setSearchQuery] = useState('')
 
-  const { data, isLoading, isFetching, error } = useProjects(
-    page,
-    10,
-    searchQuery,
-  )
-
-  // const { register, handleSubmit } = useForm()
-  // const formRef = useRef<FormHandles>(null)
-
-  // const handleSearchContacts: SubmitHandler<SearchContactsFormData> = async ({ search }) => {
-  //   setSearchQuery(String(search));
-  // };
-  // async function handleSearchContacts({ data }: SearchContactsFormData) {
-  //   event?.preventDefault();
-  //   console.log("formRef", formRef);
-  //   console.log("data", data);
-  //   console.log("data.search", data.search);
-  //   setSearchQuery(String(data.search));
-  // };
-
+  const { data, isLoading, isFetching, error } = useSprints(page, 10, searchQuery)
+  console.log("sprint data", data);
   return (
     <>
 
       <Panel
-        title={<Translator path="project.title" />}
+        title={<Translator path="sprint.title" />}
         back="/dashboard"
         next="/dashboard"
         search={true}
         searchState={setSearchQuery}
         importFile="/import"
-        create="/create-project"
+        create="/create-sprint"
       >
         <div>{!isLoading && isFetching && <Loading />}</div>
 
@@ -73,9 +54,6 @@ const Project: React.FC = () => {
                   <th><Translator path="project.tr.th_one" /></th>
                   <th><Translator path="project.tr.th_two" /></th>
                   <th><Translator path="project.tr.th_three" /></th>
-                  <th>%</th>
-                  <th>$ VN</th>
-                  <th>$ CR</th>
                   <th><Translator path="project.tr.th_four" /></th>
                   <th><Translator path="project.tr.th_five" /></th>
                   <th><Translator path="project.tr.th_six" /></th>
@@ -83,49 +61,36 @@ const Project: React.FC = () => {
                 </tr>
               </thead>
               <tbody>
-                {data?.projects.map((project: any) => (
-                  <tr key={project.id}>
+                {data?.sprints.map((sprint: any) => (
+                  <tr key={sprint.id}>
                     <td>
                       <PopContainer>
                         <PopPanelDetails>
-                          <DetailsProject id={project.id} />
+                          <DetailsSprint id={sprint.id} />
                         </PopPanelDetails>
                         <ButtonDetails>
-                          {/* <Link onMouseEnter={() => handlePrefetchProject(project.id)}> */}
-                          <p style={{ fontWeight: 'bold' }}>{project.name}</p>
-                          {/* </Link> */}
+                          <p style={{ fontWeight: 'bold' }}>{sprint.name}</p>
                         </ButtonDetails>
                       </PopContainer>
                     </td>
 
-                    <td>{project.date_start}</td>
-                    <td>{project.date_end}</td>
-                    <td>{project.progress}</td>
-                    <td>{project.negotiated_value}</td>
-                    <td>{project.real_cost}</td>
+                    <td>{sprint.date_start}</td>
+                    <td>{sprint.date_end}</td>
                     <td>
-                      <Status statusColor={project.status.name}>
-                        {project.status.name}
+                      <Status statusColor={sprint.status.name}>
+                        {sprint.status.name}
                       </Status>
                     </td>
-                    <td>{project.user.name}</td>
-                    <td>{project.active}</td>
+                    <td>{sprint.user.name}</td>
+                    <td>{sprint.active}</td>
                     <td>
                       <Actions>
-                        <RouterLink to={`/create-sprint/`} title="Create a new Sprint">
-                          <PlusCircle size={24} />
-                        </RouterLink>
-
-                        <RouterLink to={`/update-project/${project.id}`}>
+                        <RouterLink to={`/update-sprint/${sprint.id}`}>
                           <PencilSimpleLine size={24} />
                         </RouterLink>
-
                         <PopContainer>
                           <PopPanelAlert>
-                            <AlertDelete
-                              id={project.id}
-                              actualProjectName={project.name}
-                            />
+                            <AlertDeleteSprint id={sprint.id} actualSprintName={sprint.name} />
                           </PopPanelAlert>
                           <ButtonAlert>
                             <TrashSimple size={24} color="#c53030" />
@@ -150,4 +115,4 @@ const Project: React.FC = () => {
   )
 }
 
-export default Project
+export default Sprint

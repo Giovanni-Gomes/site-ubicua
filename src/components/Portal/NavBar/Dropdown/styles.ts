@@ -2,19 +2,33 @@ import styled from 'styled-components'
 
 export const Container = styled.div`
   position: absolute;
-  top: 3.50rem;
+  top: 3.58rem;
   /* transform: translateX(45%); */
-  background: ${(props: any) => props.theme.colors.primary};
+  /*background: ${(props: any) => props.theme.colors.primary};*/
   /* border: 1px solid ${(props: any) => props.theme.colors['gray-900']}; */
   /* border-top: none; */
+  background: linear-gradient(90deg, ${(props) => props.theme.colors.primary}, ${(props) => props.theme.colors.hoverDark}, ${(props) => props.theme.colors.secondary}, ${(props) => props.theme.colors.secondary});
+  background-size: 400% 400%;
+  /* animation: gradient 25s ease infinite;
+  @keyframes gradient {
+    25% {
+        background-position: 100% 50%;
+    }
+    50% {
+        background-position: 0% 50%;
+    }
+    100% {
+        background-position: 100% 50%;
+    }
+  }; */
   border-bottom-left-radius: var(--border-radius);
   border-bottom-right-radius: var(--border-radius);
-  padding: 0 1rem 1rem;
+  padding: 0 1rem 0rem;
   overflow: hidden;
   transition: height 200ms ease;
   /* max-width: 100%; */
   min-width: 10rem;
-  box-shadow: ${(props) => props.theme.colors['primary-500']} 0.3rem 0.2em 0.7em 1px;
+  /* box-shadow: ${(props) => props.theme.colors['primary-500']} 0.3rem 0.2em 0.7em 1px; */
   > .menu {
     /* padding-bottom: 1.5rem; */
     > a,

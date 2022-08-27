@@ -35,6 +35,9 @@ import Client from '../pages/Client'
 import UpdateClient from '../pages/Client/UpdateClient'
 import MenuPortal from '../pages/Config/Portal/MenuPortal'
 import CreateMenuPortal from '../pages/Config/Portal/MenuPortal/CreateMenuPortal/createMenuPortal'
+import Sprint from '../pages/Sprint'
+import UpdateSprint from '../pages/Sprint/UpdateSprint'
+import CreateSprint from '../pages/Sprint/CreateSprint'
 
 const RoutesPage: React.FC = () => {
   return (
@@ -220,6 +223,22 @@ const RoutesPage: React.FC = () => {
             </PrivateRoute>
           }
         />
+        <Route
+          path="/create-sprint"
+          element={
+            <PrivateRoute>
+              <CreateSprint />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/update-sprint/:id"
+          element={
+            <PrivateRoute>
+              <UpdateSprint />
+            </PrivateRoute>
+          }
+        />
 
         <Route
           path="/update-user/:id"
@@ -258,6 +277,14 @@ const RoutesPage: React.FC = () => {
           element={
             <PrivateRoute>
               <Profile />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/sprint"
+          element={
+            <PrivateRoute>
+              <Sprint />
             </PrivateRoute>
           }
         />

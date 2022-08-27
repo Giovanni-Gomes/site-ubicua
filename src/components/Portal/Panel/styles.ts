@@ -62,20 +62,21 @@ export const HeaderRight = styled.div`
 
 export const Input = styled.input`
   max-width: 300px;
-  border-top-right-radius: 8px;
-  border-top-left-radius: 8px;
-  color: ${(props) => props.theme.colors['text-color']};
+  /* border-top-right-radius: 8px;
+  border-top-left-radius: 8px; */
+  border-radius: 8px;
+  color: ${(props) => props.theme.colors['primary-300']};
   font-size: 0.875rem;
   padding: 0.2rem 0.8rem;
   /* padding: 0.2rem; */
 
   :focus {
-    background-color: ${(props) => props.theme.colors['primary-500']};
+    background-color: ${(props) => props.theme.colors.white};
   }
 
   &::placeholder {
     opacity: 0.8;
-    color: gray;
+    color: ${(props) => props.theme.colors['primary-300']};
     /* padding: 0 0 0 10px; */
   }
   /* background: bg; */

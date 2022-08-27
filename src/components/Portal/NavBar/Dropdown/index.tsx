@@ -5,12 +5,12 @@ import { CSSTransition } from 'react-transition-group'
 import { Container } from './styles'
 
 interface DropdownProps {
-  subtitle?: { title: string; link?: any }[]
+  submenu_portal?: { title: string; link?: any }[]
   //subtitle: Array<{ title: string; link?: any }>
   // href: [{ link?: any }];
 }
 
-const Dropdown: React.FC<DropdownProps> = ({ subtitle }) => {
+const Dropdown: React.FC<DropdownProps> = ({ submenu_portal }) => {
   const [activeMenu, setActiveMenu] = useState('main')
   // const [menuHeight, setMenuHeight] = useState<string | number>('11rem')
   // const dropdownRef = useRef(null) as any
@@ -24,7 +24,7 @@ const Dropdown: React.FC<DropdownProps> = ({ subtitle }) => {
   //   const height = el.offsetHeight
   //   setMenuHeight(height)
   // }
-  console.log("SUBBBBBBB MENU DROP DOWN", subtitle);
+  console.log("SUBBBBBBB MENU DROP DOWN", submenu_portal);
 
   return (
     <Container>
@@ -36,11 +36,13 @@ const Dropdown: React.FC<DropdownProps> = ({ subtitle }) => {
         nodeRef={nodeRef}
       >
         <div className="menu">
-          {subtitle?.map((sb, key) =>
+          {submenu_portal?.map((sb, key) =>
+
             sb.link ? (
               <Link to={sb.link} key={key.toString()}>
                 {sb.title}
               </Link>
+
             ) : (
               <div
                 className={

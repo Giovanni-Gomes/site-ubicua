@@ -32,5 +32,20 @@ export default {
       inputTitle: 'Title',
       inputLink: 'Link'
     },
+    sprint: {
+      title: 'List Sprints',
+      create: {
+        title: 'Create a new sprint',
+        selectStatus: 'Select for status',
+        selectUser: 'Select a user',
+        button: 'Save Register'
+      },
+      update: {
+        title: 'Update register',
+        selectStatus: 'Select for status',
+        selectUser: 'Select a user',
+        button: 'Save Register'
+      }
+    },
   },
 }

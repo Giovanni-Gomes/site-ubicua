@@ -113,18 +113,18 @@ export async function getTargetContracts(): Promise<DashboardTargetContractsProp
   const october = data.october;
   const november = data.november;
   const december = data.december;
-  console.log(january)
-  console.log(february)
-  console.log(march)
-  console.log(april)
-  console.log(may)
-  console.log(june)
-  console.log(july)
-  console.log(august)
-  console.log(september)
-  console.log(october)
-  console.log(november)
-  console.log(december)
+  // console.log(january)
+  // console.log(february)
+  // console.log(march)
+  // console.log(april)
+  // console.log(may)
+  // console.log(june)
+  // console.log(july)
+  // console.log(august)
+  // console.log(september)
+  // console.log(october)
+  // console.log(november)
+  // console.log(december)
   return {
     january,
     february,
