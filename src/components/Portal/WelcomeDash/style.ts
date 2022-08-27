@@ -24,8 +24,8 @@ export const Container = styled.div`
   border-radius: 8px;
 
   > p{
-    color: black; //${(props) => props.theme.colors['text-menu']}
-    text-decoration: underline;
+    color: ${(props) => props.theme.colors['gray-800']};
+    /* text-decoration: underline; */
     font-size: 1.1rem;
     font-weight: 300;
     font-style: oblique;

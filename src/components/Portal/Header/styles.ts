@@ -15,7 +15,21 @@ export const HeaderPortal = styled.div`
   // top: 0;
   // left: 0;
   // right: 0;
-  background: ${(props) => props.theme.colors.primary};
+  //background: ${(props) => props.theme.colors.primary};
+  background: linear-gradient(90deg, ${(props) => props.theme.colors['secondary-500']}, ${(props) => props.theme.colors.hoverDark}, ${(props) => props.theme.colors.primary}, ${(props) => props.theme.colors.primary});
+  background-size: 400% 400%;
+  animation: gradient 25s ease infinite;
+  @keyframes gradient {
+    0% {
+        background-position: 100% 50%;
+    }
+    50% {
+        background-position: 0% 50%;
+    }
+    100% {
+        background-position: 100% 50%;
+    }
+  };
   display: flex;
   justify-content: space-around;
   // align-items: baseline;

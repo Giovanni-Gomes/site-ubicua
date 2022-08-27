@@ -37,7 +37,7 @@ interface Props {
   value?: string
   containerStyle?: object
   icon?: React.ComponentType<IconBaseProps>
-  placeholder: any
+  placeholder?: any
 }
 
 type InputProps = InputHTMLAttributes<HTMLInputElement> & Props

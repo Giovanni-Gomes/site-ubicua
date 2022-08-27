@@ -2,17 +2,23 @@ import { useQuery } from 'react-query'
 import api from '../../../../services/api'
 
 export type SubMenuPortalProps = {
+  id: string;
   title: string;
   link?: string;
+  menu_id: any;
 }
 
 export type MenuPortalProps = {
   id: string
-  title?: string;
+  title: string;
   link?: string;
   active?: boolean;
   created_at?: string;
   updated_at?: string;
+  submenu_portal: {
+    title: string;
+    link: string;
+  }[]
 }
 
 
@@ -27,11 +33,8 @@ export type GetMenuPortalResponse = {
 //   menuPortais: MenuPortalProps[]
 // }
 
-export async function getMenuPortais(
-  page: number,
-  take: number,
-  searchQuery?: string,
-): Promise<GetMenuPortalResponse> {
+export async function getMenuPortais(page: number, take: number, searchQuery?: string): Promise<GetMenuPortalResponse> {
+
   const { data } = await api.get('/v1/menu-portal/', {
     params: {
       skip: page,
@@ -39,27 +42,9 @@ export async function getMenuPortais(
       query: searchQuery,
     },
   })
-  //const totalPage = Number(data.totalPage)
-
-  const menuPortais = data.findMenuPortal.map((menu: MenuPortalProps) => ({
-    id: menu.id,
-    title: menu.title,
-    link: menu.link,
-    active: menu.active ? 'Ativo' : 'Inativo',
-    created_at:
-      menu.created_at &&
-      new Date(menu.created_at).toLocaleDateString('pt-BR', {
-        day: '2-digit',
-        month: '2-digit',
-        year: 'numeric',
-      }),
-  })) // .slice(pageStart, pageEnd);
-
-  //console.log("MENU PORTAL", menuPortais);
-  //console.log("SUB MENU PORTAL", subMenuPortais);
 
   return {
-    menuPortais,
+    menuPortais: data.findMenuPortal,
     subMenuPortais: data.findSubMenuPortal,
   }
 }

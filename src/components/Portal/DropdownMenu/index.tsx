@@ -11,16 +11,17 @@ const DropdownMenu: React.FC = () => {
   const [searchQuery, setSearchQuery] = useState('')
 
   const { data, isLoading, isFetching, error } = useMenuPortais(page, 10, searchQuery)
-
-  console.log(data);
-
+  // var intersection = data?.subMenuPortais.filter(function (e) {
+  //   //console.log('EEEE', e);
+  //   return data?.menuPortais.indexOf(e.menu_id) //data?.menuPortais.indexOf(e) > -1;
+  // });
+  // console.log("intersection", intersection);
+  //data?.menuPortais
   return (
     <NavBar>
       {data?.menuPortais.map((di) => (
         <NavItems key={di.title} icon={<ChatTeardropDots />} title={di.title}>
-
-          <Dropdown subtitle={data?.subMenuPortais} />
-          {/* <Dropdown subtitle={di.subtitles} /> */}
+          <Dropdown submenu_portal={di.submenu_portal} />
         </NavItems>
 
       ))}

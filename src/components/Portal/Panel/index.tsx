@@ -5,6 +5,7 @@ import { FaFileImport, FaPlus } from 'react-icons/fa'
 import { FiArrowLeft, FiArrowRight } from 'react-icons/fi'
 import { Link } from 'react-router-dom'
 import Header from '../Header'
+import { Translator } from '../I18n/Translator'
 import {
   Container,
   WrapperHeader,
@@ -64,7 +65,7 @@ export function Panel({
             )}
             {search && (
               <Form ref={formRef} onSubmit={handleSearch}>
-                <Input placeholder="search" id="search" name="search" />
+                <Input placeholder='search...' id="search" name="search" />
               </Form>
             )}
           </HeaderLeft>

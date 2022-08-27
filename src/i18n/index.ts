@@ -10,7 +10,12 @@ import translations from './locales'
 const i18nConfig = {
   resources: translations, // resources são as nossas traduções
   fallbackLng: 'pt-BR', // fallbackLng é o idioma padrão caso o browser não consiga detectar sozinho
-  defaultNS: 'translations', // defaultNS é o namespace padrão, podemos usar 'translations'
+  defaultNS: 'translations', // defaultNS é o namespace padrão, podemos usar 'translations',
+  react: {
+    // https://react.i18next.com/latest/trans-component#trans-props
+    transSupportBasicHtmlNodes: true,
+    transKeepBasicHtmlNodesFor: ["br", "strong", "b", "i"],
+  }
 }
 
 i18n
