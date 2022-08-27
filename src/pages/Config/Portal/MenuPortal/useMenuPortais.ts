@@ -1,24 +1,31 @@
 import { useQuery } from 'react-query'
 import api from '../../../../services/api'
 
+export type SubMenuPortalProps = {
+  title: string;
+  link?: string;
+}
 
 export type MenuPortalProps = {
   id: string
-  title: string;
+  title?: string;
   link?: string;
   active?: boolean;
   created_at?: string;
   updated_at?: string;
 }
 
+
+
 export type GetMenuPortalResponse = {
-  totalPage: number
   menuPortais: MenuPortalProps[]
+  subMenuPortais: SubMenuPortalProps[];
+  //totalPage: number
 }
 
-export type GetOneMenuPortalResponse = {
-  menuPortais: MenuPortalProps[]
-}
+// export type GetOneMenuPortalResponse = {
+//   menuPortais: MenuPortalProps[]
+// }
 
 export async function getMenuPortais(
   page: number,
@@ -32,30 +39,33 @@ export async function getMenuPortais(
       query: searchQuery,
     },
   })
-  const totalPage = Number(data.totalPage)
+  //const totalPage = Number(data.totalPage)
 
-  const menuPortais = data.map((menuPortal: MenuPortalProps) => ({
-    id: menuPortal.id,
-    title: menuPortal.title,
-    link: menuPortal.link,
-    active: menuPortal.active ? 'Ativo' : 'Inativo',
+  const menuPortais = data.findMenuPortal.map((menu: MenuPortalProps) => ({
+    id: menu.id,
+    title: menu.title,
+    link: menu.link,
+    active: menu.active ? 'Ativo' : 'Inativo',
     created_at:
-      menuPortal.created_at &&
-      new Date(menuPortal.created_at).toLocaleDateString('pt-BR', {
+      menu.created_at &&
+      new Date(menu.created_at).toLocaleDateString('pt-BR', {
         day: '2-digit',
         month: '2-digit',
         year: 'numeric',
       }),
   })) // .slice(pageStart, pageEnd);
-  console.log(menuPortais);
+
+  //console.log("MENU PORTAL", menuPortais);
+  //console.log("SUB MENU PORTAL", subMenuPortais);
+
   return {
     menuPortais,
-    totalPage,
+    subMenuPortais: data.findSubMenuPortal,
   }
 }
 
 export function useMenuPortais(page: number, take: number, searchQuery?: string) {
-  return useQuery(['menuPortais', page, take, searchQuery], () => getMenuPortais(page, take),
+  return useQuery(['menuPortais', 'subMenuPortais', page, take, searchQuery], () => getMenuPortais(page, take),
     { staleTime: 1000 * 60 * 10 },
   )
 }

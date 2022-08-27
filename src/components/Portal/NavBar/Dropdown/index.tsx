@@ -5,7 +5,8 @@ import { CSSTransition } from 'react-transition-group'
 import { Container } from './styles'
 
 interface DropdownProps {
-  subtitle: Array<{ name: string; link?: any }>
+  subtitle?: { title: string; link?: any }[]
+  //subtitle: Array<{ title: string; link?: any }>
   // href: [{ link?: any }];
 }
 
@@ -23,6 +24,7 @@ const Dropdown: React.FC<DropdownProps> = ({ subtitle }) => {
   //   const height = el.offsetHeight
   //   setMenuHeight(height)
   // }
+  console.log("SUBBBBBBB MENU DROP DOWN", subtitle);
 
   return (
     <Container>
@@ -34,28 +36,50 @@ const Dropdown: React.FC<DropdownProps> = ({ subtitle }) => {
         nodeRef={nodeRef}
       >
         <div className="menu">
-          {subtitle.map((sb, key) =>
+          {subtitle?.map((sb, key) =>
             sb.link ? (
               <Link to={sb.link} key={key.toString()}>
-                {sb.name}
+                {sb.title}
               </Link>
             ) : (
               <div
                 className={
-                  sb.name === 'Secções'
+                  sb.title === 'Secções'
                     ? 'space expand'
-                    : 'expand' || sb.name === 'Acompanhamentos'
-                    ? 'expand width'
-                    : 'expand'
+                    : 'expand' || sb.title === 'Acompanhamentos'
+                      ? 'expand width'
+                      : 'expand'
                 }
                 key={key.toString()}
-                onClick={() => setActiveMenu(sb.name)}
+                onClick={() => setActiveMenu(sb.title)}
               >
-                {sb.name}
+                {sb.title}
                 <CaretRight size={18} />{' '}
               </div>
             ),
           )}
+          {/* {subtitle.map((sb, key) =>
+            sb.link ? (
+              <Link to={sb.link} key={key.toString()}>
+                {sb.title}
+              </Link>
+            ) : (
+              <div
+                className={
+                  sb.title === 'Secções'
+                    ? 'space expand'
+                    : 'expand' || sb.title === 'Acompanhamentos'
+                      ? 'expand width'
+                      : 'expand'
+                }
+                key={key.toString()}
+                onClick={() => setActiveMenu(sb.title)}
+              >
+                {sb.title}
+                <CaretRight size={18} />{' '}
+              </div>
+            ),
+          )} */}
         </div>
       </CSSTransition>
       <CSSTransition

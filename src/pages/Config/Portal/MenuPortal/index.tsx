@@ -2,7 +2,6 @@ import { PencilSimpleLine, TrashSimple } from 'phosphor-react'
 import React, { useState } from 'react'
 
 import { Link as RouterLink } from 'react-router-dom'
-
 // import ContractDetails from './DetailsContract'
 // import AlertDelete from './AlertDelete'
 import {
