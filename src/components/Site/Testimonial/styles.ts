@@ -9,7 +9,7 @@ export const Container = styled.div`
   height: 100%;
   margin-top: 2rem;
   /* Brand / Turquoise 100 */
-  background: var(--bg-color);
+  background: ${(props) => props.theme.colors['bg-color']};
   /* Inside auto layout */
   flex: none;
   order: 3;
@@ -18,24 +18,33 @@ export const Container = styled.div`
     /* position: absolute; */
     /*background-color: lime;
     margin-top: 6rem; */
+    background: ${(props) => props.theme.colors.primary};
+
   }
 
   > :nth-child(2) {
     position: absolute;
     left: 44rem;
-    top: 12rem;
+    top: 8rem;
+    background: ${(props) => props.theme.colors['gray-400']};
+    color: ${(props) => props.theme.colors['text-color']};
   }
 
   > :nth-child(3) {
     position: absolute;
     left: 44rem;
     top: 33rem;
+    background: ${(props) => props.theme.colors.primary};
+    color: ${(props) => props.theme.colors['text-color']};
+
   }
 
   > :nth-child(4) {
     position: absolute;
     left: 14rem;
-    top: 22rem;
+    top: 18rem;
+    background: ${(props) => props.theme.colors.secondary};
+    color: ${(props) => props.theme.colors['text-color']};
   }
 `
 
@@ -45,15 +54,15 @@ export const TestimonialOne = styled.div`
   flex-direction: column;
   align-items: flex-start;
   text-align: justify;
-  padding: 24px 32px 0px 24px;
+  padding: 1.5rem 2rem 0px 1.5rem;
   /* gap: 12px; */
   /* height: 340px; */
   position: absolute;
-  width: 445px;
+  width: 27.813rem;
   height: auto;
-  left: 735px;
+  left: 45.938rem;
   top: 12rem;
-  background: var(--color-primary);
+  background: ${(props) => props.theme.colors.primary};
   box-shadow: 0px 10px 20px rgba(41, 41, 42, 0.07);
   border-radius: 8px;
 `
@@ -73,7 +82,7 @@ export const TestimonialTwo = styled.div`
   height: auto;
   left: 735px;
   top: 33rem;
-  background: var(--color-primary);
+  background: red;
   /* Dark Shadow */
   box-shadow: 0px 10px 20px rgba(41, 41, 42, 0.07);
   border-radius: 8px;
@@ -142,13 +151,15 @@ export const FeedbackTestimonial = styled.div`
   /* Lead / Lead 1 */
   /* font-family: 'Roboto', sans-serif; */
   font-style: normal;
-  font-weight: 400;
+  font-weight: 500;
   font-size: 16px;
-  line-height: 34px;
+  line-height: 30px;
   /* or 178% */
   font-feature-settings: 'liga' off;
   /* Text / Gray 900 */
-  color: #18191f;
+  //color: #18191f;
+  color: ${(props) => props.theme.colors['text-color']};
+
   /* Inside auto layout */
   flex: none;
   order: 0;
