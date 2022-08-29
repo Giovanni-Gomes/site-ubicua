@@ -65,5 +65,14 @@ export default {
         button: 'Salvar Registro'
       }
     },
+    feedback: {
+      title: 'Lista de Feedbacks',
+      tr: {
+        th_one: 'TIPO',
+        th_two: 'COMENTÁRIO',
+        th_three: 'SCREENSHOT',
+        th_four: 'CRIADO',
+      }
+    },
   },
 }

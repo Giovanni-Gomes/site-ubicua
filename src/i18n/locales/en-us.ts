@@ -65,5 +65,14 @@ export default {
         button: 'Save Register'
       }
     },
+    feedback: {
+      title: 'List Feedbacks',
+      tr: {
+        th_one: 'TYPE',
+        th_two: 'COMMENT',
+        th_three: 'SCREENSHOT',
+        th_four: 'CREATED_AT',
+      }
+    },
   },
 }

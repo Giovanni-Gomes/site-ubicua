@@ -229,7 +229,7 @@ const Dashboard: React.FC = () => {
                 <CardTable
                   title={< Translator path="home.feedbacks" />}
                   variant='feedbacks'
-                  goToPage='list-users'
+                  goToPage='list-feedbacks'
                 >
                   <TablePortal>
                     <thead>
