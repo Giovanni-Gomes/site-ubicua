@@ -20,30 +20,30 @@ export const Container = styled.div`
   background-clip: border-box;
   box-shadow: none;
 
-  border-bottom-right-radius: 0rem;
-  border-bottom-left-radius: 0rem;
-
   padding: 1rem;
   margin-bottom: 1rem;
   position: relative;
 
   &.projects, &.contracts {
+    width: 50%;
+
     background: ${(props) => props.theme.colors.primary};
     color: ${(props) => props.theme.colors['text-menu']};
     > a {
       position: absolute;
-      top: 1.5rem;
+      top: 1rem;
       right: 0.6rem;
       color: ${(props) => props.theme.colors['text-menu']};
     }
   }
 
   &.users, &.feedbacks {
+    width: 50%;
     background: ${(props) => props.theme.colors.secondary};
     color: ${(props) => props.theme.colors['gray-600']};
     > a {
       position: absolute;
-      top: 1.5rem;
+      top: 1rem;
       right: 0.6rem;
       color: ${(props) => props.theme.colors['gray-600']};
     }
@@ -58,8 +58,7 @@ export const Container = styled.div`
 
 
   background: ${(props: any) => props.theme.colors.primary};
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
+  border-radius: 8px;
   text-align: center;
   /* padding: 2px; */
   
