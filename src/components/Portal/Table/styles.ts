@@ -9,10 +9,10 @@ export const TableCustom = styled.table`
   width: 100%;
   /* margin: 0 auto; */
   border-spacing: 0 6px;
-  min-width: 600px;
+  /* min-width: 600px; */
   thead {
     th {
-      background: ${(props) => props.theme.colors.primary};
+      /* background: ${(props) => props.theme.colors.primary}; */
       padding: 0.5rem;
       text-align: center;
       text-transform: uppercase;
@@ -37,7 +37,7 @@ export const TableCustom = styled.table`
     /* width: 1295px;
     height: auto; */
     padding: 5px;
-    background: ${(props) => props.theme.colors.primary};
+    /* background: ${(props) => props.theme.colors.primary}; */
   }
   tbody {
     width: 100%;
@@ -56,7 +56,7 @@ export const TableCustom = styled.table`
           color: ${(props) => props.theme.colors.quaternary};
         }
         &:first-child {
-          width: 20%;
+          /* width: 20%; */
           padding-left: 0.3rem;
         }
         &:last-child {

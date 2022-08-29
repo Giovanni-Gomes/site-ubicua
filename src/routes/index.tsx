@@ -38,6 +38,7 @@ import CreateMenuPortal from '../pages/Config/Portal/MenuPortal/CreateMenuPortal
 import Sprint from '../pages/Sprint'
 import UpdateSprint from '../pages/Sprint/UpdateSprint'
 import CreateSprint from '../pages/Sprint/CreateSprint'
+import Feedback from '../pages/Feedback'
 
 const RoutesPage: React.FC = () => {
   return (
@@ -303,6 +304,15 @@ const RoutesPage: React.FC = () => {
           element={
             <PrivateRoute>
               <CreateMenuPortal />
+            </PrivateRoute>
+          }
+        />
+
+        <Route
+          path="/list-feedbacks"
+          element={
+            <PrivateRoute>
+              <Feedback />
             </PrivateRoute>
           }
         />

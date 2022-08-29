@@ -88,3 +88,9 @@ export const Container = styled.div`
 //     }
 //   }
 // `
+
+export const TableContainer = styled.div`
+    display: flex;
+    gap: 1rem;
+    max-width: 1278px;
+`

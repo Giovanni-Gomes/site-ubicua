@@ -29,6 +29,10 @@ export const Container = styled.section`
   &.table-section {
     /* width: 100%; */
     display: flex;
-    justify-content: center;
+    gap: 1rem;
+    max-width: 1278px;
+    margin: 0 auto;
+    
+
   }
 `

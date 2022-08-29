@@ -74,7 +74,7 @@ const CreateStoriesSprint: React.FC = () => {
           active: data.active,
           date_start: data.date_start,
           date_end: data.date_end,
-          status_id: data.status_id,
+          status_id: data.status_activity_id,
           user_id: data.user_id,
         }
 

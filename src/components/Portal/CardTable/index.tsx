@@ -1,19 +1,23 @@
+import { Door } from 'phosphor-react'
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 import { Container, Title, Subtitle, CardContent } from './styles'
 
 interface CardProps {
-  variant?: string // 'blue' | 'beige' | 'white' | 'black' | 'transparent'
+  variant?: 'projects' | 'contracts' | 'users' | 'feedbacks'// 'blue' | 'beige' | 'white' | 'black' | 'transparent'
   title: JSX.Element
   subtitle?: string
+  goToPage?: string
   children?: JSX.Element
 }
 
-const CardProject: React.FC<CardProps> = ({
+const CardTable: React.FC<CardProps> = ({
   variant,
   title,
   subtitle,
   children,
+  goToPage
 }) => {
   return (
     <Container className={variant}>
@@ -21,9 +25,10 @@ const CardProject: React.FC<CardProps> = ({
         <Title>{title}</Title>
         {subtitle ? <Subtitle>{subtitle}</Subtitle> : null}
       </div>
+      {goToPage && <Link to={`/${goToPage}`}><Door size={30} /></Link>}
       <CardContent>{children}</CardContent>
     </Container>
   )
 }
 
-export default CardProject
+export default CardTable

@@ -1,20 +1,26 @@
 import React from 'react'
 import Card from '../../components/Portal/Card'
-import CardProject from '../../components/Portal/CardProject'
+import CardTable from '../../components/Portal/CardTable'
 import ChartDash from '../../components/Portal/ChartDash'
 import DashboardSection from '../../components/Portal/DashboardSection'
 import TablePortal from '../../components/Portal/Table'
 // import { lightTheme, darkTheme } from '../../components/Portal/Theme';
 import WelcomeDash from '../../components/Portal/WelcomeDash'
-import { Container } from './styles'
+import { Container, TableContainer } from './styles'
 import { useProjects } from '../Project/useProjects'
 import { useActiveRegistries, useContractsRegistries, useDashboard, useTargetContracts } from './useDashboard'
 import { Translator } from '../../components/Portal/I18n/Translator'
 import { useAuth } from '../../components/hooks/provider/auth'
+import { useContracts } from '../Contract/useContracts'
+import { useUsers } from '../User/useUsers'
+import { useFeedbacks } from '../Feedback/useFeedback'
 
 const Dashboard: React.FC = () => {
   const { user } = useAuth();
-  const { data, isLoading, isFetching, error } = useProjects(0, 0, '')
+  const { data, isLoading, isFetching, error } = useProjects(0, 5, '')
+  const { data: dataContracts } = useContracts(0, 5, '')
+  const { data: dataUsers } = useUsers(0, 5, '')
+  const { data: dataFeedbacks } = useFeedbacks(0, 5, '')
   const { data: dataDashboard } = useDashboard()
   const { data: dataActiveRegistries } = useActiveRegistries()
   const { data: dataContractsRegistries } = useContractsRegistries()
@@ -26,6 +32,7 @@ const Dashboard: React.FC = () => {
     ['Users', dataActiveRegistries?.activeUsers],
     ['Contracts', dataActiveRegistries?.activeContracts],
   ]
+
   const contractGraphCard = [
     ["Month", "Value per Month", "Meta"],
     ["Jan", dataContractsRegistries?.janContracts[0] ? Number(dataContractsRegistries?.janContracts[0]._sum.negotiated_value) : 0, dataTargetContracts?.january[0] ? Number(dataTargetContracts.january[0].value_target) : 0],
@@ -44,7 +51,7 @@ const Dashboard: React.FC = () => {
 
   const options = {
     title: "Monthly Contract Value",
-    vAxis: { title: "Contracts" },
+    vAxis: { title: "Negociated Value" },
     hAxis: { title: "Month" },
     seriesType: "bars",
     series: { 1: { type: "line" } },
@@ -102,52 +109,131 @@ const Dashboard: React.FC = () => {
         <DashboardSection
           element={
             <>
-              <CardProject
-                title={< Translator path="home.tableProjects" />}
-              >
-                <TablePortal>
-                  <thead>
-                    <tr>
-                      <th>Nome</th>
-                      <th>Ativo</th>
-                      {/* <th>Início</th>
-                      <th>Fim</th>
-                      <th>Progresso</th>
-                      <th>R$</th> */}
-                      <th>Status</th>
-                      {/* <th>Resp</th> */}
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {data?.projects.map((project: any) => (
-                      <tr key={project.id}>
-                        <td>
-                          <p>{project.name}</p>
-                        </td>
-                        <td>
-                          <p>{project.active}</p>
-                        </td>
-                        {/* <td>{project.date_start}</td>
-                        <td>
-                          <p>{project.date_end}</p>
-                        </td>
-                        <td>
-                          <p>{project.progress}</p>
-                        </td>
-                        <td>
-                          <p>{project.negotiated_value}</p>
-                        </td> */}
-                        <td>
-                          <p>{project.status.name}</p>
-                        </td>
-                        {/* <td>
-                          <p>{project.user.name}</p>
-                        </td> */}
+              <TableContainer>
+                <CardTable
+                  title={< Translator path="home.tableProjects" />}
+                  variant='projects'
+                  goToPage='projects'
+                >
+                  <TablePortal>
+                    <thead>
+                      <tr>
+                        <th>Nome</th>
+                        <th>Status</th>
+                        <th>Resp</th>
                       </tr>
-                    ))}
-                  </tbody>
-                </TablePortal>
-              </CardProject>
+                    </thead>
+                    <tbody>
+                      {data?.projects.map((project: any) => (
+                        <tr key={project.id}>
+                          <td>
+                            <p>{project.name}</p>
+                          </td>
+                          <td>
+                            <p>{project.status.name}</p>
+                          </td>
+                          <td>
+                            <p>{project.user.name}</p>
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </TablePortal>
+                </CardTable>
+
+                <CardTable
+                  title={< Translator path="home.tableUsers" />}
+                  variant='users'
+                  goToPage='list-users'
+                >
+                  <TablePortal>
+                    <thead>
+                      <tr>
+                        <th>Nome</th>
+                        <th>E-mail</th>
+                        <th>Type</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {dataUsers?.users.map((user: any) => (
+                        <tr key={user.id}>
+                          <td>
+                            <p>{user.name}</p>
+                          </td>
+                          <td>
+                            <p>{user.email}</p>
+                          </td>
+                          <td>
+                            <p>{user.type_user}</p>
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </TablePortal>
+                </CardTable>
+
+                <CardTable
+                  title={< Translator path="home.tableContracts" />}
+                  variant='contracts'
+                  goToPage='list-contracts'
+                >
+                  <TablePortal>
+                    <thead>
+                      <tr>
+                        <th>Nome</th>
+                        <th>Fase</th>
+                        <th>Resp</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {dataContracts?.contracts.map((contract: any) => (
+                        <tr key={contract.id}>
+                          <td>
+                            <p>{contract.name}</p>
+                          </td>
+                          <td>
+                            <p>{contract.phase_contract}</p>
+                          </td>
+                          <td>
+                            <p>{contract.user.name}</p>
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </TablePortal>
+                </CardTable>
+
+                <CardTable
+                  title={< Translator path="home.tableFeedbacks" />}
+                  variant='feedbacks'
+                  goToPage='list-users'
+                >
+                  <TablePortal>
+                    <thead>
+                      <tr>
+                        <th>type</th>
+                        <th>comment</th>
+                        <th>screenshot</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {dataFeedbacks?.feedbacks.map((feedback: any) => (
+                        <tr key={feedback.id}>
+                          <td>
+                            <p>{feedback.type}</p>
+                          </td>
+                          <td>
+                            <p>{feedback.comment}</p>
+                          </td>
+                          <td>
+                            <p>{feedback.screenshot}</p>
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </TablePortal>
+                </CardTable>
+              </TableContainer>
             </>
           }
           className="table-section"
