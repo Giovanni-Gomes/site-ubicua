@@ -2,7 +2,7 @@ import React from "react";
 import { OptionsButton } from "./styles/options";
 
 
-const HighSchoolBranches = (props, actions) => {
+const HighSchoolBranches = (props: any, actions: any) => {
   console.log("ACTIONS", actions);
   console.log("ACTIONS", props.actions);
   const options = [

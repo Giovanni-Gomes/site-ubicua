@@ -26,6 +26,7 @@ interface GetUserByIdResponse {
   active: boolean
   type_user: string
   created_at: string
+  type_user_id?: string
   // users: FindAllUserProps;
 }
 

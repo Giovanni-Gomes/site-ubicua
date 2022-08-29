@@ -4,6 +4,7 @@ import BotAvatar from './Components/BotAvatar/BotAvatar'
 import UserAvatar from './Components/UserAvatar/UserAvatar'
 import { GlobalStatistics } from './Components/Widgets/GlobalStatistics';
 import { HighSchoolBranches } from './Components/Widgets/HighSchoolBranches';
+import List from './Components/Widgets/List';
 import { Options } from './Components/Widgets/Options';
 import { Overview } from './Components/Widgets/Overview';
 
@@ -60,12 +61,13 @@ const ConfigBot = {
   widgets: [
     {
       widgetName: "highSchoolBranches",
-      widgetFunc: (props) => <HighSchoolBranches actions={'highSchoolBranches'} {...props} />,
-      //props: { highSchoolBranches: {} }, //props.highSchoolBranches
+      widgetFunc: (props: any) => <HighSchoolBranches actions={'highSchoolBranches'} {...props} />,
+      props: {}, //props.highSchoolBranches
+      mapStateToProps: [],
     },
     {
       widgetName: "careerLinks",
-      widgetFunc: (props) => <List {...props} />,
+      widgetFunc: (props: any) => <List {...props} />,
       props: {
         options: [
           {
@@ -81,7 +83,8 @@ const ConfigBot = {
             id: 3
           }
         ]
-      }
+      },
+      mapStateToProps: [],
     },
     {
       widgetName: "overview",
