@@ -11,6 +11,9 @@ export default {
       totalFeedbacks: 'Total de Feedbacks',
       chartContractTitle: 'Contratos',
       tableProjects: 'Últimos projetos adicionados',
+      tableUsers: 'Últimos usuários adicionados',
+      tableContracts: 'Últimos contratos adicionados',
+      tableFeedbacks: 'Últimos feedbacks adicionados',
     },
     project: {
       title: 'Lista de Projetos',
