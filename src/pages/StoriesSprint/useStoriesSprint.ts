@@ -50,7 +50,7 @@ export async function getStoriesSprint(
 
   const totalPage = Number(data.totalPage)
 
-  const sprints = data.sprints.map((sprint: Sprint) => ({
+  const stories_sprints = data.sprints.map((sprint: StoriesSP) => ({
     id: sprint.id,
     name: sprint.name,
     description: sprint.description,
@@ -78,44 +78,44 @@ export async function getStoriesSprint(
     user: sprint.user,
   }))
   return {
-    sprints,
+    stories_sprints,
     totalPage,
   }
 }
 
-export async function getOneSprintById(id: string): Promise<Sprint> {
-  const result = await api.get(`/v1/sprint/findOne/${id}`)
-  const sprint = {
-    id: result.data.id,
-    name: result.data.name,
-    description: result.data.description,
-    active: result.data.active ? 'Ativo' : 'Inativo',
-    date_start: new Date(result.data.date_start).toISOString().slice(0, 10),
-    date_end:
-      result.data.date_end &&
-      new Date(result.data.date_end).toISOString().slice(0, 10),
-    status: {
-      id: result.data.status.id,
-      name: result.data.status.name,
-    },
-    user: {
-      id: result.data.user.id,
-      name: result.data.user.name,
-    },
-  }
-  return sprint
-}
+// export async function getOneSprintById(id: string): Promise<StoriesSP> {
+//   const result = await api.get(`/v1/sprint/findOne/${id}`)
+//   const sprint = {
+//     id: result.data.id,
+//     name: result.data.name,
+//     description: result.data.description,
+//     active: result.data.active ? 'Ativo' : 'Inativo',
+//     date_start: new Date(result.data.date_start).toISOString().slice(0, 10),
+//     date_end:
+//       result.data.date_end &&
+//       new Date(result.data.date_end).toISOString().slice(0, 10),
+//     status: {
+//       id: result.data.status.id,
+//       name: result.data.status.name,
+//     },
+//     user: {
+//       id: result.data.user.id,
+//       name: result.data.user.name,
+//     },
+//   }
+//   return sprint
+// }
 
 export async function deleteSprint(id: string) {
   await api.delete(`/v1/sprint/delete/${id}`)
 }
 
-export function useSprints(page: number, take: number, search: string) {
-  return useQuery(['sprints', page, take, search], () => getSprints(page, take, search), {
-    staleTime: 1000 * 60 * 10
-  });
-}
+// export function useSprints(page: number, take: number, search: string) {
+//   return useQuery(['sprints', page, take, search], () => getSprints(page, take, search), {
+//     staleTime: 1000 * 60 * 10
+//   });
+// }
 
-export function useSprint(id: string) {
-  return useQuery(['sprint', id], () => getOneSprintById(id))
-}
+// export function useSprint(id: string) {
+//   return useQuery(['sprint', id], () => getOneSprintById(id))
+// }

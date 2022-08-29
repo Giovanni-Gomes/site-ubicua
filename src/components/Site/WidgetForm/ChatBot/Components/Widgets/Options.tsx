@@ -10,7 +10,7 @@ const Options: React.FC = (props) => {
       handler: () => { alert('button function') },//props.actionProvider.handleGlobalStats,
       id: 1,
     },
-    { text: "Python", handler: () => { props.actions.handleGlobalStats }, id: 2 }, //handleHello()
+    { text: "Python", handler: () => { } }, // props.actions.handleGlobalStats }, id: 2 - handleHello()
     { text: "Golang", handler: () => { }, id: 3 },
   ];
 

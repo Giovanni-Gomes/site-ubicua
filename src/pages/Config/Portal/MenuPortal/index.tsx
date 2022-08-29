@@ -107,8 +107,8 @@ const MenuPortal: React.FC = () => {
           </>
         )}
         <Pagination
+          //totalCountOfRegisters={data?.totalPage}
           registersPerPage={10}
-          totalCountOfRegisters={data?.totalPage}
           currentPage={page}
           onPageChange={setPage}
         />
