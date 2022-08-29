@@ -34,7 +34,7 @@ const Dashboard: React.FC = () => {
   ]
 
   const contractGraphCard = [
-    ["Month", "Value per Month", "Meta"],
+    ["Month", "Value", "Meta"],
     ["Jan", dataContractsRegistries?.janContracts[0] ? Number(dataContractsRegistries?.janContracts[0]._sum.negotiated_value) : 0, dataTargetContracts?.january[0] ? Number(dataTargetContracts.january[0].value_target) : 0],
     ["Feb", dataContractsRegistries?.fevContracts[0] ? Number(dataContractsRegistries?.fevContracts[0]._sum.negotiated_value) : 0, dataTargetContracts?.february[0] ? Number(dataTargetContracts.february[0].value_target) : 0],
     ["Mar", dataContractsRegistries?.marContracts[0] ? Number(dataContractsRegistries?.marContracts[0]._sum.negotiated_value) : 0, dataTargetContracts?.march[0] ? Number(dataTargetContracts.march[0].value_target) : 0],
@@ -107,20 +107,23 @@ const Dashboard: React.FC = () => {
         />
 
         <DashboardSection
+          title={< Translator path="home.table.tableTitle" />}
           element={
             <>
               <TableContainer>
                 <CardTable
-                  title={< Translator path="home.tableProjects" />}
+                  title={< Translator path="home.projects" />}
                   variant='projects'
                   goToPage='projects'
                 >
                   <TablePortal>
                     <thead>
                       <tr>
-                        <th>Nome</th>
-                        <th>Status</th>
-                        <th>Resp</th>
+                        <th>< Translator path="home.table.name" /></th>
+                        <th>< Translator path="home.table.active" /></th>
+                        <th>< Translator path="home.table.date_start" /></th>
+                        <th>< Translator path="home.table.status" /></th>
+                        <th>< Translator path="home.table.responsible" /></th>
                       </tr>
                     </thead>
                     <tbody>
@@ -128,6 +131,12 @@ const Dashboard: React.FC = () => {
                         <tr key={project.id}>
                           <td>
                             <p>{project.name}</p>
+                          </td>
+                          <td>
+                            <p>{project.active}</p>
+                          </td>
+                          <td>
+                            <p>{project.date_start}</p>
                           </td>
                           <td>
                             <p>{project.status.name}</p>
@@ -142,16 +151,17 @@ const Dashboard: React.FC = () => {
                 </CardTable>
 
                 <CardTable
-                  title={< Translator path="home.tableUsers" />}
+                  title={< Translator path="home.users" />}
                   variant='users'
                   goToPage='list-users'
                 >
                   <TablePortal>
                     <thead>
                       <tr>
-                        <th>Nome</th>
-                        <th>E-mail</th>
-                        <th>Type</th>
+                        <th>< Translator path="home.table.name" /></th>
+                        <th>< Translator path="home.table.email" /></th>
+                        <th>< Translator path="home.table.active" /></th>
+                        <th>< Translator path="home.table.type" /></th>
                       </tr>
                     </thead>
                     <tbody>
@@ -164,6 +174,9 @@ const Dashboard: React.FC = () => {
                             <p>{user.email}</p>
                           </td>
                           <td>
+                            <p>{user.active}</p>
+                          </td>
+                          <td>
                             <p>{user.type_user}</p>
                           </td>
                         </tr>
@@ -171,18 +184,22 @@ const Dashboard: React.FC = () => {
                     </tbody>
                   </TablePortal>
                 </CardTable>
+              </TableContainer>
 
+              <TableContainer>
                 <CardTable
-                  title={< Translator path="home.tableContracts" />}
+                  title={< Translator path="home.contracts" />}
                   variant='contracts'
                   goToPage='list-contracts'
                 >
                   <TablePortal>
                     <thead>
                       <tr>
-                        <th>Nome</th>
-                        <th>Fase</th>
-                        <th>Resp</th>
+                        <th>< Translator path="home.table.name" /></th>
+                        <th>< Translator path="home.table.active" /></th>
+                        <th>< Translator path="home.table.date_start" /></th>
+                        <th>< Translator path="home.table.phase" /></th>
+                        <th>< Translator path="home.table.responsible" /></th>
                       </tr>
                     </thead>
                     <tbody>
@@ -190,6 +207,12 @@ const Dashboard: React.FC = () => {
                         <tr key={contract.id}>
                           <td>
                             <p>{contract.name}</p>
+                          </td>
+                          <td>
+                            <p>{contract.active}</p>
+                          </td>
+                          <td>
+                            <p>{contract.date_start}</p>
                           </td>
                           <td>
                             <p>{contract.phase_contract}</p>
@@ -204,16 +227,17 @@ const Dashboard: React.FC = () => {
                 </CardTable>
 
                 <CardTable
-                  title={< Translator path="home.tableFeedbacks" />}
+                  title={< Translator path="home.feedbacks" />}
                   variant='feedbacks'
                   goToPage='list-users'
                 >
                   <TablePortal>
                     <thead>
                       <tr>
-                        <th>type</th>
-                        <th>comment</th>
-                        <th>screenshot</th>
+                        <th>< Translator path="home.table.type" /></th>
+                        <th>< Translator path="home.table.comment" /></th>
+                        <th>< Translator path="home.table.screenshot" /></th>
+                        <th>< Translator path="home.table.created_at" /></th>
                       </tr>
                     </thead>
                     <tbody>
@@ -227,6 +251,9 @@ const Dashboard: React.FC = () => {
                           </td>
                           <td>
                             <p>{feedback.screenshot}</p>
+                          </td>
+                          <td>
+                            <p>{feedback.createdAt}</p>
                           </td>
                         </tr>
                       ))}

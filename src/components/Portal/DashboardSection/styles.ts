@@ -29,10 +29,19 @@ export const Container = styled.section`
   &.table-section {
     /* width: 100%; */
     display: flex;
-    gap: 1rem;
+    flex-direction: column;
     max-width: 1278px;
     margin: 0 auto;
-    
+    border: 1px solid ${(props) => props.theme.colors['gray-700']};
+    /* background: ${(props) => props.theme.colors.tertiary}; */
+    padding: 0 1rem;
+    border-radius: 8px;
 
   }
+`
+
+export const Title = styled.h2`
+  text-align: center;
+  margin: 1rem;
+  color: ${(props) => props.theme.colors['gray-500']}
 `

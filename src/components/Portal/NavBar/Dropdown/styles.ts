@@ -7,7 +7,7 @@ export const Container = styled.div`
   /*background: ${(props: any) => props.theme.colors.primary};*/
   /* border: 1px solid ${(props: any) => props.theme.colors['gray-900']}; */
   /* border-top: none; */
-  background: linear-gradient(90deg, ${(props) => props.theme.colors.primary}, ${(props) => props.theme.colors.hoverDark}, ${(props) => props.theme.colors.secondary}, ${(props) => props.theme.colors.secondary});
+  background: linear-gradient(90deg, ${(props) => props.theme.colors.primary}, ${(props) => props.theme.colors['primary-300']}, ${(props) => props.theme.colors['primary-500']}, ${(props) => props.theme.colors['primary-700']});
   background-size: 400% 400%;
   /* animation: gradient 25s ease infinite;
   @keyframes gradient {
