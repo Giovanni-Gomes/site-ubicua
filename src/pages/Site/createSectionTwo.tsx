@@ -13,8 +13,9 @@ import { BiText } from 'react-icons/bi'
 import { FaTrash } from 'react-icons/fa'
 import Button from '../../components/Shared/Button'
 import Header from '../../components/Portal/Header'
-import { CancelButton, Container, FormFooter } from './styles'
+import { Back, CancelButton, Container, FormFooter } from './styles'
 import CreateSectionTopics from './createSectionTopics'
+import { ArrowLeft } from 'phosphor-react'
 
 interface CreateMenuProps {
   title: string
@@ -36,19 +37,6 @@ const CreateSectionTwo: React.FC = () => {
   function showActiveForm(id: number) {
     setIsActiveForm(id)
   }
-  // const fileInput = useRef(null)
-
-  // const fileSelectedHandlerInputOne = (event: any) => {
-  //   // handle validations
-  //   // console.log("img handle one", event.target.files[0]);
-  //   setSelectedFile(event.target.files[0])
-  // }
-
-  // const fileSelectedHandlerInputTwo = (event: any) => {
-  //   // handle validations
-  //   // console.log("img handle two", event.target.files[0]);
-  //   setSelectedFileTwo(event.target.files[0])
-  // }
 
   const handleSubmitCreateMenu = useCallback(
     async (data: CreateMenuProps) => {
@@ -111,6 +99,9 @@ const CreateSectionTwo: React.FC = () => {
     <>
       <Header />
       <Container>
+        <Back to={'/list-section-two'}>
+          <ArrowLeft size={24} />
+        </Back>
         <ul>
           <li>
             <button
@@ -152,9 +143,6 @@ const CreateSectionTwo: React.FC = () => {
               placeholder="First Description"
               icon={BiText}
             />
-            {/* <Input name="image_one" type="file" placeholder='First Image' icon={BiText} onChange={fileSelectedHandlerInputOne} /> */}
-            {/* <Input name="description_two" type="text" placeholder='Second Description' icon={BiText} /> */}
-            {/* <Input name="image_two" type="file" placeholder='Second Image' icon={BiText} onChange={fileSelectedHandlerInputTwo} /> */}
 
             <FormFooter>
               <Button type="submit">Salvar Registro</Button>

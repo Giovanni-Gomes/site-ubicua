@@ -14,11 +14,11 @@ import { FaTrash, FaImage } from 'react-icons/fa'
 import Button from '../../components/Shared/Button'
 import { CancelButton, FormFooter } from './styles'
 import { Loading } from '../../components/Site/WidgetForm/Loading'
+import Select from '../../components/Shared/Select'
 
 interface CreateMenuProps {
   title: string
   link: string
-  logo: string
   active?: boolean
 }
 
@@ -36,7 +36,6 @@ const CreateMenu: React.FC = () => {
         const schema = Yup.object().shape({
           title: Yup.string().required('Título é Obrigatório'),
           link: Yup.string().required('Link é Obrigatório'),
-          logo: Yup.string().required('Logo Obrigatório'),
           active: Yup.boolean().default(true),
         })
 
@@ -47,7 +46,6 @@ const CreateMenu: React.FC = () => {
         await api.post('/v1/menu/create-menu', {
           title: data.title,
           link: data.link,
-          logo: data.logo,
           active: Boolean(data.active),
         })
 
@@ -89,8 +87,10 @@ const CreateMenu: React.FC = () => {
 
       <Input name="title" type="text" placeholder="Título" icon={BiText} />
       <Input name="link" type="text" placeholder="Link" icon={BiText} />
-      <Input name="logo" type="text" placeholder="Logo" icon={FaImage} />
-      {/* <Input name="active" type="text" placeholder='Status' icon={GrStatusGood} /> */}
+      <Select name='active' >
+        <option value="true">Ativo</option>
+        <option value="false">Inativo</option>
+      </Select>
 
       <FormFooter>
         <Button disabled={isSendingMenu} type="submit">

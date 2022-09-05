@@ -108,7 +108,7 @@ const CreateCustomers: React.FC = () => {
   }
 
   return (
-    <Form ref={formRef} onSubmit={handleSubmitCreateMenu}>
+    <Form ref={formRef} onSubmit={handleSubmitCreateMenu} className='pages'>
       <h1>Cadastrar Novos Icones</h1>
       <span className="subtitle">preencha o formulário abaixo</span>
 

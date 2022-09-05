@@ -14,11 +14,6 @@ interface IHeaderProps {
 
 const Header: React.FC = () => {
   const buttonVariant = Math.round(Math.random())
-
-  // function handleToggle() {
-  //   if (window.toggleActiveMenu) window.toggleActiveMenu();
-  // }
-
   const [headerLogo, setHeaderLogo] = useState<IHeaderProps[]>([])
   const [headerMenu, setHeaderMenu] = useState<IHeaderProps[]>([])
 

@@ -113,8 +113,8 @@ const Dashboard: React.FC = () => {
               <TableContainer>
                 <CardTable
                   title={< Translator path="home.projects" />}
-                  variant='projects'
-                  goToPage='projects'
+                  variant='project'
+                  goToPage='project'
                 >
                   <TablePortal>
                     <thead>
@@ -189,8 +189,8 @@ const Dashboard: React.FC = () => {
               <TableContainer>
                 <CardTable
                   title={< Translator path="home.contracts" />}
-                  variant='contracts'
-                  goToPage='list-contracts'
+                  variant='contract'
+                  goToPage='list-contract'
                 >
                   <TablePortal>
                     <thead>

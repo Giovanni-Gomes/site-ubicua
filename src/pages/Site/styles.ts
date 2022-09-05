@@ -1,8 +1,10 @@
 import { Popover } from '@headlessui/react'
-import styled from 'styled-components'
+import styled, { ThemeConsumer } from 'styled-components'
 import { shade } from 'polished'
+import { Link } from 'react-router-dom'
 
 export const Container = styled.div`
+  position: relative;
   width: 80%;
   display: flex;
   flex-direction: column;
@@ -12,16 +14,7 @@ export const Container = styled.div`
     margin-top: 6rem;
   }
   form {
-    /* position: absolute; */
-    /* align-items: center; */
-    /* margin: 6rem auto; */
-
-    /* top: 400rem; */
-    /* left: 8rem; */
-    /* right: 8rem; */
     width: 100%;
-    /* width: 80%; */
-    /* margin-top: 1.563rem; */
 
     padding: 2rem 6rem 2rem;
     text-align: center;
@@ -35,42 +28,20 @@ export const Container = styled.div`
 
     h1 {
       margin-bottom: 0.5rem;
-      color: var(--color-secondary);
+      color: ${(props: any) => props.theme.colors['gray-600']};
     }
 
     span {
       margin-bottom: 0.2rem;
-      color: var(--color-secondary);
+      color:${(props) => props.theme.colors['gray-500']};
     }
 
-    a {
-      color: var(--color-secondary);
-      display: block;
-      margin-top: 0.2rem;
-      text-decoration: none;
-      transition: color 0.2s;
-      &:hover {
-        color: ${shade(0.2, '#F4EDE8')};
-      }
-    }
   }
   ul {
     display: flex;
     list-style: none;
-
     li {
-      /* position: relative; */
-
-      /* &:nth-child(2) {
-        left: 4.5rem;
-      }
-
-      &:nth-child(3) {
-        left: 9.375rem;
-      } */
-
       button {
-        /* position: absolute; */
         padding: 0 1rem;
         border-radius: 0.5rem;
         border-bottom-left-radius: 0rem;
@@ -78,29 +49,24 @@ export const Container = styled.div`
         border: none;
 
         font-size: 16px;
-        color: var(--color-secondary);
+        color: ${(props) => props.theme.colors['gray-400']};
         background: lightblue;
 
         &.active {
           background: #eff6ff;
           /* border-bottom: solid #EFF6FF; */
-          /* color: #FFF; */
+          color: ${(props) => props.theme.colors.green};
           &:hover {
-            color: var(--color-secondary);
+            color: ${(props) => props.theme.colors.green};
           }
         }
 
-        /* &:first-of-type{
-          border-left: none;
-        } */
-
         &:hover {
-          color: ${shade(0.2, '#F4EDE8')};
-          /* border: 0.01rem solid #8257e6;
-          border-bottom: none; */
+          color: ${(props) => props.theme.colors.hoverDark};
         }
       }
     }
+
   }
 `
 
@@ -139,7 +105,6 @@ export const Actions = styled.div`
 export const FormFooter = styled.div`
   display: flex;
   align-items: right;
-  /* background-color: red; */
   justify-content: space-between;
 
   Button {
@@ -147,15 +112,11 @@ export const FormFooter = styled.div`
     padding: 1rem;
     border-radius: 0.5rem;
     font-size: 1.4rem;
-    /* align-items: center; */
-    /* justify-content: space-between; */
-
     margin: 0.6rem 0rem 0rem 0rem;
   }
 `
 
 export const CancelButton = styled.button`
-  /* flex: 1 1 0%; */
   display: flex;
   align-items: center;
   border-color: transparent;
@@ -167,118 +128,11 @@ export const CancelButton = styled.button`
   border-radius: 5px;
 `
 
-// import { shade } from 'polished'
-// import styled from 'styled-components'
-
-// export const Container = styled.div`
-//   /* position: absolute; */
-//   /* top: 2rem; */
-//   /* left: 0px; */
-//   width: 80%;
-//   /* height: 100%; */
-//   /* position: relative; */
-//   display: flex;
-//   flex-direction: column;
-//   justify-content: baseline;
-//   margin: 0 auto;
-
-//   &:first-of-type {
-//     margin-top: 6rem;
-//   }
-
-//   form {
-//     /* position: absolute; */
-//     /* align-items: center; */
-//     /* margin: 6rem auto; */
-
-//     /* top: 400rem; */
-//     /* left: 8rem; */
-//     /* right: 8rem; */
-//     width: 100%;
-//     /* width: 80%; */
-//     /* margin-top: 1.563rem; */
-
-//     padding: 2rem 6rem 2rem;
-//     text-align: center;
-//     display: flex;
-//     flex-direction: column;
-//     border-radius: 1rem;
-//     border-top-left-radius: 0;
-//     &.simple-form {
-//       border-top-left-radius: 1rem;
-//     }
-//     background: var(--bg-portal); //#EFF6FF;//${(props: any) =>
-//       props.theme.textSecondary};
-
-//     h1 {
-//       margin-bottom: 0.5rem;
-//       color: var(--color-secondary);
-//     }
-
-//     span {
-//       margin-bottom: 0.2rem;
-//       color: var(--color-secondary);
-//     }
-
-//     a {
-//       color: var(--color-secondary);
-//       display: block;
-//       margin-top: 0.2rem;
-//       text-decoration: none;
-//       transition: color 0.2s;
-//       &:hover {
-//         color: ${shade(0.2, '#F4EDE8')};
-//       }
-//     }
-//   }
-
-//   ul {
-//     display: flex;
-//     list-style: none;
-
-//     li {
-//       /* position: relative; */
-
-//       /* &:nth-child(2) {
-//         left: 4.5rem;
-//       }
-
-//       &:nth-child(3) {
-//         left: 9.375rem;
-//       } */
-
-//       button {
-//         /* position: absolute; */
-//         padding: 0 1rem;
-//         border-radius: 0.5rem;
-//         border-bottom-left-radius: 0rem;
-//         border-bottom-right-radius: 0rem;
-//         border: none;
-//         cursor: pointer;
-
-//         font-size: 16px;
-//         color: var(--color-secondary);
-//         background: lightblue;
-
-//         &.active {
-//           background: #eff6ff;
-//           /* border-bottom: solid #EFF6FF; */
-//           /* color: #FFF; */
-//           &:hover {
-//             color: var(--color-secondary);
-//           }
-//         }
-
-//         /* &:first-of-type{
-//           border-left: none;
-//         } */
-
-//         &:hover {
-//           color: ${shade(0.2, '#F4EDE8')};
-//           /* border: 0.01rem solid #8257e6;
-//           border-bottom: none; */
-//         }
-//       }
-//     }
-//   }
-// `
+export const Back = styled(Link)`
+  position: absolute;
+  top: 45px;
+  left: 45px;
+  :first-child {
+    color: ${(props) => props.theme.colors['gray-600']};
+  }
+`

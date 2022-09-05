@@ -38,7 +38,6 @@ interface CreateProjectProps {
 }
 
 const CreateProject: React.FC = () => {
-  // style colors customTheme
   const navigate = useNavigate()
   const { addToast } = useToast()
 
