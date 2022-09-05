@@ -30,7 +30,7 @@ const Feedback: React.FC = () => {
       search={true}
       searchState={setSearchQuery}
       importFile="/import"
-      create="/create-project"
+      create="/create-feedback"
     >
       <div>{!isLoading && isFetching && <Loading />}</div>
 
@@ -72,9 +72,9 @@ const Feedback: React.FC = () => {
                 <td>{feedback.createdAt}</td>
                 <td>
                   <Actions>
-                    <RouterLink to={`/update-project/${feedback.id}`}>
+                    {/* <RouterLink to={`/update-project/${feedback.id}`}>
                       <PencilSimpleLine size={24} />
-                    </RouterLink>
+                    </RouterLink> */}
 
                     <PopContainer>
                       <PopPanelAlert>

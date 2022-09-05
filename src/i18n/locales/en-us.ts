@@ -31,7 +31,7 @@ export default {
       }
     },
     project: {
-      title: 'List Projects',
+      title: 'Projects List',
       tr: {
         th_one: 'NAME',
         th_two: 'START',
@@ -51,7 +51,7 @@ export default {
       inputLink: 'Link'
     },
     sprint: {
-      title: 'List Sprints',
+      title: 'Sprints List',
       create: {
         title: 'Create a new sprint',
         selectStatus: 'Select for status',
@@ -66,7 +66,7 @@ export default {
       }
     },
     feedback: {
-      title: 'List Feedbacks',
+      title: 'Feedbacks List',
       tr: {
         th_one: 'TYPE',
         th_two: 'COMMENT',

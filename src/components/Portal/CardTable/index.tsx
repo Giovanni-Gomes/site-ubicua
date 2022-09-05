@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 import { Container, Title, Subtitle, CardContent } from './styles'
 
 interface CardProps {
-  variant?: 'projects' | 'contracts' | 'users' | 'feedbacks'// 'blue' | 'beige' | 'white' | 'black' | 'transparent'
+  variant?: 'project' | 'contract' | 'users' | 'feedbacks'// 'blue' | 'beige' | 'white' | 'black' | 'transparent'
   title: JSX.Element
   subtitle?: string
   goToPage?: string

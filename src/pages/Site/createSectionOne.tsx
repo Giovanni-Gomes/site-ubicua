@@ -13,8 +13,9 @@ import { BiText } from 'react-icons/bi'
 import { FaTrash } from 'react-icons/fa'
 import Button from '../../components/Shared/Button'
 import Header from '../../components/Portal/Header'
-import { CancelButton, Container, FormFooter } from './styles'
+import { Back, CancelButton, Container, FormFooter } from './styles'
 import { Loading } from '../../components/Site/WidgetForm/Loading'
+import { ArrowLeft } from 'phosphor-react'
 
 interface CreateMenuProps {
   title: string
@@ -32,8 +33,6 @@ const CreateSectionOne: React.FC = () => {
   const [selectedFile, setSelectedFile] = useState('')
 
   const fileSelectedHandlerInput = (event: any) => {
-    // handle validations
-    // console.log("img handle", event.target.files[0]);
     let image
     if (event.target.files[0] == null) {
       image = null
@@ -46,32 +45,12 @@ const CreateSectionOne: React.FC = () => {
   const handleSubmitCreateMenu = useCallback(
     async (data: CreateMenuProps) => {
       try {
-        // event.preventDefault();
-        // setSelectedFile(event.target.files[0]);
         const imageData = new FormData()
         imageData.append('image_one', (selectedFile as any).name)
 
-        // imageData.append('title', data.title);
-        // imageData.append('description_one', data.description_one);
-        // imageData.append('image_one', selectedFile);
-        // imageData.append('description_two', data.description_two);
-        // imageData.append('image_two', data.image_two);
-
-        // console.log("imageData", imageData);
         console.log('image ONE', (selectedFile as any).name)
 
         formRef.current?.setErrors({})
-
-        // let fileImageOne;
-        // let test;
-        // let fileImageTwo;
-        // (e: ChangeEvent<HTMLInputElement>) => {
-        //   if (e.target.files) {
-        //     fileImageOne = imageData.append("file", data.image_one);
-        //     test = imageData.append("image_one", e.target.files[0]);
-        //     fileImageTwo = imageData.append("image_two", data.image_two);
-        //   }
-        // }
 
         const schema = Yup.object().shape({
           title: Yup.string().required('Título é Obrigatório'),
@@ -88,16 +67,6 @@ const CreateSectionOne: React.FC = () => {
           description_one: data.description_one,
           image_one: selectedFile,
         }
-        // console.log("formData", formData);
-
-        // console.log("imageData", imageData);
-        // console.log("file image", fileImageOne);
-        // console.log("file test", test);
-        // console.log("data titulo", data.title);
-        // console.log("data image one", data.image_one);
-        // console.log("data image two", data.image_two);
-        // imageData
-
         setIsSendingFeedback(true)
 
         const result = await api.post('/v1/sectionOne/create', formData, {
@@ -143,6 +112,9 @@ const CreateSectionOne: React.FC = () => {
     <>
       <Header />
       <Container>
+        <Back to={'/list-section-one'}>
+          <ArrowLeft size={24} />
+        </Back>
         <Form
           ref={formRef}
           onSubmit={handleSubmitCreateMenu}
@@ -171,18 +143,7 @@ const CreateSectionOne: React.FC = () => {
             icon={BiText}
             onChange={fileSelectedHandlerInput}
           />
-
-          {/* <input
-            type="file"
-            name="image_one" id="image_one" onChange={fileSelectedHandlerInput} /> */}
-
-          {/* <Input name="description_two" type="text" placeholder='Second Description' icon={BiText} /> */}
-          {/* <input
-            type="file"
-            name="image_one" id="image_two" onChange={(e: any) => setSelectedFile(e.target.files[0])}/> */}
-
           <FormFooter>
-            {/* <Button type="submit">Salvar Registro</Button> */}
             <Button
               type="submit"
               disabled={title.length === 0 || isSendingFeedback}

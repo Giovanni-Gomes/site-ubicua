@@ -98,7 +98,7 @@ const CreateTestimonial: React.FC = () => {
   }
 
   return (
-    <Form ref={formRef} onSubmit={handleSubmitCreateMenu}>
+    <Form ref={formRef} onSubmit={handleSubmitCreateMenu} className='pages'>
       <h1>Cadastrar Novos Depoimentos</h1>
       <span className="subtitle">preencha o formulário abaixo</span>
 

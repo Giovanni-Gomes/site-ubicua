@@ -2,12 +2,7 @@ import { shade } from 'polished'
 import styled from 'styled-components'
 
 export const Container = styled.div`
-  /* position: absolute; */
-  /* top: 2rem; */
-  /* left: 0px; */
   width: 80%;
-  /* height: 100%; */
-  /* position: relative; */
   display: flex;
   flex-direction: column;
   justify-content: baseline;
@@ -18,17 +13,7 @@ export const Container = styled.div`
   }
 
   form {
-    /* position: absolute; */
-    /* align-items: center; */
-    /* margin: 6rem auto; */
-
-    /* top: 400rem; */
-    /* left: 8rem; */
-    /* right: 8rem; */
     width: 100%;
-    /* width: 80%; */
-    /* margin-top: 1.563rem; */
-
     padding: 2rem 6rem 2rem;
     text-align: center;
     display: flex;
@@ -39,12 +24,12 @@ export const Container = styled.div`
 
     h1 {
       margin-bottom: 0.5rem;
-      color: var(--color-secondary);
+      color: ${(props: any) => props.theme.colors['gray-600']};
     }
 
     span {
       margin-bottom: 0.2rem;
-      color: var(--color-secondary);
+      color:${(props) => props.theme.colors['gray-500']};
     }
 
     a {
@@ -62,20 +47,8 @@ export const Container = styled.div`
   ul {
     display: flex;
     list-style: none;
-
     li {
-      /* position: relative; */
-
-      /* &:nth-child(2) {
-        left: 4.5rem;
-      }
-
-      &:nth-child(3) {
-        left: 9.375rem;
-      } */
-
       button {
-        /* position: absolute; */
         padding: 0 1rem;
         border-radius: 0.5rem;
         border-bottom-left-radius: 0rem;
@@ -83,36 +56,29 @@ export const Container = styled.div`
         border: none;
 
         font-size: 16px;
-        color: var(--color-secondary);
+        color: ${(props) => props.theme.colors['gray-400']};
         background: lightblue;
 
         &.active {
           background: #eff6ff;
-          /* border-bottom: solid #EFF6FF; */
-          /* color: #FFF; */
+          color: ${(props) => props.theme.colors.green};
           &:hover {
-            color: var(--color-secondary);
+            color: ${(props) => props.theme.colors.green};
           }
         }
 
-        /* &:first-of-type{
-          border-left: none;
-        } */
-
         &:hover {
-          color: ${shade(0.2, '#F4EDE8')};
-          /* border: 0.01rem solid #8257e6;
-          border-bottom: none; */
+          color: ${(props) => props.theme.colors.hoverDark};
         }
       }
     }
+
   }
 `
 
 export const FormFooter = styled.div`
   display: flex;
   align-items: right;
-  /* background-color: red; */
   justify-content: space-between;
   margin-top: 1rem;
 
@@ -121,15 +87,11 @@ export const FormFooter = styled.div`
     padding: 1rem;
     border-radius: 8px;
     font-size: 1.4rem;
-    /* align-items: center; */
-    /* justify-content: space-between; */
-
     margin: 0.6rem 0rem 0rem 0rem;
   }
 `
 
 export const CancelButton = styled.button`
-  /* flex: 1 1 0%; */
   display: flex;
   align-items: center;
   border-color: transparent;
@@ -142,7 +104,6 @@ export const CancelButton = styled.button`
 `
 
 export const FormInputsContainer = styled.div`
-  /* width: 100%; */
   display: flex;
   gap: 2rem;
   justify-content: center;

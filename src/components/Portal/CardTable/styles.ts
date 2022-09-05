@@ -24,7 +24,7 @@ export const Container = styled.div`
   margin-bottom: 1rem;
   position: relative;
 
-  &.projects, &.contracts {
+  &.project, &.contract {
     width: 50%;
 
     background: ${(props) => props.theme.colors.primary};

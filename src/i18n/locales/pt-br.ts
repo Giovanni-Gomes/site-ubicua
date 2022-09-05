@@ -8,12 +8,12 @@ export default {
       totalProjects: 'Total de Projetos',
       totalUsers: 'Total de Usuários',
       totalContracts: 'Total de Contratos',
-      totalFeedbacks: 'Total de Feedbacks',
+      totalFeedbacks: 'Total de Comentários',
       chartContractTitle: 'Contratos',
       projects: 'Projetos',
       users: 'Usuários',
       contracts: 'Contratos',
-      feedbacks: 'Feedbacks',
+      feedbacks: 'Comentários',
       table: {
         tableTitle: 'Últimos dicionados',
         name: 'Nome',
@@ -66,7 +66,7 @@ export default {
       }
     },
     feedback: {
-      title: 'Lista de Feedbacks',
+      title: 'Lista de Comentários',
       tr: {
         th_one: 'TIPO',
         th_two: 'COMENTÁRIO',
