@@ -16,6 +16,7 @@ import {
 import { TableCustom } from '../../components/Portal/Table/styles'
 import { Loading } from '../../components/Site/WidgetForm/Loading'
 import { deleteSectionOne, useSectionOne } from './useSections'
+import AlertDelete from './AlertDelete'
 
 const ListSectionOne: React.FC = () => {
   const [page, setPage] = useState(1)
@@ -55,8 +56,7 @@ const ListSectionOne: React.FC = () => {
                 {data?.sectionsOne.map((section: any) => (
                   <tr key={section.id}>
                     <td>
-                      {' '}
-                      <p style={{ fontWeight: 'bold' }}>{section.title}</p>{' '}
+                      <p style={{ fontWeight: 'bold' }}>{section.title}</p>
                     </td>
                     <td>{section.description_one}</td>
                     <td>{section.image_one}</td>
@@ -69,12 +69,14 @@ const ListSectionOne: React.FC = () => {
                         </RouterLink>
                         <PopContainer>
                           <PopPanelAlert>
-                            <button
-                              onClick={() => deleteSectionOne(section.id)}
-                            >
-                              <TrashSimple size={24} color="#c53030" />
-                            </button>
+                            <AlertDelete
+                              id={section.id}
+                              actualSectionName={section.title}
+                            />
                           </PopPanelAlert>
+                          <ButtonAlert>
+                            <TrashSimple size={24} color="#c53030" />
+                          </ButtonAlert>
                         </PopContainer>
                       </Actions>
                     </td>
