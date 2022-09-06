@@ -3,19 +3,21 @@ import tpcItems from '../../../data/tpcItems'
 import Header from '../Header'
 import { Container, Content, Wrapper } from './styles'
 
-interface Props {
+interface SectionProps {
+  anchor?: 'home' | 'sobre' | 'depoimento' | 'contato' | 'apps' | 'footer'
   variant: 'blue' | 'beige' | 'white' | 'black'
   sectionTitle: string
   description: string
 }
 
-const SectionTpc: React.FC<Props> = ({
+const SectionTpc: React.FC<SectionProps> = ({
+  anchor,
   variant,
   sectionTitle,
   description,
 }) => {
   return (
-    <Container className={variant}>
+    <Container className={variant} id={anchor}>
       <Header />
       <Content>
         <header>

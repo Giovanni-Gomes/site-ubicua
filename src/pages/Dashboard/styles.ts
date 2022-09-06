@@ -15,6 +15,9 @@ export const Container = styled.div`
     span {
       font-size: 1.2rem;
     }
+    b {
+      color: ${(props) => props.theme.colors['text-color']};
+    }
   }
 
   td > p {

@@ -44,7 +44,7 @@ function generateStyleSheetText({
         // height: 100%;
         // width: 100%;
         text-align: left;
-        max-width: 755px;
+        max-width: 900px;
         padding: 0;
         position: absolute;
         top: 15rem;
@@ -59,7 +59,7 @@ function generateStyleSheetText({
         opacity: 0;
         z-index: 1;
         margin: 0;
-        ${animation}       
+        ${animation}
       }
       ${keyframes}
     `

@@ -9,7 +9,7 @@ const CarouselNew: React.FC = () => {
     'https://images.unsplash.com/photo-1605379399642-870262d3d051?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=906&q=80',
     'https://images.unsplash.com/photo-1629904853716-f0bc54eea481?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1350&q=80',
   ]
-  const titles = ['Ubicua Cloud Soluções Tecnologicas', 'Titulo 2', 'Titulo 3']
+  const titles = ['Ubicua Cloud Soluções Tecnologicas', 'Somos Uma Empresa de Soluções Personalizadas', 'Automatize Seus Processos de Atendimento']
 
   const buttons = [
     {
@@ -17,11 +17,11 @@ const CarouselNew: React.FC = () => {
       link: '#'
     },
     {
-      name: 'Saiba Mais',
+      name: 'Atendimento Personalizado',
       link: '#'
     },
     {
-      name: 'Saiba Mais',
+      name: 'Quero Automatizar',
       link: '#'
     }
   ]

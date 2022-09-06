@@ -3,11 +3,12 @@ import { ContainerA } from './styles'
 
 interface MenuLinkProps {
   title: string
+  link: string
 }
 
-const MenuLink: React.FC<MenuLinkProps> = ({ title }) => {
+const MenuLink: React.FC<MenuLinkProps> = ({ title, link }) => {
   return (
-    <ContainerA href={'#' + title.toLowerCase()}>
+    <ContainerA href={'#' + link.toLowerCase()}>
       {title.toUpperCase()}
     </ContainerA>
   )

@@ -6,6 +6,7 @@ import Testimonial from '../Testimonial'
 import { Container, Content } from './styles'
 
 interface Props {
+  anchor?: 'home' | 'sobre' | 'depoimento' | 'contato' | 'apps' | 'footer'
   variant: 'blue' | 'beige' | 'white' | 'black'
   sectionTitle: string
   description: string
@@ -13,15 +14,16 @@ interface Props {
 }
 
 const SectionTest: React.FC<Props> = ({
+  anchor,
   variant,
   sectionTitle,
   description,
 }) => {
   return (
-    <Container className={variant}>
+    <Container className={variant} >
       <Header />
       <Customers />
-      <Content>
+      <Content id={anchor}>
         <header>
           <h2>{sectionTitle}</h2>
           <p>{description}</p>

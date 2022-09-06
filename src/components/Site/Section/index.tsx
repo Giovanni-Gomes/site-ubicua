@@ -7,6 +7,7 @@ import Header from '../Header'
 import { Container, Wrapper } from './styles' /* Background */
 
 interface Props {
+  anchor?: 'home' | 'sobre' | 'depoimento' | 'contato' | 'apps' | 'footer'
   variant: 'blue' | 'beige' | 'white' | 'black'
   sectionTitle: string
   description: string
@@ -28,13 +29,14 @@ export const items = (
 )
 
 const Section: React.FC<Props> = ({
+  anchor,
   variant,
   sectionTitle,
   description,
   element,
 }) => {
   return (
-    <Container className={variant}>
+    <Container className={variant} id={anchor}>
       <Header />
       <CarouselNew />
     </Container>
