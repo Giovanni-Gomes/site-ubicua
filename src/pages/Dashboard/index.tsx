@@ -190,7 +190,7 @@ const Dashboard: React.FC = () => {
                 <CardTable
                   title={< Translator path="home.contracts" />}
                   variant='contract'
-                  goToPage='list-contract'
+                  goToPage='contract'
                 >
                   <TablePortal className='contract'>
                     <thead>

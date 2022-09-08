@@ -32,9 +32,9 @@ export type GetOneProjectResponse = {
 }
 
 export async function getProjects(
-  page: number,
-  take: number,
-  search: string,
+  page?: number,
+  take?: number,
+  search?: string,
 ): Promise<GetProjectResponse> {
   // console.log(page)
   // console.log(take)
@@ -61,10 +61,10 @@ export async function getProjects(
     }),
     date_end: project.date_end
       ? new Date(project.date_end).toLocaleDateString('pt-BR', {
-          day: '2-digit',
-          month: '2-digit',
-          year: 'numeric',
-        })
+        day: '2-digit',
+        month: '2-digit',
+        year: 'numeric',
+      })
       : 'not value',
     progress: project.progress,
     createdAt:
@@ -80,10 +80,10 @@ export async function getProjects(
     }).format(project.negotiated_value),
     real_cost: project.real_cost
       ? Intl.NumberFormat('pt-BR', {
-          // eslint-disable-next-line prettier/prettier
+        // eslint-disable-next-line prettier/prettier
         style: 'currency',
-          currency: 'BRL',
-        }).format(project.real_cost)
+        currency: 'BRL',
+      }).format(project.real_cost)
       : 'not value',
     status: project.status,
     user: project.user,
@@ -126,7 +126,7 @@ export async function deleteProject(id: string) {
   await api.delete(`/v1/project/delete/${id}`)
 }
 
-export function useProjects(page: number, take: number, search: string) {
+export function useProjects(page?: number, take?: number, search?: string) {
   return useQuery(['projects', page, take, search], () =>
     getProjects(page, take, search),
   )

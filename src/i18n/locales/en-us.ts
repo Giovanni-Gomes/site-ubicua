@@ -52,15 +52,26 @@ export default {
     },
     sprint: {
       title: 'Sprints List',
+      tr: {
+        th_one: 'PROJECT',
+        th_two: 'SPRINT',
+        th_three: 'START',
+        th_four: 'END',
+        th_five: 'STATUS',
+        th_six: 'OWER',
+        th_seven: 'ACTIVE',
+      },
       create: {
         title: 'Create a new sprint',
         selectStatus: 'Select for status',
+        selectProjects: 'Select for projects',
         selectUser: 'Select a user',
         button: 'Save Register'
       },
       update: {
         title: 'Update register',
         selectStatus: 'Select for status',
+        selectProjects: 'Select for projects',
         selectUser: 'Select a user',
         button: 'Save Register'
       }

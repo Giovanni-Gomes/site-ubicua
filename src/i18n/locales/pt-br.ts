@@ -52,15 +52,26 @@ export default {
     },
     sprint: {
       title: 'Lista de Sprints',
+      tr: {
+        th_one: 'PROJETO',
+        th_two: 'SPRINT',
+        th_three: 'INÍCIO',
+        th_four: 'FIM',
+        th_five: 'STATUS',
+        th_six: 'RESPONSÁVEL',
+        th_seven: 'ATIVO',
+      },
       create: {
         title: 'Criar nova sprint',
         selectStatus: 'Selecione o status',
+        selectProjects: 'Selecione o projeto',
         selectUser: 'Selecione o usuário',
         button: 'Salvar Registro'
       },
       update: {
         title: 'Atualizar o resgistro',
         selectStatus: 'Selecione o status',
+        selectProjects: 'Selecione o projeto',
         selectUser: 'Selecione o usuário',
         button: 'Salvar Registro'
       }
