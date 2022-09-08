@@ -3,6 +3,7 @@ import Header from '../Header'
 import { Container, Content } from './styles'
 
 interface Props {
+  anchor?: 'home' | 'sobre' | 'depoimento' | 'contato' | 'apps' | 'footer'
   variant: 'blue' | 'beige' | 'white' | 'black'
   sectionTitle: string
   description: string
@@ -10,13 +11,14 @@ interface Props {
 }
 
 const SectionRight: React.FC<Props> = ({
+  anchor,
   variant,
   sectionTitle,
   description,
   element,
 }) => {
   return (
-    <Container className={variant}>
+    <Container className={variant} id={anchor}>
       <Header />
       <Content>
         {element === null ? null : element}

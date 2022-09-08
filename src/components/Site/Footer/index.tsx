@@ -14,7 +14,11 @@ interface IFooterProps {
   midia_social_for: string
 }
 
-const Footer: React.FC = () => {
+type FooterProps = {
+  anchor?: 'home' | 'sobre' | 'depoimento' | 'contato' | 'apps' | 'footer'
+}
+
+const Footer: React.FC<FooterProps> = ({ anchor }) => {
   const [title, setTitle] = useState<IFooterProps[]>([])
   const [link, setLink] = useState<IFooterProps[]>([])
   // const [app, setApp] = useState<IFooterProps[]>([]);
@@ -38,7 +42,7 @@ const Footer: React.FC = () => {
 
   return (
     <Container>
-      <Content>
+      <Content id={anchor} >
         {title.map((ti, key) => (
           <Card key={key} className="card-footer">
             <h3>{ti.name}</h3>

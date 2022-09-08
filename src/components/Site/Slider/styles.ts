@@ -7,7 +7,7 @@ export const Button = styled.a`
   padding: 0;
   position: absolute;
   top: 30rem;
-    left: 5rem;
+  left: 5rem;
   opacity: 0;
   margin: 0;
   cursor: pointer;
@@ -19,6 +19,9 @@ export const Button = styled.a`
     color: ${shade(0.8, '#9B5DE5')};
     background-color: ${(props: any) => props.theme.colors.secondary};
     transition: 0.5s ease-in-out;
+  }
+  svg {
+    margin-right: 0.5rem;
   }
   /* &.button1 {
     top: 30rem;

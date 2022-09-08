@@ -9,6 +9,7 @@ import { Container, Content, MenuNav } from './styles'
 interface IHeaderProps {
   id: string
   title: string
+  link: string
   logo: HTMLElement
 }
 
@@ -42,7 +43,7 @@ const Header: React.FC = () => {
         ))}
         <MenuNav className="link">
           {headerMenu.map((hm, key) => (
-            <MenuLink key={key} title={hm.title} />
+            <MenuLink key={key} title={hm.title} link={hm.link} />
           ))}
         </MenuNav>
 

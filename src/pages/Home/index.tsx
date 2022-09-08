@@ -82,6 +82,7 @@ const Home: React.FC = () => {
       {sectionOne.map((st, key) => (
         <Section
           key={key}
+          anchor="home"
           variant="white"
           sectionTitle={st.title}
           description={st.description_one}
@@ -92,6 +93,7 @@ const Home: React.FC = () => {
       {sectionTwo.map((st, key) => (
         <SectionTpc
           key={key}
+          anchor="sobre"
           variant="blue"
           sectionTitle={st.title}
           description={st.description_one}
@@ -101,21 +103,46 @@ const Home: React.FC = () => {
       {sectionThree.map((st, key) => (
         <SectionRight
           key={key}
-          variant="white"
+          anchor="contato"
+          variant="black"
           sectionTitle={st.title}
           description={st.description_one}
           element={img}
         />
       ))}
 
+
+
+
+
       {sectionFour.map((st, key) => (
         <SectionTest
           key={key}
+          anchor="depoimento"
           variant="blue"
           sectionTitle={st.title}
           description={st.description_one}
         />
       ))}
+
+
+      {sectionFive.map((st, key) => (
+        <SectionRight
+          key={key}
+          anchor="apps"
+          variant="black"
+          sectionTitle={st.title}
+          description={st.description_one}
+          element={imgs}
+        />
+      ))}
+      {/* <SectionRight
+        anchor="apps"
+        variant="black"
+        sectionTitle={data[5].title}
+        description={data[5].description}
+        element={imgs}
+      /> */}
 
       {/* {sectionFive.map((st, key) => (
         <Section
@@ -127,12 +154,7 @@ const Home: React.FC = () => {
         />
       ))} */}
 
-      <SectionRight
-        variant="black"
-        sectionTitle={data[5].title}
-        description={data[5].description}
-        element={imgs}
-      />
+
 
       {/* <Map
         interactive={false}
@@ -143,7 +165,7 @@ const Home: React.FC = () => {
         <Marker interactive={false} icon={happyMapIcon} position={{ lat: -23.55386927083221, lng: -46.66239774232902 }} />
       </Map> */}
 
-      <Footer />
+      <Footer anchor='footer' />
 
       <SideMenu>
         <MenuForm />

@@ -74,9 +74,9 @@ export const Content = styled.div`
     /* max-width: 95%; */
   }
   padding: var(--padding-top) 32px var(--padding-bottom);
-  background: linear-gradient(45deg, ${(props) => props.theme.colors['gray-800']}, ${(props) => props.theme.colors.hoverDark}, ${(props) => props.theme.colors.primary}, ${(props) => props.theme.colors['bg-color']});
+  background: linear-gradient(90deg, ${(props) => props.theme.colors['gray-500']}, ${(props) => props.theme.colors.hoverDark}, ${(props) => props.theme.colors.secondary}, ${(props) => props.theme.colors['bg-color']});
   background-size: 400% 400%;
-  animation: gradient 15s ease infinite;
+  animation: gradient 25s ease infinite;
   @keyframes gradient {
     0% {
         background-position: 100% 50%;
