@@ -16,6 +16,7 @@ import {
 import { TableCustom } from '../../components/Portal/Table/styles'
 import { Loading } from '../../components/Site/WidgetForm/Loading'
 import { deleteSectionTwo, useSectionTwo } from './useSections'
+import AlertDelete from './AlertDelete'
 
 const ListSectionTwo: React.FC = () => {
   const [page, setPage] = useState(1)
@@ -23,7 +24,7 @@ const ListSectionTwo: React.FC = () => {
   return (
     <>
       <Panel
-        title="List Section Three"
+        title="List Section Two"
         back="/dashboard"
         next="/dashboard"
         search={true}
@@ -69,12 +70,14 @@ const ListSectionTwo: React.FC = () => {
                         </RouterLink>
                         <PopContainer>
                           <PopPanelAlert>
-                            <button
-                              onClick={() => deleteSectionTwo(section.id)}
-                            >
-                              <TrashSimple size={24} color="#c53030" />
-                            </button>
+                            <AlertDelete
+                              id={section.id}
+                              actualSectionName={section.title}
+                            />
                           </PopPanelAlert>
+                          <ButtonAlert>
+                            <TrashSimple size={24} color="#c53030" />
+                          </ButtonAlert>
                         </PopContainer>
                       </Actions>
                     </td>

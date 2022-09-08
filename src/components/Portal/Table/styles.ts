@@ -20,7 +20,6 @@ export const TableCustom = styled.table`
       color: ${(props) => props.theme.colors['gray-100']};
       line-height: 1.6;
       border-bottom: 1px solid ${(props) => props.theme.colors['gray-100']};
-
       /* &:first-child {
         border-top-left-radius: 8px;
         padding-left: 1.5rem;
@@ -52,12 +51,22 @@ export const TableCustom = styled.table`
         color: ${(props) => props.theme.colors['text-color']};
         padding: 0.5rem;
         text-align: center;
+        max-width: 6.5rem;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        > p {
+          width: 100%;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
         &.title {
           color: ${(props) => props.theme.colors.quaternary};
         }
         &:first-child {
           /* width: 20%; */
-          padding-left: 0.3rem;
+          /* padding-left: 0.3rem; */
         }
         &:last-child {
           padding-right: 0.3rem;
@@ -73,6 +82,23 @@ export const TableCustom = styled.table`
           color: ${(props) => props.theme.colors['text-color']};
         }
       }
+    }
+  }
+
+  &.project, .contract {
+   p {
+    width: 6.5rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    }
+  }
+  &.feedback, .user {
+   p {
+    width: 8rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
     }
   }
 `

@@ -78,6 +78,7 @@ export const Content = styled.div`
 `
 
 export const Wrapper = styled.div`
+  max-width: 1024px;
   display: flex;
   gap: 1rem;
   flex-wrap: wrap;

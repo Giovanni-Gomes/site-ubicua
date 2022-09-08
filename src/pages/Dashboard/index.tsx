@@ -116,7 +116,7 @@ const Dashboard: React.FC = () => {
                   variant='project'
                   goToPage='project'
                 >
-                  <TablePortal>
+                  <TablePortal className='project'>
                     <thead>
                       <tr>
                         <th>< Translator path="home.table.name" /></th>
@@ -155,7 +155,7 @@ const Dashboard: React.FC = () => {
                   variant='users'
                   goToPage='list-users'
                 >
-                  <TablePortal>
+                  <TablePortal className='user'>
                     <thead>
                       <tr>
                         <th>< Translator path="home.table.name" /></th>
@@ -192,7 +192,7 @@ const Dashboard: React.FC = () => {
                   variant='contract'
                   goToPage='list-contract'
                 >
-                  <TablePortal>
+                  <TablePortal className='contract'>
                     <thead>
                       <tr>
                         <th>< Translator path="home.table.name" /></th>
@@ -231,7 +231,7 @@ const Dashboard: React.FC = () => {
                   variant='feedbacks'
                   goToPage='list-feedbacks'
                 >
-                  <TablePortal>
+                  <TablePortal className="feedback">
                     <thead>
                       <tr>
                         <th>< Translator path="home.table.type" /></th>
