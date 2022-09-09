@@ -69,7 +69,7 @@ export default {
         button: 'Salvar Registro'
       },
       update: {
-        title: 'Atualizar o resgistro',
+        title: 'Atualizar o registro',
         selectStatus: 'Selecione o status',
         selectProjects: 'Selecione o projeto',
         selectUser: 'Selecione o usuário',
