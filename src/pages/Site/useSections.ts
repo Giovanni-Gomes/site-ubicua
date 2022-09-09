@@ -1,3 +1,4 @@
+import { Console } from 'console'
 import { useQuery } from 'react-query'
 import api from '../../services/api'
 
@@ -53,6 +54,20 @@ interface GetSectionsResponse {
   sectionsFive?: FindSectionFiveProps[] | any
 }
 
+interface GetOneSectionByIdResponse {
+  id: string
+  title: string
+  description_one?: string
+  image_one?: string
+  created_at: string
+  updated_at: string
+}
+
+interface GetOneSectionById {
+  id?: string
+  section?: string
+}
+
 export async function getSectionsOne(
   page: number,
   take: number,
@@ -88,6 +103,12 @@ export async function getSectionsOne(
     sectionsOne,
     totalPage,
   }
+}
+
+export async function getSectionById(id?: string, section?: string): Promise<GetOneSectionByIdResponse> {
+  const { data } = await api.get(`/v1/${section}/findOne/${id}`)
+  console.log('data', data)
+  return data
 }
 
 // get data from section one
@@ -215,6 +236,12 @@ export async function getSectionFive(): Promise<GetSectionsResponse> {
   return { sectionsFive }
 }
 
+// use sections One, Two, Three, For and Five
+export function useSection({ id, section }: GetOneSectionById) {
+  return useQuery(['sections', id, section], () => getSectionById(id, section), {
+    staleTime: 1000 * 60 * 10, // 1000 * 60 * 10 10 minutes // 1000 * 60 * 60 * 12, // 12 hours,
+  })
+}
 // use sections One, Two, Three, For and Five
 export function useSectionOne() {
   return useQuery(['sectionOne'], () => getSectionOne(), {

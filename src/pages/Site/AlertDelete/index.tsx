@@ -2,6 +2,7 @@ import { AxiosError } from 'axios'
 import React, { useState } from 'react'
 import { FaTrash } from 'react-icons/fa'
 import { useMutation } from 'react-query'
+import { useNavigate } from 'react-router-dom'
 import { useToast } from '../../../components/hooks/provider/toast'
 import api from '../../../services/api'
 import { queryClient } from '../../../services/queryClient'
@@ -14,6 +15,7 @@ interface AlertDeleteProps {
 
 const AlertDelete: React.FC<AlertDeleteProps> = ({ id, actualSectionName }) => {
   const { addToast } = useToast()
+
   switch (window.location.pathname) {
     case '/list-section-one':
       var section = 'sectionOne'
@@ -41,7 +43,7 @@ const AlertDelete: React.FC<AlertDeleteProps> = ({ id, actualSectionName }) => {
     },
     {
       onSuccess: () => {
-        queryClient.invalidateQueries('projects')
+        queryClient.invalidateQueries(`${section}`)
       },
       onError: (error: AxiosError) => {
         addToast({
