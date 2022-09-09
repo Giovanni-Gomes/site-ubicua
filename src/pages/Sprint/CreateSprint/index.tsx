@@ -24,6 +24,7 @@ import Select from '../../../components/Shared/Select'
 import { useStatus } from '../../Config/useStatus'
 import { Div, Footer, WrapperInputs } from './styles'
 import { Translator } from '../../../components/Portal/I18n/Translator'
+import { useProjects } from '../../Project/useProjects'
 
 interface CreateSprintProps {
   name: string
@@ -33,6 +34,7 @@ interface CreateSprintProps {
   date_end: Date
   status_id: string;
   user_id: string;
+  project_id: string;
 }
 
 const CreateSprint: React.FC = () => {
@@ -42,11 +44,15 @@ const CreateSprint: React.FC = () => {
 
   const { data } = useUsers()
   const { data: dataStatus } = useStatus()
+  const { data: dataProject } = useProjects()
   const selectOptionsUsers = data?.users
   const selectOptionsStatus = dataStatus?.status
+  const selectOptionsProject = dataProject?.projects
 
   const formRef = useRef<FormHandles>(null)
   const [isSendingSprint, setIsSendingSprint] = useState(false)
+
+  console.log("log de projeto create to sprint", selectOptionsProject);
 
   const handleSubmitCreateSprint = useCallback(
     async (data: CreateSprintProps) => {
@@ -58,6 +64,7 @@ const CreateSprint: React.FC = () => {
           description: Yup.string().required('Descrição é obrigatório'),
           status_id: Yup.string().required('Status é obrigatório'),
           user_id: Yup.string().required('Usuário é obrigatório'),
+          project_id: Yup.string().required('Projeto é obrigatório'),
           date_start: Yup.string(),
           date_end: Yup.string(),
         })
@@ -74,6 +81,7 @@ const CreateSprint: React.FC = () => {
           date_end: data.date_end,
           status_id: data.status_id,
           user_id: data.user_id,
+          project_id: data.project_id,
         }
 
         setIsSendingSprint(true)
@@ -126,6 +134,14 @@ const CreateSprint: React.FC = () => {
             name="name"
             placeholder="Name Sprint"
           />
+          <Select name="project_id" style={{ marginBottom: '0.5rem' }}>
+            <option key={0}><Translator path="sprint.create.selectProjects" /></option>
+            {selectOptionsProject?.map((opt: any) => (
+              <option key={opt.id} value={opt.id}>
+                {opt.name}
+              </option>
+            ))}
+          </Select>
           <Div>
             <WrapperInputs>
               <Select name="status_id">

@@ -28,7 +28,6 @@ const Sprint: React.FC = () => {
   console.log("sprint data", data);
   return (
     <>
-
       <Panel
         title={<Translator path="sprint.title" />}
         back="/dashboard"
@@ -51,12 +50,12 @@ const Sprint: React.FC = () => {
             <TableCustom color="black">
               <thead>
                 <tr>
-                  <th><Translator path="project.tr.th_one" /></th>
-                  <th><Translator path="project.tr.th_two" /></th>
-                  <th><Translator path="project.tr.th_three" /></th>
-                  <th><Translator path="project.tr.th_four" /></th>
-                  <th><Translator path="project.tr.th_five" /></th>
-                  <th><Translator path="project.tr.th_six" /></th>
+                  <th><Translator path="sprint.tr.th_one" /></th>
+                  <th><Translator path="sprint.tr.th_two" /></th>
+                  <th><Translator path="sprint.tr.th_three" /></th>
+                  <th><Translator path="sprint.tr.th_four" /></th>
+                  <th><Translator path="sprint.tr.th_five" /></th>
+                  <th><Translator path="sprint.tr.th_six" /></th>
                   <th>#</th>
                 </tr>
               </thead>

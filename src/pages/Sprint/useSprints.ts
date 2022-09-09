@@ -15,6 +15,10 @@ export type Sprint = {
   user: {
     id?: string
     name?: string
+  },
+  project: {
+    id?: string
+    name?: string
   }
   created_at?: string
   updated_at?: string
@@ -71,6 +75,9 @@ export async function getSprints(
     status: sprint.status,
     user: sprint.user,
   }))
+
+  console.log("use sprint date end", sprints.date_end);
+
   return {
     sprints,
     totalPage,
@@ -96,6 +103,10 @@ export async function getOneSprintById(id: string): Promise<Sprint> {
       id: result.data.user.id,
       name: result.data.user.name,
     },
+    project: {
+      id: result.data.project.id,
+      name: result.data.project.name,
+    }
   }
   return sprint
 }
