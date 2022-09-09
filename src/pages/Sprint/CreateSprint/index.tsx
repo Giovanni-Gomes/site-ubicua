@@ -24,7 +24,7 @@ import Select from '../../../components/Shared/Select'
 import { useStatus } from '../../Config/useStatus'
 import { Div, Footer, WrapperInputs } from './styles'
 import { Translator } from '../../../components/Portal/I18n/Translator'
-import { useProjects } from '../../Project/useProjects'
+import { useSelectProjects } from '../../Project/useProjects'
 
 interface CreateSprintProps {
   name: string
@@ -38,16 +38,17 @@ interface CreateSprintProps {
 }
 
 const CreateSprint: React.FC = () => {
-  // style colors customTheme
   const navigate = useNavigate()
   const { addToast } = useToast()
+  const [searchQuery, setSearchQuery] = useState('')//filter projects
 
   const { data } = useUsers()
   const { data: dataStatus } = useStatus()
-  const { data: dataProject } = useProjects()
+  const { data: dataProject } = useSelectProjects(searchQuery)
+
   const selectOptionsUsers = data?.users
   const selectOptionsStatus = dataStatus?.status
-  const selectOptionsProject = dataProject?.projects
+  const selectOptionsProject = dataProject
 
   const formRef = useRef<FormHandles>(null)
   const [isSendingSprint, setIsSendingSprint] = useState(false)
@@ -84,7 +85,7 @@ const CreateSprint: React.FC = () => {
           project_id: data.project_id,
         }
 
-        setIsSendingSprint(true)
+        //setIsSendingSprint(true)
         await api.post(`/v1/sprint/create/`, formData)
 
         navigate('/sprint')
@@ -93,9 +94,11 @@ const CreateSprint: React.FC = () => {
           type: 'success',
           title: 'Cadastro Realizado!',
         })
-        setIsSendingSprint(false)
+        //setIsSendingSprint(false)
       } catch (err) {
         console.log('error', err)
+        setIsSendingSprint(false)
+
         if (err instanceof Yup.ValidationError) {
           const errors = getValidationErrors(err)
 
@@ -138,7 +141,7 @@ const CreateSprint: React.FC = () => {
             <option key={0}><Translator path="sprint.create.selectProjects" /></option>
             {selectOptionsProject?.map((opt: any) => (
               <option key={opt.id} value={opt.id}>
-                {opt.name}
+                name: {opt.name} - status: {opt.active}
               </option>
             ))}
           </Select>

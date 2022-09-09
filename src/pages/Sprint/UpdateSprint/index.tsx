@@ -25,8 +25,9 @@ import { useStatus } from '../../Config/useStatus'
 import { Div, Footer, Wrapper } from './styles'
 import { Translator } from '../../../components/Portal/I18n/Translator'
 import { useSprint } from '../useSprints'
+import { useSelectProjects } from '../../Project/useProjects'
 
-interface CreateSprintProps {
+interface UpdateSprintProps {
   id: string
   name: string
   description: string
@@ -35,13 +36,15 @@ interface CreateSprintProps {
   date_end: Date
   status_id: string;
   user_id: string;
+  project_id: string;
 }
 
 const UpdateSprint: React.FC = () => {
-  // style colors customTheme
-  // const bg = useColorModeValue('hoverDark', 'hoverLight')
+
   const formRef = useRef<FormHandles>(null)
   const [isSendingSprint, setIsSendingSprint] = useState(false)
+  const [searchQuery, setSearchQuery] = useState('') //filter projects
+
   const navigate = useNavigate()
   const { addToast } = useToast()
 
@@ -49,9 +52,11 @@ const UpdateSprint: React.FC = () => {
   const { data } = useUsers()
   const { data: dataStatus } = useStatus()
   const { data: dataSprint } = useSprint(String(id))
+  const { data: dataProject } = useSelectProjects(searchQuery)
 
   const selectOptionsUsers = data?.users
   const selectOptionsStatus = dataStatus?.status
+  const selectOptionsProject = dataProject
 
   formRef.current?.setFieldValue('name', dataSprint?.name)
   formRef.current?.setFieldValue('description', dataSprint?.description)
@@ -59,9 +64,13 @@ const UpdateSprint: React.FC = () => {
   formRef.current?.setFieldValue('date_end', dataSprint?.date_end)
   formRef.current?.setFieldValue('user_id', dataSprint?.user.id)
   formRef.current?.setFieldValue('status_id', dataSprint?.status.id)
+  formRef.current?.setFieldValue('project_id', dataSprint?.projects.id)
+
+  console.log("log update to sprint", dataSprint);
+
 
   const handleSubmitCreateSprint = useCallback(
-    async (data: CreateSprintProps) => {
+    async (data: UpdateSprintProps) => {
       try {
         formRef.current?.setErrors({})
 
@@ -70,6 +79,7 @@ const UpdateSprint: React.FC = () => {
           description: Yup.string().required('Descrição é obrigatório'),
           status_id: Yup.string().required('Status é obrigatório'),
           user_id: Yup.string().required('Usuário é obrigatório'),
+          project_id: Yup.string().required('Projeto é obrigatório'),
           date_start: Yup.string(),
           date_end: Yup.string(),
         })
@@ -86,6 +96,7 @@ const UpdateSprint: React.FC = () => {
           date_end: data.date_end,
           status_id: data.status_id,
           user_id: data.user_id,
+          project_id: data.project_id,
         }
 
         setIsSendingSprint(true)
@@ -136,6 +147,14 @@ const UpdateSprint: React.FC = () => {
             name="name"
             placeholder="Name Sprint"
           />
+          <Select name="project_id" style={{ marginBottom: '0.5rem' }}>
+            <option key={0}><Translator path="sprint.create.selectProjects" /></option>
+            {selectOptionsProject?.map((opt: any) => (
+              <option key={opt.id} value={opt.id}>
+                name: {opt.name} - status: {opt.active}
+              </option>
+            ))}
+          </Select>
 
           <Div>
             <Wrapper>

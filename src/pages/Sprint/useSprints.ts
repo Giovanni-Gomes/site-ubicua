@@ -16,7 +16,7 @@ export type Sprint = {
     id?: string
     name?: string
   },
-  project: {
+  projects: {
     id?: string
     name?: string
   }
@@ -85,7 +85,10 @@ export async function getSprints(
 }
 
 export async function getOneSprintById(id: string): Promise<Sprint> {
+  console.log("ID ", id);
   const result = await api.get(`/v1/sprint/findOne/${id}`)
+  // console.log("RESULT SPRINT", result);
+  // console.log("RESULT SPRINT DATA ID", result.data.id);
   const sprint = {
     id: result.data.id,
     name: result.data.name,
@@ -103,11 +106,13 @@ export async function getOneSprintById(id: string): Promise<Sprint> {
       id: result.data.user.id,
       name: result.data.user.name,
     },
-    project: {
+    projects: {
       id: result.data.project.id,
       name: result.data.project.name,
     }
   }
+
+  console.log("RETURN SPRINT", sprint);
   return sprint
 }
 

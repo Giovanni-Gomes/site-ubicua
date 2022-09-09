@@ -141,3 +141,24 @@ export function useProject(id: string) {
   //   staleTime: 1000 * 60 * 10, // 1000 * 60 * 10 10 minutes // 1000 * 60 * 60 * 12, // 12 hours,
   // });
 }
+
+
+export async function selectProjects(search?: string): Promise<Project[]> {
+  const { data } = await api.get('/v1/project/findAll', {
+    params: {
+      search,
+    },
+  })
+  const projects = data.projects.map((project: Project) => ({
+    id: project.id,
+    name: project.name,
+    active: project.active ? 'Ativo' : 'Inativo',
+    user: project.user,
+  }))
+
+  return projects
+}
+
+export function useSelectProjects(search?: string) {
+  return useQuery(['selectProject', search], () => selectProjects(search))
+}
