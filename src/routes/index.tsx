@@ -39,6 +39,7 @@ import Sprint from '../pages/Sprint'
 import UpdateSprint from '../pages/Sprint/UpdateSprint'
 import CreateSprint from '../pages/Sprint/CreateSprint'
 import Feedback from '../pages/Feedback'
+import UpdateSections from '../pages/Site/UpdateSections'
 
 const RoutesPage: React.FC = () => {
   return (
@@ -189,6 +190,14 @@ const RoutesPage: React.FC = () => {
           element={
             <PrivateRoute>
               <UpdateProject />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/update-section/:title/:id"
+          element={
+            <PrivateRoute>
+              <UpdateSections />
             </PrivateRoute>
           }
         />

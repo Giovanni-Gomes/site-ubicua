@@ -66,7 +66,7 @@ const ListSectionOne: React.FC = () => {
                     <td>{section.updated}</td>
                     <td>
                       <Actions>
-                        <RouterLink to={`/update-section/${section.id}`}>
+                        <RouterLink to={`/update-section/section-one/${section.id}`}>
                           <PencilSimpleLine size={24} color="#9B5DE5" />
                         </RouterLink>
                         <PopContainer>
