@@ -53,6 +53,43 @@ interface GetSectionsResponse {
   sectionsFive?: FindSectionFiveProps[] | any
 }
 
+export async function getSectionsOne(
+  page: number,
+  take: number,
+  search: string,
+): Promise<GetSectionsResponse> {
+  const { data } = await api.get('/v1/sectionOne/findAll', {
+    params: {
+      skip: page,
+      take,
+      search,
+    },
+  })
+
+  const totalPage = Number(data.totalPage)
+
+  const sectionsOne = data.sectionsOne.map((section: FindSectionOneProps) => ({
+    id: section.id,
+    title: section.title,
+    description: section.description_one,
+    image: section.image_one,
+    created: new Date(section.created_at).toLocaleDateString('pt-BR', {
+      day: '2-digit',
+      month: '2-digit',
+      year: 'numeric',
+    }),
+    updated: new Date(section.updated_at).toLocaleDateString('pt-BR', {
+      day: '2-digit',
+      month: '2-digit',
+      year: 'numeric',
+    }),
+  }))
+  return {
+    sectionsOne,
+    totalPage,
+  }
+}
+
 // get data from section one
 export async function getSectionOne(): Promise<GetSectionsResponse> {
   // | null
@@ -222,6 +259,11 @@ export async function deleteSectionFive(id: string) {
   await api.delete(`/v1/sectionFive/delete/${id}`)
 }
 
+export function useSectionsOne(page: number, take: number, search: string) {
+  return useQuery(['sections one', page, take, search], () =>
+    getSectionsOne(page, take, search),
+  )
+}
 // if (data.length <= 0) {
 //   return null;
 // }

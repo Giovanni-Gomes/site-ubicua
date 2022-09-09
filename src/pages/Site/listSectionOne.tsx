@@ -15,12 +15,14 @@ import {
 
 import { TableCustom } from '../../components/Portal/Table/styles'
 import { Loading } from '../../components/Site/WidgetForm/Loading'
-import { deleteSectionOne, useSectionOne } from './useSections'
+import { deleteSectionOne, useSectionsOne } from './useSections'
 import AlertDelete from './AlertDelete'
 
 const ListSectionOne: React.FC = () => {
   const [page, setPage] = useState(1)
-  const { data, isLoading, isFetching, error } = useSectionOne()
+  const [searchQuery, setSearchQuery] = useState('')
+
+  const { data, isLoading, isFetching, error } = useSectionsOne(page, 10, searchQuery)
   return (
     <>
       <Panel
@@ -58,10 +60,10 @@ const ListSectionOne: React.FC = () => {
                     <td>
                       <p style={{ fontWeight: 'bold' }}>{section.title}</p>
                     </td>
-                    <td>{section.description_one}</td>
-                    <td>{section.image_one}</td>
-                    <td>{section.created_at}</td>
-                    <td>{section.update_at}</td>
+                    <td>{section.description}</td>
+                    <td>{section.image}</td>
+                    <td>{section.created}</td>
+                    <td>{section.updated}</td>
                     <td>
                       <Actions>
                         <RouterLink to={`/update-section/${section.id}`}>

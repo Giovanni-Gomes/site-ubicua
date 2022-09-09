@@ -54,7 +54,7 @@ const DetailsProject: React.FC<ProjectDetailsProps> = ({ id }) => {
           </Detail>
         </Wrapper>
       </Content>
-      <div>
+      <div className='desc'>
         <Span>Descrição:</Span>
         <p>{data?.description ? data?.description : '---'}</p>
       </div>

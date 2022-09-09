@@ -32,6 +32,8 @@ export const lightTheme = {
     'bg-color': '#F7FFFE',
     'text-color': '#121214',
     'text-menu': '#FFFFFF',
+    'tertiary-500': '#0070f9',
+    'tertiary-700': '#0029f9',
   },
   desenvolvimento: '#FEE440',
   concluído: '#00875F',
