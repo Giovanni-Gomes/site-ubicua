@@ -2,6 +2,10 @@
 
 Single-page app de **marketing + portal administrativo** (React, TypeScript, Vite). Marca e textos são **fictícios** para exposição em portfólio.
 
+## API e dados
+
+Toda a camada HTTP em [`src/services/api.tsx`](src/services/api.tsx) usa um **adapter mock** ([`src/services/mockApi.ts`](src/services/mockApi.ts)): **não há chamadas a backend real** nem integração Giphy. Login, listagens e formulários respondem com dados estáticos/fictícios para a UI funcionar offline.
+
 ## Requisitos
 
 - Node.js 18+
@@ -9,11 +13,8 @@ Single-page app de **marketing + portal administrativo** (React, TypeScript, Vit
 
 ## Configuração
 
-1. Copie `.env.example` para `.env.local`.
-2. Preencha pelo menos:
-   - `VITE_API_URL` — URL base da sua API (ou deixe o placeholder para UI offline).
-   - `VITE_GIPHY_API_KEY` — chave pública Giphy, se usar integração de GIFs.
-   - `VITE_REACT_APP_MAPBOX_TOKEN` — token público Mapbox, se usar o mapa.
+1. Opcional: copie `.env.example` para `.env.local` se for usar o mapa com Mapbox.
+2. `VITE_REACT_APP_MAPBOX_TOKEN` — token público Mapbox para os tiles do mapa na home (sem token, o mapa pode falhar ao carregar tiles).
 
 ## Scripts
 
@@ -31,4 +32,4 @@ Ajuste nome e chaves de `localStorage` em [`src/config/branding.ts`](src/config/
 
 ## Segurança
 
-Se este repositório já chegou a conter chaves reais (Giphy, Mapbox, etc.), **revogue-as** nos painéis dos provedores e use apenas variáveis de ambiente locais.
+Se este repositório já chegou a conter chaves reais em commits antigos, **revogue-as** nos provedores e use apenas variáveis locais.
