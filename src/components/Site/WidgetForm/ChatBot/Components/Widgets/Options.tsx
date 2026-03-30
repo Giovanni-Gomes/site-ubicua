@@ -1,7 +1,6 @@
 import React from 'react';
 import { OptionsButton, OptionsContainer } from './styles/options';
 const Options: React.FC = (props) => {
-  // console.log("xarlys", props);
   // console.log("propriedade", props.propriedade);
 
   const options = [

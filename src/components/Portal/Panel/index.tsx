@@ -1,5 +1,5 @@
 import { FormHandles } from '@unform/core'
-import { Form } from '@unform/web'
+import { Form } from 'unform-form'
 import React, { ReactNode, useRef } from 'react'
 import { FaFileImport, FaPlus } from 'react-icons/fa'
 import { FiArrowLeft, FiArrowRight } from 'react-icons/fi'
@@ -45,7 +45,7 @@ export function Panel({
     const inputSearchValue = (
       document.getElementById('search') as HTMLInputElement
     ).value
-    searchState && searchState(inputSearchValue)
+    searchState?.(inputSearchValue)
   }
 
   return (

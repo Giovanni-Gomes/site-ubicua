@@ -1,13 +1,13 @@
 import React, { ChangeEvent, useCallback, useRef } from 'react'
 import { FiMail, FiUser, FiLock, FiCamera, FiArrowLeft } from 'react-icons/fi'
 import { FormHandles } from '@unform/core'
-import { Form } from '@unform/web'
+import { Form } from 'unform-form'
 import * as Yup from 'yup'
 import { Link, useNavigate } from 'react-router-dom'
 
 import api from '../../services/api'
 
-import getValidationErrors from '../../utils/getValidationsErros'
+import getValidationErrors from '../../utils/getValidationErrors'
 
 import { Container, Content, AvatarInput } from './styles'
 import { useToast } from '../../components/hooks/provider/toast'
@@ -42,17 +42,17 @@ const Profile: React.FC = () => {
             .email('Digite um email válido'),
           old_password: Yup.string(),
           password: Yup.string().when('old_password', {
-            is: (val: any) => !!val.length,
-            then: Yup.string().required('Campo Obrigatório').min(6),
-            otherwise: Yup.string().min(0),
+            is: (val: string | undefined) => !!val?.length,
+            then: (schema) => schema.required('Campo Obrigatório').min(6),
+            otherwise: (schema) => schema,
           }),
           password_confirmation: Yup.string()
             .when('old_password', {
-              is: (val: any) => !!val.length,
-              then: Yup.string().required('Campo Obrigatório').min(6),
-              otherwise: Yup.string().min(0),
+              is: (val: string | undefined) => !!val?.length,
+              then: (schema) => schema.required('Campo Obrigatório').min(6),
+              otherwise: (schema) => schema,
             })
-            .oneOf([Yup.ref('password'), null], 'Confirmação Incorreta'),
+            .oneOf([Yup.ref('password')], 'Confirmação Incorreta'),
         })
 
         await schema.validate(data, {

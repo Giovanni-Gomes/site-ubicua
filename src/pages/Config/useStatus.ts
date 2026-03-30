@@ -1,4 +1,4 @@
-import { useQuery } from 'react-query'
+import { useQuery } from '@tanstack/react-query'
 import api from '../../services/api'
 
 export interface FindAllStatusProps {
@@ -56,7 +56,10 @@ export async function deleteStatus(id: string) {
 }
 
 export function useStatus(page?: number, take?: number) {
-  return useQuery(['status', page, take], () => getStatus(page, take))
+  return useQuery({
+    queryKey: ['status', page, take],
+    queryFn: () => getStatus(page, take),
+  })
   // return useQuery(['projects', page], () => getProjects(page, take), {
   //   staleTime: 1000 * 60 * 10, // 1000 * 60 * 10 10 minutes // 1000 * 60 * 60 * 12, // 12 hours,
   // });

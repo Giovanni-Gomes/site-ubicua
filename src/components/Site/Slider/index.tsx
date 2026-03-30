@@ -48,9 +48,7 @@ const Slider: React.FC<SliderProps> = ({
       <div id="Button">
         {buttons?.map((button, key) => (
           <Button key={key} href={button.link} className={
-            key === 0 ? 'button1' : ''
-              || key === 1 ? 'button2' : ''
-                || key === 2 ? 'button3' : ''
+            key === 0 ? 'button1' : key === 1 ? 'button2' : key === 2 ? 'button3' : ''
           } style={{
             animationDelay: `${(duration + transition) * key}s`,
           }}><FaRegBuilding size={16} />{button.name}</Button>

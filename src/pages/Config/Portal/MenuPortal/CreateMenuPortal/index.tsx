@@ -2,7 +2,7 @@ import React, { useCallback, useRef, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 import { FormHandles } from '@unform/core'
-import { Form } from '@unform/web'
+import { Form } from 'unform-form'
 import * as Yup from 'yup'
 
 import api from '../../../../../services/api'
@@ -17,7 +17,7 @@ import { Loading } from '../../../../../components/Site/WidgetForm/Loading'
 import { Panel } from '../../../../../components/Portal/Panel'
 import { CancelButton } from '../../../styles'
 import { useToast } from '../../../../../components/hooks/provider/toast'
-import getValidationErrors from '../../../../../utils/getValidationsErros'
+import getValidationErrors from '../../../../../utils/getValidationErrors'
 
 interface CreateMenuPortalProps {
   title: string

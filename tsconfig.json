@@ -1,5 +1,9 @@
 {
   "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "unform-form": ["src/lib/unform-form.tsx"]
+    },
     "target": "ESNext",
     "useDefineForClassFields": true,
     "lib": [

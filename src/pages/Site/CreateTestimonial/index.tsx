@@ -1,33 +1,32 @@
 import React, { useCallback, useRef, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { useToast } from '../../components/hooks/provider/toast'
+import { useToast } from '../../../components/hooks/provider/toast'
 
-import getValidationErrors from '../../utils/getValidationsErros'
+import getValidationErrors from '../../../utils/getValidationErrors'
 import { FormHandles } from '@unform/core'
-import { Form } from '@unform/web'
+import { Form } from 'unform-form'
 import * as Yup from 'yup'
 
-import api from '../../services/api'
-import Input from '../../components/Shared/Input'
+import api from '../../../services/api'
+import Input from '../../../components/Shared/Input'
 import { BiText } from 'react-icons/bi'
 import { FaTrash } from 'react-icons/fa'
-import Button from '../../components/Shared/Button'
-import { CancelButton, FormFooter } from './styles'
+import Button from '../../../components/Shared/Button'
+import { CancelButton, FormFooter } from '../styles'
 
 interface CreateMenuProps {
   title: string
-  description_one: string
-  image_one?: string
-  description_two: string
+  description: string
+  author: string
+  icon?: string
 }
 
-const CreateCustomers: React.FC = () => {
+const CreateTestimonial: React.FC = () => {
   const formRef = useRef<FormHandles>(null)
   const navigate = useNavigate()
   const { addToast } = useToast()
 
   const [selectedFile, setSelectedFile] = useState('')
-  const [selectedFileTwo, setSelectedFileTwo] = useState('')
 
   // const fileInput = useRef(null)
 
@@ -37,26 +36,18 @@ const CreateCustomers: React.FC = () => {
     setSelectedFile(event.target.files[0])
   }
 
-  const fileSelectedHandlerInputTwo = (event: any) => {
-    // handle validations
-    // console.log("img handle two", event.target.files[0]);
-    setSelectedFileTwo(event.target.files[0])
-  }
-
   const handleSubmitCreateMenu = useCallback(
     async (data: CreateMenuProps) => {
       try {
-        const imageData = new FormData()
-        imageData.append('image_one', (selectedFile as any).name)
-        imageData.append('image_two', (selectedFileTwo as any).name)
+        const iconData = new FormData()
+        iconData.append('icon', (selectedFile as any).name)
         formRef.current?.setErrors({})
 
         const schema = Yup.object().shape({
           title: Yup.string().required('Título é Obrigatório'),
-          description_one: Yup.string(),
-          image_one: Yup.string(),
-          description_two: Yup.string(),
-          image_two: Yup.string(),
+          description: Yup.string().required('Descrição é Obrigatório'),
+          author: Yup.string().required('Autor é Obrigatório'),
+          icon: Yup.string(),
         })
 
         await schema.validate(data, {
@@ -65,13 +56,12 @@ const CreateCustomers: React.FC = () => {
 
         const formData = {
           title: data.title,
-          description_one: data.description_one,
-          image_one: selectedFile,
-          description_two: data.description_two,
-          image_two: selectedFileTwo,
+          description: data.description,
+          author: data.author,
+          icon: selectedFile,
         }
 
-        await api.post('/v1/sectionTwo/create', formData, {
+        await api.post('/v1/testimonial/create', formData, {
           headers: {
             'Content-Type': 'multipart/form-data',
           },
@@ -99,7 +89,7 @@ const CreateCustomers: React.FC = () => {
         })
       }
     },
-    [addToast, navigate, selectedFile, selectedFileTwo],
+    [addToast, navigate, selectedFile],
   )
 
   function handleResetForm(event: React.MouseEvent) {
@@ -109,20 +99,21 @@ const CreateCustomers: React.FC = () => {
 
   return (
     <Form ref={formRef} onSubmit={handleSubmitCreateMenu} className='pages'>
-      <h1>Cadastrar Novos Icones</h1>
+      <h1>Cadastrar Novos Depoimentos</h1>
       <span className="subtitle">preencha o formulário abaixo</span>
 
       <Input name="title" type="text" placeholder="Título" icon={BiText} />
       <Input
-        name="description_one"
+        name="description"
         type="text"
-        placeholder="First Description"
+        placeholder="Descrição"
         icon={BiText}
       />
+      <Input name="author" type="text" placeholder="Autor" icon={BiText} />
       <Input
-        name="image_one"
+        name="icon"
         type="file"
-        placeholder="First Image"
+        placeholder="Ícone"
         icon={BiText}
         onChange={fileSelectedHandlerInputOne}
       />
@@ -141,4 +132,4 @@ const CreateCustomers: React.FC = () => {
   )
 }
 
-export default CreateCustomers
+export default CreateTestimonial

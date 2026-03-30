@@ -1,4 +1,4 @@
-import { useQuery } from 'react-query'
+import { useQuery } from '@tanstack/react-query'
 import api from '../../services/api'
 
 export interface DashboardProps {
@@ -142,26 +142,34 @@ export async function getTargetContracts(): Promise<DashboardTargetContractsProp
 }
 
 export function useDashboard() {
-  return useQuery(['dashboard'], () => getDashboard(), {
-    staleTime: 1000 * 60 * 10, // 1000 * 60 * 10 10 minutes
+  return useQuery({
+    queryKey: ['dashboard'],
+    queryFn: () => getDashboard(),
+    staleTime: 1000 * 60 * 10,
   })
 }
 
 export function useActiveRegistries() {
-  return useQuery(['dashboardActive'], () => getActiveRegistries(), {
-    staleTime: 1000 * 60 * 10, // 1000 * 60 * 10 10 minutes
+  return useQuery({
+    queryKey: ['dashboardActive'],
+    queryFn: () => getActiveRegistries(),
+    staleTime: 1000 * 60 * 10,
   })
 }
 
 export function useContractsRegistries() {
-  return useQuery(['dashboardContracts'], () => getContracts(), {
-    staleTime: 1000 * 60 * 10, // 1000 * 60 * 10 10 minutes
+  return useQuery({
+    queryKey: ['dashboardContracts'],
+    queryFn: () => getContracts(),
+    staleTime: 1000 * 60 * 10,
   })
 }
 
 export function useTargetContracts() {
-  return useQuery(['dashboardTargetContracts'], () => getTargetContracts(), {
-    staleTime: 1000 * 60 * 10, // 1000 * 60 * 10 10 minutes
+  return useQuery({
+    queryKey: ['dashboardTargetContracts'],
+    queryFn: () => getTargetContracts(),
+    staleTime: 1000 * 60 * 10,
   })
 }
 

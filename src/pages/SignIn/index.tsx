@@ -1,9 +1,9 @@
 import React, { useRef, useCallback } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 
-import getValidationErrors from '../../utils/getValidationsErros'
+import getValidationErrors from '../../utils/getValidationErrors'
 import { FormHandles } from '@unform/core'
-import { Form } from '@unform/web'
+import { Form } from 'unform-form'
 import * as Yup from 'yup'
 
 import Input from '../../components/Shared/Input'

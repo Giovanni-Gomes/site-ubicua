@@ -1,5 +1,4 @@
-import { Console } from 'console'
-import { useQuery } from 'react-query'
+import { useQuery } from '@tanstack/react-query'
 import api from '../../services/api'
 
 // interface sections One, Two, Three, For and Five
@@ -238,34 +237,46 @@ export async function getSectionFive(): Promise<GetSectionsResponse> {
 
 // use sections One, Two, Three, For and Five
 export function useSection({ id, section }: GetOneSectionById) {
-  return useQuery(['sections', id, section], () => getSectionById(id, section), {
-    staleTime: 1000 * 60 * 10, // 1000 * 60 * 10 10 minutes // 1000 * 60 * 60 * 12, // 12 hours,
+  return useQuery({
+    queryKey: ['sections', id, section],
+    queryFn: () => getSectionById(id, section),
+    staleTime: 1000 * 60 * 10,
   })
 }
 // use sections One, Two, Three, For and Five
 export function useSectionOne() {
-  return useQuery(['sectionOne'], () => getSectionOne(), {
-    staleTime: 1000 * 60 * 10, // 1000 * 60 * 10 10 minutes // 1000 * 60 * 60 * 12, // 12 hours,
+  return useQuery({
+    queryKey: ['sectionOne'],
+    queryFn: () => getSectionOne(),
+    staleTime: 1000 * 60 * 10,
   })
 }
 export function useSectionTwo() {
-  return useQuery(['sectionTwo'], () => getSectionTwo(), {
-    staleTime: 1000 * 60 * 10, // 1000 * 60 * 10 10 minutes // 1000 * 60 * 60 * 12, // 12 hours,
+  return useQuery({
+    queryKey: ['sectionTwo'],
+    queryFn: () => getSectionTwo(),
+    staleTime: 1000 * 60 * 10,
   })
 }
 export function useSectionThree() {
-  return useQuery(['sectionThree'], () => getSectionThree(), {
-    staleTime: 1000 * 60 * 10, // 1000 * 60 * 10 10 minutes // 1000 * 60 * 60 * 12, // 12 hours,
+  return useQuery({
+    queryKey: ['sectionThree'],
+    queryFn: () => getSectionThree(),
+    staleTime: 1000 * 60 * 10,
   })
 }
 export function useSectionFor() {
-  return useQuery(['sectionFor'], () => getSectionFor(), {
-    staleTime: 1000 * 60 * 10, // 1000 * 60 * 10 10 minutes // 1000 * 60 * 60 * 12, // 12 hours,
+  return useQuery({
+    queryKey: ['sectionFor'],
+    queryFn: () => getSectionFor(),
+    staleTime: 1000 * 60 * 10,
   })
 }
 export function useSectionFive() {
-  return useQuery(['sectionFive'], () => getSectionFive(), {
-    staleTime: 1000 * 60 * 10, // 1000 * 60 * 10 10 minutes // 1000 * 60 * 60 * 12, // 12 hours,
+  return useQuery({
+    queryKey: ['sectionFive'],
+    queryFn: () => getSectionFive(),
+    staleTime: 1000 * 60 * 10,
   })
 }
 
@@ -287,9 +298,10 @@ export async function deleteSectionFive(id: string) {
 }
 
 export function useSectionsOne(page: number, take: number, search: string) {
-  return useQuery(['sections one', page, take, search], () =>
-    getSectionsOne(page, take, search),
-  )
+  return useQuery({
+    queryKey: ['sections one', page, take, search],
+    queryFn: () => getSectionsOne(page, take, search),
+  })
 }
 // if (data.length <= 0) {
 //   return null;

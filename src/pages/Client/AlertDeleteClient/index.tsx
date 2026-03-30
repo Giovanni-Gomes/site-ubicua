@@ -1,7 +1,6 @@
-import { AxiosError } from 'axios'
 import React from 'react'
 import { FaTrash } from 'react-icons/fa'
-import { useMutation } from 'react-query'
+import { useMutation } from '@tanstack/react-query'
 import { useToast } from '../../../components/hooks/provider/toast'
 import Button from '../../../components/Shared/Button'
 import api from '../../../services/api'
@@ -19,25 +18,22 @@ const AlertDeleteClient: React.FC<AlertDeleteClientProps> = ({
 }) => {
   const { addToast } = useToast()
 
-  const removeClient = useMutation(
-    async (id: string) => {
+  const removeClient = useMutation({
+    mutationFn: async (id: string) => {
       const response = await api.delete(`/v1/client/delete/${id}`)
-
       return response.data
     },
-    {
-      onSuccess: () => {
-        queryClient.invalidateQueries('clients')
-      },
-      onError: (error: AxiosError) => {
-        addToast({
-          type: 'error',
-          title: 'Erro ao deletar registro',
-          description: 'Ocorreu um erro ao deletar registro, tente novamente',
-        })
-      },
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['clients'] })
     },
-  )
+    onError: () => {
+      addToast({
+        type: 'error',
+        title: 'Erro ao deletar registro',
+        description: 'Ocorreu um erro ao deletar registro, tente novamente',
+      })
+    },
+  })
 
   async function handleRemoveTag(id: string) {
     try {

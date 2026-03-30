@@ -1,30 +1,27 @@
 import React, { useCallback, useRef, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { useToast } from '../../components/hooks/provider/toast'
+import { useToast } from '../../../components/hooks/provider/toast'
 
-import getValidationErrors from '../../utils/getValidationsErros'
+import getValidationErrors from '../../../utils/getValidationErrors'
 import { FormHandles } from '@unform/core'
-import { Form } from '@unform/web'
+import { Form } from 'unform-form'
 import * as Yup from 'yup'
 
-import api from '../../services/api'
-import Input from '../../components/Shared/Input'
+import api from '../../../services/api'
+import Input from '../../../components/Shared/Input'
 import { BiText } from 'react-icons/bi'
 import { FaTrash } from 'react-icons/fa'
-import Button from '../../components/Shared/Button'
-import Header from '../../components/Portal/Header'
-import { CancelButton, Container, FormFooter } from './styles'
-import CreateCustomers from './createCustomers'
-import CreateTestimonial from './createTestimonial'
+import Button from '../../../components/Shared/Button'
+import Header from '../../../components/Portal/Header'
+import { CancelButton, Container, FormFooter } from '../styles'
+import CreateSectionTopics from '../CreateSectionTopics'
 
 interface CreateMenuProps {
   title: string
   description_one: string
-  image_one?: string
-  description_two: string
 }
 
-const createSectionFour: React.FC = () => {
+const CreateSectionFive: React.FC = () => {
   const formRef = useRef<FormHandles>(null)
   const navigate = useNavigate()
   const { addToast } = useToast()
@@ -38,20 +35,20 @@ const createSectionFour: React.FC = () => {
     setIsActiveForm(id)
   }
 
-  // const fileSelectedHandlerInputOne = (event: any) => {
-  //   setSelectedFile(event.target.files[0])
-  // }
+  const fileSelectedHandlerInputOne = (event: any) => {
+    setSelectedFile(event.target.files[0])
+  }
 
-  // const fileSelectedHandlerInputTwo = (event: any) => {
-  //   setSelectedFileTwo(event.target.files[0])
-  // }
+  const fileSelectedHandlerInputTwo = (event: any) => {
+    setSelectedFileTwo(event.target.files[0])
+  }
 
   const handleSubmitCreateMenu = useCallback(
     async (data: CreateMenuProps) => {
       try {
         const imageData = new FormData()
-        // imageData.append('image_one', (selectedFile as any).name)
-        // imageData.append('image_two', (selectedFileTwo as any).name)
+        imageData.append('image_one', (selectedFile as any).name)
+        imageData.append('image_two', (selectedFileTwo as any).name)
         formRef.current?.setErrors({})
 
         const schema = Yup.object().shape({
@@ -68,7 +65,7 @@ const createSectionFour: React.FC = () => {
           description_one: data.description_one,
         }
 
-        await api.post('/v1/sectionFour/create', formData)
+        await api.post('/v1/sectionFive/create', formData)
 
         navigate('/dashboard')
 
@@ -102,7 +99,6 @@ const createSectionFour: React.FC = () => {
 
   return (
     <>
-      <Header />
       <Container>
         <ul>
           <li>
@@ -123,15 +119,6 @@ const createSectionFour: React.FC = () => {
               Secundário
             </button>
           </li>
-          <li>
-            <button
-              type="button"
-              className={isActiveForm === 2 ? 'active' : undefined}
-              onClick={() => showActiveForm(2)}
-            >
-              Depoimentos
-            </button>
-          </li>
         </ul>
         {(isActiveForm === 0 && (
           <Form
@@ -139,7 +126,7 @@ const createSectionFour: React.FC = () => {
             onSubmit={handleSubmitCreateMenu}
             className="pages"
           >
-            <h1>Cadastrar | Alterar 4º Secção</h1>
+            <h1>Cadastrar | Alterar 5º Secção</h1>
             <span className="subtitle">preencha o formulário abaixo</span>
 
             <Input
@@ -170,11 +157,10 @@ const createSectionFour: React.FC = () => {
             </FormFooter>
           </Form>
         )) ||
-          (isActiveForm === 1 && <CreateCustomers />) ||
-          (isActiveForm === 2 && <CreateTestimonial />)}
+          (isActiveForm === 1 && <CreateSectionTopics />)}
       </Container>
     </>
   )
 }
 
-export default createSectionFour
+export default CreateSectionFive

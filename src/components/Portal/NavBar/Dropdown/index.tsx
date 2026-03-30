@@ -24,8 +24,6 @@ const Dropdown: React.FC<DropdownProps> = ({ submenu_portal }) => {
   //   const height = el.offsetHeight
   //   setMenuHeight(height)
   // }
-  console.log("SUBBBBBBB MENU DROP DOWN", submenu_portal);
-
   return (
     <Container>
       <CSSTransition
@@ -48,7 +46,7 @@ const Dropdown: React.FC<DropdownProps> = ({ submenu_portal }) => {
                 className={
                   sb.title === 'Secções'
                     ? 'space expand'
-                    : 'expand' || sb.title === 'Acompanhamentos'
+                    : sb.title === 'Acompanhamentos'
                       ? 'expand width'
                       : 'expand'
                 }
@@ -70,7 +68,7 @@ const Dropdown: React.FC<DropdownProps> = ({ submenu_portal }) => {
                 className={
                   sb.title === 'Secções'
                     ? 'space expand'
-                    : 'expand' || sb.title === 'Acompanhamentos'
+                    : sb.title === 'Acompanhamentos'
                       ? 'expand width'
                       : 'expand'
                 }

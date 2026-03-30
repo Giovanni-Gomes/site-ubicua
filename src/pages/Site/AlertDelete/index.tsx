@@ -1,8 +1,6 @@
-import { AxiosError } from 'axios'
-import React, { useState } from 'react'
+import React from 'react'
 import { FaTrash } from 'react-icons/fa'
-import { useMutation } from 'react-query'
-import { useNavigate } from 'react-router-dom'
+import { useMutation } from '@tanstack/react-query'
 import { useToast } from '../../../components/hooks/provider/toast'
 import api from '../../../services/api'
 import { queryClient } from '../../../services/queryClient'
@@ -13,47 +11,37 @@ interface AlertDeleteProps {
   actualSectionName: string
 }
 
+const sectionByListPath: Record<string, string> = {
+  '/list-section-one': 'sectionOne',
+  '/list-section-two': 'sectionTwo',
+  '/list-section-three': 'sectionThree',
+  '/list-section-four': 'sectionFour',
+  '/list-section-five': 'sectionFive',
+}
+
 const AlertDelete: React.FC<AlertDeleteProps> = ({ id, actualSectionName }) => {
   const { addToast } = useToast()
-
-  switch (window.location.pathname) {
-    case '/list-section-one':
-      var section = 'sectionOne'
-      break;
-    case '/list-section-two':
-      var section = 'sectionTwo'
-      break;
-    case '/list-section-three':
-      var section = 'sectionThree'
-      break;
-    case '/list-section-four':
-      var section = 'sectionFour'
-      break;
-    case '/list-section-five':
-      var section = 'sectionFive'
-      break;
-  }
+  const section = sectionByListPath[window.location.pathname]
 
 
-  const removeSection = useMutation(
-    async (id: string) => {
+  const removeSection = useMutation({
+    mutationFn: async (id: string) => {
       const response = await api.delete(`/v1/${section}/delete/${id}`)
-
       return response.data
     },
-    {
-      onSuccess: () => {
-        queryClient.invalidateQueries(`${section}`)
-      },
-      onError: (error: AxiosError) => {
-        addToast({
-          type: 'error',
-          title: 'Erro ao deletar registro',
-          description: 'Ocorreu um erro ao deletar registro, tente novamente',
-        })
-      },
+    onSuccess: () => {
+      if (section) {
+        queryClient.invalidateQueries({ queryKey: [section] })
+      }
     },
-  )
+    onError: () => {
+      addToast({
+        type: 'error',
+        title: 'Erro ao deletar registro',
+        description: 'Ocorreu um erro ao deletar registro, tente novamente',
+      })
+    },
+  })
 
   async function handleRemoveTag(id: string) {
     try {

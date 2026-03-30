@@ -1,4 +1,4 @@
-import { useQuery } from 'react-query'
+import { useQuery } from '@tanstack/react-query'
 import api from '../../services/api'
 
 export type ContractProps = {
@@ -110,17 +110,17 @@ export async function deleteContract(id: string) {
 }
 
 export function useContracts(page: number, take: number, searchQuery?: string) {
-  return useQuery(
-    ['contracts', page, take, searchQuery],
-    () => getContracts(page, take),
-    {
-      staleTime: 1000 * 60 * 10, // 10 minutes
-    },
-  )
+  return useQuery({
+    queryKey: ['contracts', page, take, searchQuery],
+    queryFn: () => getContracts(page, take),
+    staleTime: 1000 * 60 * 10,
+  })
 }
 
 export function useContract(id: string) {
-  return useQuery(['contract', id], () => getOneContractById(id), {
-    staleTime: 1000 * 60 * 10, // 10 minutes
+  return useQuery({
+    queryKey: ['contract', id],
+    queryFn: () => getOneContractById(id),
+    staleTime: 1000 * 60 * 10,
   })
 }

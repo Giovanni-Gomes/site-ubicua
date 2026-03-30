@@ -1,19 +1,18 @@
 import React, { useCallback, useRef, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { useToast } from '../../components/hooks/provider/toast'
+import { useToast } from '../../../components/hooks/provider/toast'
 
-import getValidationErrors from '../../utils/getValidationsErros'
+import getValidationErrors from '../../../utils/getValidationErrors'
 import { FormHandles } from '@unform/core'
-import { Form } from '@unform/web'
+import { Form } from 'unform-form'
 import * as Yup from 'yup'
 
-import api from '../../services/api'
-import Input from '../../components/Shared/Input'
+import api from '../../../services/api'
+import Input from '../../../components/Shared/Input'
 import { BiText } from 'react-icons/bi'
 import { FaTrash } from 'react-icons/fa'
-import Button from '../../components/Shared/Button'
-import Header from '../../components/Portal/Header'
-import { CancelButton, Container, FormFooter } from './styles'
+import Button from '../../../components/Shared/Button'
+import { CancelButton, FormFooter } from '../styles'
 
 interface CreateMenuProps {
   title: string
@@ -22,7 +21,7 @@ interface CreateMenuProps {
   description_two: string
 }
 
-const createSectionThree: React.FC = () => {
+const CreateCustomers: React.FC = () => {
   const formRef = useRef<FormHandles>(null)
   const navigate = useNavigate()
   const { addToast } = useToast()
@@ -30,11 +29,17 @@ const createSectionThree: React.FC = () => {
   const [selectedFile, setSelectedFile] = useState('')
   const [selectedFileTwo, setSelectedFileTwo] = useState('')
 
+  // const fileInput = useRef(null)
+
   const fileSelectedHandlerInputOne = (event: any) => {
+    // handle validations
+    // console.log("img handle one", event.target.files[0]);
     setSelectedFile(event.target.files[0])
   }
 
   const fileSelectedHandlerInputTwo = (event: any) => {
+    // handle validations
+    // console.log("img handle two", event.target.files[0]);
     setSelectedFileTwo(event.target.files[0])
   }
 
@@ -66,7 +71,7 @@ const createSectionThree: React.FC = () => {
           image_two: selectedFileTwo,
         }
 
-        await api.post('/v1/sectionThree/create', formData, {
+        await api.post('/v1/sectionTwo/create', formData, {
           headers: {
             'Content-Type': 'multipart/form-data',
           },
@@ -103,48 +108,37 @@ const createSectionThree: React.FC = () => {
   }
 
   return (
-    <>
-      <Header />
-      <Container>
-        <Form
-          ref={formRef}
-          onSubmit={handleSubmitCreateMenu}
-          className="simple-form"
-        >
-          <h1>Cadastrar | Alterar 3º Secção</h1>
-          <span className="subtitle">preencha o formulário abaixo</span>
+    <Form ref={formRef} onSubmit={handleSubmitCreateMenu} className='pages'>
+      <h1>Cadastrar Novos Icones</h1>
+      <span className="subtitle">preencha o formulário abaixo</span>
 
-          <Input name="title" type="text" placeholder="Título" icon={BiText} />
+      <Input name="title" type="text" placeholder="Título" icon={BiText} />
+      <Input
+        name="description_one"
+        type="text"
+        placeholder="First Description"
+        icon={BiText}
+      />
+      <Input
+        name="image_one"
+        type="file"
+        placeholder="First Image"
+        icon={BiText}
+        onChange={fileSelectedHandlerInputOne}
+      />
 
-          <Input
-            name="description_one"
-            type="text"
-            placeholder="First Description"
-            icon={BiText}
-          />
+      {/* <Input name="description_two" type="text" placeholder='Second Description' icon={BiText} /> */}
 
-          <Input
-            name="image_one"
-            type="file"
-            placeholder="First Image"
-            icon={BiText}
-            onChange={fileSelectedHandlerInputOne}
-          />
+      {/* <Input name="image_two" type="file" placeholder='Second Image' icon={BiText} onChange={fileSelectedHandlerInputTwo} /> */}
 
-          {/* <Input name="description_two" type="text" placeholder='Second Description' icon={BiText} /> */}
-
-          {/* <Input name="image_two" type="file" placeholder='Second Image' icon={BiText} onChange={fileSelectedHandlerInputTwo} /> */}
-
-          <FormFooter>
-            <Button type="submit">Salvar Registro</Button>
-            <CancelButton onClick={handleResetForm}>
-              <FaTrash />
-            </CancelButton>
-          </FormFooter>
-        </Form>
-      </Container>
-    </>
+      <FormFooter>
+        <Button type="submit">Salvar Registro</Button>
+        <CancelButton onClick={handleResetForm}>
+          <FaTrash />
+        </CancelButton>
+      </FormFooter>
+    </Form>
   )
 }
 
-export default createSectionThree
+export default CreateCustomers
