@@ -6,7 +6,7 @@ export const Button = styled.a`
   background-color: ${(props: any) => props.theme.colors.primary};
   padding: 0;
   position: absolute;
-  top: 30rem;
+  top: 40rem;
   left: 5rem;
   opacity: 0;
   margin: 0;
