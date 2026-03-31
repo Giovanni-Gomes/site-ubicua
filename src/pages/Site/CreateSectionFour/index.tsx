@@ -1,21 +1,21 @@
 import React, { useCallback, useRef, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { useToast } from '../../components/hooks/provider/toast'
+import { useToast } from '../../../components/hooks/provider/toast'
 
-import getValidationErrors from '../../utils/getValidationsErros'
+import getValidationErrors from '../../../utils/getValidationErrors'
 import { FormHandles } from '@unform/core'
-import { Form } from '@unform/web'
+import { Form } from 'unform-form'
 import * as Yup from 'yup'
 
-import api from '../../services/api'
-import Input from '../../components/Shared/Input'
+import api from '../../../services/api'
+import Input from '../../../components/Shared/Input'
 import { BiText } from 'react-icons/bi'
 import { FaTrash } from 'react-icons/fa'
-import Button from '../../components/Shared/Button'
-import Header from '../../components/Portal/Header'
-import { Back, CancelButton, Container, FormFooter } from './styles'
-import CreateSectionTopics from './createSectionTopics'
-import { ArrowLeft } from 'phosphor-react'
+import Button from '../../../components/Shared/Button'
+import Header from '../../../components/Portal/Header'
+import { CancelButton, Container, FormFooter } from '../styles'
+import CreateCustomers from '../CreateCustomers'
+import CreateTestimonial from '../CreateTestimonial'
 
 interface CreateMenuProps {
   title: string
@@ -24,7 +24,7 @@ interface CreateMenuProps {
   description_two: string
 }
 
-const CreateSectionTwo: React.FC = () => {
+const CreateSectionFour: React.FC = () => {
   const formRef = useRef<FormHandles>(null)
   const navigate = useNavigate()
   const { addToast } = useToast()
@@ -38,20 +38,25 @@ const CreateSectionTwo: React.FC = () => {
     setIsActiveForm(id)
   }
 
+  // const fileSelectedHandlerInputOne = (event: any) => {
+  //   setSelectedFile(event.target.files[0])
+  // }
+
+  // const fileSelectedHandlerInputTwo = (event: any) => {
+  //   setSelectedFileTwo(event.target.files[0])
+  // }
+
   const handleSubmitCreateMenu = useCallback(
     async (data: CreateMenuProps) => {
       try {
         const imageData = new FormData()
-        imageData.append('image_one', (selectedFile as any).name)
-        imageData.append('image_two', (selectedFileTwo as any).name)
+        // imageData.append('image_one', (selectedFile as any).name)
+        // imageData.append('image_two', (selectedFileTwo as any).name)
         formRef.current?.setErrors({})
 
         const schema = Yup.object().shape({
           title: Yup.string().required('Título é Obrigatório'),
           description_one: Yup.string(),
-          image_one: Yup.string(),
-          description_two: Yup.string(),
-          image_two: Yup.string(),
         })
 
         await schema.validate(data, {
@@ -63,7 +68,7 @@ const CreateSectionTwo: React.FC = () => {
           description_one: data.description_one,
         }
 
-        await api.post('/v1/sectionTwo/create', formData)
+        await api.post('/v1/sectionFour/create', formData)
 
         navigate('/dashboard')
 
@@ -99,9 +104,6 @@ const CreateSectionTwo: React.FC = () => {
     <>
       <Header />
       <Container>
-        <Back to={'/list-section-two'}>
-          <ArrowLeft size={24} />
-        </Back>
         <ul>
           <li>
             <button
@@ -121,6 +123,15 @@ const CreateSectionTwo: React.FC = () => {
               Secundário
             </button>
           </li>
+          <li>
+            <button
+              type="button"
+              className={isActiveForm === 2 ? 'active' : undefined}
+              onClick={() => showActiveForm(2)}
+            >
+              Depoimentos
+            </button>
+          </li>
         </ul>
         {(isActiveForm === 0 && (
           <Form
@@ -128,7 +139,7 @@ const CreateSectionTwo: React.FC = () => {
             onSubmit={handleSubmitCreateMenu}
             className="pages"
           >
-            <h1>Cadastrar | Alterar 2º Secção</h1>
+            <h1>Cadastrar | Alterar 4º Secção</h1>
             <span className="subtitle">preencha o formulário abaixo</span>
 
             <Input
@@ -137,12 +148,19 @@ const CreateSectionTwo: React.FC = () => {
               placeholder="Título"
               icon={BiText}
             />
+
             <Input
               name="description_one"
               type="text"
               placeholder="First Description"
               icon={BiText}
             />
+
+            {/* <Input name="image_one" type="file" placeholder='First Image' icon={BiText} onChange={fileSelectedHandlerInputOne} /> */}
+
+            {/* <Input name="description_two" type="text" placeholder='Second Description' icon={BiText} /> */}
+
+            {/* <Input name="image_two" type="file" placeholder='Second Image' icon={BiText} onChange={fileSelectedHandlerInputTwo} /> */}
 
             <FormFooter>
               <Button type="submit">Salvar Registro</Button>
@@ -152,10 +170,11 @@ const CreateSectionTwo: React.FC = () => {
             </FormFooter>
           </Form>
         )) ||
-          (isActiveForm === 1 && <CreateSectionTopics />)}
+          (isActiveForm === 1 && <CreateCustomers />) ||
+          (isActiveForm === 2 && <CreateTestimonial />)}
       </Container>
     </>
   )
 }
 
-export default CreateSectionTwo
+export default CreateSectionFour

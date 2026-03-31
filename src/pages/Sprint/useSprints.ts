@@ -1,4 +1,4 @@
-import { useQuery } from 'react-query'
+import { useQuery } from '@tanstack/react-query'
 import api from '../../services/api'
 
 export type Sprint = {
@@ -121,11 +121,16 @@ export async function deleteSprint(id: string) {
 }
 
 export function useSprints(page: number, take: number, search: string) {
-  return useQuery(['sprints', page, take, search], () => getSprints(page, take, search), {
-    staleTime: 1000 * 60 * 10
-  });
+  return useQuery({
+    queryKey: ['sprints', page, take, search],
+    queryFn: () => getSprints(page, take, search),
+    staleTime: 1000 * 60 * 10,
+  })
 }
 
 export function useSprint(id: string) {
-  return useQuery(['sprint', id], () => getOneSprintById(id))
+  return useQuery({
+    queryKey: ['sprint', id],
+    queryFn: () => getOneSprintById(id),
+  })
 }

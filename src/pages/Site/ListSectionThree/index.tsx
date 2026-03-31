@@ -1,7 +1,7 @@
 import { PencilSimpleLine, TrashSimple } from 'phosphor-react'
 import React, { useState } from 'react'
-import { Pagination } from '../../components/Portal/Pagination'
-import { Panel } from '../../components/Portal/Panel'
+import { Pagination } from '../../../components/Portal/Pagination'
+import { Panel } from '../../../components/Portal/Panel'
 import { Link as RouterLink } from 'react-router-dom'
 
 import {
@@ -11,27 +11,28 @@ import {
   PopContainer,
   PopPanelAlert,
   PopPanelDetails,
-} from './styles'
+} from '../styles'
 
-import { TableCustom } from '../../components/Portal/Table/styles'
-import { Loading } from '../../components/Site/WidgetForm/Loading'
-import { deleteSectionFor, useSectionFor } from './useSections'
-import AlertDelete from './AlertDelete'
+import { TableCustom } from '../../../components/Portal/Table/styles'
+import { Loading } from '../../../components/Site/WidgetForm/Loading'
+import { deleteSectionThree, useSectionThree } from '../useSections'
+import AlertDelete from '../AlertDelete'
 
-const ListSectionFour: React.FC = () => {
+const ListSectionThree: React.FC = () => {
   const [page, setPage] = useState(1)
-  const { data, isLoading, isFetching, error } = useSectionFor()
+  const { data, isLoading, isFetching, error } = useSectionThree()
   return (
     <>
       <Panel
-        title="List Section Five"
+        title="List Section Three"
         back="/dashboard"
         next="/dashboard"
         search={true}
         importFile="/import"
-        create="/create-section-four"
+        create="/create-section-three"
       >
         <div>{!isLoading && isFetching && <Loading />}</div>
+
         {isLoading ? (
           <div>
             <Loading />
@@ -52,7 +53,7 @@ const ListSectionFour: React.FC = () => {
                 </tr>
               </thead>
               <tbody>
-                {data?.sectionsFour.map((section: any) => (
+                {data?.sectionsThree.map((section: any) => (
                   <tr key={section.id}>
                     <td>
                       {' '}
@@ -97,4 +98,4 @@ const ListSectionFour: React.FC = () => {
   )
 }
 
-export default ListSectionFour
+export default ListSectionThree

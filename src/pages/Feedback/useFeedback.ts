@@ -1,4 +1,4 @@
-import { useQuery } from 'react-query'
+import { useQuery } from '@tanstack/react-query'
 import api from '../../services/api'
 
 type Feedback = {
@@ -75,18 +75,20 @@ export async function getOneFeedbackById(id: string): Promise<Feedback> {
 }
 
 export function useFeedbacks(page: number, take: number, search: string) {
-  return useQuery(['feedbacks', page, take, search], () =>
-    getFeedbacks(page, take, search),
-  )
+  return useQuery({
+    queryKey: ['feedbacks', page, take, search],
+    queryFn: () => getFeedbacks(page, take, search),
+  })
   // return useQuery(['projects', page], () => getProjects(page, take), {
   //   staleTime: 1000 * 60 * 10, // 1000 * 60 * 10 10 minutes // 1000 * 60 * 60 * 12, // 12 hours,
   // });
 }
 
 export function useFeedback(id: string) {
-  return useQuery(['feedback', id], () =>
-    getOneFeedbackById(id),
-  )
+  return useQuery({
+    queryKey: ['feedback', id],
+    queryFn: () => getOneFeedbackById(id),
+  })
   // return useQuery(['projects', page], () => getProjects(page, take), {
   //   staleTime: 1000 * 60 * 10, // 1000 * 60 * 10 10 minutes // 1000 * 60 * 60 * 12, // 12 hours,
   // });

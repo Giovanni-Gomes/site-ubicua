@@ -1,4 +1,4 @@
-import { useQuery } from 'react-query'
+import { useQuery } from '@tanstack/react-query'
 import api from '../../../../services/api'
 
 export type SubMenuPortalProps = {
@@ -50,9 +50,11 @@ export async function getMenuPortais(page: number, take: number, searchQuery?: s
 }
 
 export function useMenuPortais(page: number, take: number, searchQuery?: string) {
-  return useQuery(['menuPortais', 'subMenuPortais', page, take, searchQuery], () => getMenuPortais(page, take),
-    { staleTime: 1000 * 60 * 10 },
-  )
+  return useQuery({
+    queryKey: ['menuPortais', 'subMenuPortais', page, take, searchQuery],
+    queryFn: () => getMenuPortais(page, take),
+    staleTime: 1000 * 60 * 10,
+  })
 }
 
 // export async function getOneContractById(id: string): Promise<ContractProps> {

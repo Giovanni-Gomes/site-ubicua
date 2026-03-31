@@ -1,7 +1,6 @@
-import { AxiosError } from 'axios'
 import React from 'react'
 import { FaTrash } from 'react-icons/fa'
-import { useMutation } from 'react-query'
+import { useMutation } from '@tanstack/react-query'
 import { useToast } from '../../../components/hooks/provider/toast'
 import api from '../../../services/api'
 import { queryClient } from '../../../services/queryClient'
@@ -15,25 +14,22 @@ interface AlertDeleteSprintProps {
 const AlertDeleteSprint: React.FC<AlertDeleteSprintProps> = ({ id, actualSprintName }) => {
   const { addToast } = useToast()
 
-  const removeSprint = useMutation(
-    async (id: string) => {
+  const removeSprint = useMutation({
+    mutationFn: async (id: string) => {
       const response = await api.delete(`/v1/sprint/delete/${id}`)
-
       return response.data
     },
-    {
-      onSuccess: () => {
-        queryClient.invalidateQueries('sprints')
-      },
-      onError: (error: AxiosError) => {
-        addToast({
-          type: 'error',
-          title: 'Erro ao deletar registro',
-          description: 'Ocorreu um erro ao deletar registro, tente novamente',
-        })
-      },
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['sprints'] })
     },
-  )
+    onError: () => {
+      addToast({
+        type: 'error',
+        title: 'Erro ao deletar registro',
+        description: 'Ocorreu um erro ao deletar registro, tente novamente',
+      })
+    },
+  })
 
   async function handleRemoveTag(id: string) {
     try {

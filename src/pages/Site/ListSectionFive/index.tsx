@@ -1,7 +1,7 @@
 import { PencilSimpleLine, TrashSimple } from 'phosphor-react'
 import React, { useState } from 'react'
-import { Pagination } from '../../components/Portal/Pagination'
-import { Panel } from '../../components/Portal/Panel'
+import { Pagination } from '../../../components/Portal/Pagination'
+import { Panel } from '../../../components/Portal/Panel'
 import { Link as RouterLink } from 'react-router-dom'
 
 import {
@@ -11,25 +11,25 @@ import {
   PopContainer,
   PopPanelAlert,
   PopPanelDetails,
-} from './styles'
+} from '../styles'
 
-import { TableCustom } from '../../components/Portal/Table/styles'
-import { Loading } from '../../components/Site/WidgetForm/Loading'
-import { deleteSectionThree, useSectionThree } from './useSections'
-import AlertDelete from './AlertDelete'
+import { TableCustom } from '../../../components/Portal/Table/styles'
+import { Loading } from '../../../components/Site/WidgetForm/Loading'
+import { deleteSectionFive, useSectionFive } from '../useSections'
+import AlertDelete from '../AlertDelete'
 
-const ListSectionThree: React.FC = () => {
+const ListSectionFive: React.FC = () => {
   const [page, setPage] = useState(1)
-  const { data, isLoading, isFetching, error } = useSectionThree()
+  const { data, isLoading, isFetching, error } = useSectionFive()
   return (
     <>
       <Panel
-        title="List Section Three"
+        title="List Section Five"
         back="/dashboard"
         next="/dashboard"
         search={true}
         importFile="/import"
-        create="/create-section-three"
+        create="/create-section-five"
       >
         <div>{!isLoading && isFetching && <Loading />}</div>
 
@@ -53,7 +53,7 @@ const ListSectionThree: React.FC = () => {
                 </tr>
               </thead>
               <tbody>
-                {data?.sectionsThree.map((section: any) => (
+                {data?.sectionsFive.map((section: any) => (
                   <tr key={section.id}>
                     <td>
                       {' '}
@@ -98,4 +98,4 @@ const ListSectionThree: React.FC = () => {
   )
 }
 
-export default ListSectionThree
+export default ListSectionFive

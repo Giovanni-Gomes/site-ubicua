@@ -2,7 +2,7 @@ import React from 'react';
 const ActionProvider = ({ createChatBotMessage, setState, children }: any) => {
 
   const handleHello = () => {
-    const botMessage = createChatBotMessage('Hello. Nice to meet you xarlys');
+    const botMessage = createChatBotMessage('Olá! Prazer em conhecer você.');
     setState((prev: any) => ({
       ...prev,
       messages: [...prev.messages, botMessage],
@@ -51,16 +51,16 @@ const ActionProvider = ({ createChatBotMessage, setState, children }: any) => {
       {
         widget: "careerLinks"
       }
-    );
-    addMessageToState(message);
-  };
+    )
+    addMessageToState(message)
+  }
 
   async function addMessageToState(message: any) {
     setState((state: any) => ({
       ...state,
       messages: [...state.messages, message]
-    }));
-  };
+    }))
+  }
 
   // Put the handleHello function in the actions object to pass to the MessageParser
   return (

@@ -1,27 +1,30 @@
 import React, { useCallback, useRef, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { useToast } from '../../components/hooks/provider/toast'
+import { useToast } from '../../../components/hooks/provider/toast'
 
-import getValidationErrors from '../../utils/getValidationsErros'
+import getValidationErrors from '../../../utils/getValidationErrors'
 import { FormHandles } from '@unform/core'
-import { Form } from '@unform/web'
+import { Form } from 'unform-form'
 import * as Yup from 'yup'
 
-import api from '../../services/api'
-import Input from '../../components/Shared/Input'
+import api from '../../../services/api'
+import Input from '../../../components/Shared/Input'
 import { BiText } from 'react-icons/bi'
 import { FaTrash } from 'react-icons/fa'
-import Button from '../../components/Shared/Button'
-import Header from '../../components/Portal/Header'
-import { CancelButton, Container, FormFooter } from './styles'
-import CreateSectionTopics from './createSectionTopics'
+import Button from '../../../components/Shared/Button'
+import Header from '../../../components/Portal/Header'
+import { Back, CancelButton, Container, FormFooter } from '../styles'
+import CreateSectionTopics from '../CreateSectionTopics'
+import { ArrowLeft } from 'phosphor-react'
 
 interface CreateMenuProps {
   title: string
   description_one: string
+  image_one?: string
+  description_two: string
 }
 
-const createSectionFive: React.FC = () => {
+const CreateSectionTwo: React.FC = () => {
   const formRef = useRef<FormHandles>(null)
   const navigate = useNavigate()
   const { addToast } = useToast()
@@ -35,14 +38,6 @@ const createSectionFive: React.FC = () => {
     setIsActiveForm(id)
   }
 
-  const fileSelectedHandlerInputOne = (event: any) => {
-    setSelectedFile(event.target.files[0])
-  }
-
-  const fileSelectedHandlerInputTwo = (event: any) => {
-    setSelectedFileTwo(event.target.files[0])
-  }
-
   const handleSubmitCreateMenu = useCallback(
     async (data: CreateMenuProps) => {
       try {
@@ -54,6 +49,9 @@ const createSectionFive: React.FC = () => {
         const schema = Yup.object().shape({
           title: Yup.string().required('Título é Obrigatório'),
           description_one: Yup.string(),
+          image_one: Yup.string(),
+          description_two: Yup.string(),
+          image_two: Yup.string(),
         })
 
         await schema.validate(data, {
@@ -65,7 +63,7 @@ const createSectionFive: React.FC = () => {
           description_one: data.description_one,
         }
 
-        await api.post('/v1/sectionFive/create', formData)
+        await api.post('/v1/sectionTwo/create', formData)
 
         navigate('/dashboard')
 
@@ -99,7 +97,11 @@ const createSectionFive: React.FC = () => {
 
   return (
     <>
+      <Header />
       <Container>
+        <Back to={'/list-section-two'}>
+          <ArrowLeft size={24} />
+        </Back>
         <ul>
           <li>
             <button
@@ -126,7 +128,7 @@ const createSectionFive: React.FC = () => {
             onSubmit={handleSubmitCreateMenu}
             className="pages"
           >
-            <h1>Cadastrar | Alterar 5º Secção</h1>
+            <h1>Cadastrar | Alterar 2º Secção</h1>
             <span className="subtitle">preencha o formulário abaixo</span>
 
             <Input
@@ -135,19 +137,12 @@ const createSectionFive: React.FC = () => {
               placeholder="Título"
               icon={BiText}
             />
-
             <Input
               name="description_one"
               type="text"
               placeholder="First Description"
               icon={BiText}
             />
-
-            {/* <Input name="image_one" type="file" placeholder='First Image' icon={BiText} onChange={fileSelectedHandlerInputOne} /> */}
-
-            {/* <Input name="description_two" type="text" placeholder='Second Description' icon={BiText} /> */}
-
-            {/* <Input name="image_two" type="file" placeholder='Second Image' icon={BiText} onChange={fileSelectedHandlerInputTwo} /> */}
 
             <FormFooter>
               <Button type="submit">Salvar Registro</Button>
@@ -163,4 +158,4 @@ const createSectionFive: React.FC = () => {
   )
 }
 
-export default createSectionFive
+export default CreateSectionTwo

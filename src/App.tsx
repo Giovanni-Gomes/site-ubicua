@@ -3,8 +3,8 @@ import { BrowserRouter } from 'react-router-dom'
 import Routes from './routes'
 import AppProvider from './components/hooks/provider'
 
-import { ReactQueryDevtools } from 'react-query/devtools'
-import { QueryClientProvider } from 'react-query'
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
+import { QueryClientProvider } from '@tanstack/react-query'
 import { queryClient } from './services/queryClient'
 import { ThemeProvider } from 'styled-components'
 import { darkTheme } from './styles/theme/dark'
@@ -34,7 +34,7 @@ export function App() {
             {/* <GlobalStyles /> */}
             <PortalStyles />
           </BrowserRouter>
-          <ReactQueryDevtools />
+          {import.meta.env.DEV ? <ReactQueryDevtools /> : null}
         </QueryClientProvider>
       </ThemeProvider>
     </>

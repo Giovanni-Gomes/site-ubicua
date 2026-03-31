@@ -6,6 +6,7 @@ import thoughtImageUrl from '/assets/thought.svg'
 import { FeedbackTypeStep } from './Steps/FeedbackTypeStep'
 import { FeedbackContentStep } from './Steps/FeedbackContentStep'
 import { FeedbackSuccessStep } from './Steps/FeedbackSuccessStep'
+import { BRAND_NAME } from '../../../config/branding'
 import { Container, Footer } from '../WidgetForm/styles'
 
 export const feedbackTypes = {
@@ -63,7 +64,7 @@ export function WidgetForm() {
         </>
       )}
 
-      <Footer>Feito com ♥ pela UbicuaCloud</Footer>
+      <Footer>Feito com ♥ pela {BRAND_NAME} (portfolio demo)</Footer>
     </Container>
   )
 }

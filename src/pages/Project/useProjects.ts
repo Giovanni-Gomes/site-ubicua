@@ -1,4 +1,4 @@
-import { useQuery } from 'react-query'
+import { useQuery } from '@tanstack/react-query'
 import api from '../../services/api'
 
 export type Project = {
@@ -80,7 +80,6 @@ export async function getProjects(
     }).format(project.negotiated_value),
     real_cost: project.real_cost
       ? Intl.NumberFormat('pt-BR', {
-        // eslint-disable-next-line prettier/prettier
         style: 'currency',
         currency: 'BRL',
       }).format(project.real_cost)
@@ -127,16 +126,20 @@ export async function deleteProject(id: string) {
 }
 
 export function useProjects(page?: number, take?: number, search?: string) {
-  return useQuery(['projects', page, take, search], () =>
-    getProjects(page, take, search),
-  )
+  return useQuery({
+    queryKey: ['projects', page, take, search],
+    queryFn: () => getProjects(page, take, search),
+  })
   // return useQuery(['projects', page], () => getProjects(page, take), {
   //   staleTime: 1000 * 60 * 10, // 1000 * 60 * 10 10 minutes // 1000 * 60 * 60 * 12, // 12 hours,
   // });
 }
 
 export function useProject(id: string) {
-  return useQuery(['project', id], () => getOneProjectById(id))
+  return useQuery({
+    queryKey: ['project', id],
+    queryFn: () => getOneProjectById(id),
+  })
   // return useQuery(['projects', id], () => getProjects(page, take), {
   //   staleTime: 1000 * 60 * 10, // 1000 * 60 * 10 10 minutes // 1000 * 60 * 60 * 12, // 12 hours,
   // });
@@ -160,5 +163,8 @@ export async function selectProjects(search?: string): Promise<Project[]> {
 }
 
 export function useSelectProjects(search?: string) {
-  return useQuery(['selectProject', search], () => selectProjects(search))
+  return useQuery({
+    queryKey: ['selectProject', search],
+    queryFn: () => selectProjects(search),
+  })
 }

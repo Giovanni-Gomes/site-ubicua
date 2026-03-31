@@ -1,5 +1,6 @@
 import React, { createContext, useCallback, useState, useContext } from 'react'
 import api from '../../../services/api'
+import { STORAGE_KEYS } from '../../../config/branding'
 
 interface User {
   id: string
@@ -34,8 +35,8 @@ type AuthProps = {
 const AuthProvider = (props: AuthProps) => {
   // const AuthProvider: React.FC = (props: AuthProps) =>
   const [data, setData] = useState<AuthState>(() => {
-    const token = localStorage.getItem('@portalubicua:token')
-    const user = localStorage.getItem('@portalubicua:user')
+    const token = localStorage.getItem(STORAGE_KEYS.token)
+    const user = localStorage.getItem(STORAGE_KEYS.user)
 
     if (token && user) {
       api.defaults.headers.common.Authorization = `Bearer ${token}`
@@ -55,8 +56,8 @@ const AuthProvider = (props: AuthProps) => {
 
     const { token, user } = response.data
 
-    localStorage.setItem('@portalubicua:token', token)
-    localStorage.setItem('@portalubicua:user', JSON.stringify(user))
+    localStorage.setItem(STORAGE_KEYS.token, token)
+    localStorage.setItem(STORAGE_KEYS.user, JSON.stringify(user))
 
     api.defaults.headers.common.Authorization = `Bearer ${token}`
     // api.defaults.headers.authorization = `Bearer ${token}`; deprecated
@@ -65,15 +66,15 @@ const AuthProvider = (props: AuthProps) => {
   }, [])
 
   const signOut = useCallback(() => {
-    localStorage.removeItem('@portalubicua:token')
-    localStorage.removeItem('@portalubicua:user')
+    localStorage.removeItem(STORAGE_KEYS.token)
+    localStorage.removeItem(STORAGE_KEYS.user)
 
     setData({} as AuthState)
   }, [])
 
   const updateUser = useCallback(
     (user: User) => {
-      localStorage.setItem('@portalubicua:user', JSON.stringify(user))
+      localStorage.setItem(STORAGE_KEYS.user, JSON.stringify(user))
 
       setData({
         token: data.token,

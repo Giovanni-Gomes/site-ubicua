@@ -1,5 +1,6 @@
 import React from 'react'
-import { Container, Navigation, UbicuaLogo, Form } from './styles'
+import { BRAND_NAME } from '../../../config/branding'
+import { Container, Navigation, BrandLogo, Form } from './styles'
 
 const MenuForm: React.FC = () => {
   function handleToggle() {
@@ -10,8 +11,8 @@ const MenuForm: React.FC = () => {
     <Container>
       <Navigation>
         <h1>
-          <UbicuaLogo />
-          <span>Ubicua Cloud</span>
+          <BrandLogo />
+          <span>{BRAND_NAME}</span>
         </h1>
 
         <button className="action--close" onClick={handleToggle}>

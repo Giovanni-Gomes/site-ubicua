@@ -1,4 +1,4 @@
-import { useQuery } from 'react-query'
+import { useQuery } from '@tanstack/react-query'
 import api from '../../services/api'
 
 export type ClientProps = {
@@ -95,14 +95,17 @@ export async function deleteClient(id: string) {
 }
 
 export function useClients(page: number, take: number, searchQuery?: string) {
-  return useQuery(['clients', page, take, searchQuery], () => getClients(page, take, searchQuery), {
-    staleTime: 1000 * 60 * 10, // 10 minutes
+  return useQuery({
+    queryKey: ['clients', page, take, searchQuery],
+    queryFn: () => getClients(page, take, searchQuery),
+    staleTime: 1000 * 60 * 10,
   })
-  //console.log("useCLientes function", searchQuery)
 }
 
 export function useClient(id: string) {
-  return useQuery(['client', id], () => getOneClientById(id), {
-    staleTime: 1000 * 60 * 10, // 10 minutes
+  return useQuery({
+    queryKey: ['client', id],
+    queryFn: () => getOneClientById(id),
+    staleTime: 1000 * 60 * 10,
   })
 }

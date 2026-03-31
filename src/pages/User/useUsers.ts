@@ -1,4 +1,4 @@
-import { useQuery } from 'react-query'
+import { useQuery } from '@tanstack/react-query'
 import api from '../../services/api'
 
 export interface FindAllUserProps {
@@ -77,17 +77,18 @@ export async function deleteUser(id: string) {
 }
 
 export function useUsers(page?: number, take?: number, search?: string) {
-  return useQuery(
-    ['users', page, take, search],
-    () => getUsers(page, take, search),
-    {
-      staleTime: 1000 * 60 * 10, // 1000 * 60 * 10 10 minutes // 1000 * 60 * 60 * 12, // 12 hours,
-    },
-  )
+  return useQuery({
+    queryKey: ['users', page, take, search],
+    queryFn: () => getUsers(page, take, search),
+    staleTime: 1000 * 60 * 10,
+  })
 }
 
 export function useByIdUser(id: string) {
-  return useQuery(['user', id], () => getOneUserById(id))
+  return useQuery({
+    queryKey: ['user', id],
+    queryFn: () => getOneUserById(id),
+  })
   // if (id) {
   // } else {
   //   return null;

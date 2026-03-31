@@ -1,7 +1,7 @@
 export function setReadOnlyProperty<
-  O extends Record<string, any>,
+  O extends Record<string, unknown>,
   K extends keyof O,
-  V extends any,
+  V,
 >(object: O, property: K, value: V) {
   Object.defineProperty(object, property, {
     value,

@@ -7,8 +7,9 @@ import { HighSchoolBranches } from './Components/Widgets/HighSchoolBranches';
 import List from './Components/Widgets/List';
 import { Options } from './Components/Widgets/Options';
 import { Overview } from './Components/Widgets/Overview';
+import { CHAT_BOT_NAME } from '../../../../config/branding';
 
-const botName = "Ubicua Bot";
+const botName = CHAT_BOT_NAME;
 
 const ConfigBot = {
   botName: botName,
@@ -20,7 +21,7 @@ const ConfigBot = {
     },
   },
   initialMessages: [
-    createChatBotMessage(`Olá, Sou ${botName} cloud estou aqui para te ajudar. ${`\n`}
+    createChatBotMessage(`Olá, sou o ${botName} e estou aqui para ajudar. ${`\n`}
     Para começarmos, escolha uma das opções.`, {
       //widget: "options",
       widget: "highSchoolBranches",
@@ -103,7 +104,7 @@ const ConfigBot = {
     {
       widgetName: 'options',
       widgetFunc: (props: any) => <Options {...props} />,
-      props: { propriedade: 'xarlys' },
+      props: { propriedade: 'demo' },
       mapStateToProps: [],
     },
   ],

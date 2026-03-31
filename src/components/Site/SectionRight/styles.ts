@@ -50,7 +50,7 @@ export const Container = styled.div`
 `
 
 export const Content = styled.div`
-  max-width: 1440px;
+  /* max-width: 1440px; */
   margin: 0 auto;
   display: flex;
   /* gap: 5rem; */

@@ -45,7 +45,7 @@ export const Navigation = styled.div`
   }
 `
 
-export const UbicuaLogo = styled(FaCloud)`
+export const BrandLogo = styled(FaCloud)`
   width: 36px;
   height: 32px;
   fill: var(--color-black);

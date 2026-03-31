@@ -1,7 +1,7 @@
 import { PencilSimpleLine, TrashSimple } from 'phosphor-react'
 import React, { useState } from 'react'
-import { Pagination } from '../../components/Portal/Pagination'
-import { Panel } from '../../components/Portal/Panel'
+import { Pagination } from '../../../components/Portal/Pagination'
+import { Panel } from '../../../components/Portal/Panel'
 import { Link as RouterLink } from 'react-router-dom'
 
 import {
@@ -11,12 +11,12 @@ import {
   PopContainer,
   PopPanelAlert,
   PopPanelDetails,
-} from './styles'
+} from '../styles'
 
-import { TableCustom } from '../../components/Portal/Table/styles'
-import { Loading } from '../../components/Site/WidgetForm/Loading'
-import { deleteSectionOne, useSectionsOne } from './useSections'
-import AlertDelete from './AlertDelete'
+import { TableCustom } from '../../../components/Portal/Table/styles'
+import { Loading } from '../../../components/Site/WidgetForm/Loading'
+import { deleteSectionOne, useSectionsOne } from '../useSections'
+import AlertDelete from '../AlertDelete'
 
 const ListSectionOne: React.FC = () => {
   const [page, setPage] = useState(1)
