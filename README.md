@@ -2,6 +2,16 @@
 
 Single-page app de **marketing + portal administrativo** (React, TypeScript, Vite). Marca e textos são **fictícios** para exposição em portfólio.
 
+## Contexto
+
+Este foi um dos meus primeiros projetos em parceria, criado durante meu processo de aprendizado em desenvolvimento web. Para portfólio, o código foi revisitado e modernizado com foco em organização, atualização técnica e demonstração segura.
+
+Principais melhorias aplicadas nesta versão:
+- padronização de estrutura de pastas e nomes de arquivos;
+- atualização de dependências e ajustes de compatibilidade;
+- sanitização de dados sensíveis e branding;
+- backend totalmente mockado para demonstração local.
+
 ## API e dados
 
 Toda a camada HTTP em [`src/services/api.tsx`](src/services/api.tsx) usa um **adapter mock** ([`src/services/mockApi.ts`](src/services/mockApi.ts)): **não há chamadas a backend real** nem integração Giphy. Login, listagens e formulários respondem com dados estáticos/fictícios para a UI funcionar offline.
